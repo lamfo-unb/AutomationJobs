@@ -1,0 +1,5 @@
+Job Zone One   : Little or No Preparation Needed 
+Job Zone Two   : Some Preparation Neede
+Job Zone Three : Medium Preparation Needed
+Job Zone Four  : Considerable Preparation Needed
+Job Zone Five  : Extensive Preparation Needed
