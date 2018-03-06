@@ -1,0 +1,1014 @@
+Job_Zone;code;title;trad;CBO2002;TITULO;prox
+5;11-1011.00;Chief Executives;Executivo-Chefe;;;
+5;11-1011.03;Chief Sustainability Officers;Chief Sustainability Officers;;;
+4;11-1021.00;General and Operations Managers;Gerentes Gerais e de Operações;141505;Gerente de termas;0.6382978723404256
+4;11-1031.00;Legislators;Legisladores;376220;Deslocador;0.6363636363636364
+4;11-1031.00;Legislators;Legisladores;811415;Destilador;0.6363636363636364
+4;11-2011.00;Advertising and Promotions Managers;Gerentes de publicidade e promoções;141205;Gerente de produção e operações;0.6666666666666666
+4;11-2021.00;Marketing Managers;Gerentes de marketing;142315;Gerente de marketing;0.975609756097561
+4;11-2022.00;Sales Managers;Gerentes de vendas;141520;Gerente de pensão;0.8
+4;11-2022.00;Sales Managers;Gerentes de vendas;141505;Gerente de termas;0.8
+4;11-2031.00;Public Relations and Fundraising Managers;Gerentes de Relações Públicas e Fundraising;141525;Gerente de operações de turismo;0.6486486486486487
+3;11-3011.00;Administrative Services Managers;Gerentes de Serviços Administrativos;142105;Gerente administrativo;0.7241379310344828
+4;11-3021.00;Computer and Information Systems Managers;Gerentes de Sistemas de Informática e Informação;142525;Gerente de segurança de tecnologia da informação;0.6875
+5;11-3031.01;Treasurers and Controllers;Tesoureiros e Controladores;716405;Gesseiro montador;0.6363636363636364
+4;11-3031.02;Financial Managers, Branch or Department;Gerentes Financeiros, Filial ou Departamento;;;
+4;11-3051.00;Industrial Production Managers;Gerentes de produção industrial;141110;Gerente de produção florestal;0.8
+4;11-3051.01;Quality Control Systems Managers;Gerentes de Sistemas de Controle de Qualidade;391210;Técnico analista de pesquisa de controle de qualidade;0.6530612244897959
+3;11-3051.02;Geothermal Production Managers;Gerentes de produção geotérmica;141205;Gerente de produção e operações;0.7741935483870968
+4;11-3051.03;Biofuels Production Managers;Gerentes de produção de biocombustíveis;141525;Gerente de produtos de turismo;0.6956521739130435
+4;11-3051.04;Biomass Power Plant Managers;Gerentes de Usina de Biomassa;141515;Gerente de salão de café;0.6792452830188679
+3;11-3051.06;Hydroelectric Production Managers;Gerentes de produção hidrelétrica;141110;Gerente de produção florestal;0.7419354838709677
+4;11-3061.00;Purchasing Managers;Gerentes de compras;142110;Gerente de riscos;0.7777777777777778
+4;11-3061.00;Purchasing Managers;Gerentes de compras;717020;Servente de obras;0.7777777777777778
+4;11-3061.00;Purchasing Managers;Gerentes de compras;141505;Gerente de termas;0.7777777777777778
+4;11-3071.01;Transportation Managers;Gerentes de transporte;342120;Agente de transporte;0.8571428571428571
+4;11-3071.02;Storage and Distribution Managers;Gerentes de armazenamento e distribuição;141205;Gerente de departamento de produção;0.72
+4;11-3071.03;Logistics Managers;Gerentes de Logística;414120;Conferente de logística;0.8181818181818182
+4;11-3111.00;Compensation and Benefits Managers;Gerentes de Compensação e Benefícios;141735;Gerente de recuperação de crédito;0.6666666666666666
+4;11-3111.00;Compensation and Benefits Managers;Gerentes de Compensação e Benefícios;141120;Gerente de empresa de pesca;0.6666666666666666
+4;11-3121.00;Human Resources Managers;Gerentes de recursos humanos;123205;Diretor de recursos humanos;0.8363636363636363
+4;11-3131.00;Training and Development Managers;Gerentes de Treinamento e Desenvolvimento;234810;Professor de planejamento e desenvolvimento;0.7380952380952381
+3;11-9013.01;Nursery and Greenhouse Managers;Gerentes de enfermagem e estufa;131210;Gerente de enfermagem;0.8076923076923077
+4;11-9013.02;Farm and Ranch Managers;Gerentes de fazenda e rancho;141515;Gerente de bar e lanchonete;0.7272727272727273
+4;11-9013.03;Aquacultural Managers;Gerentes Aquaculturais;131115;Gerente de serviços culturais;0.7058823529411765
+4;11-9021.00;Construction Managers;Gerentes de construção;141205;Gerente de produção;0.7804878048780488
+4;11-9031.00;Education Administrators, Preschool and Childcare Center/Program;Administradores de educação, pré escolar e centro de assistência à infância / programa;;;
+5;11-9032.00;Education Administrators, Elementary and Secondary School;Administradores de Educação, Escola Primária e Secundária;;;
+5;11-9033.00;Education Administrators, Postsecondary;Administradores de Educação, Pós-secundário;131210;Administrador de ambulatório;0.647887323943662
+5;11-9039.01;Distance Learning Coordinators;Coordenadores de ensino a distância;720110;Coordenador de caldeiraria;0.6557377049180327
+4;11-9039.02;Fitness and Wellness Coordinators;Coordenadores de fitness e bem-estar;224135;Coordenador de futebol;0.6551724137931034
+5;11-9041.00;Architectural and Engineering Managers;Gerentes de Arquitetura e Engenharia;252605;Gerente de segurança empresarial;0.6470588235294118
+4;11-9041.01;Biofuels/Biodiesel Technology and Product Development Managers;Gerentes de Desenvolvimento de Produtos e Tecnologia de Biocombustíveis / Biodiesel;;;
+2;11-9051.00;Food Service Managers;Gerentes de Serviços de Alimentos;142705;Gerente de serviço de manutenção;0.7692307692307693
+3;11-9061.00;Funeral Service Managers;Funeral Service Managers;;;
+3;11-9071.00;Gaming Managers;Gaming Managers;;;
+4;11-9081.00;Lodging Managers;Gerentes de hospedagem;141205;Gerente de montagem;0.7804878048780488
+5;11-9111.00;Medical and Health Services Managers;Gerentes de Serviços Médicos e de Saúde;131210;Gerente de serviços de saúde;0.7761194029850746
+5;11-9121.00;Natural Sciences Managers;Gerentes de Ciências Naturais;131115;Gerente de serviços culturais;0.6896551724137931
+4;11-9121.01;Clinical Research Coordinators;Coordenadores de Pesquisa Clínica;141510;Coordenador de restaurante;0.6779661016949152
+4;11-9121.02;Water Resource Specialists;Especialistas em recursos hídricos;201215;Especialista em ensaios metrológicos;0.7428571428571429
+2;11-9131.00;Postmasters and Mail Superintendents;Postmasters e Superintendentes de Correio;263105;Superintendente de culto religioso;0.64
+4;11-9141.00;Property, Real Estate, and Community Association Managers;Gerentes de Propriedade, Imobiliário e Associação Comunitária;;;
+4;11-9151.00;Social and Community Service Managers;Gerentes de serviços sociais e comunitários;131120;Gerente de serviços sociais;0.7714285714285715
+4;11-9161.00;Emergency Management Directors;Diretores de Gerenciamento de Emergência;131110;Diretor de departamento de esportes;0.6666666666666666
+4;11-9161.00;Emergency Management Directors;Diretores de Gerenciamento de Emergência;131205;Diretor de departamento de saúde;0.6666666666666666
+4;11-9199.01;Regulatory Affairs Managers;Diretores de Assuntos Regulatórios;122710;Diretor de produtos bancários;0.6666666666666666
+4;11-9199.02;Compliance Managers;Gerentes de Compliance;513435;Servente de lanche;0.75
+5;11-9199.03;Investment Fund Managers;Gerentes de Fundo de Investimento;142315;Gerente de divisão de marketing;0.65625
+4;11-9199.04;Supply Chain Managers;Gerentes de cadeia de suprimentos;123405;Diretor de logística e de suprimentos;0.7142857142857143
+4;11-9199.07;Security Managers;Gerentes de segurança;142110;Gerente de seguros;0.8205128205128205
+4;11-9199.08;Loss Prevention Managers;Gerentes de Prevenção de Perda;517425;Assistente de prevenção de perdas;0.7619047619047619
+4;11-9199.09;Wind Energy Operations Managers;Gerentes de Operações de Energia Eólica;141525;Gerente de operações de turismo;0.7142857142857143
+4;11-9199.10;Wind Energy Project Managers;Gerentes de Projetos de Energia Eólica;142520;Gerente de projetos de tecnologia da informação;0.6823529411764706
+4;11-9199.11;Brownfield Redevelopment Specialists and Site Managers;Especialistas em redesenho de campo marrom e gerentes de sites;142610;Especialista em desenvolvimento de cigarros;0.6095238095238096
+4;13-1011.00;Agents and Business Managers of Artists, Performers, and Athletes;Agentes e gerentes de negócios de artistas, artistas e atletas;;;
+4;13-1021.00;Buyers and Purchasing Agents, Farm Products;Compradores e Agentes de Compras, Produtos Agrícolas;641010;Operador de secador (produtos agrícolas);0.6086956521739131
+3;13-1022.00;Wholesale and Retail Buyers, Except Farm Products;Compradores de atacado e varejo, com exceção de produtos agrícolas;641010;Operador de secadeiras no beneficiamento de produtos agrícolas;0.640625
+4;13-1023.00;Purchasing Agents, Except Wholesale, Retail, and Farm Products;Agentes de compras, exceto atacado, varejo e produtos agrícolas;;;
+4;13-1031.01;Claims Examiners, Property and Casualty Insurance;Examinadores de Reclamações, Seguro de Propriedade e Obstáculos;;;
+3;13-1031.02;Insurance Adjusters, Examiners, and Investigators;Ajustadores de seguros, Examinadores e Investigadores;;;
+3;13-1032.00;Insurance Appraisers, Auto Damage;Avaliadores de seguros, Auto Damage;354415;Avaliador de automóveis;0.6206896551724138
+4;13-1041.01;Environmental Compliance Inspectors;Inspetores de Conformidade Ambiental;391205;Inspetor de qualidade material;0.6666666666666666
+3;13-1041.02;Licensing Examiners and Inspectors;Examinadores e Inspetores de Licenciamento;710220;Encarregado de setor de concreto;0.6216216216216216
+4;13-1041.03;Equal Opportunity Representatives and Officers;Representantes e Oficiais de Igualdade de Oportunidades;;;
+3;13-1041.04;Government Property Inspectors and Investigators;Inspetores de propriedade do governo e pesquisadores;;;
+3;13-1041.06;Coroners;Coroners;391110;Cronometrista;0.6666666666666666
+4;13-1041.07;Regulatory Affairs Specialists;Especialistas em Assuntos Regulatórios;201215;Especialista em ensaios metrológicos;0.6756756756756757
+4;13-1051.00;Cost Estimators;Estimadores de custo;761410;Estampador de tecido;0.7
+4;13-1071.00;Human Resources Specialists;Especialistas em Recursos Humanos;252405;Analista de recursos humanos;0.7540983606557377
+2;13-1074.00;Farm Labor Contractors;Contratantes de trabalho agrícola;620105;Capataz da exploração agrícola;0.6031746031746031
+4;13-1075.00;Labor Relations Specialists;Especialistas em relações de trabalho;123210;Diretor de relações de trabalho;0.7352941176470589
+4;13-1081.00;Logisticians;Logísticos;;;
+4;13-1081.01;Logistics Engineers;Engenheiros de logística;214945;Engenheiro de logistica;0.9361702127659575
+4;13-1081.02;Logistics Analysts;Analistas logísticos;252715;Analista de logistica;0.7804878048780488
+5;13-1111.00;Management Analysts;Analistas de Gestão;252725;Analista de estoque;0.8421052631578947
+4;13-1121.00;Meeting, Convention, and Event Planners;Planejadores de reuniões, convenções e eventos;314210;Planejador de processos (manutenção de ferramentas);0.6185567010309279
+4;13-1131.00;Fundraisers;Fundraisers;;;
+4;13-1141.00;Compensation, Benefits, and Job Analysis Specialists;Especialistas em Remuneração, Benefícios e Análise de Emprego;;;
+4;13-1151.00;Training and Development Specialists;Especialistas em treinamento e desenvolvimento;142610;Especialista em desenvolvimento de cigarros;0.6966292134831461
+4;13-1161.00;Market Research Analysts and Marketing Specialists;Analistas de Marketing e Especialistas em Marketing;;;
+3;13-1199.01;Energy Auditors;Auditores de Energia;261620;Editor de revista;0.6486486486486487
+4;13-1199.02;Security Management Specialists;Especialistas em gerenciamento de segurança;142610;Especialista em desenvolvimento de cigarros;0.6976744186046512
+3;13-1199.03;Customs Brokers;Agentes alfandegários;516505;Agente funerário;0.7567567567567568
+4;13-1199.04;Business Continuity Planners;Planejadores de Continuidade de Negócios;262905;Planejador de interiores;0.625
+4;13-1199.05;Sustainability Specialists;Especialistas em Sustentabilidade;252210;Analista de contabilidade;0.6896551724137931
+4;13-1199.06;Online Merchants;Comerciantes on-line;;;
+4;13-2011.01;Accountants;Contadores;252210;Contador;0.8888888888888888
+4;13-2011.02;Auditors;Auditores;262505;Ator;0.6153846153846154
+3;13-2021.01;Assessors;Assessores;252310;Assessor bilíngüe;0.6666666666666666
+4;13-2021.02;Appraisers, Real Estate;Avaliadores, Imóveis;354410;Avaliador de imóveis;0.85
+4;13-2031.00;Budget Analysts;Analistas de orçamento;252105;Administrador de orçamento;0.7916666666666666
+4;13-2041.00;Credit Analysts;Analistas de crédito;252530;Analista de crédito rural;0.8444444444444444
+4;13-2051.00;Financial Analysts;Analistas Financeiros;252105;Administrador financeiro;0.7111111111111111
+4;13-2052.00;Personal Financial Advisors;Assessores financeiros pessoais;;;
+4;13-2053.00;Insurance Underwriters;Assinantes de seguros;517330;Assistente de segurança;0.7272727272727273
+4;13-2061.00;Financial Examiners;Examinadores Financeiros;252105;Administrador financeiro;0.7083333333333334
+4;13-2071.00;Credit Counselors;Conselheiros de crédito;513225;Cozinheiro de bordo;0.7142857142857143
+4;13-2071.01;Loan Counselors;Conselheiros de Empréstimos;214905;Engenheiro de processos;0.64
+3;13-2072.00;Loan Officers;Oficiais de empréstimo;351415;Oficial de registro;0.6829268292682927
+3;13-2081.00;Tax Examiners and Collectors, and Revenue Agents;Examinadores Fiscais e Coletores e Agentes de Receita;;;
+3;13-2082.00;Tax Preparers;Preparadores de impostos;848605;Preparador de fumo;0.7619047619047619
+5;13-2099.01;Financial Quantitative Analysts;Analistas Quantitativos Financeiros;252545;Analista de planejamento financeiro;0.6571428571428571
+4;13-2099.02;Risk Management Specialists;Especialistas em Gerenciamento de Riscos;142610;Especialista em desenvolvimento de cigarros;0.7710843373493976
+4;13-2099.04;Fraud Examiners, Investigators and Analysts;Examinadores de fraude, pesquisadores e analistas;;;
+5;15-1111.00;Computer and Information Research Scientists;Cientistas de pesquisa de informática e informação;424110;Entrevistador de pesquisa de opinião e mídia;0.6382978723404256
+4;15-1121.00;Computer Systems Analysts;Analistas de sistemas informáticos;212405;Analista de sistemas (informática);0.9117647058823529
+4;15-1121.01;Informatics Nurse Specialists;Especialistas em enfermagem informática;752305;Especialista em cerâmica;0.6984126984126984
+4;15-1122.00;Information Security Analysts;Analistas de segurança da informação;212320;Analista em segurança da informação;0.9577464788732394
+4;15-1131.00;Computer Programmers;Programadores de computador;317110;Programador de computador;0.9615384615384616
+4;15-1132.00;Software Developers, Applications;Desenvolvedores de software, aplicativos;;;
+4;15-1133.00;Software Developers, Systems Software;Desenvolvedores de Software, Software de Sistemas;;;
+3;15-1134.00;Web Developers;Desenvolvedores da Web;;;
+4;15-1141.00;Database Administrators;Administradores de banco de dados;212305;Administrador de banco de dados;0.96875
+4;15-1142.00;Network and Computer Systems Administrators;Administradores de sistemas de rede e computador;212315;Administrador de sistemas computacionais;0.7727272727272727
+4;15-1143.00;Computer Network Architects;Arquitetos de redes informáticas;214105;Arquiteto de edificações;0.75
+3;15-1143.01;Telecommunications Engineering Specialists;Especialistas em Engenharia de Telecomunicações;203220;Especialista em engenharia mecânica;0.7804878048780488
+3;15-1151.00;Computer User Support Specialists;Especialistas em suporte ao usuário do computador;212420;Analista de suporte computacional;0.6097560975609756
+4;15-1152.00;Computer Network Support Specialists;Especialistas em suporte de redes informáticas;212320;Especialista em segurança da informação;0.6823529411764706
+4;15-1199.01;Software Quality Assurance Engineers and Testers;Engenheiros e Testadores de Qualidade de Software;214910;Engenheiro de qualidade;0.6111111111111112
+4;15-1199.02;Computer Systems Engineers/Architects;Engenheiros de Sistemas de Computador / Arquitetos;212210;Engenheiro de sistemas computacionais - equipamentos;0.7450980392156863
+3;15-1199.03;Web Administrators;Administradores da Web;252105;Administrador;0.7428571428571429
+4;15-1199.04;Geospatial Information Scientists and Technologists;Informação Geoespacial Cientistas e Tecnólogos;;;
+4;15-1199.05;Geographic Information Systems Technicians;Técnicos de Sistemas de Informação Geográfica;311105;Técnico de sistema de tratamento de água;0.6352941176470588
+4;15-1199.06;Database Architects;Arquitetos de banco de dados;212305;Administrador de banco de dados;0.711864406779661
+4;15-1199.08;Business Intelligence Analysts;Analistas de Inteligência de Negócios;142335;Analista de inteligência de mercado;0.8333333333333334
+4;15-1199.09;Information Technology Project Managers;Gerentes de Projetos de Tecnologia da Informação;142520;Gerente de projetos de tecnologia da informação;0.9263157894736842
+4;15-1199.10;Search Marketing Strategists;Pesquisar estrategistas de marketing;142315;Gerente de marketing;0.6428571428571429
+4;15-1199.11;Video Game Designers;Criadores de videogames;325015;Criadores de perfumes;0.7727272727272727
+4;15-1199.12;Document Management Specialists;Especialistas em gerenciamento de documentos;142610;Especialista em desenvolvimento de cigarros;0.735632183908046
+4;15-2011.00;Actuaries;Atuários;211105;Atuário;0.9333333333333333
+5;15-2021.00;Mathematicians;Matemáticos;211115;Matemático;0.9523809523809523
+5;15-2031.00;Operations Research Analysts;Analistas de Pesquisa de Operações;142335;Analista de pesquisa de mercado;0.8
+5;15-2041.00;Statisticians;Estatísticos;211205;Estatístico;0.9565217391304348
+5;15-2041.01;Biostatisticians;Biostatisticians;211210;Bioestatístico;0.7333333333333333
+4;15-2041.02;Clinical Data Managers;Gerentes de dados clínicos;142110;Gerente de riscos;0.6976744186046512
+4;15-2091.00;Mathematical Technicians;Técnicos matemáticos;311410;Técnico em plástico;0.7692307692307693
+4;15-2091.00;Mathematical Technicians;Técnicos matemáticos;314310;Técnico aeronáutico;0.7692307692307693
+4;17-1011.00;Architects, Except Landscape and Naval;Arquitetos, exceto paisagem e naval;214120;Arquiteto da paisagem;0.6785714285714286
+4;17-1012.00;Landscape Architects;Arquitetos de paisagem;214120;Arquiteto da paisagem;0.9302325581395349
+4;17-1021.00;Cartographers and Photogrammetrists;Cartografistas e fotogrametristas;;;
+4;17-1022.00;Surveyors;Topógrafos;262815;Coreógrafo;0.7
+4;17-1022.01;Geodetic Surveyors;Topógrafos geodésicos;;;
+4;17-2011.00;Aerospace Engineers;Engenheiros aeroespaciais;214605;Engenheiro de materiais;0.75
+4;17-2021.00;Agricultural Engineers;Engenheiros Agrícolas;222105;Engenheiro agrícola;0.9
+4;17-2031.00;Biomedical Engineers;Engenheiros biomédicos;214405;Engenheiro mecânico;0.7317073170731707
+4;17-2041.00;Chemical Engineers;Engenheiros químicos;214405;Engenheiro mecânico;0.7692307692307693
+4;17-2051.00;Civil Engineers;Engenheiros civis;214430;Engenheiro naval;0.7272727272727273
+4;17-2051.01;Transportation Engineers;Engenheiros de transporte;342120;Agente de transporte;0.8
+4;17-2051.01;Transportation Engineers;Engenheiros de transporte;374115;Engenheiro de master;0.8
+4;17-2061.00;Computer Hardware Engineers;Engenheiros de informática;214945;Engenheiro de logistica;0.7755102040816326
+4;17-2071.00;Electrical Engineers;Engenheiros elétricos;214920;Engenheiro de riscos;0.8292682926829268
+4;17-2072.00;Electronics Engineers, Except Computer;Engenheiros eletrônicos, exceto computador;214315;Engenheiro eletricista de manutenção;0.6666666666666666
+4;17-2072.01;Radio Frequency Identification Device Specialists;Especialistas em dispositivos de identificação por radiofrequência;;;
+5;17-2081.00;Environmental Engineers;Engenheiros ambientais;214005;Engenheiro ambiental;0.9047619047619048
+4;17-2081.01;Water/Wastewater Engineers;Engenheiros de água / esgoto;222205;Engenheiro de alimentos;0.7058823529411765
+4;17-2111.01;Industrial Safety and Health Engineers;Engenheiros de Segurança e Saúde Industrial;214915;Engenheiro de segurança industrial;0.8311688311688312
+4;17-2111.02;Fire-Prevention and Protection Engineers;Engenheiros de prevenção e proteção contra incêndios;214335;Engenheiro de manutenção de telecomunicações;0.6041666666666666
+4;17-2111.03;Product Safety Engineers;Engenheiros de segurança de produtos;214915;Engenheiro de segurança do trabalho;0.7887323943661971
+4;17-2112.00;Industrial Engineers;Engenheiros industriais;214605;Engenheiro de materiais;0.782608695652174
+5;17-2112.01;Human Factors Engineers and Ergonomists;Fatores Humanos Engenheiros e Ergonomistas;;;
+4;17-2121.01;Marine Engineers;Engenheiros marinhos;214705;Engenheiro de minas;0.7692307692307693
+4;17-2121.02;Marine Architects;Arquitetos marinhos;214115;Arquiteto de patrimônio;0.7142857142857143
+4;17-2131.00;Materials Engineers;Engenheiros de materiais;214605;Engenheiro de materiais;0.9787234042553191
+4;17-2141.00;Mechanical Engineers;Engenheiros mecânicos;214405;Engenheiro mecânico;0.95
+5;17-2141.01;Fuel Cell Engineers;Engenheiros de células de combustível;212205;Engenheiro de aplicativos em computação;0.6578947368421053
+4;17-2141.02;Automotive Engineers;Engenheiros automotivos;214410;Engenheiro mecânico automotivo;0.7924528301886793
+4;17-2151.00;Mining and Geological Engineers, Including Mining Safety Engineers;Engenheiros de mineração e geologia, incluindo engenheiros de segurança de mineração;;;
+4;17-2161.00;Nuclear Engineers;Engenheiros nucleares;214415;Engenheiro mecânico nuclear;0.75
+4;17-2171.00;Petroleum Engineers;Engenheiros de petróleo;202110;Engenheiro de controle;0.8
+4;17-2199.01;Biochemical Engineers;Engenheiros bioquímicos;214405;Engenheiro mecânico;0.7142857142857143
+4;17-2199.02;Validation Engineers;Engenheiros de Validação;202110;Engenheiro de automação;0.8085106382978723
+4;17-2199.02;Validation Engineers;Engenheiros de Validação;214705;Engenheiro de mineração;0.8085106382978723
+4;17-2199.02;Validation Engineers;Engenheiros de Validação;214910;Engenheiro de qualidade;0.8085106382978723
+4;17-2199.03;Energy Engineers;Engenheiros de energia;214605;Engenheiro de materiais;0.8
+4;17-2199.03;Energy Engineers;Engenheiros de energia;214705;Engenheiro de mineração;0.8
+4;17-2199.04;Manufacturing Engineers;Engenheiros de fabricação;214920;Engenheiro de riscos;0.8
+4;17-2199.05;Mechatronics Engineers;Engenheiros mecatrônicos;202105;Engenheiro mecatrônico;0.9565217391304348
+5;17-2199.06;Microsystems Engineers;Engenheiros de Microsistemas;214920;Engenheiro de riscos;0.75
+4;17-2199.07;Photonics Engineers;Engenheiros de fotônica;214945;Engenheiro de logistica;0.8260869565217391
+4;17-2199.08;Robotics Engineers;Engenheiros de robótica;214945;Engenheiro de logistica;0.8260869565217391
+5;17-2199.09;Nanosystems Engineers;Nanosystems Engineers;;;
+4;17-2199.10;Wind Energy Engineers;Engenheiros de energia eólica;214605;Engenheiro de materiais;0.7307692307692307
+4;17-2199.10;Wind Energy Engineers;Engenheiros de energia eólica;214945;Engenheiro de logistica;0.7307692307692307
+4;17-2199.11;Solar Energy Systems Engineers;Engenheiros de sistemas de energia solar;214350;Engenheiro de sistemas de comunicação;0.7792207792207793
+4;17-3011.01;Architectural Drafters;Drafters Arquitetônicos;;;
+3;17-3011.02;Civil Drafters;Drafters civis;;;
+3;17-3012.01;Electronic Drafters;Redatores eletrônicos;261615;Editor de mídia eletrônica;0.6382978723404256
+3;17-3012.02;Electrical Drafters;Drafters Elétricos;;;
+3;17-3013.00;Mechanical Drafters;Drafters Mecânicos;721215;Torneiro mecânico;0.6285714285714286
+4;17-3021.00;Aerospace Engineering and Operations Technicians;Técnicos de Engenharia e Operação Aeroespacial;;;
+3;17-3022.00;Civil Engineering Technicians;Técnicos de engenharia civil;318115;Desenhista técnico de engenharia civil;0.7878787878787878
+3;17-3023.01;Electronics Engineering Technicians;Técnicos de Engenharia Eletrônica;914405;Mecânico de injeção eletrônica;0.6666666666666666
+3;17-3023.03;Electrical Engineering Technicians;Técnicos de Engenharia Elétrica;311205;Técnico de indústria  petroquímica;0.6461538461538462
+3;17-3024.00;Electro-Mechanical Technicians;Técnicos eletro-mecânicos;314110;Técnico mecânico;0.7804878048780488
+3;17-3024.01;Robotics Technicians;Técnicos de robótica;322505;Técnico de ortopedia;0.75
+4;17-3025.00;Environmental Engineering Technicians;Técnicos de Engenharia Ambiental;316110;Técnico de pesquisa mineral;0.6779661016949152
+3;17-3026.00;Industrial Engineering Technicians;Técnicos de engenharia industrial;301105;Técnico de laboratório industrial;0.7575757575757576
+3;17-3027.00;Mechanical Engineering Technicians;Técnicos de Engenharia Mecânica;203220;Pesquisador de engenharia mecânica;0.7076923076923077
+3;17-3027.01;Automotive Engineering Technicians;Técnicos de engenharia automotiva;314305;Técnico automotivo;0.6666666666666666
+2;17-3029.01;Non-Destructive Testing Specialists;Especialistas em testes não destrutivos;201215;Especialista em ensaios metrológicos;0.6933333333333334
+4;17-3029.02;Electrical Engineering Technologists;Tecnólogos de Engenharia Elétrica;222105;Tecnólogo de engenharia rural;0.7741935483870968
+4;17-3029.03;Electromechanical Engineering Technologists;Tecnólogos de engenharia eletromecânica;222105;Tecnólogo de engenharia rural;0.7352941176470589
+3;17-3029.04;Electronics Engineering Technologists;Tecnólogos de Engenharia Eletrônica;222105;Tecnólogo de engenharia rural;0.75
+4;17-3029.05;Industrial Engineering Technologists;Tecnólogos de engenharia industrial;222105;Tecnólogo de engenharia rural;0.875
+4;17-3029.06;Manufacturing Engineering Technologists;Tecnólogos de Engenharia de Fabricação;222105;Tecnólogo de engenharia rural;0.7164179104477612
+3;17-3029.07;Mechanical Engineering Technologists;Tecnólogos de Engenharia Mecânica;222105;Tecnólogo de engenharia rural;0.7741935483870968
+3;17-3029.08;Photonics Technicians;Técnicos de fotônica;316120;Técnico em geotecnia;0.75
+3;17-3029.08;Photonics Technicians;Técnicos de fotônica;322505;Técnico de ortopedia;0.75
+3;17-3029.09;Manufacturing Production Technicians;Técnicos de produção de produção;391125;Técnico de programação de produção;0.8787878787878788
+4;17-3029.11;Nanotechnology Engineering Technologists;Tecnólogos de Engenharia de Nanotecnologia;222105;Tecnólogo de engenharia rural;0.704225352112676
+3;17-3029.12;Nanotechnology Engineering Technicians;Técnicos de Engenharia de Nanotecnologia;325305;Técnico em biotecnologia;0.6875
+3;17-3031.01;Surveying Technicians;Técnicos de topografia;710115;Técnico de geologia;0.7804878048780488
+3;17-3031.02;Mapping Technicians;Técnicos de Mapeamento;325205;Técnico de alimentos;0.8095238095238095
+5;19-1011.00;Animal Scientists;Cientistas de animais;261205;Cientista de informação;0.7272727272727273
+4;19-1012.00;Food Scientists and Technologists;Cientistas e tecnólogos alimentares;223288;Dentistas de deficientes;0.6440677966101694
+5;19-1013.00;Soil and Plant Scientists;Cientistas de solo e planta;823230;Prensista de rebolo de diamante;0.6551724137931034
+5;19-1020.01;Biologists;Biólogos;221105;Biólogo;0.9333333333333333
+5;19-1021.00;Biochemists and Biophysicists;Bioquímicos e Biofísicos;;;
+5;19-1022.00;Microbiologists;Microbiologistas;221105;Microbiologista;0.967741935483871
+5;19-1023.00;Zoologists and Wildlife Biologists;Zoologistas e biólogos da vida selvagem;;;
+5;19-1029.01;Bioinformatics Scientists;Cientistas de Bioinformática;261205;Cientista de informação;0.7843137254901961
+5;19-1029.02;Molecular and Cellular Biologists;Biólogos moleculares e celulares;;;
+5;19-1029.03;Geneticists;Geneticista;201115;Geneticista;1.0
+4;19-1031.01;Soil and Water Conservationists;Conservadores de solo e água;862205;Operador de sistemas de água;0.6428571428571429
+4;19-1031.02;Range Managers;Gerentes de alcance;513435;Servente de lanche;0.8108108108108109
+4;19-1031.03;Park Naturalists;Parque Naturalistas;322125;Terapeuta naturalista;0.65
+4;19-1032.00;Foresters;Foresters;263105;Presbítero;0.631578947368421
+5;19-1041.00;Epidemiologists;Epidemiologistas;225139;Epidemiologista;0.967741935483871
+5;19-1042.00;Medical Scientists, Except Epidemiologists;Cientistas médicos, exceto epidemiologistas;223216;Cirurgião dentista - epidemiologista;0.6582278481012658
+5;19-2011.00;Astronomers;Astrônomos;222110;Agrônomo;0.7777777777777778
+5;19-2012.00;Physicists;Físicos;213170;Físico (plasma);0.6363636363636364
+4;19-2021.00;Atmospheric and Space Scientists;Cientistas atmosféricos e espaciais;223288;Dentista de cuidados especiais;0.6153846153846154
+4;19-2031.00;Chemists;Químicos;213205;Químico;0.9333333333333333
+5;19-2032.00;Materials Scientists;Cientistas de materiais;142415;Administrador de materiais;0.7755102040816326
+4;19-2041.00;Environmental Scientists and Specialists, Including Health;Cientistas e especialistas ambientais, incluindo saúde;;;
+5;19-2041.01;Climate Change Analysts;Analistas de Mudanças Climáticas;212405;Analista de sistemas (informática);0.6666666666666666
+5;19-2041.02;Environmental Restoration Planners;Planejadores de Restauração Ambiental;314205;Planejador de processos (fabricação de ferramentas);0.6363636363636364
+5;19-2041.03;Industrial Ecologists;Ecologistas industriais;214940;Higienista industrial;0.6818181818181818
+4;19-2042.00;Geoscientists, Except Hydrologists and Geographers;Geocientistas, exceto hidrólogos e geógrafos;;;
+4;19-2043.00;Hydrologists;Hidrólogos;213425;Hidrogeólogo;0.8181818181818182
+5;19-2099.01;Remote Sensing Scientists and Technologists;Cientistas e tecnólogos de sensoriamento remoto;;;
+5;19-3011.00;Economists;Economistas;211210;Econometrista;0.8333333333333334
+5;19-3011.01;Environmental Economists;Economistas ambientais;251230;Economista ambiental;0.9047619047619048
+5;19-3022.00;Survey Researchers;Pesquisadores de pesquisa;424120;Pesquisador de preços;0.782608695652174
+5;19-3031.01;School Psychologists;Psicólogos escolares;251520;Psicólogo hospitalar;0.65
+5;19-3031.02;Clinical Psychologists;Psicólogos clínicos;225335;Patologista clínico;0.6842105263157895
+5;19-3031.03;Counseling Psychologists;Psicólogos de aconselhamento;222215;Tecnólogo em alimentos;0.64
+5;19-3032.00;Industrial-Organizational Psychologists;Psicólogos industrial-organizacionais;;;
+5;19-3039.01;Neuropsychologists and Clinical Neuropsychologists;Neuropsicólogos e neuropsicólogos clínicos;225350;Médico neurofisiologista clínico;0.6216216216216216
+5;19-3041.00;Sociologists;Sociólogos;221105;Biólogo;0.7058823529411765
+5;19-3041.00;Sociologists;Sociólogos;203010;Zoólogo;0.7058823529411765
+5;19-3041.00;Sociologists;Sociólogos;203005;Ecólogo;0.7058823529411765
+5;19-3051.00;Urban and Regional Planners;Planejadores urbanos e regionais;214125;Planejador urbano;0.6938775510204082
+5;19-3091.01;Anthropologists;Antropólogos;516705;Astrólogo;0.7619047619047619
+5;19-3091.02;Archeologists;Arqueólogos;516705;Astrólogo;0.7
+5;19-3091.02;Archeologists;Arqueólogos;516805;Frenólogo;0.7
+5;19-3092.00;Geographers;Geógrafos;211210;Demógrafo;0.7777777777777778
+5;19-3093.00;Historians;Historiadores;203520;Historiador;0.9166666666666666
+5;19-3094.00;Political Scientists;Cientistas políticos;261710;Comentarista político;0.8292682926829268
+4;19-3099.01;Transportation Planners;Planejadores de transporte;262905;Planejador de interiores;0.76
+3;19-4011.01;Agricultural Technicians;Técnicos Agrícolas;371310;Técnico gráfico;0.7272727272727273
+3;19-4011.02;Food Science Technicians;Técnicos de Ciência da Alimentos;325205;Técnico de alimentos;0.7692307692307693
+4;19-4021.00;Biological Technicians;Técnicos Biológicos;325310;Técnico em imunobiológicos;0.7555555555555555
+3;19-4031.00;Chemical Technicians;Técnicos químicos;311105;Técnico químico;0.9375
+4;19-4041.01;Geophysical Data Technicians;Técnicos de dados geofísicos;316105;Técnico em geofísica;0.75
+4;19-4041.02;Geological Sample Test Technicians;Técnicos de Teste de Amostras Geológicas;314615;Técnico em estruturas metálicas;0.676056338028169
+3;19-4051.01;Nuclear Equipment Operation Technicians;Técnicos de Operação de Equipamentos Nucleares;915405;Técnico em reparação de equipamentos fotográficos;0.7157894736842105
+3;19-4051.02;Nuclear Monitoring Technicians;Técnicos de monitoramento nuclear;314710;Técnico de lingotamento;0.6785714285714286
+4;19-4061.00;Social Science Research Assistants;Assistentes de Pesquisa em Ciências Sociais;252305;Assistente de presidência;0.6470588235294118
+4;19-4061.01;City and Regional Planning Aides;Assessores de Planejamento Regional e Regional;123115;Diretor de planejamento financeiro;0.625
+4;19-4091.00;Environmental Science and Protection Technicians, Including Health;Técnicos de Ciência e Proteção Ambiental, incluindo Saúde;;;
+4;19-4092.00;Forensic Science Technicians;Técnicos de Ciências Forenses;311105;Técnico de ciências químicas;0.7017543859649122
+3;19-4093.00;Forest and Conservation Technicians;Técnicos de floresta e conservação;325205;Técnico de carnes e derivados;0.6984126984126984
+3;19-4099.01;Quality Control Analysts;Analistas de controle de qualidade;391210;Analista de controle de qualidade;0.9850746268656716
+4;19-4099.02;Precision Agriculture Technicians;Técnicos de agricultura de precisão;314105;Técnico em mecânica de precisão;0.7575757575757576
+4;19-4099.03;Remote Sensing Technicians;Técnicos de sensoriamento remoto;314710;Técnico de lingotamento;0.6909090909090909
+5;21-1011.00;Substance Abuse and Behavioral Disorder Counselors;Conselheiros de Abuso de Substâncias e de Transtornos do Comportamento;;;
+5;21-1012.00;Educational, Guidance, School, and Vocational Counselors;Educacional, Orientação, Escola e Profissionais Profissionais;;;
+5;21-1013.00;Marriage and Family Therapists;Terapeutas de casamento e família;131115;Gerente de planejamento e estatística;0.6285714285714286
+5;21-1013.00;Marriage and Family Therapists;Terapeutas de casamento e família;141205;Gerente de departamento de fabricação;0.6285714285714286
+5;21-1014.00;Mental Health Counselors;Conselheiros de saúde mental;371405;Conselheiro em acantonamento;0.6785714285714286
+5;21-1015.00;Rehabilitation Counselors;Conselheiros de Reabilitação;202110;Engenheiro de automação;0.6666666666666666
+4;21-1021.00;Child, Family, and School Social Workers;Trabalhadores sociais da criança, da família e da escola;622505;Trabalhador da cultura de acerola;0.6067415730337079
+5;21-1022.00;Healthcare Social Workers;Trabalhadores sociais de saúde;631335;Trabalhador na criação de rãs;0.6779661016949152
+5;21-1023.00;Mental Health and Substance Abuse Social Workers;Trabalhadores sociais de saúde mental e abuso de substância;632525;Trabalhador da extração de substâncias tóxicas;0.6095238095238096
+4;21-1091.00;Health Educators;Educadores de saúde;515305;Educador de rua;0.7647058823529411
+4;21-1092.00;Probation Officers and Correctional Treatment Specialists;Oficiais de Probação e Especialistas em Tratamento Correcional;;;
+4;21-1093.00;Social and Human Service Assistants;Assistentes de Serviço Social e Humano;262205;Assistente de direção de cinema;0.6666666666666666
+4;21-1094.00;Community Health Workers;Trabalhadores comunitários de saúde;515105;Agente comunitário de saúde;0.7096774193548387
+5;21-2011.00;Clergy;Clero;613310;Coelheiro;0.7142857142857143
+5;21-2011.00;Clergy;Clero;623125;Cavaleiro;0.7142857142857143
+4;21-2021.00;Directors, Religious Activities and Education;Diretores, Atividades Religiosas e Educação;114305;Diretor de entidade religiosa;0.6666666666666666
+5;23-1011.00;Lawyers;Advogados;241205;Advogado da união;0.6153846153846154
+5;23-1012.00;Judicial Law Clerks;Clérigos de direito judicial;;;
+5;23-1021.00;Administrative Law Judges, Adjudicators, and Hearing Officers;Juízes de Direito Administrativo, Adjudicadores e Auditores;;;
+5;23-1022.00;Arbitrators, Mediators, and Conciliators;Árbitros, mediadores e conciliadores;;;
+5;23-1023.00;Judges, Magistrate Judges, and Magistrates;Juízes, magistrados juízes e magistrados;;;
+3;23-2011.00;Paralegals and Legal Assistants;Paralegais e assistentes jurídicos;;;
+3;23-2091.00;Court Reporters;Repórteres do Tribunal;;;
+2;23-2093.00;Title Examiners, Abstractors, and Searchers;Examinadores de título, criadores e pesquisadores;;;
+5;25-1011.00;Business Teachers, Postsecondary;Professores de negócios, pós-secundário;231105;Professor de ensino pré-primário;0.647887323943662
+5;25-1021.00;Computer Science Teachers, Postsecondary;Professores de informática, pós-secundário;234120;Professor de informática (no ensino superior);0.6896551724137931
+5;25-1022.00;Mathematical Science Teachers, Postsecondary;Professores de Ciências Matemáticas, Pós-secundário;234405;Professor de ciências biológicas do ensino superior;0.6274509803921569
+5;25-1031.00;Architecture Teachers, Postsecondary;Professores de arquitetura, pós-secundário;234305;Professor de arquitetura;0.7272727272727273
+5;25-1032.00;Engineering Teachers, Postsecondary;Professores de engenharia, pós-secundário;234310;Professor de engenharia;0.71875
+5;25-1041.00;Agricultural Sciences Teachers, Postsecondary;Professores de ciências agrícolas, pós-secundário;233115;Professor de técnicas agrícolas;0.7
+5;25-1042.00;Biological Science Teachers, Postsecondary;Professores de ciências biológicas, pós-secundário;234405;Professor de ciências biológicas do ensino superior;0.7524752475247525
+5;25-1043.00;Forestry and Conservation Science Teachers, Postsecondary;Professores de ciência florestal e de conservação, pós-secundário;;;
+5;25-1051.00;Atmospheric, Earth, Marine, and Space Sciences Teachers, Postsecondary;Professores de ciências atmosféricas, terrestres, marinhas e espaciais, pós-secundário;;;
+5;25-1052.00;Chemistry Teachers, Postsecondary;Professores de química, pós-secundário;232165;Professor de química no ensino médio;0.7027027027027027
+5;25-1053.00;Environmental Science Teachers, Postsecondary;Professores de Ciências Ambientais, Pós-secundário;234405;Professor de ciências biológicas do ensino superior;0.6138613861386139
+5;25-1054.00;Physics Teachers, Postsecondary;Professores de Física, Pós-graduação;234672;Professor de lingüística aplicada;0.6376811594202898
+5;25-1061.00;Anthropology and Archeology Teachers, Postsecondary;Professores de antropologia e arqueologia, pós-secundário;234705;Professor de antropologia do ensino superior;0.6534653465346535
+5;25-1062.00;Area, Ethnic, and Cultural Studies Teachers, Postsecondary;Professores de área, educação étnica e cultural, pós-secundário;234410;Professor de educação física no ensino superior;0.6181818181818182
+5;25-1062.00;Area, Ethnic, and Cultural Studies Teachers, Postsecondary;Professores de área, educação étnica e cultural, pós-secundário;234905;Professor de teatro-educação no ensino superior;0.6181818181818182
+5;25-1063.00;Economics Teachers, Postsecondary;Professores de economia, pós-secundário;234805;Professor de economia brasileira;0.704225352112676
+5;25-1064.00;Geography Teachers, Postsecondary;Professores de Geografia, Pós-secundário;232135;Professor de geografia no ensino médio;0.6923076923076923
+5;25-1065.00;Political Science Teachers, Postsecondary;Professores de Ciências Políticas, Pós-secundário;234720;Professor de ciência política do ensino superior;0.7010309278350515
+5;25-1066.00;Psychology Teachers, Postsecondary;Professores de psicologia, pós-secundário;232160;Professor de psicologia no ensino médio;0.725
+5;25-1067.00;Sociology Teachers, Postsecondary;Professores de sociologia, pós-secundário;232170;Professor de sociologia no ensino médio;0.725
+5;25-1071.00;Health Specialties Teachers, Postsecondary;Especialistas em saúde Professores, pós-secundário;;;
+5;25-1072.00;Nursing Instructors and Teachers, Postsecondary;Instrutores e professores de enfermagem, pós-secundário;;;
+5;25-1081.00;Education Teachers, Postsecondary;Professores de educação, pós-secundário;232120;Professor de educação física no ensino médio;0.6746987951807228
+5;25-1082.00;Library Science Teachers, Postsecondary;Professores de Ciências da Biblioteca, Pós-secundário;234405;Professor de ciências biológicas do ensino superior;0.6346153846153846
+5;25-1111.00;Criminal Justice and Law Enforcement Teachers, Postsecondary;Professores de justiça penal e aplicação da lei, pós-secundário;;;
+5;25-1112.00;Law Teachers, Postsecondary;Professores de direito, pós-secundário;234730;Professor de direito do ensino superior;0.6753246753246753
+5;25-1113.00;Social Work Teachers, Postsecondary;Professores de trabalho social, pós-secundário;234815;Professor de contabilidade societária;0.6265060240963856
+5;25-1121.00;Art, Drama, and Music Teachers, Postsecondary;Professores de arte, teatro e música, pós-secundário;234905;Professor de teatro no ensino superior;0.6444444444444445
+5;25-1122.00;Communications Teachers, Postsecondary;Professores de comunicação, pós-secundário;234725;Professor de comunicação social do ensino superior;0.6521739130434783
+5;25-1123.00;English Language and Literature Teachers, Postsecondary;Professores da língua inglesa e da literatura, pós-secundário;234664;Professor de outras línguas e literaturas;0.6666666666666666
+5;25-1124.00;Foreign Language and Literature Teachers, Postsecondary;Professores de língua estrangeira e literatura, pós-secundário;232150;Professor de língua estrangeira moderna no ensino médio;0.7008547008547008
+5;25-1125.00;History Teachers, Postsecondary;Professores de história, pós-secundário;234805;Professor de história econômica;0.7428571428571429
+5;25-1126.00;Philosophy and Religion Teachers, Postsecondary;Professores de Filosofia e Religião, Pós-secundário;234735;Professor de filosofia do ensino superior;0.6086956521739131
+5;25-1191.00;Graduate Teaching Assistants;Assistentes de Ensino Pós-Graduação;262220;Assistente de direção;0.6785714285714286
+5;25-1192.00;Home Economics Teachers, Postsecondary;Professores de economia doméstica, pós-secundário;234715;Professor de biblioteconomia do ensino superior;0.6666666666666666
+5;25-1193.00;Recreation and Fitness Studies Teachers, Postsecondary;Estudos de recreação e educação física, ensino pós-secundário;234410;Professor de educação física no ensino superior;0.6296296296296297
+3;25-1194.00;Vocational Education Teachers, Postsecondary;Professores de educação profissional, pós-secundário;233210;Professor-instrutor de educação profissional industrial;0.7476635514018691
+3;25-2011.00;Preschool Teachers, Except Special Education;Professores pré-escolares, exceto educação especial;;;
+4;25-2012.00;Kindergarten Teachers, Except Special Education;Professores de jardim de infância, exceto educação especial;231110;Professor de jardim de infância (nível superior);0.7102803738317757
+4;25-2021.00;Elementary School Teachers, Except Special Education;Professores de ensino fundamental, exceto educação especial;331205;Professor de ensino fundamental - séries iniciais;0.7037037037037037
+4;25-2022.00;Middle School Teachers, Except Special and Career/Technical Education;Professores de ensino médio, exceto especial e carreira / educação técnica;;;
+4;25-2023.00;Career/Technical Education Teachers, Middle School;Professores de Educação Profissional / Profissional, Escola Secundária;233210;Professor-instrutor de educação profissional industrial;0.64
+4;25-2031.00;Secondary School Teachers, Except Special and Career/Technical Education;Professores de escolas secundárias, exceto especial e carreira / educação técnica;;;
+4;25-2032.00;Career/Technical Education Teachers, Secondary School;Professores de Educação Profissional / Profissional, Escola Secundária;233210;Professor-instrutor de educação profissional industrial;0.64
+4;25-2052.00;Special Education Teachers, Kindergarten and Elementary School;Professores de educação especial, jardim de infância e escola primária;231110;Professor de jardim de infância (nível superior);0.6440677966101694
+4;25-2053.00;Special Education Teachers, Middle School;Professores de educação especial, escola secundária;232120;Professor de educação física no ensino médio;0.6736842105263158
+4;25-2054.00;Special Education Teachers, Secondary School;Professores de educação especial, escola secundária;232120;Professor de educação física no ensino médio;0.6736842105263158
+4;25-2059.01;Adapted Physical Education Specialists;Especialistas em educação física adaptada;752305;Especialista em cerâmica;0.6153846153846154
+4;25-3011.00;Adult Basic and Secondary Education and Literacy Teachers and Instructors;Professores e Instrutores de Ensino e Ensino Secundário e de Ensino Secundário;;;
+3;25-3021.00;Self-Enrichment Education Teachers;Professores de Educação de Auto-Enriquecimento;231315;Professor de educação física do ensino fundamental;0.625
+4;25-3099.02;Tutors;Tutores;;;
+5;25-4011.00;Archivists;Arquivistas;415105;Arquivador;0.6666666666666666
+5;25-4012.00;Curators;Curadores;631335;Criador de rãs;0.6956521739130435
+4;25-4013.00;Museum Technicians and Conservators;Técnicos de museu e conservadores;325205;Técnico de carnes e derivados;0.7096774193548387
+5;25-4021.00;Librarians;Bibliotecários;261205;Bibliotecário;0.9629629629629629
+3;25-4031.00;Library Technicians;Técnicos de bibliotecas;371110;Técnico de biblioteca;0.9545454545454546
+4;25-9011.00;Audio-Visual and Multimedia Collections Specialists;Especialistas em Coleções Audiovisuais e Multimédia;;;
+5;25-9021.00;Farm and Home Management Advisors;Assessores de gestão de fazenda e casa;;;
+5;25-9031.00;Instructional Coordinators;Coordenadores de instrução;420125;Coordenador de recepção;0.7755102040816326
+5;25-9031.01;Instructional Designers and Technologists;Designers e tecnólogos de instrução;123605;Diretor de tecnologia da informação;0.6285714285714286
+3;25-9041.00;Teacher Assistants;Assistentes de professores;515115;Assistente de parto;0.7555555555555555
+4;27-1011.00;Art Directors;Diretores de Arte;262330;Diretor de arte;0.875
+3;27-1012.00;Craft Artists;Artista Artistas;262505;Artista dramático;0.6666666666666666
+3;27-1013.00;Fine Artists, Including Painters, Sculptors, and Illustrators;Belas artistas, incluindo pintores, escultores e ilustradores;;;
+4;27-1014.00;Multimedia Artists and Animators;Artistas e animadores multimídia;342110;Analista de transporte multimodal;0.676923076923077
+4;27-1021.00;Commercial and Industrial Designers;Designers comerciais e industriais;262905;Designers de interiores;0.631578947368421
+3;27-1022.00;Fashion Designers;Designers de moda;375120;Designer de eventos;0.7222222222222222
+2;27-1023.00;Floral Designers;Floral Designers;;;
+4;27-1024.00;Graphic Designers;Designers gráficos;760605;Mestre gráfico;0.6875
+4;27-1025.00;Interior Designers;Interior Designers;;;
+3;27-1026.00;Merchandise Displayers and Window Trimmers;Exibidores de Mercadorias e Aparadores de Janelas;;;
+5;27-1027.00;Set and Exhibit Designers;Designers de Set e Exhibit;262905;Designers de ambientes;0.6666666666666666
+2;27-2011.00;Actors;Atores;262505;Ator;0.8
+4;27-2012.01;Producers;Produtores;612740;Produtor de soja;0.7692307692307693
+4;27-2012.02;Directors- Stage, Motion Pictures, Television, and Radio;Diretores de palco, filmes, televisão e rádio;262215;Diretor de programas de televisão;0.6410256410256411
+4;27-2012.03;Program Directors;Directores de programas;262225;Diretor de programação;0.8444444444444444
+4;27-2012.04;Talent Directors;Diretores de talentos;123405;Diretor de suprimentos;0.7441860465116279
+4;27-2012.05;Technical Directors/Managers;Diretores / Gerentes Técnicos;131205;Diretor de departamento médico;0.6440677966101694
+2;27-2021.00;Athletes and Sports Competitors;Atletas e competidores de esportes;252210;Assistente de contador de custos;0.6060606060606061
+4;27-2022.00;Coaches and Scouts;Treinadores e escoteiros;224125;Treinador esportivo;0.7441860465116279
+3;27-2023.00;Umpires, Referees, and Other Sports Officials;Árbitros, árbitros e outros oficiais de esportes;;;
+3;27-2031.00;Dancers;Dançarinos;262810;Dançarino;0.9473684210526315
+4;27-2032.00;Choreographers;Coreógrafos;262815;Coreógrafo;0.9523809523809523
+4;27-2041.01;Music Directors;Music Directors;262705;Músico intérprete cantor;0.6153846153846154
+3;27-2041.04;Music Composers and Arrangers;Compositor de Música e Arranjadores;262605;Compositor de música;0.6909090909090909
+2;27-2042.01;Singers;Cantores;613010;Canicultor;0.6666666666666666
+4;27-2042.02;Musicians, Instrumental;Músicos, Instrumental;262710;Músico intérprete instrumentista;0.6415094339622641
+4;27-3011.00;Radio and Television Announcers;Anunciadores de rádio e televisão;261705;Apresentador de rádio e televisão;0.8181818181818182
+2;27-3012.00;Public Address System and Other Announcers;Sistema de endereços públicos e outros anunciadores;;;
+4;27-3021.00;Broadcast News Analysts;Broadcast News Analysts;;;
+4;27-3022.00;Reporters and Correspondents;Repórteres e Correspondentes;;;
+4;27-3031.00;Public Relations Specialists;Especialistas em Relações Públicas;201210;Especialista em calibrações metrológicas;0.7567567567567568
+4;27-3041.00;Editors;Editores;374405;Editor de vt;0.7
+4;27-3042.00;Technical Writers;Escritores técnicos;261520;Escritor de obras técnicas;0.8
+4;27-3043.04;Copy Writers;Copy Writers;;;
+4;27-3043.05;Poets, Lyricists and Creative Writers;Poetas, letristas e escritores criativos;;;
+4;27-3091.00;Interpreters and Translators;Intérpretes e tradutores;261425;Intérprete de libras;0.7272727272727273
+3;27-4011.00;Audio and Video Equipment Technicians;Técnicos de equipamentos de áudio e vídeo;374110;Técnico em instalação de equipamentos de áudio;0.7586206896551724
+3;27-4012.00;Broadcast Technicians;Técnicos de transmissão;373130;Técnico de transmissor de rádio;0.7777777777777778
+3;27-4013.00;Radio Operators;Operadores de rádio;373105;Operador de rádio;0.9444444444444444
+3;27-4014.00;Sound Engineering Technicians;Técnicos de engenharia de som;373130;Técnico de captação de som;0.7272727272727273
+3;27-4021.00;Photographers;Fotógrafos;213435;Petrógrafo;0.7
+3;27-4021.00;Photographers;Fotógrafos;262815;Coreógrafo;0.7
+3;27-4031.00;Camera Operators, Television, Video, and Motion Picture;Operadores de câmeras, televisão, vídeo e filmes;;;
+3;27-4032.00;Film and Video Editors;Editores de filmes e vídeos;374405;Editor de tv e vídeo;0.7659574468085106
+5;29-1011.00;Chiropractors;Quiropráticos;226105;Quiropraxista;0.6153846153846154
+5;29-1021.00;Dentists, General;Dentistas, Geral;223284;Dentista da dor;0.6451612903225806
+5;29-1022.00;Oral and Maxillofacial Surgeons;Cirurgiões orais e maxilofaciais;;;
+5;29-1023.00;Orthodontists;Ortodontistas;223910;Ortoptista;0.782608695652174
+5;29-1024.00;Prosthodontists;Prostitutas;519805;Prostituta;0.9523809523809523
+5;29-1031.00;Dietitians and Nutritionists;Dietistas e nutricionistas;223288;Dentistas de deficientes;0.64
+5;29-1041.00;Optometrists;Optometristas;391110;Computometrista;0.7857142857142857
+5;29-1051.00;Pharmacists;Farmacêuticos;223435;Farmacêutico logístico;0.7428571428571429
+5;29-1061.00;Anesthesiologists;Anestesiologistas;225151;Anestesiologista;0.9696969696969697
+5;29-1062.00;Family and General Practitioners;Família e médicos de clínica geral;225125;Médico clínico geral;0.6666666666666666
+5;29-1063.00;Internists, General;Internistas, Geral;;;
+5;29-1064.00;Obstetricians and Gynecologists;Obstetras e ginecologistas;225110;Alergista e imunologista;0.64
+5;29-1065.00;Pediatricians, General;Pediatras, General;225124;Pediatra;0.6153846153846154
+5;29-1066.00;Psychiatrists;Psiquiatras;225133;Psiquiatra;0.9523809523809523
+5;29-1067.00;Surgeons;Cirurgiões;225225;Cirurgião;0.7368421052631579
+5;29-1069.01;Allergists and Immunologists;Alergistas e imunologistas;225110;Alergista e imunologista;0.96
+5;29-1069.02;Dermatologists;Dermatologistas;225135;Dermatologista;0.9655172413793104
+5;29-1069.03;Hospitalists;Hospitalistas;252210;Contabilista;0.64
+5;29-1069.04;Neurologists;Neurologistas;225112;Neurologista;0.96
+5;29-1069.05;Nuclear Medicine Physicians;Médicos de Medicina Nuclear;225315;Médico em medicina nuclear;0.8679245283018868
+5;29-1069.06;Ophthalmologists;Oftalmologistas;225265;Oftalmologista;0.9655172413793104
+5;29-1069.07;Pathologists;Patologistas;225325;Patologista;0.9565217391304348
+5;29-1069.08;Physical Medicine and Rehabilitation Physicians;Medicina física e médicos de reabilitação;;;
+5;29-1069.09;Preventive Medicine Physicians;Médicos Preventivos de Medicina;;;
+5;29-1069.10;Radiologists;Radiologistas;225320;Radiologista;0.96
+5;29-1069.11;Sports Medicine Physicians;Médicos de Medicina Esportiva;225150;Médico em medicina intensiva;0.7368421052631579
+5;29-1069.12;Urologists;Urologistas;225285;Urologista;0.9523809523809523
+5;29-1071.00;Physician Assistants;Assistentes de médicos;262220;Assistente de direção;0.7906976744186046
+5;29-1071.00;Physician Assistants;Assistentes de médicos;411010;Assistente de compras;0.7906976744186046
+5;29-1071.01;Anesthesiologist Assistants;Assistentes de Anestesiologista;252210;Assistente de controladoria;0.7241379310344828
+5;29-1081.00;Podiatrists;Podólogos;322110;Podólogo;0.9411764705882353
+5;29-1122.00;Occupational Therapists;Terapia ocupacional;223905;Terapeuta ocupacional;0.9
+5;29-1122.01;Low Vision Therapists, Orientation and Mobility Specialists, and Vision Rehabilitation Therapists;Terapeutas de Visão Baixa, Especialistas em Orientação e Mobilidade e Terapeutas de Reabilitação de Visão;;;
+5;29-1123.00;Physical Therapists;Fisioterapeutas;223605;Fisioterapeuta geral;0.8
+5;29-1123.00;Physical Therapists;Fisioterapeutas;226305;Musicoterapeuta;0.8
+3;29-1124.00;Radiation Therapists;Terapeutas de radiação;322125;Terapeuta alternativo;0.6976744186046512
+4;29-1125.00;Recreational Therapists;Terapeutas Recreativos;322125;Terapeuta alternativo;0.7906976744186046
+5;29-1125.01;Art Therapists;Art Therapists;791110;Artesão ceramista;0.6451612903225806
+4;29-1125.02;Music Therapists;Terapeutas de música;262605;Autor de música;0.6857142857142857
+3;29-1126.00;Respiratory Therapists;Terapeutas respiratórios;223625;Fisioterapeuta respiratória;0.7843137254901961
+5;29-1127.00;Speech-Language Pathologists;Patologistas da fala-linguagem;;;
+5;29-1128.00;Exercise Physiologists;Exercício de fisiologistas;223535;Enfermeiro nefrologista;0.6530612244897959
+5;29-1131.00;Veterinarians;Veterinários;375110;Vitrinista;0.6363636363636364
+3;29-1141.00;Registered Nurses;Enfermeiras registradas;223545;Enfermeira parteira;0.7619047619047619
+3;29-1141.01;Acute Care Nurses;Enfermeiros de cuidados agudos;223515;Enfermeiro de bordo;0.6530612244897959
+5;29-1141.02;Advanced Practice Psychiatric Nurses;Prática avançada Enfermeiras psiquiátricas;223550;Enfermeiro psiquiátrico;0.6461538461538462
+3;29-1141.03;Critical Care Nurses;Enfermeiros de cuidados críticos;223520;Enfermeiro de centro cirúrgico;0.7096774193548387
+5;29-1141.04;Clinical Nurse Specialists;Especialistas clínicos em enfermagem;752305;Especialista em cerâmica;0.6666666666666666
+5;29-1151.00;Nurse Anesthetists;Enfermeira anestesista;223525;Enfermeiro intensivista;0.8
+5;29-1161.00;Nurse Midwives;Enfermeira parteira;223545;Enfermeira parteira;1.0
+5;29-1171.00;Nurse Practitioners;Profissionais de enfermagem;233125;Professor de técnicas de enfermagem;0.7419354838709677
+5;29-1181.00;Audiologists;Audiologistas;225115;Angiologista;0.8
+5;29-1181.00;Audiologists;Audiologistas;225285;Andrologista;0.8
+5;29-1181.00;Audiologists;Audiologistas;225320;Radiologista;0.8
+5;29-1199.01;Acupuncturists;Acupunturistas;322105;Acupunturista;0.9629629629629629
+5;29-1199.04;Naturopathic Physicians;Médicos Naturopáticos;225154;Médico antroposófico;0.7317073170731707
+5;29-1199.05;Orthoptists;Ortopedistas;225270;Ortopedista;0.9565217391304348
+4;29-2011.00;Medical and Clinical Laboratory Technologists;Tecnólogos de Laboratório Médico e Clínico;324205;Técnico de laboratório médico;0.676056338028169
+4;29-2011.01;Cytogenetic Technologists;Tecnólogos citogenéticos;214930;Tecnólogo gráfico;0.6829268292682927
+5;29-2011.02;Cytotechnologists;Citotecnologistas;324215;Citotecnologista;0.9696969696969697
+3;29-2011.03;Histotechnologists and Histologic Technicians;Histotecnologistas e técnicos histológicos;201215;Especialista em ensaios metrológicos;0.6410256410256411
+3;29-2012.00;Medical and Clinical Laboratory Technicians;Técnicos de Laboratório Médico e Clínico;324205;Técnico de laboratório médico;0.782608695652174
+3;29-2021.00;Dental Hygienists;Higienistas dentários;214940;Higienista industrial;0.6666666666666666
+3;29-2021.00;Dental Hygienists;Higienistas dentários;374215;Maquinista de cenário;0.6666666666666666
+3;29-2031.00;Cardiovascular Technologists and Technicians;Tecnólogos e Técnicos em Cardiovasculares;;;
+3;29-2032.00;Diagnostic Medical Sonographers;Sonographers médicos de diagnóstico;;;
+3;29-2033.00;Nuclear Medicine Technologists;Tecnólogos de Medicina Nuclear;214280;Tecnólogo em edificações;0.6666666666666666
+3;29-2034.00;Radiologic Technologists;Tecnologistas Radiologicos;142710;Tecnólogo em sistemas biomédicos;0.6551724137931034
+3;29-2035.00;Magnetic Resonance Imaging Technologists;Tecnólogos de Imagem de Ressonância Magnética;322130;Tecnólogo em estética;0.6060606060606061
+3;29-2041.00;Emergency Medical Technicians and Paramedics;Técnicos médicos de emergência e paramédicos;;;
+2;29-2051.00;Dietetic Technicians;Técnicos Dietéticos;322505;Técnico ortopédico;0.7027027027027027
+3;29-2052.00;Pharmacy Technicians;Técnicos de farmácia;325115;Técnico em farmácia;0.9230769230769231
+3;29-2053.00;Psychiatric Technicians;Técnicos psiquiátricos;223550;Enfermeiro psiquiátrico;0.7111111111111111
+3;29-2054.00;Respiratory Therapy Technicians;Técnicos de terapia respiratória;223625;Fisioterapeuta respiratória;0.711864406779661
+3;29-2055.00;Surgical Technologists;Tecnólogos cirúrgicos;214930;Tecnólogo gráfico;0.7368421052631579
+3;29-2056.00;Veterinary Technologists and Technicians;Tecnólogos e Técnicos Veterinários;222215;Tecnólogo em laticínios;0.631578947368421
+3;29-2057.00;Ophthalmic Medical Technicians;Técnicos médicos oftalmológicos;325310;Técnico em imunobiológicos;0.6666666666666666
+3;29-2061.00;Licensed Practical and Licensed Vocational Nurses;Enfermeiros Profissionais Licenciados e Profissionais Licenciados;;;
+3;29-2071.00;Medical Records and Health Information Technicians;Registros médicos e técnicos de informação em saúde;;;
+3;29-2081.00;Opticians, Dispensing;Ópticas, Distribuidora;223435;Farmacêutico em distribuidora;0.6274509803921569
+5;29-2091.00;Orthotists and Prosthetists;Orthotists e Prosthetists;;;
+3;29-2092.00;Hearing Aid Specialists;Especialistas em aparelhos auditivos;201215;Especialista em ensaios metrológicos;0.6388888888888888
+3;29-2099.01;Neurodiagnostic Technologists;Tecnólogos de Neurodiagnóstico;214615;Tecnólogo em metalurgia;0.6415094339622641
+3;29-2099.01;Neurodiagnostic Technologists;Tecnólogos de Neurodiagnóstico;222215;Tecnólogo em laticínios;0.6415094339622641
+3;29-2099.05;Ophthalmic Medical Technologists;Tecnólogos médicos oftalmológicos;324125;Tecnólogo em oftalmologia;0.7586206896551724
+3;29-2099.06;Radiologic Technicians;Técnicos Radiologicos;225320;Médico radiologista;0.7
+3;29-2099.06;Radiologic Technicians;Técnicos Radiologicos;710115;Técnico de geologia;0.7
+3;29-2099.07;Surgical Assistants;Assistentes cirúrgicos;411010;Assistente de escritório;0.6956521739130435
+4;29-9011.00;Occupational Health and Safety Specialists;Especialistas em saúde e segurança no trabalho;212320;Especialista em segurança da informação;0.7294117647058823
+3;29-9012.00;Occupational Health and Safety Technicians;Técnicos de Saúde e Segurança Ocupacional;351605;Técnico em segurança industrial;0.6388888888888888
+5;29-9091.00;Athletic Trainers;Treinadores atléticos;224125;Treinador esportivo;0.7
+5;29-9092.00;Genetic Counselors;Conselheiros Genéticos;515315;Conselheiro de dependente químico;0.6545454545454545
+4;29-9099.01;Midwives;Parteiras;515115;Parteira;0.9411764705882353
+2;31-1011.00;Home Health Aides;Assistentes de saúde em casa;354125;Assistente de vendas;0.7083333333333334
+2;31-1013.00;Psychiatric Aides;Assistentes psiquiátricos;515115;Assistente de parto;0.6363636363636364
+2;31-1014.00;Nursing Assistants;Assistentes de enfermagem;515110;Atendente de enfermagem;0.8333333333333334
+2;31-1015.00;Orderlies;Orderlies;;;
+3;31-2011.00;Occupational Therapy Assistants;Assistentes de terapia ocupacional;234455;Professor de terapia ocupacional;0.7575757575757576
+3;31-2012.00;Occupational Therapy Aides;Assistentes de terapia ocupacional;234455;Professor de terapia ocupacional;0.7575757575757576
+3;31-2021.00;Physical Therapist Assistants;Assistentes de fisioterapeuta;517330;Assistente de segurança;0.7307692307692307
+2;31-2022.00;Physical Therapist Aides;Assistentes de fisioterapeuta;517330;Assistente de segurança;0.7307692307692307
+3;31-9011.00;Massage Therapists;Massagem terapeutas;322120;Massoterapeuta;0.7878787878787878
+3;31-9091.00;Dental Assistants;Assistentes dentais;354125;Assistente de vendas;0.8205128205128205
+3;31-9092.00;Medical Assistants;Assistentes médicos;411010;Assistente de compras;0.75
+2;31-9093.00;Medical Equipment Preparers;Preparadores de Equipamentos Médicos;954125;Operador de equipamentos elétricos;0.7714285714285715
+3;31-9094.00;Medical Transcriptionists;Transcriptores médicos;;;
+2;31-9095.00;Pharmacy Aides;Assistentes de farmácia;515115;Assistente de parto;0.7619047619047619
+3;31-9096.00;Veterinary Assistants and Laboratory Animal Caretakers;Assistentes veterinários e cuidadores de animais de laboratório;;;
+3;31-9097.00;Phlebotomists;Flebotomistas;515205;Flebotomista;0.96
+3;31-9099.01;Speech-Language Pathology Assistants;Assistentes de patologia de fala-linguagem;342125;Assistente de logística de transporte;0.6582278481012658
+3;31-9099.02;Endoscopy Technicians;Técnicos de endoscopia;225310;Médico em endoscopia;0.8095238095238095
+3;33-1011.00;First-Line Supervisors of Correctional Officers;Supervisores de Primeira Linha de Oficiais Correcionais;910905;Supervisor de reparos linhas férreas;0.6373626373626373
+3;33-1012.00;First-Line Supervisors of Police and Detectives;Supervisores de Primeira Linha de Polícia e Detetives;;;
+3;33-1021.01;Municipal Fire Fighting and Prevention Supervisors;Supervisores Municipais de Combate e Prevenção de Incêndio;;;
+3;33-1021.02;Forest Fire Fighting and Prevention Supervisors;Supervisores de combate e combate a incêndios florestais;261210;Supervisor de controle de processos documentais;0.6213592233009708
+3;33-2011.01;Municipal Firefighters;Bombeiros municipais;517110;Bombeiro civil;0.7058823529411765
+2;33-2011.02;Forest Firefighters;Bombeiros Florestais;515135;Bombeiro resgatista;0.717948717948718
+2;33-2011.02;Forest Firefighters;Bombeiros Florestais;515135;Bombeiro socorrista;0.717948717948718
+3;33-2021.01;Fire Inspectors;Inspetores de Incêndio;391205;Inspetor de fundição;0.7619047619047619
+3;33-2021.02;Fire Investigators;Investigadores de Incêndio;351810;Investigador de polícia;0.7346938775510204
+3;33-2022.00;Forest Fire Inspectors and Prevention Specialists;Inspetores de Incêndios Florestais e Especialistas em Prevenção;;;
+2;33-3011.00;Bailiffs;Oficiais de justiça;351425;Oficial de justiça;0.918918918918919
+2;33-3012.00;Correctional Officers and Jailers;Oficiais Correcionais e Jailers;;;
+3;33-3021.01;Police Detectives;Detetives policiais;351810;Detetive de polícia;0.7894736842105263
+3;33-3021.02;Police Identification and Records Officers;Diretores de identificação e registro de polícia;114305;Diretor de entidade religiosa;0.6233766233766234
+3;33-3021.03;Criminal Investigators and Special Agents;Investigadores criminais e agentes especiais;223288;Dentista de pacientes especiais;0.6133333333333333
+3;33-3021.05;Immigration and Customs Inspectors;Inspetores de Imigração e Alfândega;342310;Inspetor de carga e descarga;0.6666666666666666
+4;33-3021.06;Intelligence Analysts;Analistas de inteligência;351905;Agente de inteligência;0.8085106382978723
+4;33-3031.00;Fish and Game Wardens;Guardas de peixe e jogos;517315;Guarda de presídio;0.6666666666666666
+2;33-3041.00;Parking Enforcement Workers;Trabalhadores de aplicação de estacionamento;632215;Trabalhador da exploração de resinas;0.725
+3;33-3051.01;Police Patrol Officers;Oficiais da Polícia Patrulha;;;
+3;33-3051.03;Sheriffs and Deputy Sheriffs;Xeris e vice-xericos;;;
+3;33-3052.00;Transit and Railroad Police;Polícia de trânsito e ferrovia;710210;Feitor de turma de ferrovia;0.631578947368421
+2;33-9011.00;Animal Control Workers;Trabalhadores de controle de animais;622505;Trabalhador da cultura de amora;0.7164179104477612
+3;33-9021.00;Private Detectives and Investigators;Detetives e Investigadores Privados;351805;Agente de investigação privada;0.6461538461538462
+2;33-9031.00;Gaming Surveillance Officers and Gaming Investigators;Oficiais de Vigilância de Jogos e Investigadores de Jogos;;;
+2;33-9032.00;Security Guards;Seguranças;;;
+2;33-9091.00;Crossing Guards;Crossing Guards;;;
+2;33-9092.00;Lifeguards, Ski Patrol, and Other Recreational Protective Service Workers;Salva-vidas, patrulha de esqui e outros trabalhadores de serviços de proteção recreativa;;;
+2;33-9093.00;Transportation Security Screeners;Tutores de segurança de transporte;342110;Técnico de operação de transporte;0.7164179104477612
+2;33-9099.02;Retail Loss Prevention Specialists;Especialistas em prevenção de perda de varejo;517425;Fiscal de prevenção de perdas;0.6756756756756757
+3;35-1011.00;Chefs and Head Cooks;Chefs e chefes de cozinha;271105;Chefe de cozinha;0.7804878048780488
+2;35-1012.00;First-Line Supervisors of Food Preparation and Serving Workers;Supervisores de primeira linha da preparação de alimentos e servindo trabalhadores;;;
+1;35-2011.00;Cooks, Fast Food;Cozinheiros, Fast Food;513225;Cozinheiro de bordo;0.6829268292682927
+2;35-2012.00;Cooks, Institution and Cafeteria;Cozinheiros, Instituições e Cafeteria;;;
+3;35-2013.00;Cooks, Private Household;Cozinheiros, Casa Particular;513220;Cozinheiro hospitalar;0.6122448979591837
+2;35-2014.00;Cooks, Restaurant;Cozinheiros, Restaurante;513205;Cozinheiro de restaurante;0.8571428571428571
+1;35-2015.00;Cooks, Short Order;Cozinheiros, ordem curta;513220;Cozinheiro de hospital;0.6956521739130435
+1;35-2021.00;Food Preparation Workers;Trabalhadores de preparação de alimentos;811130;Trabalhador de fabricação de tintas;0.7466666666666667
+1;35-2021.00;Food Preparation Workers;Trabalhadores de preparação de alimentos;632505;Trabalhador da exploração de amesca;0.7466666666666667
+2;35-3011.00;Bartenders;Bartenders;;;
+1;35-3021.00;Combined Food Preparation and Serving Workers, Including Fast Food;Preparação combinada de alimentos e servindo trabalhadores, incluindo fast food;;;
+1;35-3022.00;Counter Attendants, Cafeteria, Food Concession, and Coffee Shop;Atendedores ambulantes, Cafeteria, Concessão de alimentos e Cafeteria;;;
+1;35-3022.01;Baristas;Baristas;513440;Barista;0.9333333333333333
+1;35-3031.00;Waiters and Waitresses;Garçons e garçonetes;513405;Garçom de bar;0.6060606060606061
+1;35-3041.00;Food Servers, Nonrestaurant;Food Servers, Nonrestaurant;141510;Coordenador de vendas (restaurante);0.6129032258064516
+1;35-9011.00;Dining Room and Cafeteria Attendants and Bartender Helpers;Sala de Jantar e Assistentes de Cafeteria e Assistentes de Bartender;;;
+1;35-9021.00;Dishwashers;Máquinas de lavar louça;;;
+1;35-9031.00;Hosts and Hostesses, Restaurant, Lounge, and Coffee Shop;Hostes e Promotoras, Restaurante, Lounge e Cafeteria;;;
+2;37-1011.00;First-Line Supervisors of Housekeeping and Janitorial Workers;Supervisores de primeira linha de limpeza e manutenção;770110;Supervisor de carpinteiro de manutenção;0.7096774193548387
+3;37-1012.00;First-Line Supervisors of Landscaping, Lawn Service, and Groundskeeping Workers;Supervisores de primeira linha de paisagismo, serviço de gramado e trabalhadores da posse;;;
+2;37-2011.00;Janitors and Cleaners, Except Maids and Housekeeping Cleaners;Janitores e limpadores, exceto empregadas domésticas e limpadores de arrumação;;;
+2;37-2012.00;Maids and Housekeeping Cleaners;Lavandarias e arrumadores;519935;Lavador de carros;0.6666666666666666
+2;37-2021.00;Pest Control Workers;Trabalhadores de controle de pragas;622505;Trabalhador da cultura de pêra;0.7384615384615385
+1;37-3011.00;Landscaping and Groundskeeping Workers;Trabalhadores de paisagismo e manutenção;514325;Trabalhador de manutenção de edifícios;0.6410256410256411
+2;37-3012.00;Pesticide Handlers, Sprayers, and Applicators, Vegetation;Manipuladores de Pesticidas, Pulverizadores e Aplicadores, Vegetação;;;
+2;37-3013.00;Tree Trimmers and Pruners;Tree Trimmers e Pruners;;;
+2;39-1011.00;Gaming Supervisors;Supervisores de jogos;410240;Supervisor de logística;0.7727272727272727
+2;39-1011.00;Gaming Supervisors;Supervisores de jogos;510305;Supervisor de bombeiros;0.7727272727272727
+2;39-1012.00;Slot Supervisors;Supervisores de slots;510105;Supervisor de transportes;0.782608695652174
+3;39-1021.00;First-Line Supervisors of Personal Service Workers;Supervisores de primeira linha de trabalhadores de serviços pessoais;410105;Supervisor de seção de serviços gerais;0.6226415094339622
+3;39-1021.01;Spa Managers;Gerentes de Spa;141515;Gerente de bar;0.8275862068965517
+2;39-2011.00;Animal Trainers;Instrutores de animais;623005;Instrutor de animais;0.9523809523809523
+1;39-2021.00;Nonfarm Animal Caretakers;Cuidadores de animais não agrícolas;621005;Curador de animais - na agropecuária;0.704225352112676
+2;39-3011.00;Gaming Dealers;Concessionárias de jogos;511105;Comissário de bordo;0.6046511627906976
+2;39-3012.00;Gaming and Sports Book Writers and Runners;Escritores e corredores de livros de jogos e esportes;;;
+2;39-3021.00;Motion Picture Projectionists;Projetores de filmes;318610;Projetista de moldes;0.7
+2;39-3031.00;Ushers, Lobby Attendants, and Ticket Takers;Ushers, Lobby Attendants e Ticket Takers;;;
+1;39-3091.00;Amusement and Recreation Attendants;Atletas de diversão e recreação;262215;Assistente de direção de teatro;0.6129032258064516
+2;39-3092.00;Costume Attendants;Atendedores de figurinos;521140;Atendente do setor de vinhos;0.6538461538461539
+2;39-3093.00;Locker Room, Coatroom, and Dressing Room Attendants;Locker Room, Coatroom e Atendedores de sala de vestir;;;
+3;39-4011.00;Embalmers;Embalmers;328105;Embalsamador;0.6666666666666666
+2;39-4021.00;Funeral Attendants;Funerários;762120;Fuloneiro;0.631578947368421
+3;39-4031.00;Morticians, Undertakers, and Funeral Directors;Morticians, Undertakers e Funeral Directors;;;
+3;39-5011.00;Barbers;Barbeiros;516105;Barbeiro;0.9411764705882353
+3;39-5012.00;Hairdressers, Hairstylists, and Cosmetologists;Cabeleireiros, cabeleireiros e cosmetologistas;;;
+3;39-5091.00;Makeup Artists, Theatrical and Performance;Artistas de maquiagem, teatro e desempenho;;;
+2;39-5092.00;Manicurists and Pedicurists;Manicuros e Pedicuros;341240;Manobras e reparos;0.6153846153846154
+2;39-5093.00;Shampooers;Shampooers;;;
+3;39-5094.00;Skincare Specialists;Especialistas em cuidados com a pele;211110;Especialista em pesquisa operacional;0.6666666666666666
+2;39-6011.00;Baggage Porters and Bellhops;Portadores de bagagem e Bellhops;;;
+3;39-6012.00;Concierges;cuidadores;516220;Cuidador em saúde;0.6666666666666666
+3;39-7011.00;Tour Guides and Escorts;Guias turísticos e Acompanhantes;;;
+3;39-7012.00;Travel Guides;Guias de viagem;354815;Consultor de viagem;0.6470588235294118
+2;39-9011.00;Childcare Workers;Trabalhadores de assistência à infância;242410;Procurador da assistência judiciária;0.64
+3;39-9011.01;Nannies;Nannies;;;
+2;39-9021.00;Personal Care Aides;Assistentes de cuidados pessoais;114210;Assistente sindical de entidades patronais;0.7027027027027027
+3;39-9031.00;Fitness Trainers and Aerobics Instructors;Instrutores de fitness e aeróbica;262615;Instrutor de fanfarra;0.6666666666666666
+4;39-9032.00;Recreation Workers;Trabalhadores de recreação;631005;Trabalhador na pesca de crustáceo;0.711864406779661
+3;39-9041.00;Residential Advisors;Conselheiros residenciais;111405;Conselheiro (diplomacia);0.6530612244897959
+2;41-1011.00;First-Line Supervisors of Retail Sales Workers;Supervisores de primeira linha de varejistas;910905;Supervisor de reparos linhas férreas;0.675
+4;41-1012.00;First-Line Supervisors of Non-Retail Sales Workers;Supervisores de primeira linha de trabalhadores de vendas não-varejistas;;;
+1;41-2011.00;Cashiers;Caixa;516140;Calista;0.6666666666666666
+1;41-2011.00;Cashiers;Caixa;732110;Cabista;0.6666666666666666
+2;41-2012.00;Gaming Change Persons and Booth Cashiers;Gaming Change Persons e Booth Cashiers;;;
+1;41-2021.00;Counter and Rental Clerks;Clérigos de Counter e Rental;;;
+2;41-2022.00;Parts Salespersons;Vendedores de Peças;724230;Rebatedor de metais;0.631578947368421
+2;41-2031.00;Retail Salespersons;Vendedores a retalho;521110;Vendedor interno;0.6111111111111112
+3;41-3011.00;Advertising Sales Agents;Agentes de vendas publicitárias;352210;Agente de saúde pública;0.6666666666666666
+4;41-3021.00;Insurance Sales Agents;Agentes de vendas de seguros;354120;Agente de vendas de serviços;0.8928571428571429
+4;41-3031.01;Sales Agents, Securities and Commodities;Agentes de vendas, valores mobiliários e commodities;;;
+3;41-3031.02;Sales Agents, Financial Services;Agentes de vendas, serviços financeiros;354120;Agente de vendas de serviços;0.746268656716418
+4;41-3031.03;Securities and Commodities Traders;Comerciantes de valores e commodities;;;
+3;41-3041.00;Travel Agents;Agentes de viagem;354815;Agente de viagem;0.9696969696969697
+4;41-3099.01;Energy Brokers;Corretores de Energia;253305;Corretor de mercadorias;0.7272727272727273
+4;41-4011.00;Sales Representatives, Wholesale and Manufacturing, Technical and Scientific Products;Representantes de vendas, no atacado e fabricação, produtos técnicos e científicos;;;
+3;41-4011.07;Solar Sales Representatives and Assessors;Representantes e avaliadores de vendas solares;354135;Representante técnico de vendas;0.6753246753246753
+4;41-4012.00;Sales Representatives, Wholesale and Manufacturing, Except Technical and Scientific Products;Representantes de vendas, atacado e fabricação, exceto produtos técnicos e científicos;;;
+2;41-9011.00;Demonstrators and Product Promoters;Demonstradores e Promotores de Produto;914405;Retificador de motores de carros;0.6285714285714286
+1;41-9012.00;Models;Modelos;763010;Modelista;0.75
+4;41-9021.00;Real Estate Brokers;Corretores imobiliários;354605;Consultor imobiliário;0.7727272727272727
+3;41-9022.00;Real Estate Sales Agents;Agentes de vendas imobiliárias;354120;Agente de vendas de serviços;0.6896551724137931
+4;41-9031.00;Sales Engineers;Engenheiros de vendas;214705;Engenheiro de minas;0.85
+2;41-9041.00;Telemarketers;Telemarketers;;;
+2;41-9091.00;Door-To-Door Sales Workers, News and Street Vendors, and Related Workers;Trabalhadores de vendas porta-a-porta, vendedores de notícias e ruas e trabalhadores relacionados;;;
+3;43-1011.00;First-Line Supervisors of Office and Administrative Support Workers;Supervisores de primeira linha de funcionários de escritório e de apoio administrativo;;;
+2;43-2011.00;Switchboard Operators, Including Answering Service;Operadores de painel de comando, incluindo serviço de atendimento;811505;Operador de painel de controle (refinação de petróleo);0.6386554621848739
+2;43-2021.00;Telephone Operators;Operadores de telefone;731320;Reparador de telefone;0.8372093023255814
+2;43-3011.00;Bill and Account Collectors;Colecionadores de conta e conta;371205;Colecionador de selos e moedas;0.7213114754098361
+2;43-3021.01;Statement Clerks;Clerks de declaração;716405;Gesseiro de decoração;0.6829268292682927
+2;43-3021.02;Billing, Cost, and Rate Clerks;Clusters de faturamento, custo e taxa;;;
+3;43-3031.00;Bookkeeping, Accounting, and Auditing Clerks;Clichers de contabilidade, contabilidade e auditoria;;;
+2;43-3041.00;Gaming Cage Workers;Trabalhadores de gaiolas;622505;Trabalhador da cultura de graviola;0.7241379310344828
+2;43-3051.00;Payroll and Timekeeping Clerks;Clérigos da folha de pagamento e da hora;413105;Calculista de folha de pagamento;0.6944444444444444
+3;43-3061.00;Procurement Clerks;Clerks Procurement;;;
+2;43-3071.00;Tellers;Caras;263105;Cardeal;0.6666666666666666
+2;43-3071.00;Tellers;Caras;263105;Cura;0.6666666666666666
+3;43-4011.00;Brokerage Clerks;Clérigos de corretagem;215140;Capitão de cabotagem;0.6666666666666666
+2;43-4021.00;Correspondence Clerks;Agentes de Correspondência;252305;Assistente de presidência;0.7058823529411765
+2;43-4031.01;Court Clerks;Clérigos do Tribunal;;;
+3;43-4031.02;Municipal Clerks;Clérigos municipais;;;
+2;43-4031.03;License Clerks;Clérigos de licença;766250;Cilindrista de imprensa;0.6190476190476191
+3;43-4041.01;Credit Authorizers;Autorizadores de crédito;421310;Recuperador de crédito;0.7391304347826086
+2;43-4041.02;Credit Checkers;Damas de crédito;410225;Auxiliar de crédito;0.6857142857142857
+2;43-4051.00;Customer Service Representatives;Representantes do Serviço ao Consumidor;354705;Representante comercial autônomo;0.6197183098591549
+4;43-4051.03;Patient Representatives;Representantes de pacientes;421305;Representante de cobrança;0.7307692307692307
+3;43-4061.00;Eligibility Interviewers, Government Programs;Entrevistadores de elegibilidade, programas governamentais;;;
+2;43-4071.00;File Clerks;Arquivistas;415105;Arquivador;0.6666666666666666
+2;43-4081.00;Hotel, Motel, and Resort Desk Clerks;Hotel, Motel e Desktops de resort;;;
+2;43-4111.00;Interviewers, Except Eligibility and Loan;Entrevistadores, exceto elegibilidade e empréstimo;;;
+2;43-4121.00;Library Assistants, Clerical;Assistentes de biblioteca, Clérigos;262215;Assistente de direção de teatro;0.6363636363636364
+3;43-4131.00;Loan Interviewers and Clerks;Empréstimos Entrevistas e Clérigos;711130;Amostrista de minérios;0.6071428571428571
+2;43-4141.00;New Accounts Clerks;Clusters de novas contas;252210;Analista de contas;0.6190476190476191
+2;43-4151.00;Order Clerks;Clérigos de Ordem;511110;Comissário de trem;0.6285714285714286
+3;43-4161.00;Human Resources Assistants, Except Payroll and Timekeeping;Assistentes de recursos humanos, com exceção da folha de pagamento e do horário de atendimento;;;
+2;43-4171.00;Receptionists and Information Clerks;Recepcionistas e Clérigos de Informação;422105;Recepcionista telefonista;0.625
+2;43-4181.00;Reservation and Transportation Ticket Agents and Travel Clerks;Agentes de Bilhetes de Reserva e Transporte e Clérigos de Viagem;;;
+2;43-5011.00;Cargo and Freight Agents;Agentes de carga e frete;342120;Agente de carga;0.7692307692307693
+2;43-5011.01;Freight Forwarders;Transitários;342105;Transitário de cargas;0.7272727272727273
+2;43-5021.00;Couriers and Messengers;Mensageiros e mensageiros;412205;Mensageiro externo;0.6976744186046512
+2;43-5031.00;Police, Fire, and Ambulance Dispatchers;Despachantes de Polícia, Incêndio e Ambulância;;;
+2;43-5032.00;Dispatchers, Except Police, Fire, and Ambulance;Despachantes, exceto policiais, incêndios e ambulâncias;;;
+2;43-5041.00;Meter Readers, Utilities;Meter Readers, Utilities;;;
+2;43-5051.00;Postal Service Clerks;Clérigos de serviços postais;131110;Diretor de serviços sociais;0.6909090909090909
+2;43-5052.00;Postal Service Mail Carriers;Transportadoras de correio postal;632125;Transportador de árvores;0.7368421052631579
+2;43-5053.00;Postal Service Mail Sorters, Processors, and Processing Machine Operators;Máquinas de processamento de correio de serviço postal, processadores e operadores de máquinas de processamento;;;
+3;43-5061.00;Production, Planning, and Expediting Clerks;Secretários de produção, planejamento e expedição;391125;Técnico de planejamento de produção;0.6428571428571429
+2;43-5071.00;Shipping, Receiving, and Traffic Clerks;Empregados de transporte, recebimento e tráfego;862305;Operador de tratamento de esgoto;0.6075949367088608
+2;43-5081.01;Stock Clerks, Sales Floor;Clérigos, piso de vendas;354135;Técnico de vendas;0.6341463414634146
+2;43-5081.02;Marking Clerks;Marcadores de marcação;784115;Marcador de fardos;0.75
+2;43-5081.02;Marking Clerks;Marcadores de marcação;784115;Marcador de preços;0.75
+2;43-5081.03;Stock Clerks- Stockroom, Warehouse, or Storage Yard;Stock Clerks- Stockroom, Warehouse ou Storage Yard;;;
+2;43-5081.04;Order Fillers, Wholesale and Retail Sales;Encomendas de encomendas, vendas por grosso e varejo;;;
+2;43-5111.00;Weighers, Measurers, Checkers, and Samplers, Recordkeeping;Pesadores, Medidores, Damas e Samplers, manutenção de registros;;;
+3;43-6011.00;Executive Secretaries and Executive Administrative Assistants;Secretários executivos e assistentes administrativos executivos;;;
+3;43-6012.00;Legal Secretaries;Secretários Jurídicos;111220;Secretário - executivo;0.6511627906976745
+3;43-6013.00;Medical Secretaries;Secretários médicos;252305;Secretário sênior;0.7222222222222222
+3;43-6014.00;Secretaries and Administrative Assistants, Except Legal, Medical, and Executive;Secretários e Assistentes Administrativos, Excepto Jurídico, Médico e Executivo;;;
+3;43-9011.00;Computer Operators;Operadores de computadores;317205;Operador de sistema de computador;0.8135593220338984
+2;43-9021.00;Data Entry Keyers;Keyers de entrada de dados;784125;Operador de prensa de fardos;0.6296296296296297
+2;43-9022.00;Word Processors and Typists;Processadores de Texto e Tipologistas;234320;Professor de geologia;0.6551724137931034
+3;43-9031.00;Desktop Publishers;Editores da área de trabalho;214925;Engenheiro de análise de trabalho;0.6557377049180327
+3;43-9041.01;Insurance Claims Clerks;Clerk de Reclamações de Seguros;123210;Diretor de relações de trabalho;0.6129032258064516
+3;43-9041.01;Insurance Claims Clerks;Clerk de Reclamações de Seguros;141525;Gerente de operações de turismo;0.6129032258064516
+2;43-9041.02;Insurance Policy Processing Clerks;Assinantes de Processamento de Políticas de Seguros;;;
+2;43-9051.00;Mail Clerks and Mail Machine Operators, Except Postal Service;Agentes de correio e operadores de máquinas de correio, exceto o serviço postal;;;
+2;43-9061.00;Office Clerks, General;Clérigos do escritório, geral;;;
+2;43-9071.00;Office Machine Operators, Except Computer;Operadores de máquinas de escritório, exceto computador;761425;Operador de máquinas de mercerizar fios e tecidos;0.6923076923076923
+4;43-9081.00;Proofreaders and Copy Markers;Corretores e marcadores de cópia;253305;Corretor de mercadorias;0.7272727272727273
+4;43-9111.00;Statistical Assistants;Assistentes estatísticos;411010;Assistente administrativo;0.6938775510204082
+4;43-9111.01;Bioinformatics Technicians;Técnicos de Bioinformática;322505;Técnico de oficina ortopédica;0.7272727272727273
+2;45-1011.05;First-Line Supervisors of Logging Workers;Supervisores de primeira linha de trabalhadores de exploração madeireira;;;
+4;45-1011.06;First-Line Supervisors of Aquacultural Workers;Supervisores de Primeira Linha de Trabalhadores Aquaculturais;351605;Supervisor de segurança do trabalho;0.6041666666666666
+3;45-1011.07;First-Line Supervisors of Agricultural Crop and Horticultural Workers;Supervisores de primeira linha de trabalhadores agrícolas e horticultores;;;
+3;45-1011.08;First-Line Supervisors of Animal Husbandry and Animal Care Workers;Supervisores de Primeira Linha de Criadores de Animais e Trabalhadores de Cuidados de Animais;;;
+2;45-2011.00;Agricultural Inspectors;Inspetores Agrícolas;352205;Inspetor agrícola;0.8648648648648649
+3;45-2021.00;Animal Breeders;Criadores de animais;623020;Cuidador de animais;0.8717948717948718
+1;45-2041.00;Graders and Sorters, Agricultural Products;Graders and Sorters, Produtos Agrícolas;641010;Operador de secador (produtos agrícolas);0.6075949367088608
+2;45-2091.00;Agricultural Equipment Operators;Operadores de equipamentos agrícolas;641015;Operador de implementos agrícolas;0.8405797101449275
+2;45-2092.01;Nursery Workers;Trabalhadores de berçário;519805;Trabalhador do sexo;0.6818181818181818
+1;45-2092.02;Farmworkers and Laborers, Crop;Trabalhadores agrícolas e trabalhadores, colheita;622020;Trabalhador agrícola polivalente;0.6172839506172839
+1;45-2093.00;Farmworkers, Farm, Ranch, and Aquacultural Animals;Trabalhadores agrícolas, fazenda, rancho e animais aquaculturais;;;
+1;45-3011.00;Fishers and Related Fishing Workers;Pescadores e pescadores relacionados;631020;Pescador de peixes e camarões com redes;0.6133333333333333
+1;45-3021.00;Hunters and Trappers;Caçadores e caçadores;631305;Criador de camarões;0.7
+3;45-4011.00;Forest and Conservation Workers;Trabalhadores da floresta e conservação;632125;Trabalhador de extração florestal, em geral;0.7073170731707317
+1;45-4021.00;Fallers;Fallers;811820;Fraldeiro;0.625
+1;45-4022.00;Logging Equipment Operators;Operadores de equipamentos de exploração;811335;Operador de equipamentos de parafinar;0.8051948051948052
+2;45-4023.00;Log Graders and Scalers;Log Graders e Scalers;;;
+3;47-1011.00;First-Line Supervisors of Construction Trades and Extraction Workers;Supervisores de primeira linha de Operadores de Construção e Extração;860115;Supervisor de área de operação elétrica;0.6111111111111112
+3;47-1011.03;Solar Energy Installation Managers;Gerentes de Instalação de Energia Solar;141515;Gerente de salão de café;0.6666666666666666
+3;47-2011.00;Boilermakers;Caldeiras;513505;Saladeiro;0.6666666666666666
+3;47-2011.00;Boilermakers;Caldeiras;623125;Cavaleiro;0.6666666666666666
+3;47-2011.00;Boilermakers;Caldeiras;784115;Seladeira;0.6666666666666666
+2;47-2021.00;Brickmasons and Blockmasons;Brickmasons e Blockmasons;;;
+3;47-2022.00;Stonemasons;Pedreiros;715210;Pedreiro;0.9411764705882353
+2;47-2031.01;Construction Carpenters;Carpinteiros de construção;823315;Forneiro (materiais de construção);0.7
+2;47-2031.02;Rough Carpenters;Carpinteros ásperos;;;
+2;47-2041.00;Carpet Installers;Instaladores de tapetes;731320;Instalador de telefones;0.782608695652174
+2;47-2042.00;Floor Layers, Except Carpet, Wood, and Hard Tiles;Camadas de piso, exceto tapete, madeira e telhas difíceis;;;
+2;47-2043.00;Floor Sanders and Finishers;Sanders e acabadores de piso;848525;Serrador de peito;0.6222222222222222
+2;47-2044.00;Tile and Marble Setters;Setters de azulejos e mármores;;;
+2;47-2051.00;Cement Masons and Concrete Finishers;Pedreiros de cimento e acabadores de concreto;717025;Operador de vibrador de concreto;0.6493506493506493
+2;47-2053.00;Terrazzo Workers and Finishers;Terrazzo Workers and Finishers;;;
+2;47-2061.00;Construction Laborers;Trabalhadores da construção civil;710205;Encarregado de construção civil;0.71875
+2;47-2071.00;Paving, Surfacing, and Tamping Equipment Operators;Operadores de equipamento de pavimentação, revestimento e equipamento de laminação;821105;Operador de centro de controle e equipamentos da sinterização;0.6573426573426573
+2;47-2072.00;Pile-Driver Operators;Operadores de Pilhas;421125;Operador de caixa;0.7567567567567568
+2;47-2072.00;Pile-Driver Operators;Operadores de Pilhas;373145;Operador de cabos;0.7567567567567568
+2;47-2073.00;Operating Engineers and Other Construction Equipment Operators;Engenheiros Operacionais e Outros Operadores de Equipamentos de Construção;;;
+2;47-2081.00;Drywall and Ceiling Tile Installers;Instaladores de telhas de tijolos e tectos;828110;Prensista de telhas e tijolos;0.676056338028169
+2;47-2082.00;Tapers;Tapers;376255;Trapezista;0.625
+3;47-2111.00;Electricians;Eletricistas;951105;Eletricista;0.9565217391304348
+2;47-2121.00;Glaziers;Vidraças;;;
+2;47-2131.00;Insulation Workers, Floor, Ceiling, and Wall;Trabalhadores de isolamento, piso, teto e parede;;;
+2;47-2132.00;Insulation Workers, Mechanical;Trabalhadores de isolamento, mecânicos;514325;Trabalhador de manutenção de edifícios;0.6578947368421053
+2;47-2141.00;Painters, Construction and Maintenance;Pintores, Construção e Manutenção;710205;Supervisor de construções e manutenção;0.676056338028169
+2;47-2142.00;Paperhangers;Paperhangers;631105;Pirangueiro;0.6086956521739131
+2;47-2151.00;Pipelayers;Pipelayers;;;
+3;47-2152.01;Pipe Fitters and Steamfitters;Pipe Fitters e Steamfitters;;;
+3;47-2152.02;Plumbers;Encanadores;724110;Encanador;0.9
+1;47-2161.00;Plasterers and Stucco Masons;Plâters e pedreiros de estuque;;;
+2;47-2171.00;Reinforcing Iron and Rebar Workers;Trabalhadores de reforço e armadura;811130;Trabalhador de fabricação de tintas;0.6285714285714286
+2;47-2181.00;Roofers;Roofers;782305;Chofer;0.6153846153846154
+2;47-2211.00;Sheet Metal Workers;Trabalhadores de chapa metálica;632215;Trabalhador da cultura oiticica;0.6774193548387096
+2;47-2221.00;Structural Iron and Steel Workers;Trabalhadores Estruturais de Ferro e Aço;622105;Trabalhador da cultura de arroz;0.676056338028169
+2;47-2231.00;Solar Photovoltaic Installers;Instaladores de energia solar fotovoltaica;732140;Instalador de sistemas fotovoltaicos;0.7435897435897436
+2;47-3011.00;Helpers--Brickmasons, Blockmasons, Stonemasons, and Tile and Marble Setters;Ajudantes - Brickmasons, Blockmasons, Stonemasons e Setters de azulejos e mármores;;;
+2;47-3012.00;Helpers--Carpenters;Ajudantes - Carpinteiros;711130;Ajudante de mineiro;0.7441860465116279
+2;47-3013.00;Helpers--Electricians;Auxiliares - Eletricistas;223705;Auxiliar de dietista;0.7111111111111111
+2;47-3013.00;Helpers--Electricians;Auxiliares - Eletricistas;322415;Auxiliar de dentista;0.7111111111111111
+1;47-3014.00;Helpers--Painters, Paperhangers, Plasterers, and Stucco Masons;Auxiliares - Pintores, Paperhangers, Plasterers e Pedreiros de estuque;;;
+2;47-3015.00;Helpers--Pipelayers, Plumbers, Pipefitters, and Steamfitters;Auxiliares - Pipelayers, encanadores, Pipefitters e Steamfitters;;;
+2;47-3016.00;Helpers--Roofers;Ajudantes - Roofers;513505;Ajudante de confeiteiro;0.6666666666666666
+3;47-4011.00;Construction and Building Inspectors;Inspetores de Construção e Construção;710205;Supervisor de construção e conservação;0.72
+3;47-4021.00;Elevator Installers and Repairers;Instaladores e reparadores de elevadores;731305;Instalador reparador de central;0.7323943661971831
+2;47-4031.00;Fence Erectors;Erectores de vedação;261115;Diretor de redação;0.7894736842105263
+3;47-4041.00;Hazardous Materials Removal Workers;Trabalhadores de remoção de materiais perigosos;811810;Trabalhador de fabricação de comprimidos e drágeas;0.6804123711340206
+2;47-4051.00;Highway Maintenance Workers;Trabalhadores de manutenção de estradas;514325;Trabalhador de manutenção de edifícios;0.8051948051948052
+2;47-4061.00;Rail-Track Laying and Maintenance Equipment Operators;Operadores de equipamentos de colocação e manutenção de trilhos ferroviários;811310;Operador de equipamentos (exploração de petróleo);0.64
+1;47-4071.00;Septic Tank Servicers and Sewer Pipe Cleaners;Servidores de tanques sépticos e limpadores de canos de esgoto;420115;Supervisor de coletadores de apostas e de jogos;0.6055045871559633
+2;47-4091.00;Segmental Pavers;Pavimentadoras Segmentais;724230;Cravador de metais;0.6511627906976745
+3;47-4099.02;Solar Thermal Installers and Technicians;Instaladores e técnicos térmicos solares;;;
+2;47-4099.03;Weatherization Installers and Technicians;Instaladores e Técnicos de Climatização;715615;Instalador de antenas de televisão;0.6301369863013698
+1;47-5011.00;Derrick Operators, Oil and Gas;Operadores de Derrick, Petróleo e Gás;711315;Operador de extração (petróleo);0.6470588235294118
+2;47-5012.00;Rotary Drill Operators, Oil and Gas;Operadores de perfuração rotativa, petróleo e gás;711315;Operador de compressor - na extração de petróleo e gás;0.6990291262135923
+2;47-5013.00;Service Unit Operators, Oil, Gas, and Mining;Operadores de unidades de serviço, petróleo, gás e mineração;711130;Operador de máquinas de mineração;0.6236559139784946
+2;47-5021.00;Earth Drillers, Except Oil and Gas;Trituradores de terra, exceto petróleo e gás;711320;Sondador de poços (exceto de petróleo e gás);0.6818181818181818
+2;47-5031.00;Explosives Workers, Ordnance Handling Experts, and Blasters;Trabalhadores de Explosivos, Peritos de Manejo de Artilharia e Blasters;;;
+2;47-5041.00;Continuous Mining Machine Operators;Operadores de máquinas de mineração contínua;711130;Operador de máquinas de mineração;0.8571428571428571
+2;47-5042.00;Mine Cutting and Channeling Machine Operators;Operadores de máquinas de corte e canalização de minas;763110;Operador de máquina de corte de roupas;0.7391304347826086
+1;47-5051.00;Rock Splitters, Quarry;Rock Splitters, Quarry;;;
+2;47-5061.00;Roof Bolters, Mining;Bolters de telhado, mineração;212405;Consultor de tecnologia da informação;0.6363636363636364
+1;47-5071.00;Roustabouts, Oil and Gas;Roustabouts, Petróleo e Gás;;;
+2;47-5081.00;Helpers--Extraction Workers;Assistentes - Trabalhadores de extração;252210;Assistente de contador de custos;0.6197183098591549
+3;49-1011.00;First-Line Supervisors of Mechanics, Installers, and Repairers;Supervisores de primeira linha de mecânica, instaladores e reparadores;420120;Supervisor de entrevistadores e recenseadores;0.6086956521739131
+3;49-2011.00;Computer, Automated Teller, and Office Machine Repairers;Computador, caixa automatizado e reparadores de máquinas de escritório;;;
+3;49-2021.00;Radio, Cellular, and Tower Equipment Installers and Repairers;Instaladores e reparadores de equipamentos de rádio, celulares e torre;731320;Instaladores e reparadores de equipamentos e linhas telefônicas;0.7669172932330827
+3;49-2021.01;Radio Mechanics;Mecânica de Rádio;341115;Mecânico de vôo;0.75
+3;49-2022.00;Telecommunications Equipment Installers and Repairers, Except Line Installers;Instaladores e reparadores de equipamentos de telecomunicações, exceto instaladores de linha;731320;Instaladores e reparadores de equipamentos e linhas telefônicas;0.6451612903225806
+3;49-2091.00;Avionics Technicians;Técnicos de Avionics;354135;Técnico de vendas;0.7567567567567568
+3;49-2091.00;Avionics Technicians;Técnicos de Avionics;311305;Técnico em vidros;0.7567567567567568
+3;49-2092.00;Electric Motor, Power Tool, and Related Repairers;Motor elétrico, ferramenta elétrica e reparadores relacionados;;;
+3;49-2093.00;Electrical and Electronics Installers and Repairers, Transportation Equipment;Instaladores e reparadores elétricos e eletrônicos, Equipamento de transporte;731320;Instaladores e reparadores de equipamentos e linhas telefônicas;0.6714285714285714
+3;49-2094.00;Electrical and Electronics Repairers, Commercial and Industrial Equipment;Reparadores Elétricos e Eletrônicos, Equipamentos Comerciais e Industriais;;;
+3;49-2095.00;Electrical and Electronics Repairers, Powerhouse, Substation, and Relay;Reparadores Elétricos e Eletrônicos, Powerhouse, Subestação e Relé;;;
+3;49-2096.00;Electronic Equipment Installers and Repairers, Motor Vehicles;Instaladores e reparadores de equipamentos eletrônicos, Veículos a motor;731320;Instaladores e reparadores de equipamentos e linhas telefônicas;0.7555555555555555
+3;49-2097.00;Electronic Home Entertainment Equipment Installers and Repairers;Instaladores eletrônicos de equipamentos de entretenimento doméstico e reparadores;731315;Instalador-reparador de equipamentos de transmissão em telefonia;0.6027397260273972
+3;49-2098.00;Security and Fire Alarm Systems Installers;Instaladores de sistemas de alarme de segurança e incêndio;951305;Instalador de sistemas eletroeletrônicos de segurança;0.7207207207207207
+3;49-3011.00;Aircraft Mechanics and Service Technicians;Mecânicos de aeronaves e técnicos de serviço;911130;Mecânico de turbinas e caldeiras;0.6052631578947368
+2;49-3021.00;Automotive Body and Related Repairers;Corpo automotivo e reparadores relacionados;;;
+2;49-3022.00;Automotive Glass Installers and Repairers;Instaladores e reparadores de vidro automotivo;731305;Instalador reparador de central;0.6753246753246753
+3;49-3023.01;Automotive Master Mechanics;Mecânica Mestre Automotiva;914405;Mecânico de testes de automotores;0.6440677966101694
+3;49-3023.02;Automotive Specialty Technicians;Técnicos de especialidade automotiva;914405;Mecânico de testes de automotores;0.6376811594202898
+3;49-3031.00;Bus and Truck Mechanics and Diesel Engine Specialists;Mecânicos de ônibus e caminhões e Especialistas em motores a diesel;;;
+3;49-3041.00;Farm Equipment Mechanics and Service Technicians;Mecânicos de equipamento agrícola e técnicos de serviço;911305;Mecânico de equipamento pneumático;0.651685393258427
+3;49-3042.00;Mobile Heavy Equipment Mechanics, Except Engines;Mecânica de equipamentos pesados ??móveis, exceto motores;913120;Mecânico de equipamento pesado;0.6666666666666666
+2;49-3043.00;Rail Car Repairers;Reparadores de carrinhos de ferro;954210;Reparador de rádio, tv e som;0.6557377049180327
+3;49-3051.00;Motorboat Mechanics and Service Technicians;Mecânicos de Motorboat e Técnicos de Serviços;911130;Mecânico de turbinas exclusive de avião;0.6428571428571429
+3;49-3052.00;Motorcycle Mechanics;Mecânica de motocicleta;914415;Mecânico de motocicletas;0.9361702127659575
+2;49-3053.00;Outdoor Power Equipment and Other Small Engine Mechanics;Equipamento de energia ao ar livre e outras mecânica de motores pequenos;;;
+2;49-3091.00;Bicycle Repairers;Reparadores de bicicletas;919310;Reparador de bicicletas;0.9583333333333334
+2;49-3092.00;Recreational Vehicle Service Technicians;Técnicos de serviço de veículos recreativos;914305;Mecânico de manutenção de veículos ferroviários;0.6666666666666666
+2;49-3093.00;Tire Repairers and Changers;Reparadores e trocadores de pneus;914420;Reparador de tratores;0.7037037037037037
+2;49-9011.00;Mechanical Door Repairers;Reparos mecânicos de portas;862405;Operador mecânico de gás;0.6666666666666666
+3;49-9012.00;Control and Valve Installers and Repairers, Except Mechanical Door;Instaladores e reparadores de controle e válvula, exceto porta mecânica;731320;Instaladores e reparadores de equipamentos e linhas telefônicas;0.6417910447761194
+3;49-9021.01;Heating and Air Conditioning Mechanics and Installers;Mecânica e Instalação de Aquecimento e Ar Condicionado;374110;Técnico em instalação de equipamentos de áudio;0.68
+3;49-9021.02;Refrigeration Mechanics and Installers;Mecânica de Refrigeração e Instaladores;954205;Mecânico de refrigeração doméstica;0.7123287671232876
+3;49-9031.00;Home Appliance Repairers;Reparadores de eletrodomésticos;721325;Operador de eletropolimento;0.6896551724137931
+3;49-9041.00;Industrial Machinery Mechanics;Mecânica das máquinas industriais;911305;Mecânico de manutenção de máquinas industriais;0.7848101265822784
+3;49-9043.00;Maintenance Workers, Machinery;Trabalhadores de manutenção, máquinas;514325;Trabalhador de manutenção de edifícios;0.7466666666666667
+3;49-9044.00;Millwrights;Millwrights;;;
+2;49-9045.00;Refractory Materials Repairers, Except Brickmasons;Reparadores de materiais refratários, exceto Brickmasons;;;
+3;49-9051.00;Electrical Power-Line Installers and Repairers;Instaladores e reparadores de linhas elétricas;731320;Instaladores e reparadores de equipamentos e linhas telefônicas;0.7889908256880734
+2;49-9052.00;Telecommunications Line Installers and Repairers;Instaladores e reparadores de linhas de telecomunicações;731320;Instalador-reparador de linhas e aparelhos de telecomunicações;0.8305084745762712
+3;49-9061.00;Camera and Photographic Equipment Repairers;Reparadores de equipamentos fotográficos e fotográficos;915405;Reparador de equipamentos fotográficos;0.8172043010752689
+3;49-9062.00;Medical Equipment Repairers;Reparadores de equipamentos médicos;915405;Reparador de equipamentos fotográficos;0.821917808219178
+3;49-9063.00;Musical Instrument Repairers and Tuners;Reparadores e sintonizadores de instrumentos musicais;;;
+3;49-9064.00;Watch Repairers;Reparadores de relógios;731320;Reparador de telefone;0.7272727272727273
+3;49-9064.00;Watch Repairers;Reparadores de relógios;914420;Reparador de tratores;0.7272727272727273
+3;49-9071.00;Maintenance and Repair Workers, General;Trabalhadores de Manutenção e Reparação, Geral;623210;Trabalhador de manutenção e preparação de tosqueadeiras;0.7722772277227723
+3;49-9081.00;Wind Turbine Service Technicians;Técnicos de serviço de turbinas eólicas;342115;Técnico de operações de serviços de máquinas e veículos;0.6808510638297872
+2;49-9091.00;Coin, Vending, and Amusement Machine Servicers and Repairers;Servidores e reparadores de máquinas de moeda, vending e diversão;;;
+3;49-9092.00;Commercial Divers;Diversos comerciais;520110;Supervisor comercial;0.6666666666666666
+1;49-9093.00;Fabric Menders, Except Garment;Menders de tecido, exceto vestuário;;;
+2;49-9094.00;Locksmiths and Safe Repairers;Locksmiths e Safe Reparadores;;;
+2;49-9095.00;Manufactured Building and Mobile Home Installers;Instaladores de construção de móveis e móveis;720115;Mestre de construção de matrizes;0.6493506493506493
+2;49-9096.00;Riggers;Riggers;;;
+3;49-9097.00;Signal and Track Switch Repairers;Reparadores de comutação de sinal e trilha;823115;Preparador de massa de argila;0.647887323943662
+2;49-9098.00;Helpers--Installation, Maintenance, and Repair Workers;Assistentes - Trabalhadores de instalação, manutenção e reparação;623210;Trabalhador de manutenção e preparação de tosqueadeiras;0.6166666666666667
+2;49-9099.01;Geothermal Technicians;Técnicos Geotérmicos;320105;Técnico de biotério;0.7692307692307693
+2;51-1011.00;First-Line Supervisors of Production and Operating Workers;Supervisores de primeira linha de produção e operários;820210;Supervisor de fabricação de produtos de vidro;0.6262626262626263
+2;51-2011.00;Aircraft Structure, Surfaces, Rigging, and Systems Assemblers;Estruturas de aeronaves, superfícies, aparelhagem e montagem de sistemas;;;
+2;51-2021.00;Coil Winders, Tapers, and Finishers;Bobinadores, Tapers e Finishers;;;
+2;51-2022.00;Electrical and Electronic Equipment Assemblers;Ensaiadores de Equipamentos Elétricos e Eletrônicos;732110;Emendador de fios (elétricos e telefônicos);0.7021276595744681
+2;51-2023.00;Electromechanical Equipment Assemblers;Ensamadores de equipamentos eletromecânicos;954125;Operador de equipamentos elétricos;0.7532467532467533
+2;51-2031.00;Engine and Other Machine Assemblers;Motor e outros ensambladores de máquinas;730105;Mestre eletricista enrolador de bobinas;0.6075949367088608
+3;51-2041.00;Structural Metal Fabricators and Fitters;Fabricantes e ajustadores de metais estruturais;;;
+2;51-2091.00;Fiberglass Laminators and Fabricators;Laminadores e Fabricantes de Fibra de Vidro;823210;Fibrador (fabricação de fibra de vidro);0.6829268292682927
+2;51-2092.00;Team Assemblers;Team Assemblers;;;
+2;51-2093.00;Timing Device Assemblers and Adjusters;Instaladores e ajustadores de dispositivos de temporização;731320;Instaladores e reparadores de equipamentos e linhas telefônicas;0.628099173553719
+2;51-3011.00;Bakers;Padeiros;715210;Pedreiro;0.75
+2;51-3011.00;Bakers;Padeiros;632520;Poaieiro;0.75
+2;51-3011.00;Bakers;Padeiros;828110;Gradeiro;0.75
+2;51-3021.00;Butchers and Meat Cutters;Talhos e cortadores de carne;848525;Talhador de carne;0.7555555555555555
+1;51-3022.00;Meat, Poultry, and Fish Cutters and Trimmers;Carne, aves e cortadores e cortadores de peixe;;;
+2;51-3023.00;Slaughterers and Meat Packers;Matadores e embaladores de carne;774105;Montador de engradados de madeira;0.6461538461538462
+2;51-3091.00;Food and Tobacco Roasting, Baking, and Drying Machine Operators and Tenders;Operadores e agências de engomadoria, cozimento e secagem de alimentos e tabaco;;;
+2;51-3092.00;Food Batchmakers;Food Batchmakers;;;
+2;51-3093.00;Food Cooking Machine Operators and Tenders;Operadores e propostas de máquinas para cozinhar alimentos;711110;Operador de máquina a fio diamantado;0.6170212765957447
+3;51-4011.00;Computer-Controlled Machine Tool Operators, Metal and Plastic;Operadores de máquinas-ferramentas controladas por computador, metal e plástico;721215;Operador de máquinas-ferramenta convencionais;0.6129032258064516
+3;51-4012.00;Computer Numerically Controlled Machine Tool Programmers, Metal and Plastic;Programadores de máquinas-ferramentas controladas numericamente por computador, metal e plástico;317115;Programador de máquinas - ferramenta com comando numérico;0.6143790849673203
+2;51-4021.00;Extruding and Drawing Machine Setters, Operators, and Tenders, Metal and Plastic;Fabricantes, Operadores e Propostas de Máquinas de Extrusão e Desenho, Metal e Plástico;;;
+2;51-4022.00;Forging Machine Setters, Operators, and Tenders, Metal and Plastic;Setores, operadores e propostas de máquinas de forjar, metal e plástico;;;
+2;51-4023.00;Rolling Machine Setters, Operators, and Tenders, Metal and Plastic;Setores, operadores e propostas de máquinas rolantes, metal e plástico;;;
+2;51-4031.00;Cutting, Punching, and Press Machine Setters, Operators, and Tenders, Metal and Plastic;Máquinas de cortar, perfurar e máquinas de imprensa, operadores e propostas, metal e plástico;;;
+2;51-4032.00;Drilling and Boring Machine Tool Setters, Operators, and Tenders, Metal and Plastic;Máquinas-ferramentas para perfuração e furadeira, operadores e propostas, metal e plástico;;;
+2;51-4033.00;Grinding, Lapping, Polishing, and Buffing Machine Tool Setters, Operators, and Tenders, Metal and Plastic;Máquinas, operadoras e propostas de metais, lixar, polir e polir, metal e plástico;;;
+2;51-4034.00;Lathe and Turning Machine Tool Setters, Operators, and Tenders, Metal and Plastic;Fabricantes, operadores e propostas de ferramentas para torneiras e torneiras, metal e plástico;;;
+2;51-4035.00;Milling and Planing Machine Setters, Operators, and Tenders, Metal and Plastic;Máquinas, Operadores e Licitações de Máquinas de Fresagem e Alisação, Metal e Plástico;;;
+3;51-4041.00;Machinists;Maquinistas;376250;Marionetistas;0.75
+2;51-4051.00;Metal-Refining Furnace Operators and Tenders;Operadores e propostas de forno de refinação de metais;775110;Operador de prensa (folha de recobrimento de móveis);0.660377358490566
+2;51-4052.00;Pourers and Casters, Metal;Pourers e rodízios, metal;;;
+3;51-4061.00;Model Makers, Metal and Plastic;Fabricantes de modelos, metais e plástico;;;
+3;51-4062.00;Patternmakers, Metal and Plastic;Patternmakers, Metal e Plástico;;;
+2;51-4071.00;Foundry Mold and Coremakers;Molde de fundição e Coremakers;720125;Mestre de fundição de materiais;0.7213114754098361
+2;51-4072.00;Molding, Coremaking, and Casting Machine Setters, Operators, and Tenders, Metal and Plastic;Moldadores, máquinas de moldagem e máquinas de fundição, operadores e propostas, metal e plástico;;;
+2;51-4081.00;Multiple Machine Tool Setters, Operators, and Tenders, Metal and Plastic;Seters, operadores e propostas de ferramentas múltiplas, metal e plástico;;;
+3;51-4111.00;Tool and Die Makers;Fabricantes de ferramentas e matrizes;252710;Analista de planejamento de materias;0.6027397260273972
+3;51-4111.00;Tool and Die Makers;Fabricantes de ferramentas e matrizes;142315;Gerente de departamento de marketing;0.6027397260273972
+3;51-4121.06;Welders, Cutters, and Welder Fitters;Soldadores, cortadores e ajustadores de solda;;;
+2;51-4121.07;Solderers and Brazers;Solderers and Brazers;;;
+2;51-4122.00;Welding, Soldering, and Brazing Machine Setters, Operators, and Tenders;Setores, operadores e propostas de soldagem, solda e brasagem;;;
+2;51-4191.00;Heat Treating Equipment Setters, Operators, and Tenders, Metal and Plastic;Equipamentos de tratamento térmico, operadores e propostas, metal e plástico;;;
+2;51-4192.00;Layout Workers, Metal and Plastic;Layout Workers, Metal and Plastic;;;
+2;51-4193.00;Plating and Coating Machine Setters, Operators, and Tenders, Metal and Plastic;Instaladores, Operadores e Licitações de Placas e Revestimentos, Metal e Plástico;;;
+2;51-4194.00;Tool Grinders, Filers, and Sharpeners;Grinders, Filers e Sharpeners de ferramentas;;;
+3;51-5111.00;Prepress Technicians and Workers;Técnicos e trabalhadores de pré-impressão;741105;Mecânico de aparelhos de precisão;0.6216216216216216
+3;51-5112.00;Printing Press Operators;Operadores de imprensa;842110;Operador de prensa;0.9
+2;51-5113.00;Print Binding and Finishing Workers;Trabalhadores de encadernação e acabamento de impressão;862305;Operador de estação de tratamento de esgoto;0.6326530612244898
+1;51-6011.00;Laundry and Dry-Cleaning Workers;Trabalhadores de lavanderia e limpeza a seco;623015;Trabalhador de pecuária polivalente;0.6075949367088608
+1;51-6021.00;Pressers, Textile, Garment, and Related Materials;Pressão, Têxtil, Vestuário e Materiais Relacionados;;;
+1;51-6031.00;Sewing Machine Operators;Operadores de máquinas de costura;784115;Operador de máquina de rotular;0.8571428571428571
+2;51-6041.00;Shoe and Leather Workers and Repairers;Trabalhadores e reparadores de calçado e couro;765405;Trabalhador do acabamento de artefatos de tecidos e couros;0.6730769230769231
+2;51-6042.00;Shoe Machine Operators and Tenders;Operadores e licitações de máquinas de calçado;722405;Operador de máquina de cablear;0.7105263157894737
+2;51-6051.00;Sewers, Hand;Esgotos, mão;;;
+3;51-6052.00;Tailors, Dressmakers, and Custom Sewers;Costuradores, Costureiras e Redes de Esgoto Personalizadas;;;
+2;51-6061.00;Textile Bleaching and Dyeing Machine Operators and Tenders;Operadores e propostas de máquinas de branqueamento e tingimento de têxteis;831110;Operador de processos de semibranqueamento de pasta/celulose;0.6222222222222222
+2;51-6062.00;Textile Cutting Machine Setters, Operators, and Tenders;Máquinas de corte de têxteis, operadores e propostas;;;
+2;51-6063.00;Textile Knitting and Weaving Machine Setters, Operators, and Tenders;Fabricantes, Operadores e Aquisições de Têxteis de Tecidos e Tecidos;;;
+2;51-6064.00;Textile Winding, Twisting, and Drawing Out Machine Setters, Operators, and Tenders;Instaladores, Operadores e Ofertas de Máquina de Enrolamento, Torção e Desenho de Têxteis;;;
+2;51-6091.00;Extruding and Forming Machine Setters, Operators, and Tenders, Synthetic and Glass Fibers;Instaladores, Operadores e Propostas de Máquinas Extrusoras e Formadoras, Fibras sintéticas e de vidro;;;
+3;51-6092.00;Fabric and Apparel Patternmakers;Fabricantes de padrões de tecido e roupas;765405;Trabalhador do acabamento de artefatos de tecidos e couros;0.6262626262626263
+2;51-6093.00;Upholsterers;Estofadores;715210;Estucador;0.7
+2;51-7011.00;Cabinetmakers and Bench Carpenters;Escritores e carpinteiros de bancada;721105;Ferramenteiro de bancada;0.6666666666666666
+2;51-7021.00;Furniture Finishers;Acabamentos de móveis;354410;Avaliador de imóveis;0.6829268292682927
+2;51-7021.00;Furniture Finishers;Acabamentos de móveis;771105;Marceneiro de móveis;0.6829268292682927
+3;51-7031.00;Model Makers, Wood;Fabricantes de modelos, madeira;;;
+3;51-7032.00;Patternmakers, Wood;Patternmakers, Wood;;;
+2;51-7041.00;Sawing Machine Setters, Operators, and Tenders, Wood;Máquinas, operadores e propostas de máquinas de serrar, madeira;773510;Operador de máquinas de usinar madeira (cnc);0.6355140186915887
+2;51-7042.00;Woodworking Machine Setters, Operators, and Tenders, Except Sawing;Setores, operadores e propostas de máquinas para trabalhar madeira, exceto serrar;;;
+3;51-8011.00;Nuclear Power Reactor Operators;Operadores de Reatores de Energia Nuclear;861120;Operador de reator nuclear;0.746268656716418
+3;51-8012.00;Power Distributors and Dispatchers;Distribuidores de Energia e Dispatchers;;;
+2;51-8013.00;Power Plant Operators;Operadores de usinas;861205;Operador de eclusa;0.7894736842105263
+3;51-8021.00;Stationary Engineers and Boiler Operators;Engenheiros estacionários e operadores de caldeiras;222120;Engenheiro especialista em tecnologia de madeira;0.6060606060606061
+3;51-8031.00;Water and Wastewater Treatment Plant and System Operators;Operadores de instalações e sistemas de tratamento de águas e águas residuais;862205;Operador de instalação de tratamento de água;0.6942148760330579
+2;51-8091.00;Chemical Plant and System Operators;Operadores de planta e sistema químico;811615;Operador de carboquímico;0.6451612903225806
+3;51-8092.00;Gas Plant Operators;Operadores de planta de gás;862405;Operador de sistema de gás;0.7924528301886793
+2;51-8093.00;Petroleum Pump System Operators, Refinery Operators, and Gaugers;Operadores de sistemas de bomba de petróleo, Operadores de refinarias e Gaugers;;;
+2;51-8099.01;Biofuels Processing Technicians;Técnicos de processamento de biocombustíveis;391125;Técnico de processo de fabricação;0.6753246753246753
+2;51-8099.03;Biomass Plant Technicians;Técnicos de planta de biomassa;373130;Técnico de captação de som;0.7142857142857143
+3;51-8099.04;Hydroelectric Plant Technicians;Técnicos de usina hidrelétrica;861105;Operador de usina hidrelétrica;0.7666666666666667
+2;51-9011.00;Chemical Equipment Operators and Tenders;Operadores e propostas de equipamentos químicos;954125;Operador de equipamentos elétricos;0.7160493827160493
+2;51-9012.00;Separating, Filtering, Clarifying, Precipitating, and Still Machine Setters, Operators, and Tenders;Setores, operadores e propostas de separação, filtragem, clarificação, precipitação e ainda máquina.;;;
+2;51-9021.00;Crushing, Grinding, and Polishing Machine Setters, Operators, and Tenders;Máquinas de trituração, trituração e polimento, setores, operadores e propostas;;;
+1;51-9022.00;Grinding and Polishing Workers, Hand;Trabalhadores de moagem e polimento, mão;623015;Trabalhador de pecuária polivalente;0.64
+2;51-9023.00;Mixing and Blending Machine Setters, Operators, and Tenders;Setores, operadores e propostas de máquinas de mistura e mistura;;;
+2;51-9031.00;Cutters and Trimmers, Hand;Cutters and Trimmers, Hand;;;
+2;51-9032.00;Cutting and Slicing Machine Setters, Operators, and Tenders;Setores, operadores e propostas de cortar e cortar máquinas;;;
+2;51-9041.00;Extruding, Forming, Pressing, and Compacting Machine Setters, Operators, and Tenders;Instaladores, Operadores e Ofertas de Máquinas de Extrusão, Formação, Pressão e Compactação;;;
+2;51-9051.00;Furnace, Kiln, Oven, Drier, and Kettle Operators and Tenders;Forno, estufa, forno, secadora e aquecedor de água;;;
+2;51-9061.00;Inspectors, Testers, Sorters, Samplers, and Weighers;Inspectores, Testadores, Classificadores, Samplers e Pesadores;;;
+3;51-9071.01;Jewelers;Joalheiros;613310;Coelheiro;0.7368421052631579
+3;51-9071.06;Gem and Diamond Workers;Gem and Diamond Workers;;;
+3;51-9071.07;Precious Metal Workers;Trabalhadores de metais preciosos;751130;Trefilador de metais preciosos, a  máquina;0.72
+2;51-9081.00;Dental Laboratory Technicians;Técnicos de Laboratório Dentário;301105;Técnico de laboratório industrial;0.8
+3;51-9082.00;Medical Appliance Technicians;Técnicos de aparelhos médicos;322505;Técnico de aparelhos ortopédicos;0.8852459016393442
+2;51-9083.00;Ophthalmic Laboratory Technicians;Técnicos de laboratório oftalmológico;324205;Técnico de laboratório médico;0.8181818181818182
+2;51-9111.00;Packaging and Filling Machine Operators and Tenders;Operadores e propostas de máquinas de embalagem e enchimento;784110;Operador de máquina de embalar;0.6444444444444445
+2;51-9121.00;Coating, Painting, and Spraying Machine Setters, Operators, and Tenders;Produtores, operadores e propostas de revestimento, pintura e pulverização;;;
+2;51-9122.00;Painters, Transportation Equipment;Pintores, equipamento de transporte;131110;Diretor de departamento de esportes;0.6857142857142857
+2;51-9123.00;Painting, Coating, and Decorating Workers;Trabalhadores de pintura, revestimento e decoração;622505;Trabalhador de fruticultura em geral;0.6046511627906976
+2;51-9141.00;Semiconductor Processors;Processadores de semicondutores;842110;Processador de fumo;0.68
+2;51-9141.00;Semiconductor Processors;Processadores de semicondutores;848420;Provador de licores;0.68
+2;51-9151.00;Photographic Process Workers and Processing Machine Operators;Trabalhadores de processos fotográficos e operadores de máquinas de processamento;;;
+2;51-9191.00;Adhesive Bonding Machine Operators and Tenders;Operadores e ofertas de máquinas de ligação adesiva;711130;Operador de máquinas de mineração;0.6904761904761905
+2;51-9192.00;Cleaning, Washing, and Metal Pickling Equipment Operators and Tenders;Operadores e licenças de limpeza, lavagem e equipamentos de decapagem de metais;;;
+2;51-9193.00;Cooling and Freezing Equipment Operators and Tenders;Operadores e propostas de equipamentos de refrigeração e congelação;811425;Operador de equipamento de destilação de álcool;0.6842105263157895
+2;51-9194.00;Etchers and Engravers;Etchers e gravadores;;;
+2;51-9195.03;Stone Cutters and Carvers, Manufacturing;Stone Cutters and Carvers, Manufacturing;;;
+2;51-9195.04;Glass Blowers, Molders, Benders, and Finishers;Sopradores de vidro, moldadores, dobradores e acabadores;;;
+3;51-9195.05;Potters, Manufacturing;Potter, Fabricação;741120;Relojoeiro (fabricação);0.6341463414634146
+2;51-9195.07;Molding and Casting Workers;Trabalhadores de moldagem e fundição;721115;Modelador de metais (fundição);0.6060606060606061
+2;51-9196.00;Paper Goods Machine Setters, Operators, and Tenders;Seters, operadores e propostas de máquinas de produtos de papel;;;
+2;51-9197.00;Tire Builders;Construtores de pneus;992115;Consertador de pneus;0.7804878048780488
+2;51-9198.00;Helpers--Production Workers;Assistentes - Trabalhadores da produção;;;
+2;51-9199.01;Recycling and Reclamation Workers;Trabalhadores de Reciclagem e Recuperação;622505;Trabalhador de fruticultura em geral;0.6493506493506493
+2;53-1011.00;Aircraft Cargo Handling Supervisors;Supervisores de Manipulação de Carga de Aeronaves;710115;Supervisor de perfuração e desmonte;0.6666666666666666
+2;53-1021.00;First-Line Supervisors of Helpers, Laborers, and Material Movers, Hand;Supervisores de primeira linha de ajudantes, operários e movers de materiais, mão;;;
+2;53-1021.01;Recycling Coordinators;Coordenadores de Reciclagem;253120;Coordenador de mídia;0.723404255319149
+2;53-1031.00;First-Line Supervisors of Transportation and Material-Moving Machine and Vehicle Operators;Supervisores de primeira linha de transportadores e operadores de veículos e máquinas de movimentação de material;;;
+4;53-2011.00;Airline Pilots, Copilots, and Flight Engineers;Pilotos de linha aérea, copilotos e engenheiros de vôo;;;
+3;53-2012.00;Commercial Pilots;Pilotos comerciais;341105;Piloto comercial;0.8823529411764706
+3;53-2021.00;Air Traffic Controllers;Controladores aéreos;342410;Controlador de tráfego;0.7619047619047619
+3;53-2022.00;Airfield Operations Specialists;Especialistas em Operações de Aeródromo;201210;Especialista em calibrações metrológicas;0.6582278481012658
+3;53-2031.00;Flight Attendants;Comissários de bordo;511105;Comissário de bordo;0.9743589743589743
+2;53-3011.00;Ambulance Drivers and Attendants, Except Emergency Medical Technicians;Condutores e atendentes ambulatoriais, exceto técnicos médicos de emergência;;;
+2;53-3021.00;Bus Drivers, Transit and Intercity;Motoristas de ônibus, trânsito e Intercity;782405;Motorista de ônibus rodoviário;0.6388888888888888
+2;53-3022.00;Bus Drivers, School or Special Client;Motoristas de ônibus, escola ou cliente especial;782405;Motorista de ônibus rodoviário;0.6153846153846154
+2;53-3031.00;Driver/Sales Workers;Motorista / Trabalhadores de vendas;715405;Motorista operador de betoneira;0.6666666666666666
+2;53-3032.00;Heavy and Tractor-Trailer Truck Drivers;Motoristas de caminhões pesados ??e trator-reboque;782515;Motorista de caminhão-guincho pesado com munk;0.6105263157894737
+2;53-3033.00;Light Truck or Delivery Services Drivers;Caminhões leves ou serviços de entrega Drivers;;;
+1;53-3041.00;Taxi Drivers and Chauffeurs;Motoristas de táxi e chauffeurs;782315;Motorista de táxi;0.7083333333333334
+2;53-4011.00;Locomotive Engineers;Engenheiros de locomotivas;214705;Engenheiro de minas;0.8
+2;53-4012.00;Locomotive Firers;Locadoras de locomotivas;775110;Montador de lâminas;0.6511627906976745
+2;53-4013.00;Rail Yard Engineers, Dinkey Operators, and Hostlers;Engenheiros de trilhos, operadores Dinkey e Hostlers;;;
+2;53-4021.00;Railroad Brake, Signal, and Switch Operators;Operadores de travagem de estrada de ferro, sinal e comutador;342410;Operador de centro de controle (ferrovia e metrô);0.6363636363636364
+2;53-4031.00;Railroad Conductors and Yardmasters;Condutores de estrada de ferro e Yardmasters;;;
+2;53-4041.00;Subway and Streetcar Operators;Operadores de metrô e rodoviários;342305;Supervisor de tráfego rodoviário;0.7076923076923077
+2;53-4041.00;Subway and Streetcar Operators;Operadores de metrô e rodoviários;414115;Operador de balanças rodoviárias;0.7076923076923077
+2;53-5011.00;Sailors and Marine Oilers;Marinheiros e mineradores marinhos;;;
+3;53-5021.01;Ship and Boat Captains;Capitães do navio e do barco;;;
+2;53-5021.02;Mates- Ship, Boat, and Barge;Mates- Ship, Boat e Barge;;;
+3;53-5021.03;Pilots, Ship;Pilotos, Navio;215305;Piloto de avião;0.7586206896551724
+2;53-5022.00;Motorboat Operators;Operadores de barco a motor;711130;Operador de rompedor;0.723404255319149
+3;53-5031.00;Ship Engineers;Engenheiros de navios;214705;Engenheiro de minas;0.85
+1;53-6011.00;Bridge and Lock Tenders;Licitações de Ponte e Bloqueio;;;
+2;53-6021.00;Parking Lot Attendants;Atendedores de estacionamento;720130;Mestre de estanhamento;0.7058823529411765
+2;53-6031.00;Automotive and Watercraft Service Attendants;Assistentes de serviço automotivo e de embarcações;517425;Assistente de prevenção de perdas;0.6024096385542169
+3;53-6041.00;Traffic Technicians;Técnicos de trânsito;320105;Técnico de biotério;0.7692307692307693
+3;53-6051.01;Aviation Inspectors;Inspetores de aviação;342530;Inspetor de aviação civil;0.8260869565217391
+2;53-6051.07;Transportation Vehicle, Equipment and Systems Inspectors, Except Aviation;Inspeção de veículos, equipamentos e sistemas de transporte, exceto a aviação;;;
+4;53-6051.08;Freight and Cargo Inspectors;Inspetores de frete e carga;391205;Inspetor de ferramentas;0.68
+2;53-6061.00;Transportation Attendants, Except Flight Attendants;Assistentes de transporte, exceto frequentadores de vôo;;;
+1;53-7011.00;Conveyor Operators and Tenders;Operadores de Transportadoras e Concessionárias;632125;Operador de máquina transportadora (madeira);0.6593406593406593
+3;53-7021.00;Crane and Tower Operators;Operadores de guindastes e torres;782115;Operador de guindaste móvel;0.7666666666666667
+2;53-7031.00;Dredge Operators;Operadores de draga;782105;Operador de draga;0.9444444444444444
+2;53-7032.00;Excavating and Loading Machine and Dragline Operators;Máquinas de escavação e carregamento e operadores de dragalina;;;
+2;53-7033.00;Loading Machine Operators, Underground Mining;Operadores de máquinas de carregamento, mineração subterrânea;711130;Operador de máquinas de mineração;0.7021276595744681
+2;53-7041.00;Hoist and Winch Operators;Operadores de elevação e guincho;782205;Operador de guincho;0.7450980392156863
+2;53-7051.00;Industrial Truck and Tractor Operators;Operadores industriais de caminhão e trator;711205;Operador de caminhão fora de estrada;0.6582278481012658
+2;53-7061.00;Cleaners of Vehicles and Equipment;Limpadores de veículos e equipamentos;241330;Registrador de títulos e documentos;0.6666666666666666
+2;53-7062.00;Laborers and Freight, Stock, and Material Movers, Hand;Trabalhadores e frete, estoque e movers de materiais, mão;;;
+2;53-7063.00;Machine Feeders and Offbearers;Alimentadores de Máquinas e Offbearers;722405;Operador de máquina de cablear;0.6470588235294118
+2;53-7064.00;Packers and Packagers, Hand;Packers and Packagers, Hand;;;
+2;53-7071.00;Gas Compressor and Gas Pumping Station Operators;Compressores de gás e operadores de estações de bombagem de gás;;;
+2;53-7072.00;Pump Operators, Except Wellhead Pumpers;Operadores de bombas, exceto Pumphead Pumpers;715410;Operador de bomba de concreto;0.6216216216216216
+2;53-7073.00;Wellhead Pumpers;Pumpers Pump;;;
+2;53-7081.00;Refuse and Recyclable Material Collectors;Coletores de resíduos e materiais recicláveis;519215;Operador de prensa de material reciclável;0.6976744186046512
+2;53-7111.00;Mine Shuttle Car Operators;Operadores de carro de minas;711210;Operador de carregadeira;0.7692307692307693
+2;53-7121.00;Tank Car, Truck, and Ship Loaders;Carregadeira de tanques, caminhões e carregadores de navios;;;

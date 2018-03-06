@@ -1,6 +1,13 @@
+/*-----------------------------------------------------------------------------------------*/
+/*---- 			Criação de Base de dados de CBOS de empregados vindo da RAIS		   ----*/
+/*----	    Nível: Ano, UF, RM, Município, CBO2002/Job_Zone -- Renda, Nº Empregados	   ----*/
+/*-----------------------------------------------------------------------------------------*/
+
+/*==== 						UTILIZANDO EMPREGADOS EM DEZEMBRO DO ANO CORRENTE  		   ====*/
+
 
 libname rais "\\Storage6\Bases\DADOS\RESTRITO\RAIS\SAS";
-libname local "C:\Users\b2657804\Documents\temp";
+libname local "C:\Users\b2657804\Documents\temp\temp";
 libname auto "C:\Users\b2657804\Documents\Meu Drive\LAMFO\Adicionar a automation\Data";
 
 %macro munic;
@@ -9,14 +16,14 @@ libname auto "C:\Users\b2657804\Documents\Meu Drive\LAMFO\Adicionar a automation
 	%if &ano. < 1999 %then %do;
 		 proc sql ;*inobs=1000;
 		 	create table local.auto_all&ano.(compress=YES) as
-		 	select UF, codemun, regiao_metro, &ano. as ano, cbo1994, grau_instr, sum(peso) as empregados, 
-				   sum(rem_med_sm*peso)/sum(peso) as renda_m_sm, sum(rem_med_sm*peso) as renda_t_sm
-		 	from rais.brasil&ano.
+		 	select UF, codemun, regiao_metro, &ano. as ano, cbo1994, grau_instr, count(*) as empregados, 
+				    sum(rem_med_sm) as renda_t_sm
+		 	from rais.brasil&ano.(where=(mes_deslig='00'))
 		 	group by UF, codemun, regiao_metro, ano, cbo1994, grau_instr;
 
 		 	create table local.auto&ano.(compress=YES) as 
 		 	select UF, codemun, regiao_metro, ano, cbo1994, sum(empregados) as empregados, 
-				   sum(renda_t_sm*empregados)/sum(empregados) as renda_m_sm, sum(renda_t_sm*empregados) as renda_t_sm 
+				   sum(renda_t_sm) as renda_t_sm 
 		 	from local.auto_all&ano.
 		 	group by UF, codemun, regiao_metro, ano, cbo1994;
 		 quit;
@@ -24,14 +31,14 @@ libname auto "C:\Users\b2657804\Documents\Meu Drive\LAMFO\Adicionar a automation
   %else %do;
 	 proc sql ;*inobs=1000;
 		 	create table local.auto_all&ano.(compress=YES) as
-		 	select UF, codemun, regiao_metro, &ano. as ano, cbo1994, grau_instr, sum(peso) as empregados, 
-				   sum(rem_med_r*peso)/sum(peso) as renda_m, sum(rem_med_r*peso) as renda_t 
-		 	from rais.brasil&ano.
+		 	select UF, codemun, regiao_metro, &ano. as ano, cbo1994, grau_instr, count(*) as empregados, 
+				    sum(rem_med_r) as renda_t 
+		 	from rais.brasil&ano.(where=(mes_deslig='00'))
 		 	group by UF, codemun, regiao_metro, ano, cbo1994, grau_instr;
 
 		 	create table local.auto&ano.(compress=YES) as 
 		 	select UF, codemun, regiao_metro, ano, cbo1994, sum(empregados) as empregados, 
-				   sum(renda_t*empregados)/sum(empregados) as renda_m, sum(renda_t*empregados) as renda_t 
+				   sum(renda_t) as renda_t 
 		 	from local.auto_all&ano.
 		 	group by UF, codemun, regiao_metro, ano, cbo1994;
 		 quit;
@@ -41,26 +48,25 @@ libname auto "C:\Users\b2657804\Documents\Meu Drive\LAMFO\Adicionar a automation
     %if &ano. > 2002 %then %do;
 		 proc sql ;*inobs=1000;
 		 	create table local.auto_all&ano.(compress=YES) as
-		 	select UF, codemun, regiao_metro, &ano. as ano, cbo2002, grau_instr, sum(peso) as empregados, 
-				   sum(rem_med_r*peso)/sum(peso) as renda_m, sum(rem_med_r*peso) as renda_t 
-		 	from rais.brasil&ano.
+		 	select UF, codemun, regiao_metro, &ano. as ano, cbo2002, grau_instr, count(*) as empregados, 
+				  sum(rem_med_r) as renda_t 
+		 	from rais.brasil&ano.(where=(mes_deslig='00'))
 		 	group by UF, codemun, regiao_metro, ano, cbo2002, grau_instr;
 
 		 	create table local.auto&ano.(compress=YES) as 
 		 	select UF, codemun, regiao_metro, ano, cbo2002, sum(empregados) as empregados, 
-				   sum(renda_t*empregados)/sum(empregados) as renda_m, sum(renda_t*empregados) as renda_t 
+				    sum(renda_t) as renda_t 
 		 	from local.auto_all&ano.
 		 	group by UF, codemun, regiao_metro, ano, cbo2002;
 		 quit;
 	%end;
 %end;
-    data auto.auto_painel(compress=YES); set local.auto1986-local.auto2016; run;
-	data local.auto_all_painel; set local.auto_all1986-local.auto_all2016; run;
+    data auto_painel2(compress=YES); set local.auto1986-local.auto2016; run;
+	data local.auto_all_painel2; set local.auto_all1986-local.auto_all2016; run;
 %mend munic;
 %munic;
 
-
-/* Conversao CBO94 para CBO2002 */
+/*--- Conversao CBO94 para CBO2002 ---*/
 data cbo_trad;
   infile "C:\Users\b2657804\Documents\Meu Drive\LAMFO\AutomationJobs\Data\CBO94 - CBO2002 - Conversao com 90.csv" 
   FIRSTOBS=2 dsd truncover delimiter = ";";
@@ -68,9 +74,8 @@ data cbo_trad;
   input CBO1994 CBO_2002;
 run;
 
-PROC SORT DATA=auto.auto_painel OUT=auto; BY CBO1994; RUN;
+PROC SORT DATA=auto_painel2 OUT=auto; BY CBO1994; RUN;
 PROC SORT DATA=cbo_trad 				; BY CBO1994; RUN;
-
 DATA AUTO_PAINEL; MERGE auto(IN=A) cbo_trad; 
     BY CBO1994;
 	IF A;
@@ -78,8 +83,7 @@ DATA AUTO_PAINEL; MERGE auto(IN=A) cbo_trad;
 	drop CBO1994 CBO_2002;
 RUN;
 
-
-/* Conversao da renda em Salrarios Minimos*/
+/*--- Conversao da renda em Salrarios Minimos ---*/
 data SM;
   infile "C:\Users\b2657804\Documents\Meu Drive\LAMFO\Adicionar a automation\ipeadata[27-02-2018-05-27].csv"
   FIRSTOBS=2 dsd truncover delimiter = ",";
@@ -87,7 +91,7 @@ data SM;
   input DATA SM;
 run;
 
-PROC SQL;
+PROC SQL; * Tornando a série de Salário Mínimo anual;
 	CREATE TABLE SM AS 
 	SELECT input(SUBSTR(Data, 1, 4), best12.) AS ANO FORMAT BEST12., AVG(SM) AS SM
 	FROM SM
@@ -97,11 +101,10 @@ QUIT;
 PROC SORT DATA = AUTO_PAINEL OUT = auto; BY ANO; RUN;
 DATA AUTO_PAINEL; MERGE auto(IN=A) SM;
     BY ANO;
-	IF renda_m = . THEN DO;
-	    renda_m = renda_m_sm*sm;
-		renda_t = renda_t_sm*sm;
-    END;
-	IF A;
+	IF renda_m = . THEN renda_t = renda_t_sm*sm;
+ 	IF A;
+
+	renda_sm = renda_t/sm; * Renda em SM ;
 
 	drop renda_m_sm renda_t_sm sm renda_m;
 
@@ -111,31 +114,28 @@ DATA AUTO_PAINEL; MERGE auto(IN=A) SM;
 RUN;
 
 /*---- Salvando ----*/
-data auto.auto_painel(compress=YES); set AUTO_PAINEL; run;
+data auto.auto_painel2(compress=YES); set AUTO_PAINEL; run;
 
-
-/* Acrescentando Job Zones */
+/*--- Acrescentando Job Zones ---*/
 proc import datafile="C:\Users\b2657804\Documents\Meu Drive\LAMFO\AutomationJobs\Data\CBO2002_SOC.csv"
 			out = CBO_SOC dbms=CSV replace; delimiter=";";
 run; 
 
+/*======= Vai depender se tenho ou não dupla correspondência ========*/
 PROC SQL;
-CREATE TABLE CBO_SOC AS 
-SELECT CBO2002, ROUND(AVG(input(Job_Zone, best12.))) as Job_Zone
-FROM CBO_SOC
-group by CBO2002;
+	CREATE TABLE CBO_SOC AS 
+	SELECT CBO2002, ROUND(AVG(input(Job_Zone, best12.))) as Job_Zone
+	FROM CBO_SOC
+	group by CBO2002;
 
-SELECT Job_Zone, count(*)
-from CBO_SOC
-group by Job_Zone;
+	SELECT Job_Zone, count(*)
+	from CBO_SOC
+	group by Job_Zone;
 QUIT;
+/*=======================*/
 
 PROC SORT DATA = AUTO_PAINEL OUT = auto; BY CBO2002; RUN;
-DATA AUTO_PAINEL; MERGE auto(IN=A) cbo_soc;
-    BY CBO2002;
-	IF A;
-RUN;
-
+PROC SORT DATA = CBO_SOC 			   ; BY CBO2002; RUN;
 DATA AUTO_PAINEL; MERGE auto(IN=A) cbo_soc;
     BY CBO2002;
 	IF A;
@@ -143,24 +143,23 @@ RUN;
 
 PROC SQL;
 CREATE TABLE AUTOMATION AS 
-SELECT UF, codemun, regiao_metro, ano, cbo2002, Job_Zone, SUM(empregados) AS empregados, sum(renda*empregados) as renda
-FROM AUTO_PAINEL
-GROUP BY UF, codemun, regiao_metro, ano, cbo2002, Job_Zone;
+	SELECT UF, codemun, regiao_metro, ano, cbo2002, Job_Zone, SUM(empregados) AS empregados, 
+           sum(renda) as renda, sum(renda_sm) as renda_sm
+	FROM AUTO_PAINEL
+	GROUP BY UF, codemun, regiao_metro, ano, cbo2002, Job_Zone;
 
 SELECT Job_Zone, count(*)/28965177 AS FREQ
 from AUTOMATION
 group by Job_Zone;
 
 CREATE TABLE JobZone_Painel AS 
-SELECT UF, codemun, regiao_metro, ano, Job_Zone, SUM(empregados) AS empregados, sum(renda*empregados) as renda
-FROM AUTOMATION
-GROUP BY UF, codemun, regiao_metro, ano, Job_Zone;
-
+	SELECT UF, codemun, regiao_metro, ano, Job_Zone, SUM(empregados) AS empregados, 
+		   sum(renda) as renda, sum(renda_sm) as renda_sm
+	FROM AUTOMATION
+	GROUP BY UF, codemun, regiao_metro, ano, Job_Zone;
 QUIT;
 
-
 /*---- Salvando ----*/
-data auto.automation(compress=YES); set automation; run;
-data auto.JobZone_Painel(compress=YES); set JobZone_Painel; run;
-
+data auto.automation2(compress=YES); set automation; run;
+data auto.JobZone_Painel2(compress=YES); set JobZone_Painel; run;
 
