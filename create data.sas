@@ -70,7 +70,7 @@ libname auto "C:\Users\b2657804\Documents\Meu Drive\LAMFO\Adicionar a automation
 data cbo_trad;
   infile "C:\Users\b2657804\Documents\Meu Drive\LAMFO\AutomationJobs\Data\CBO94 - CBO2002 - Conversao com 90.csv" 
   FIRSTOBS=2 dsd truncover delimiter = ";";
-  length CBO1994 $5 CBO_2002 $6   ;
+  length CBO1994 $5 CBO_2002 $6 ;
   input CBO1994 CBO_2002;
 run;
 
@@ -117,40 +117,31 @@ RUN;
 data auto.auto_painel2(compress=YES); set AUTO_PAINEL; run;
 
 /*--- Acrescentando Job Zones ---*/
-proc import datafile="C:\Users\b2657804\Documents\Meu Drive\LAMFO\AutomationJobs\Data\CBO2002_SOC.csv"
-			out = CBO_SOC dbms=CSV replace; delimiter=";";
-run; 
+proc import datafile = "C:\Users\b2657804\Documents\Meu Drive\LAMFO\AutomationJobs\Conversions\CBO_OK.csv" 
+    out = CBO_JOB DBMS = CSV REPLACE; delimiter = ';'; 
+run;
 
-/*======= Vai depender se tenho ou não dupla correspondência ========*/
-PROC SQL;
-	CREATE TABLE CBO_SOC AS 
-	SELECT CBO2002, ROUND(AVG(input(Job_Zone, best12.))) as Job_Zone
-	FROM CBO_SOC
-	group by CBO2002;
+proc sql;
+  create table auto as 
+    select a.*, b.*
+  from auto.automation2(drop=job_zone) as a left join cbo_job as b on a.CBO2002 = b.CBO2002;
 
-	SELECT Job_Zone, count(*)
-	from CBO_SOC
-	group by Job_Zone;
-QUIT;
-/*=======================*/
+  * Calculando empregados e renda esperados ;
+  create table auto as 
+    select UF, codemun, regiao_metro, ano, CBO2002, empregados/rep as empregados, 
+           renda/rep as renda, renda_sm/rep as renda_sm
+  from auto;
 
-PROC SORT DATA = AUTO_PAINEL OUT = auto; BY CBO2002; RUN;
-PROC SORT DATA = CBO_SOC 			   ; BY CBO2002; RUN;
-DATA AUTO_PAINEL; MERGE auto(IN=A) cbo_soc;
-    BY CBO2002;
-	IF A;
-RUN;
+quit;
 
+* Agregações sem CBO ; 
 PROC SQL;
 CREATE TABLE AUTOMATION AS 
 	SELECT UF, codemun, regiao_metro, ano, cbo2002, Job_Zone, SUM(empregados) AS empregados, 
            sum(renda) as renda, sum(renda_sm) as renda_sm
-	FROM AUTO_PAINEL
-	GROUP BY UF, codemun, regiao_metro, ano, cbo2002, Job_Zone;
-
-SELECT Job_Zone, count(*)/28965177 AS FREQ
-from AUTOMATION
-group by Job_Zone;
+FROM auto
+WHERE codemun ne ''
+GROUP BY UF, codemun, regiao_metro, ano, cbo2002, Job_Zone;
 
 CREATE TABLE JobZone_Painel AS 
 	SELECT UF, codemun, regiao_metro, ano, Job_Zone, SUM(empregados) AS empregados, 
@@ -162,4 +153,10 @@ QUIT;
 /*---- Salvando ----*/
 data auto.automation2(compress=YES); set automation; run;
 data auto.JobZone_Painel2(compress=YES); set JobZone_Painel; run;
+
+
+
+
+
+
 
