@@ -128,10 +128,9 @@ proc sql;
 
   * Calculando empregados e renda esperados ;
   create table auto as 
-    select UF, codemun, regiao_metro, ano, CBO2002, empregados/rep as empregados, 
+    select UF, codemun, regiao_metro, ano, CBO2002, job_zone, empregados/rep as empregados, 
            renda/rep as renda, renda_sm/rep as renda_sm
   from auto;
-
 quit;
 
 * Agregações sem CBO ; 
