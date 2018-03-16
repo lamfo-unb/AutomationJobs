@@ -24,6 +24,7 @@ graph01.tbl <- graph01.tbl2 %>%
                 mutate(cumulative= cumprod(1 + pct.change) - 1)
 
 #pdf("GRAPH001.pdf")
+graph01.tbl<-subset(graph02.tbl,ano>2003)
 p<-ggplot(graph01.tbl, aes( x=ano, y=cumulative, colour=as.factor(Job_Zone), group=as.factor(Job_Zone) )) + 
   geom_line() + scale_colour_discrete(name="Automation",
                                       breaks=c("1","2", "3", "4", "5"),
@@ -43,9 +44,9 @@ graph02.tbl<- graph01.tbl %>%
               )
 
 #pdf("GRAPH002.pdf")
-
+#graph02.tbl<-subset(graph02.tbl,ano>2003)
 p<-ggplot(graph02.tbl, aes( x=ano, y=interpolated, colour=as.factor(Job_Zone), group=as.factor(Job_Zone) )) + 
-  geom_smooth(method = 'loess', span = .75, se = FALSE) + 
+  geom_smooth(method = 'loess', span = .9, se = FALSE) + 
   scale_colour_discrete(name="Automation",
                                       breaks=c("1","2", "3", "4", "5"),
                                       labels=c("Level 1", "Level 2", "Level 3", "Level 4", "Level 5")) +  xlab("Year")+ ylab("Cumulative Growth Rate")
