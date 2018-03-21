@@ -3,8 +3,8 @@ library(ggplot2)
 library(dplyr)
 
 # jobzone_painel <- read_sas("C:/Users/b2657804/Documents/Meu Drive/LAMFO/Adicionar a automation/Data/jobzone_painel2.sas7bdat")
+# jobzone_painel <- read_sas("C:/Users/rafal/Google Drive/LAMFO/Adicionar a automation/Data/jobzone_painel2.sas7bdat")
 # write.csv2(jobzone_painel, 'Data/jobzone_painel.csv')
-
 jobzone_painel <- read.csv2('Data/jobzone_painel.csv')
 
 serie <- jobzone_painel %>% group_by(Job_Zone, ano) %>% 
@@ -44,4 +44,5 @@ ggplot(serie, aes(ano, rend, group = Job_Zone, colour = factor(Job_Zone))) +
   scale_x_continuous(breaks = sort(unique(serie$ano))[seq(1, 31, by = 3)]) +
   labs(x = "Ano", y = "Renda Total", color = "  Job\n Zone") +
   theme(legend.position="bottom") 
+
 
