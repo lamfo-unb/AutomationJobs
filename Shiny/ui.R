@@ -1,0 +1,3 @@
+shinyUI(
+  uiOutput("ui")
+)
