@@ -24,7 +24,7 @@ graph01.tbl <- graph01.tbl2 %>%
                 mutate(cumulative= cumprod(1 + pct.change) - 1)
 
 #pdf("GRAPH001.pdf")
-graph01.tbl<-subset(graph02.tbl,ano>2003)
+#graph01.tbl<-subset(graph01.tbl,ano>2003)
 p<-ggplot(graph01.tbl, aes( x=ano, y=cumulative, colour=as.factor(Job_Zone), group=as.factor(Job_Zone) )) + 
   geom_line() + scale_colour_discrete(name="Automation",
                                       breaks=c("1","2", "3", "4", "5"),
