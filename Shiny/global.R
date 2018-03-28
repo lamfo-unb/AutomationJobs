@@ -1,6 +1,11 @@
 library(shiny)
+library(dplyr)
 library(digest)
+library(googlesheets)
 
+
+lista<-readRDS("CBO.RDS")
+credentials <- readRDS("credentials/credentials.rds")
 ############# FOR TESTING ONLY - DELETE THIS CODE before using app!!!
 
 # credentials data frame for testing (username = "test" and password = "password")

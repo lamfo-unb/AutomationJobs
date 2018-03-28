@@ -1,4 +1,5 @@
 library(googlesheets)
+library(dplyr)
 
 table <- "responses"
 
@@ -9,8 +10,8 @@ saveData <- function(data) {
   gs_add_row(sheet, input = data)
 }
 
-lista<-readRD("CBO.RDS")
-indRnd<-sample(1:length(lista),1,F)
+lista<-readRDS("CBO.RDS")
+indRnd<- sample(1:length(lista),1,F)
 
 shinyServer(function(input, output, session) {
 #### UI code --------------------------------------------------------------
@@ -32,7 +33,7 @@ shinyServer(function(input, output, session) {
         titlePanel("Nivel de automacao"),
         fluidRow(
           column(4, wellPanel(
-            sliderInput("n", "Probabilidade de automacao:",
+            sliderInput("prob", "Probabilidade de automacao:",
                         min = 0, max = 100, value = 50, step = 0.1)
           ),
           actionButton("action", label = "Enviar")
@@ -54,15 +55,31 @@ shinyServer(function(input, output, session) {
   
 #### YOUR APP'S SERVER CODE GOES HERE ----------------------------------------
   #Text
-  output$selected_var<-renderText({ 
-    paste(as.character(lista[indRnd,"NOME_GRANDE_AREA"]))
-  })
-  
-  output$text <- renderText({ 
-    paste(lista[indRnd,"Texto"])
-  })
 
-    
+    output$selected_var<-renderText({
+      teste <- as.character(lista$NOME_GRANDE_AREA)
+      if(Sys.info()[1] == "Linux") { Encoding(teste) <- 'latin1' }
+      return(teste[indRnd])
+    })
+
+     output$text <- renderText({
+       teste <- lista$Texto
+       if(Sys.info()[1] == "Linux") { Encoding(teste) <- 'latin1' }
+       return( as.character( teste[indRnd] ) )
+       })
+
+       observeEvent(input$action,{
+         df = data.frame(Usuario = credentials$user[which(credentials$user == input$user_name)], 
+                         CBO_5D  = lista$COD_OCUPACAO[indRnd],
+                         Prob    = input$prob)
+         
+         sheet_key <- '1OQYehkar5uHcSLlMu0B2C7S3TADzC8jGtE7jxCylfqk'
+         sheet <- gs_key(sheet_key)
+         gs_add_row(sheet, input = df)
+         
+       })
+       
+   
 #### PASSWORD server code ---------------------------------------------------- 
   # reactive value containing user's authentication status
   user_input <- reactiveValues(authenticated = FALSE, valid_credentials = FALSE, 
@@ -79,7 +96,6 @@ shinyServer(function(input, output, session) {
   #       error message code below
   observeEvent(input$login_button, {
     credentials <- readRDS("credentials/credentials.rds")
-    
     row_username <- which(credentials$user == input$user_name)
     row_password <- which(credentials$pw == digest(input$password)) # digest() makes md5 hash of password
 
