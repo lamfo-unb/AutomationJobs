@@ -1,5 +1,6 @@
 library(googlesheets)
 library(dplyr)
+library(shinyTree)
 
 table <- "responses"
 
@@ -43,10 +44,11 @@ shinyServer(function(input, output, session) {
                    \nQuanto maior a probabilidade, mas facil e a automatizacao\nCaso nao saiba opinar mantenha 50% como estimativa de automacao."),
                  br(),
                  br(),
-                 textOutput("selected_var"),
+                 h2(tags$b(textOutput("selected_var"))),
                  br(),
                  br(),
-                 verbatimTextOutput("text")
+                 # verbatimTextOutput("text")
+                 shinyTree("tree")
           )
         )
       )
@@ -57,16 +59,21 @@ shinyServer(function(input, output, session) {
   #Text
 
     output$selected_var<-renderText({
-      teste <- as.character(lista$NOME_GRANDE_AREA)
+      teste <- as.character(lista$TITULO)
       if(Sys.info()[1] == "Linux") { Encoding(teste) <- 'latin1' }
       return(teste[indRnd])
     })
+    
+    output$tree <- renderTree({
+      listagem(indRnd)
+    })
 
-     output$text <- renderText({
-       teste <- lista$Texto
-       if(Sys.info()[1] == "Linux") { Encoding(teste) <- 'latin1' }
-       return( as.character( teste[indRnd] ) )
-       })
+    
+     # output$text <- renderText({
+     #   teste <- lista$Texto
+     #   if(Sys.info()[1] == "Linux") { Encoding(teste) <- 'latin1' }
+     #   return( as.character( teste[indRnd] ) )
+     #   })
 
        observeEvent(input$action,{
          df = data.frame(Usuario = credentials$user[which(credentials$user == input$user_name)], 
