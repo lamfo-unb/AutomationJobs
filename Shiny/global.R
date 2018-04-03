@@ -6,6 +6,11 @@ library(googlesheets)
 
 lista<-readRDS("CBO.RDS")
 credentials <- readRDS("credentials/credentials.rds")
+
+gs_auth(token = "googlesheets_token.rds")
+sheet_key <- '1OQYehkar5uHcSLlMu0B2C7S3TADzC8jGtE7jxCylfqk'
+sheet <- gs_key(sheet_key)
+
 ############# FOR TESTING ONLY - DELETE THIS CODE before using app!!!
 
 # credentials data frame for testing (username = "test" and password = "password")

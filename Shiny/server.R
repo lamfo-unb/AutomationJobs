@@ -2,17 +2,17 @@ library(googlesheets)
 library(dplyr)
 library(shinyTree)
 
-table <- "responses"
+#table <- "responses"
 
-saveData <- function(data) {
-  # Grab the Google Sheet
-  sheet <- gs_title(table)
-  # Add the data as a new row
-  gs_add_row(sheet, input = data)
-}
+# saveData <- function(data) {
+#   # Grab the Google Sheet
+#   sheet <- gs_title(table)
+#   # Add the data as a new row
+#   gs_add_row(sheet, input = data)
+# }
 
 lista<-readRDS("CBO.RDS")
-indRnd<- sample(1:length(lista),1,F)
+indRnd<- sample(1:nrow(lista),1,F)
 
 shinyServer(function(input, output, session) {
 #### UI code --------------------------------------------------------------
@@ -37,7 +37,8 @@ shinyServer(function(input, output, session) {
             sliderInput("prob", "Probabilidade de automacao:",
                         min = 0, max = 100, value = 50, step = 0.1)
           ),
-          actionButton("action", label = "Enviar")
+          actionButton("action" , label = "Enviar"),
+          actionButton("proximo", label = "Pular")
           ),
           column(8,
                  helpText("Essa e a descricao da ocupacao.\nEm uma escala de 0 a 100 determine a probabilidade de automacao.\n
@@ -58,14 +59,20 @@ shinyServer(function(input, output, session) {
 #### YOUR APP'S SERVER CODE GOES HERE ----------------------------------------
   #Text
 
+    sorteio <- reactiveValues( numero = indRnd )
+    
+    observeEvent(c(input$action,input$proximo),{
+      sorteio$numero <- sample(1:nrow(lista),1,F)
+    })
+    
     output$selected_var<-renderText({
       teste <- as.character(lista$TITULO)
       if(Sys.info()[1] == "Linux") { Encoding(teste) <- 'latin1' }
-      return(teste[indRnd])
+      return(teste[sorteio$numero])
     })
     
     output$tree <- renderTree({
-      listagem(indRnd)
+      listagem(sorteio$numero)
     })
 
     
@@ -80,8 +87,8 @@ shinyServer(function(input, output, session) {
                          CBO_5D  = lista$COD_OCUPACAO[indRnd],
                          Prob    = input$prob)
          
-         sheet_key <- '1OQYehkar5uHcSLlMu0B2C7S3TADzC8jGtE7jxCylfqk'
-         sheet <- gs_key(sheet_key)
+         #sheet_key <- '1OQYehkar5uHcSLlMu0B2C7S3TADzC8jGtE7jxCylfqk'
+         #sheet <- gs_key(sheet_key)
          gs_add_row(sheet, input = df)
          
        })
