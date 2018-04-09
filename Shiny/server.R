@@ -19,15 +19,16 @@ shinyServer(function(input, output, session) {
   output$ui <- renderUI({
     if (user_input$authenticated == FALSE) {
       ##### UI code for login page
-      fluidPage(
-        fluidRow(
-          column(width = 2, offset = 5,
-            br(), br(), br(), br(),
-            uiOutput("uiLogin"),
-            uiOutput("pass")
-          )
-        )
-      )
+      htmlTemplate("www/index.html")
+      # fluidPage(
+      #   fluidRow(
+      #     column(width = 2, offset = 5,
+      #       br(), br(), br(), br(),
+      #       uiOutput("uiLogin"),
+      #       uiOutput("pass")
+      #     )
+      #   )
+      # )
     } else {
       #### Your app's UI code goes here!
       fluidPage(
