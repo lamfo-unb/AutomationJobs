@@ -32,28 +32,32 @@ shinyServer(function(input, output, session) {
     } else {
       #### Your app's UI code goes here!
       fluidPage(
-        titlePanel("Nivel de automacao"),
-        fluidRow(
-          column(4, wellPanel(
-            sliderInput("prob", "Probabilidade de automacao:",
-                        min = 0, max = 100, value = 50, step = 0.1)
-          ),
-          actionButton("action" , label = "Enviar"),
-          actionButton("proximo", label = "Pular")
-          ),
-          column(8,
-                 helpText("Essa e a descricao da ocupacao.\nEm uma escala de 0 a 100 determine a probabilidade de automacao.\n
-                   \nQuanto maior a probabilidade, mas facil e a automatizacao\nCaso nao saiba opinar mantenha 50% como estimativa de automacao."),
-                 br(),
-                 br(),
-                 h2(tags$b(textOutput("selected_var"))),
-                 br(),
-                 br(),
-                 # verbatimTextOutput("text")
-                 shinyTree("tree")
-          )
-        )
-      )
+      htmlTemplate("www/index2.html",
+                   printar = textOutput("selected_var"),
+                   tree = shinyTree("tree")) )
+      # fluidPage(
+      #   titlePanel("Nivel de automacao"),
+      #   fluidRow(
+      #     column(4, wellPanel(
+      #       sliderInput("prob", "Probabilidade de automacao:",
+      #                   min = 0, max = 100, value = 50, step = 0.1)
+      #     ),
+      #     actionButton("action" , label = "Enviar"),
+      #     actionButton("proximo", label = "Pular")
+      #     ),
+      #     column(8,
+      #            helpText("Essa e a descricao da ocupacao.\nEm uma escala de 0 a 100 determine a probabilidade de automacao.\n
+      #              \nQuanto maior a probabilidade, mas facil e a automatizacao\nCaso nao saiba opinar mantenha 50% como estimativa de automacao."),
+      #            br(),
+      #            br(),
+      #            h2(tags$b(textOutput("selected_var"))),
+      #            br(),
+      #            br(),
+      #            # verbatimTextOutput("text")
+      #            shinyTree("tree")
+      #     )
+      #   )
+      # )
     }
   })
   

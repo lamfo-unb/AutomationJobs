@@ -33,6 +33,7 @@ num_fails_to_lockout <- 3
 
 # ==================================================================================
 listagem <- function(x){
+  if(Sys.info()[1] == "Linux") { Encoding(lista$Texto) <- 'latin1' }
   a <- strsplit(lista$Texto[x], "\v")
   b <- lapply(a, strsplit, "\t")  
   c <- mapply('[', b)
