@@ -1,6 +1,6 @@
 library(haven)
 library(ggplot2)
-library(dplyr)
+library(tidyverse)
 
 # jobzone_painel <- read_sas("C:/Users/b2657804/Documents/Meu Drive/LAMFO/Adicionar a automation/Data/jobzone_painel2.sas7bdat")
 # jobzone_painel <- read_sas("C:/Users/rafal/Google Drive/LAMFO/Adicionar a automation/Data/jobzone_painel2.sas7bdat")
