@@ -46,3 +46,26 @@ ggplot(serie, aes(ano, rend, group = Job_Zone, colour = factor(Job_Zone))) +
   theme(legend.position="bottom") 
 
 
+library(readxl)
+GDP_GROWTH <- read_excel("Data/GDP_GROWTH.xls", skip = 3)
+GDP_GROWTH <- GDP_GROWTH %>% filter(`Country Name` == "Brazil") %>% gather(year, growth) %>%
+  filter(year %in% 1986:2016) %>% mutate(growth     = as.numeric(growth),
+                                         cumulative = (cumprod(growth/100 + 1) - 1))
+
+ggplot(GDP_GROWTH, aes(year, growth, group = 1)) + 
+  geom_line(lwd=1) + theme_bw() + geom_point() +
+  scale_x_discrete(breaks = sort(unique(GDP_GROWTH$year))[seq(1, 31, by = 3)]) +
+  labs(x = "Ano", y = "Renda Total", color = "  Job\n Zone") +
+  theme(legend.position="bottom") 
+
+# ============================================================================== #
+# ========================= Cumulative GDP Growth Rate ========================= #
+# ============================================================================== #
+ggplot(GDP_GROWTH, aes(year, cumulative, group = 1)) + 
+  geom_line(lwd=1) + theme_bw() + geom_point() +
+  scale_x_discrete(breaks = sort(unique(GDP_GROWTH$year))[seq(1, 31, by = 3)]) +
+  labs(x = "Year", y = "Cumulative Growth Rate") +
+  theme(legend.position="bottom") 
+
+
+

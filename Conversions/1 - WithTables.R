@@ -1,9 +1,8 @@
 library(readxl)
 library(dplyr)
-cbo2002_isco88 <- read.csv2("./Data/CBO2002_ISCO88.csv",
-                            colClasses = "character" ) %>% distinct(CBO2002, CIUO88)
+cbo2002_isco88 <- read.csv2("Data/CBO2002_ISCO88.csv", colClasses = "character" )
 
-isco88_isco08 <- read_excel("./Data/ISCO88_ISCO08.xlsx", col_types = "text")
+isco88_isco08 <- read_excel("Data/ISCO88_ISCO08.xlsx", col_types = "text")
 
 isco08_soc <- read_excel("./Data/ISCO08_SOC.xls", skip = 6, col_types = "text")
 
