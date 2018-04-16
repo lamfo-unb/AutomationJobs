@@ -1,0 +1,12 @@
+name: automation
+title: automation
+username:
+account: cayan
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 317182
+bundleId: 1317727
+url: https://cayan.shinyapps.io/automation/
+when: 1523645067.43801
+asMultiple: FALSE
+asStatic: FALSE

@@ -33,7 +33,7 @@ shinyServer(function(input, output, session) {
       #### Your app's UI code goes here!
       fluidPage(
       htmlTemplate("www/index2.html",
-                   printar = textOutput("selected_var"),
+                   printar = tags$b(textOutput("selected_var")),
                    tree = shinyTree("tree")) )
       # fluidPage(
       #   titlePanel("Nivel de automacao"),
