@@ -141,3 +141,26 @@ ggplot(final, aes(x=year, y=cumulative, colour=as.factor(Job_Zone), group=as.fac
   theme(legend.position="bottom")
 
 
+#Correct GDP
+final$cumulative[which(final$year<=1987 & final$Type=="Cumulative GDP")]<-0
+final<-subset(final,year>1986)
+
+#Colors
+mycolors <- RColorBrewer::brewer.pal(5, "Pastel1")
+mycolors<-c(mycolors,"#000000")
+
+ggplot(final, aes(x=year, y=cumulative, colour=as.factor(Job_Zone), group=as.factor(Job_Zone))) + 
+  geom_line(aes(linetype=Type),lwd=1) + theme_bw() + geom_point() +
+  scale_x_continuous(breaks = sort(unique(final$year))[seq(1, 31, by = 3)]) +
+  xlab("Year")+ ylab("Cumulative Growth Rate")+
+  scale_colour_manual(name="Automation",
+                      breaks=c("1","2", "3", "4", "5","GDP"),
+                      labels=c("Level 1", "Level 2", "Level 3", "Level 4", "Level 5","GDP"),
+                      values = mycolors)+
+  theme(legend.position="bottom", legend.direction = "horizontal", legend.box = "vertical")
+ggsave('serie1.pdf', units="in", width=5, height=5)
+
+#Fall percentage from \\ 2014 to 2016 in the CGR 
+fall2014<-subset(final, year==2014)
+fall2016<-subset(final, year==2016)
+round((fall2014$cumulative-fall2016$cumulative)*100,4)

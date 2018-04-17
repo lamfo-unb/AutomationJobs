@@ -37,5 +37,5 @@ Comp <- Comp %>% na.omit()
 ggplot(aes(y = prob, x = Job_Zone), data = Comp) + geom_boxplot(fill = "gray") +
   theme_bw() + labs(x = "Job Zone", y = "Probability of Computerisation") +
   theme(text = element_text(size=15))
-
+ggsave('boxplot.pdf', units="in", width=5, height=5)
 tapply(Comp$prob, Comp$Job_Zone, summary)
