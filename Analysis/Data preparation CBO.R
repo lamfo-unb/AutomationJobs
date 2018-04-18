@@ -64,4 +64,4 @@ dataWords<- reshape2::dcast(listWordsFilter, COD_OCUPACAO ~ word, sum, fill=0)
 #Create the correlation plot
 M<-cor(dataWords[,-1])
 hist(M)
-
+saveRDS(dataWords,"Data/CBOwords.rds")
