@@ -65,3 +65,25 @@ remDr$close()
 rD$server$stop()
 
 saveRDS(nomes , 'dados_lattes.rds')
+
+#### ----------- Criando Tabela com os Nomes --------------- ####
+
+dados <- readRDS('dados_lattes.rds')
+
+pegar_nome <- function(palavra,lista) {
+  expressao     <- grep( palavra , lista , ignore.case = T , value = T )
+  palavra_final <- ifelse( length(expressao) > 0 , expressao , NA )
+  return(palavra_final)
+}
+
+
+dados2 <- lapply(dados , `[[`, 1)
+
+teste2 <- data.frame(Nome      = sapply( dados2 , `[` , 1 )   ,
+                     Bolsista  = sapply( dados2 , pegar_nome , palavra = "Bolsista") ,
+                     Doutorado = sapply( dados2 , pegar_nome , palavra = "Doutorado em|Doutorado p"),
+                     Professor = sapply( dados2 , pegar_nome , palavra = "Profes") )
+
+
+readr::write_csv( teste2 , "planilha_nomes.csv")
+
