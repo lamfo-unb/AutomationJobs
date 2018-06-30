@@ -151,3 +151,6 @@ saveRDS(temp, "emails_temporarios.rds")
 
 temp_na <- temp %>% na.omit()
 ab <- readRDS( "emails_temporarios.rds")
+
+
+
