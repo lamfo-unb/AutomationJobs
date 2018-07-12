@@ -114,7 +114,8 @@ shinyServer(function(input, output, session) {
   #       is bad (username precedent over pw) or he is locked out. set status value for
   #       error message code below
   observeEvent(input$login_button, {
-    credentials <- readRDS("credentials/credentials.rds")
+    
+    credentials <- readRDS("credentials/credentials2.rds")
     row_username <- which(credentials$user == input$user_name)
     row_password <- which(credentials$pw == digest(input$password)) # digest() makes md5 hash of password
 
@@ -139,7 +140,7 @@ shinyServer(function(input, output, session) {
       if (length(row_username) == 1) {
         credentials$locked_out[row_username] <- TRUE
         
-        saveRDS(credentials, "credentials/credentials.rds")
+        saveRDS(credentials, "credentials/credentials2.rds")
       }
     }
       

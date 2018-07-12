@@ -5,7 +5,7 @@ library(googlesheets)
 
 
 lista<-readRDS("CBO.RDS")
-credentials <- readRDS("credentials/credentials.rds")
+credentials <- readRDS("credentials/credentials2.rds")
 
 gs_auth(token = "googlesheets_token.rds")
 sheet_key <- '1OQYehkar5uHcSLlMu0B2C7S3TADzC8jGtE7jxCylfqk'
@@ -16,7 +16,7 @@ sheet <- gs_key(sheet_key)
 # credentials data frame for testing (username = "test" and password = "password")
 # NOTE: in real use this would open an existing data frame containing user credentials
 
-  if (!file.exists("credentials/credentials.rds")) {
+  if (!file.exists("credentials/credentials2.rds")) {
     credentials <- data.frame(user = "test", 
                               pw = "380796939c86c55d6aa8ea8c941f7652", 
                               locked_out = FALSE,
