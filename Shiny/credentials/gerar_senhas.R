@@ -20,4 +20,6 @@ credentials2 <- rbind(credentials2 ,
                                  user = c('OFMAL','knabuN'),
                                  pw   = c('OFMAL','knabuN')) )
 
+credentials2 <- credentials2 %>% mutate(locked_out = FALSE)
+
 saveRDS(credentials2,'~/AutomationJobs/Shiny/credentials/credentials2.rds')
