@@ -7,7 +7,7 @@ library(googlesheets)
 lista<-readRDS("CBO.RDS")
 credentials <- readRDS("credentials/credentials2.rds")
 
-gs_auth(token = "googlesheets_token.rds")
+gs_auth(token = "googlesheets_token2.rds")
 sheet_key <- '1OQYehkar5uHcSLlMu0B2C7S3TADzC8jGtE7jxCylfqk'
 sheet <- gs_key(sheet_key)
 
