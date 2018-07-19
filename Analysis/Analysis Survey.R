@@ -39,9 +39,9 @@ full.star<- scale(full.star, scale = FALSE)
 X <- as.matrix(full[,-8360])
 Y<- full[,8360]
 X.star <-as.matrix(full.star)
-X<-X[1:200,1:100]
-X.star<-X.star[1:300,1:100]
-Y<-Y[1:200]
+#X<-X[1:200,1:100]
+#X.star<-X.star[1:300,1:100]
+#Y<-Y[1:200]
 #Compile RcppEigen
 Rcpp::sourceCpp("Analysis/Kernel.cpp")
 
@@ -74,7 +74,16 @@ marginal.ll<-function(theta){
   return(-(inf+reg+nor))
 }
 n.par<-ncol(X)+2
-res<- optim(rep(1,n.par),marginal.ll,lower=rep(0.001,n.par), upper=rep(100,n.par),method="L-BFGS-B",control=list(maxit=10000))	
+
+
+start.time <- Sys.time()
+
+res<- optim(rep(1,n.par),marginal.ll,lower=rep(0.001,n.par), upper=rep(1000,n.par),method="L-BFGS-B",control=list(maxit=10000))	
+
+end.time <- Sys.time()
+time.taken <- end.time - start.time
+time.taken
+
 theta<-res$par
 
 #Parameters            
