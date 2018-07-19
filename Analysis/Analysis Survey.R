@@ -1,9 +1,7 @@
 library(tidyverse)
-library(kergp)
-library(earth)
 library(RcppEigen)
 library(MASS)
-library(tidyverse)
+
 #Read the survey
 df.raw <- read.csv("Data\\Automation_sheet.csv")
 colnames(df.raw)[2]<-"COD_OCUPACAO"
