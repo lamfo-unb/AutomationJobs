@@ -1,6 +1,11 @@
+start.time <- Sys.time()
+
 library(tidyverse)
 library(RcppEigen)
 library(MASS)
+
+#Set the seed
+set.seed(3742)
 
 #Read the survey
 df.raw <- read.csv("Data\\Automation_sheet.csv")
@@ -59,9 +64,8 @@ marginal.ll<-function(theta){
   #Information
   inf <- as.numeric((-0.5)*(t(Y)%*%k.xx%*%Y))
   #Regularization
-  det <- det(k.xx)
   if(is.infinite(logdet)){
-    return(-1e+10)
+    return(1e+15)
   }
   else{
     reg <- as.numeric((-0.5)*logdet)
@@ -73,15 +77,7 @@ marginal.ll<-function(theta){
 }
 n.par<-ncol(X)+2
 
-
-start.time <- Sys.time()
-
 res<- optim(rep(1,n.par),marginal.ll,lower=rep(0.001,n.par), upper=rep(1000,n.par),method="L-BFGS-B",control=list(maxit=10000))	
-
-end.time <- Sys.time()
-time.taken <- end.time - start.time
-time.taken
-
 theta<-res$par
 
 #Parameters            
@@ -105,7 +101,7 @@ f.bar.star <- k.xsx%*%inv%*%Y
 cov.f.star <- k.xsxs - k.xsx%*%inv%*%k.xxs
 
 #Simulate values
-n.sim<-100
+n.sim<-5000
 sim.X <- t(mvrnorm(n.sim, f.bar.star, cov.f.star))
 res.X <-data.frame("COD_OCUPACAO"=df.star$COD_OCUPACAO,sim.X)
 
@@ -140,3 +136,8 @@ export$COD_OCUPACAO<-sapply(strsplit(export$ID,"_"), `[`, 1)
 export<-export[,c(-1,-2)]
 export<-export[,c(2,1)]
 colnames(export)[2]<-"Probability"
+write.csv(export,"Data\\Results.csv")
+
+end.time <- Sys.time()
+time.taken <- end.time - start.time
+time.taken
