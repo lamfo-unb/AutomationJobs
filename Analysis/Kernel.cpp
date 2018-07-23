@@ -1,6 +1,67 @@
 #include <RcppEigen.h>
+#include <Rcpp.h>
+#include <RcppParallel.h>
 // [[Rcpp::depends(RcppEigen)]]
+// [[Rcpp::depends(RcppParallel)]]
+using namespace RcppParallel;
 
+
+// define both_non_NA(a, b)
+inline bool both_non_NA(double a, double b) {
+  return (!ISNAN(a) && !ISNAN(b));
+}
+
+struct IBSKernel : public Worker
+{
+  // source matrix
+  const RMatrix<double> X;
+  
+  // source vector
+  //const RVector<double> lambda;
+  const RMatrix<double> lambda;
+
+  // destination matrix
+  RMatrix<double> out;
+  
+  // initialize with source and destination
+  IBSKernel(const Rcpp::NumericMatrix X, Rcpp::NumericMatrix out, const Rcpp::NumericMatrix lambda) 
+    : X(X), out(out), lambda(lambda) {}
+  
+  // calculate the IBS kernel of the range of elements requested
+  void operator()(std::size_t begin, std::size_t end) {
+    int p = X.ncol();
+    for (std::size_t i = begin; i < end; i++) {
+      for (std::size_t j = 0; j < i; j++) {
+        double val = 0;
+        for (int k = 0; k < p; k++) {
+          double lam = lambda(k,0);
+          double xi = X(i, k), xj = X(j, k);
+          if (both_non_NA(xi, xj)) {
+            val = val + (-0.5*std::pow((xi-xj)/lam,2.0));
+          }
+        }
+        out(j, i) = out(i, j) = val;
+      }
+    }
+  }
+};
+
+// [[Rcpp::export]]
+Rcpp::NumericMatrix IBS_kernel_C_parallel(Rcpp::NumericMatrix X, Rcpp::NumericMatrix lambdaVec) {
+  
+  Rcpp::NumericMatrix outFull(X.nrow(), X.nrow());
+    // allocate the output matrix
+    Rcpp::NumericMatrix out(X.nrow(), X.nrow());
+    
+    // IBSKernel functor (pass input and output matrixes)
+    IBSKernel ibskernel(X, out, lambdaVec);
+    
+    // call parallelFor to do the work
+    parallelFor(0, X.nrow(), ibskernel);
+    
+  // return the output matrix
+  return out;
+}
 
 
 // Create the Kernel matrix

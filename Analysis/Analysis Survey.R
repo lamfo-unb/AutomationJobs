@@ -2,6 +2,7 @@ library(tidyverse)
 library(kergp)
 library(earth)
 library(RcppEigen)
+library(RcppParallel)
 library(MASS)
 library(tidyverse)
 #Read the survey
@@ -39,12 +40,22 @@ full.star<- scale(full.star, scale = FALSE)
 X <- as.matrix(full[,-8360])
 Y<- full[,8360]
 X.star <-as.matrix(full.star)
-X<-X[1:200,1:100]
-X.star<-X.star[1:300,1:100]
-Y<-Y[1:200]
+#X<-X[1:200,1:100]
+#X.star<-X.star[1:300,1:100]
+#Y<-Y[1:200]
 #Compile RcppEigen
 Rcpp::sourceCpp("Analysis/Kernel.cpp")
 
+#Teste
+#X<-matrix(rnorm(50),ncol=5)
+#lambdaVec<-rep(1,5)
+#sigma2f<-0.5
+#kernel1 <- sigma2f*exp(IBS_kernel_C_parallel( X, matrix(lambdaVec,ncol=1)))
+#kernel2 <- KernelMatrix(X,lambdaVec,sigma2f)
+#all(kernel1==kernel2)
+
+n.par<-ncol(X)+2
+theta<-rep(1,n.par)
 #Marginal Log-Likelihood (Type-II Likelihood)
 marginal.ll<-function(theta){
   #Parameters
@@ -53,7 +64,16 @@ marginal.ll<-function(theta){
   lambda  <- theta[3:length(theta)]
   n <- nrow(X)
   #Kernel
-  k.xx <- KernelMatrix(X,lambda,sigma2f)
+  #start_time <- Sys.time()
+  k.xx <- sigma2f*exp(IBS_kernel_C_parallel( X, matrix(lambda,ncol=1)))
+  #end_time <- Sys.time()
+  #end_time - start_time
+  
+  #start_time <- Sys.time()
+  #k.xx <- KernelMatrix(X,lambda,sigma2f)
+  #end_time <- Sys.time()
+  #end_time - start_time
+  
   k.xx <- k.xx + sigma.n^2*diag(1, n)
   #k.xx <- as.matrix(Matrix::nearPD(k.xx)$mat)
   L <- chol(k.xx)
@@ -73,8 +93,7 @@ marginal.ll<-function(theta){
   #Return (Maximize)
   return(-(inf+reg+nor))
 }
-n.par<-ncol(X)+2
-res<- optim(rep(1,n.par),marginal.ll,lower=rep(0.001,n.par), upper=rep(100,n.par),method="L-BFGS-B",control=list(maxit=10000))	
+res<- optim(theta,marginal.ll,lower=rep(0.001,n.par), upper=rep(100,n.par),method="L-BFGS-B",control=list(maxit=10000))	
 theta<-res$par
 
 #Parameters            
