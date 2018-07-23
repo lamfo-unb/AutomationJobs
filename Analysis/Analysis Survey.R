@@ -5,6 +5,7 @@ library(RcppEigen)
 library(RcppParallel)
 library(MASS)
 library(tidyverse)
+set.seed(3938)
 #Read the survey
 df.raw <- read.csv("Data\\Automation_sheet.csv")
 colnames(df.raw)[2]<-"COD_OCUPACAO"
@@ -126,9 +127,9 @@ res.X[,2:(n.sim+1)] <- res.X[,2:(n.sim+1)] + mean(df$Score)
 res.X[,2:(n.sim+1)] <- exp(res.X[,2:(n.sim+1)])/(1+exp(res.X[,2:(n.sim+1)]))
 res.X$Sum <- rowSums(res.X[,2:(n.sim+1)])
 res.sum <- res.X  %>% 
-           group_by(COD_OCUPACAO) %>% 
-           summarise(Sum=sum(Sum),
-                     n=n())
+  group_by(COD_OCUPACAO) %>% 
+  summarise(Sum=sum(Sum),
+            n=n())
 res.X<-res.X %>% select(-Sum)
 res.sum$Prob<-(res.sum$Sum/(res.sum$n*n.sim))
 res.X <- full_join(res.sum,res.X,by="COD_OCUPACAO")
@@ -144,10 +145,10 @@ temp$Count<-1
 export <- temp %>% select(-Prob) %>% group_by(COD_OCUPACAO) %>%  mutate(cum = cumsum(Count))
 export$ID<-paste0(export$COD_OCUPACAO,"_",export$cum)
 export<- export %>% 
-         ungroup() %>% 
-         select(-COD_OCUPACAO, -Count, -cum) %>% 
-         group_by(ID) %>% 
-         gather(ID)
+  ungroup() %>% 
+  select(-COD_OCUPACAO, -Count, -cum) %>% 
+  group_by(ID) %>% 
+  gather(ID)
 export$COD_OCUPACAO<-sapply(strsplit(export$ID,"_"), `[`, 1)
 export<-export[,c(-1,-2)]
 export<-export[,c(2,1)]
