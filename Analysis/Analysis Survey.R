@@ -84,7 +84,7 @@ marginal.ll<-function(theta){
   #Regularization
   det <- det(k.xx)
   if(is.infinite(logdet)){
-    return(-1e+10)
+    return(+1e+10)
   }
   else{
     reg <- as.numeric((-0.5)*logdet)
