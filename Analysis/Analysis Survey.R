@@ -153,3 +153,4 @@ export$COD_OCUPACAO<-sapply(strsplit(export$ID,"_"), `[`, 1)
 export<-export[,c(-1,-2)]
 export<-export[,c(2,1)]
 colnames(export)[2]<-"Probability"
+save.image("Data\\AnalysisObjects.RData")
