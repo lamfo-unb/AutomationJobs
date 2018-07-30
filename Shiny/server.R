@@ -1,80 +1,99 @@
 library(googlesheets)
 library(dplyr)
+library(shinyTree)
 
-table <- "responses"
+#table <- "responses"
 
-saveData <- function(data) {
-  # Grab the Google Sheet
-  sheet <- gs_title(table)
-  # Add the data as a new row
-  gs_add_row(sheet, input = data)
-}
+# saveData <- function(data) {
+#   # Grab the Google Sheet
+#   sheet <- gs_title(table)
+#   # Add the data as a new row
+#   gs_add_row(sheet, input = data)
+# }
 
 lista<-readRDS("CBO.RDS")
-indRnd<- sample(1:length(lista),1,F)
+indRnd<- sample(1:nrow(lista),1,F)
 
 shinyServer(function(input, output, session) {
 #### UI code --------------------------------------------------------------
   output$ui <- renderUI({
     if (user_input$authenticated == FALSE) {
       ##### UI code for login page
-      fluidPage(
-        fluidRow(
-          column(width = 2, offset = 5,
-            br(), br(), br(), br(),
-            uiOutput("uiLogin"),
-            uiOutput("pass")
-          )
-        )
-      )
+      htmlTemplate("www/index.html")
+      # fluidPage(
+      #   fluidRow(
+      #     column(width = 2, offset = 5,
+      #       br(), br(), br(), br(),
+      #       uiOutput("uiLogin"),
+      #       uiOutput("pass")
+      #     )
+      #   )
+      # )
     } else {
       #### Your app's UI code goes here!
       fluidPage(
-        titlePanel("Nivel de automacao"),
-        fluidRow(
-          column(4, wellPanel(
-            sliderInput("prob", "Probabilidade de automacao:",
-                        min = 0, max = 100, value = 50, step = 0.1)
-          ),
-          actionButton("action", label = "Enviar")
-          ),
-          column(8,
-                 helpText("Essa e a descricao da ocupacao.\nEm uma escala de 0 a 100 determine a probabilidade de automacao.\n
-                   \nQuanto maior a probabilidade, mas facil e a automatizacao\nCaso nao saiba opinar mantenha 50% como estimativa de automacao."),
-                 br(),
-                 br(),
-                 textOutput("selected_var"),
-                 br(),
-                 br(),
-                 verbatimTextOutput("text")
-          )
-        )
-      )
+      htmlTemplate("www/index2.html",
+                   printar = tags$b(textOutput("selected_var")),
+                   tree = shinyTree("tree")) )
+      # fluidPage(
+      #   titlePanel("Nivel de automacao"),
+      #   fluidRow(
+      #     column(4, wellPanel(
+      #       sliderInput("prob", "Probabilidade de automacao:",
+      #                   min = 0, max = 100, value = 50, step = 0.1)
+      #     ),
+      #     actionButton("action" , label = "Enviar"),
+      #     actionButton("proximo", label = "Pular")
+      #     ),
+      #     column(8,
+      #            helpText("Essa e a descricao da ocupacao.\nEm uma escala de 0 a 100 determine a probabilidade de automacao.\n
+      #              \nQuanto maior a probabilidade, mas facil e a automatizacao\nCaso nao saiba opinar mantenha 50% como estimativa de automacao."),
+      #            br(),
+      #            br(),
+      #            h2(tags$b(textOutput("selected_var"))),
+      #            br(),
+      #            br(),
+      #            # verbatimTextOutput("text")
+      #            shinyTree("tree")
+      #     )
+      #   )
+      # )
     }
   })
   
 #### YOUR APP'S SERVER CODE GOES HERE ----------------------------------------
   #Text
 
+    sorteio <- reactiveValues( numero = indRnd )
+    
+    observeEvent(c(input$action,input$proximo),{
+      sorteio$numero <- sample(1:nrow(lista),1,F)
+    })
+    
     output$selected_var<-renderText({
-      teste <- as.character(lista$NOME_GRANDE_AREA)
+      teste <- as.character(lista$TITULO)
       if(Sys.info()[1] == "Linux") { Encoding(teste) <- 'latin1' }
-      return(teste[indRnd])
+      return(teste[sorteio$numero])
+    })
+    
+    output$tree <- renderTree({
+      listagem(sorteio$numero)
     })
 
-     output$text <- renderText({
-       teste <- lista$Texto
-       if(Sys.info()[1] == "Linux") { Encoding(teste) <- 'latin1' }
-       return( as.character( teste[indRnd] ) )
-       })
+    
+     # output$text <- renderText({
+     #   teste <- lista$Texto
+     #   if(Sys.info()[1] == "Linux") { Encoding(teste) <- 'latin1' }
+     #   return( as.character( teste[indRnd] ) )
+     #   })
 
        observeEvent(input$action,{
          df = data.frame(Usuario = credentials$user[which(credentials$user == input$user_name)], 
                          CBO_5D  = lista$COD_OCUPACAO[indRnd],
                          Prob    = input$prob)
          
-         sheet_key <- '1OQYehkar5uHcSLlMu0B2C7S3TADzC8jGtE7jxCylfqk'
-         sheet <- gs_key(sheet_key)
+         #sheet_key <- '1OQYehkar5uHcSLlMu0B2C7S3TADzC8jGtE7jxCylfqk'
+         #sheet <- gs_key(sheet_key)
          gs_add_row(sheet, input = df)
          
        })
@@ -95,7 +114,8 @@ shinyServer(function(input, output, session) {
   #       is bad (username precedent over pw) or he is locked out. set status value for
   #       error message code below
   observeEvent(input$login_button, {
-    credentials <- readRDS("credentials/credentials.rds")
+    
+    credentials <- readRDS("credentials/credentials2.rds")
     row_username <- which(credentials$user == input$user_name)
     row_password <- which(credentials$pw == digest(input$password)) # digest() makes md5 hash of password
 
@@ -120,7 +140,7 @@ shinyServer(function(input, output, session) {
       if (length(row_username) == 1) {
         credentials$locked_out[row_username] <- TRUE
         
-        saveRDS(credentials, "credentials/credentials.rds")
+        saveRDS(credentials, "credentials/credentials2.rds")
       }
     }
       
