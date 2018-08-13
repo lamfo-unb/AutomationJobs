@@ -46,13 +46,12 @@ hist(stat$CV)
 quantile(stat$CV,probs=seq(0,1,length.out = 100))
 
 #Keep the top 5%
-statCV <- stat %>% 
-        filter(CV>1.0) %>% 
-        select(word)
+statCV <-data.frame(word=stat$word[which(stat$CV>1.0)])
+statCV$word<-as.character(statCV$word)
 
 #Merge with listWords
-listWordsFilter<- listWords %>% 
-                  inner_join(statCV,"word")
+listWords$word<-as.character(listWords$word)
+listWordsFilter<- merge(listWords,statCV,by="word",all=F)
 
 #Check if all CBO´s are here
 length(unique(listWords$COD_OCUPACAO))
