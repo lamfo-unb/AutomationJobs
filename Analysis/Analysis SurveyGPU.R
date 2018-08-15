@@ -6,6 +6,10 @@ library(RcppParallel)
 library(MASS)
 library(tidyverse)
 library(gpuR)
+library(BB)
+library(dfoptim)
+library(pso)
+library(RcppDE)
 set.seed(3938)
 #Read the survey
 df.raw <- read.csv("Data\\Automation_sheet.csv")
@@ -15,6 +19,7 @@ df.raw <- df.raw[!is.na(df.raw$COD_OCUPACAO),]
 
 #Read the data
 dataWords<-readRDS("Data/CBOwords.rds")
+#dataWords<-dataWords[,1:100]
 
 #Inner join
 df.full<-full_join(df.raw,dataWords,by="COD_OCUPACAO")
@@ -22,9 +27,9 @@ df<-df.full[which(!is.na(df.full$Prob)),]
 df.star<-df.full
 #Remove columns with zero
 df<-na.omit(df)
-ind<-which(colSums(df[,-1])==0)+1
-df<-df[,-ind]
-df.star<-df.star[,-ind]
+#ind<-which(colSums(df[,-1])==0)+1
+#df<-df[,-ind]
+#df.star<-df.star[,-ind]
 
 #Data transformation
 df$Prob<-df$Prob/100
@@ -48,7 +53,7 @@ X.star <-as.matrix(full.star)
 listContexts()
 
 # set second context
-setContext(3L)
+setContext(1L)
 
 
 #X<-X[1:200,1:100]
@@ -59,7 +64,7 @@ setContext(3L)
 
 
 #Teste
-Rcpp::sourceCpp("Analysis/Kernel.cpp")
+#Rcpp::sourceCpp("Analysis/Kernel.cpp")
 #X<-matrix(rnorm(50),ncol=5)
 #lambdaVec<-seq(1,5)
 #sigma2f<-0.5
@@ -87,26 +92,26 @@ marginal.ll<-function(theta){
   n <- nrow(X)
   
   #GPU
-  start_time <- Sys.time()
+  #start_time <- Sys.time()
   lambdaMat <- gpuMatrix(diag(1/lambda))
   X.gpu <- gpuMatrix(X)
   X.gpu <- X.gpu %*% lambdaMat
   k.xx <- suppressWarnings(gpuR::distance(X.gpu,X.gpu, method="sqEuclidean"))
   k.xx <- sigma2f*exp(-0.5*k.xx)
   k.xx <- as.matrix(k.xx)
-  end_time <- Sys.time()
-  end_time - start_time
+  #end_time <- Sys.time()
+  #end_time - start_time
   
   #Kernel
-  start_time <- Sys.time()
-  k.xx <- sigma2f*exp(IBS_kernel_C_parallel( X, matrix(lambda,ncol=1)))
-  end_time <- Sys.time()
-  end_time - start_time
+  #start_time <- Sys.time()
+  #k.xx <- sigma2f*exp(IBS_kernel_C_parallel( X, matrix(lambda,ncol=1)))
+  #end_time <- Sys.time()
+  #end_time - start_time
   
-  start_time <- Sys.time()
-  k.xx <- KernelMatrix(X,lambda,sigma2f)
-  end_time <- Sys.time()
-  end_time - start_time
+  #start_time <- Sys.time()
+  #k.xx <- KernelMatrix(X,lambda,sigma2f)
+  #end_time <- Sys.time()
+  #end_time - start_time
   
   k.xx <- k.xx + sigma.n^2*diag(1, n)
   #k.xx <- as.matrix(Matrix::nearPD(k.xx)$mat)
@@ -127,7 +132,22 @@ marginal.ll<-function(theta){
   #Return (Maximize)
   return(-(inf+reg+nor))
 }
-res<- optim(theta,marginal.ll,lower=rep(0.001,n.par), upper=rep(100,n.par),method="L-BFGS-B",control=list(maxit=10000))	
+
+start_time <- Sys.time()
+res <- dfoptim::nmkb(theta, marginal.ll,lower=rep(0.001,n.par), upper=rep(100,n.par))
+end_time <- Sys.time()
+end_time - start_time
+
+
+res <- RcppDE::DEoptim(marginal.ll,lower=rep(0.001,n.par), upper=rep(100,n.par), DEoptim.control(NP = 50, itermax = 100, CR = 0.5, F = 0.8, trace = TRUE))
+
+
+help("BBsolve")
+res <- spg(theta,marginal.ll,lower=rep(0.001,n.par), upper=rep(100,n.par), control=list(maxit=100, trace=TRUE))
+
+res <- BBsolve(theta,marginal.ll) 
+#res<- optim(theta,marginal.ll,lower=rep(0.001,n.par), upper=rep(100,n.par),method="L-BFGS-B",control=list(maxit=100, trace=TRUE))
+res<- optim(theta,marginal.ll,method="CG",control=list(maxit=100, trace=TRUE))	
 theta<-res$par
 
 #Parameters            
