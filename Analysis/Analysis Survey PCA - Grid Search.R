@@ -5,7 +5,7 @@ library(RcppEigen)
 library(RcppParallel)
 library(MASS)
 library(tidyverse)
-library(GA)
+library(dfoptim)
 set.seed(3938)
 #Read the survey
 df.raw <- read.csv("Data\\Automation_sheet.csv")
@@ -86,7 +86,7 @@ marginal.ll<-function(theta){
   #Regularization
   det <- det(k.xx)
   if(is.infinite(logdet)){
-    return(+1e+10)
+    return(-1e+10)
   }
   else{
     reg <- as.numeric((-0.5)*logdet)
@@ -99,20 +99,34 @@ marginal.ll<-function(theta){
 
 start_time <- Sys.time()
 
-res <- ga(type = "real-valued", 
-                fitness =  marginal.ll,
-                lower = rep(0.001,n.par), upper= rep(100,n.par),
-                popSize = 10, maxiter = 5, pmutation = 0.5,
-                optim = FALSE)
+#Genetic Algorithm
+pop <- 5
+
+#First Iteration
+generate <- runif(pop*n.par,0.001,100)
+generate.mat <-matrix(generate,nrow=pop)
+eval<-apply(generate.mat,1,marginal.ll)
+
 end_time <- Sys.time()
 end_time - start_time
-#Time difference of 43.66486 mins
+
+#Cross-over
+keep<-order(eval, decreasing = T)
+keep<-which(keep<3)
+top <- generate.mat[keep,]
+
+
+lista<-list()
+for(i in 1:n.par){
+  lista[[i]]<-seq(0.001,100,length.out = 10)
+}
+grid<-expand.grid(lista)
+
+res <- dfoptim::nmkb(theta, marginal.ll,lower=rep(0.001,n.par), upper=rep(100,n.par))
 
 save.image("Data\\AnalysisObjects.RData")
 
-plot(res@fitness,type="l")
-
-theta<-res@solution
+theta<-res$par
 
 #Parameters            
 sigma2f <- theta[1]
@@ -147,10 +161,10 @@ res.sum <- res.X  %>%
   group_by(COD_OCUPACAO) %>% 
   summarise(Sum=sum(Sum),
             n=n())
-res.X<-res.X[,-ncol(res.X)]
+res.X<-res.X %>% select(-Sum)
 res.sum$Prob<-(res.sum$Sum/(res.sum$n*n.sim))
 res.X <- full_join(res.sum,res.X,by="COD_OCUPACAO")
-res.X <- res.X[,c(-2,-3)]
+res.X <- res.X %>%  select(-n,-Sum)
 
 #Final data
 final.df<-full_join(res.X[,c(1,2)],df[,c(2,3)],by="COD_OCUPACAO")

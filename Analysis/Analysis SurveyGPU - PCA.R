@@ -5,7 +5,11 @@ library(RcppEigen)
 library(RcppParallel)
 library(MASS)
 library(tidyverse)
-library(GA)
+library(gpuR)
+library(BB)
+library(dfoptim)
+library(pso)
+library(RcppDE)
 set.seed(3938)
 #Read the survey
 df.raw <- read.csv("Data\\Automation_sheet.csv")
@@ -49,16 +53,40 @@ X.star <-as.matrix(full.star)
 #Compile RcppEigen
 Rcpp::sourceCpp("Analysis/Kernel.cpp")
 
+#List all context GPU
+listContexts()
+
+# set second context
+setContext(1L)
+
+
+#X<-X[1:200,1:100]
+#X.star<-X.star[1:300,1:100]
+#Y<-Y[1:200]
+
+
+
+
 #Teste
+#Rcpp::sourceCpp("Analysis/Kernel.cpp")
 #X<-matrix(rnorm(50),ncol=5)
-#lambdaVec<-rep(1,5)
+#lambdaVec<-seq(1,5)
 #sigma2f<-0.5
 #kernel1 <- sigma2f*exp(IBS_kernel_C_parallel( X, matrix(lambdaVec,ncol=1)))
 #kernel2 <- KernelMatrix(X,lambdaVec,sigma2f)
-#all(kernel1==kernel2)
 
+#X.gpu <- gpuMatrix(X)
+#lambdaVec <- gpuMatrix(diag(1/lambdaVec))
+#X.gpu <- X.gpu %*% lambdaVec
+#kernel3 <- gpuR::distance(X.gpu,X.gpu, method="sqEuclidean")
+#kernel3 <- sigma2f*exp(-0.5*kernel3)
+#kernel3 <- as.matrix(kernel3)
+
+#all(kernel1==kernel3)
+
+#Y.gpu <- vclVector(Y, type = "float")
 n.par<-ncol(X)+2
-theta<-rep(1,n.par)
+theta<-rep(50,n.par)
 #Marginal Log-Likelihood (Type-II Likelihood)
 marginal.ll<-function(theta){
   #Parameters
@@ -66,9 +94,20 @@ marginal.ll<-function(theta){
   sigma.n <- theta[2]
   lambda  <- theta[3:length(theta)]
   n <- nrow(X)
+  
+  #GPU
+  ### start_time <- Sys.time()
+  lambdaMat <- vclMatrix(diag(1/lambda))
+  X.gpu <- vclMatrix(X)
+  X.gpu <- X.gpu %*% lambdaMat
+  k.xx <- suppressWarnings(gpuR::distance(X.gpu,X.gpu, method="sqEuclidean"))
+  k.xx <- sigma2f*exp(-0.5*k.xx)
+  #k.xx <- as.matrix(k.xx)
+
+  
   #Kernel
   #start_time <- Sys.time()
-  k.xx <- sigma2f*exp(IBS_kernel_C_parallel( X, matrix(lambda,ncol=1)))
+  #k.xx <- sigma2f*exp(IBS_kernel_C_parallel( X, matrix(lambda,ncol=1)))
   #end_time <- Sys.time()
   #end_time - start_time
   
@@ -78,13 +117,15 @@ marginal.ll<-function(theta){
   #end_time - start_time
   
   k.xx <- k.xx + sigma.n^2*diag(1, n)
-  #k.xx <- as.matrix(Matrix::nearPD(k.xx)$mat)
   L <- chol(k.xx)
-  logdet <- 2*sum(log(diag(L)))
+  logdet <- 2*sum(log(as.matrix(diag(L))))
   #Information
-  inf <- as.numeric((-0.5)*(t(Y)%*%k.xx%*%Y))
+  inf <- as.numeric((-0.5)*(t(Y)%*%as.matrix(k.xx)%*%Y))
   #Regularization
   det <- det(k.xx)
+  
+  ### end_time <- Sys.time()
+  ### end_time - start_time
   if(is.infinite(logdet)){
     return(+1e+10)
   }
@@ -94,25 +135,32 @@ marginal.ll<-function(theta){
     nor <- -(n/2)*log(2*pi)
   }
   #Return (Maximize)
-  return((inf+reg+nor))
+  return(-(inf+reg+nor))
 }
 
 start_time <- Sys.time()
-
-res <- ga(type = "real-valued", 
-                fitness =  marginal.ll,
-                lower = rep(0.001,n.par), upper= rep(100,n.par),
-                popSize = 10, maxiter = 5, pmutation = 0.5,
-                optim = FALSE)
+res <- optim(theta, marginal.ll, method = "BFGS", lower=rep(0.001,n.par), 
+                     upper=rep(100,n.par), control=list(reltol=1e-1, maxit=1, trace = T))
 end_time <- Sys.time()
 end_time - start_time
-#Time difference of 43.66486 mins
 
-save.image("Data\\AnalysisObjects.RData")
+start_time <- Sys.time()
+res <- dfoptim::nmkb(theta, marginal.ll,lower=rep(0.001,n.par), 
+                     upper=rep(100,n.par), control=list(maxfeval=2, tol=1e-01, trace=T))
+end_time <- Sys.time()
+end_time - start_time
 
-plot(res@fitness,type="l")
 
-theta<-res@solution
+res <- RcppDE::DEoptim(marginal.ll,lower=rep(0.001,n.par), upper=rep(100,n.par), DEoptim.control(NP = 50, itermax = 100, CR = 0.5, F = 0.8, trace = TRUE))
+
+
+help("BBsolve")
+res <- spg(theta,marginal.ll,lower=rep(0.001,n.par), upper=rep(100,n.par), control=list(maxit=100, trace=TRUE))
+
+res <- BBsolve(theta,marginal.ll) 
+#res<- optim(theta,marginal.ll,lower=rep(0.001,n.par), upper=rep(100,n.par),method="L-BFGS-B",control=list(maxit=100, trace=TRUE))
+res<- optim(theta,marginal.ll,method="CG",control=list(maxit=100, trace=TRUE))	
+theta<-res$par
 
 #Parameters            
 sigma2f <- theta[1]
@@ -147,10 +195,10 @@ res.sum <- res.X  %>%
   group_by(COD_OCUPACAO) %>% 
   summarise(Sum=sum(Sum),
             n=n())
-res.X<-res.X[,-ncol(res.X)]
+res.X<-res.X %>% select(-Sum)
 res.sum$Prob<-(res.sum$Sum/(res.sum$n*n.sim))
 res.X <- full_join(res.sum,res.X,by="COD_OCUPACAO")
-res.X <- res.X[,c(-2,-3)]
+res.X <- res.X %>%  select(-n,-Sum)
 
 #Final data
 final.df<-full_join(res.X[,c(1,2)],df[,c(2,3)],by="COD_OCUPACAO")

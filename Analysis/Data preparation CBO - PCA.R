@@ -76,3 +76,14 @@ pcaWords<-data.frame(COD_OCUPACAO=dataWords$COD_OCUPACAO,pcaWords)
 saveRDS(pcaWords,"Data/CBOPCAwords.rds")
 rm(list=setdiff(ls(), "pca"))
 save.image("Data/PCA.RData")
+
+
+
+#############################################################################
+rm(list=ls())
+load("Data/PCA.RData")
+
+library(factoextra)
+eig.val <- get_eigenvalue(pca)
+fviz_screeplot(pca, ncp=1000, choice="variance", axis.ticks = element_blank())
+fviz_screeplot(res.pca, ncp=10, choice="eigenvalue")
