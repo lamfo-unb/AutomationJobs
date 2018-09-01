@@ -20,6 +20,9 @@ df.raw <- df.raw[!is.na(df.raw$COD_OCUPACAO),]
 #Read the data
 dataWords<-readRDS("Data/CBOPCAwords.rds")
 
+#70% of variance explained
+dataWords<-dataWords[,1:373]
+
 #Inner join
 df.full<-full_join(df.raw,dataWords,by="COD_OCUPACAO")
 df<-df.full[which(!is.na(df.full$Prob)),]
@@ -137,6 +140,19 @@ marginal.ll<-function(theta){
   #Return (Maximize)
   return(-(inf+reg+nor))
 }
+
+
+start_time <- Sys.time()
+res <- RcppDE::DEoptim(marginal.ll,lower=rep(0.001,n.par), 
+                       upper=rep(100,n.par), 
+                       DEoptim.control(NP = 10*n.par,strategy = 1, itermax = 100,
+                                       CR = 0.5, F = 0.8, p=0.8, trace = TRUE))
+end_time <- Sys.time()
+end_time - start_time
+
+save.image("Solution.RData")
+
+
 
 start_time <- Sys.time()
 res <- optim(theta, marginal.ll, method = "BFGS", lower=rep(0.001,n.par), 
