@@ -5,7 +5,7 @@ library(RcppEigen)
 library(RcppParallel)
 library(MASS)
 library(tidyverse)
-library(GA)
+library(gpuR)
 library(DEoptim)
 library(parallel)
 library(parallelDist)
@@ -55,27 +55,43 @@ X.star <-as.matrix(full.star)
 #Compile RcppEigen
 Rcpp::sourceCpp("Analysis/Kernel.cpp")
 
-library(parallelDist)
-dist.euclidean <- parDist(X, method = "euclidean")
+#Check if double is avaible - if FALSE must define type='float'
+deviceHasDouble()
+
+#List all context GPU
+listContexts()
+
+# set second context
+setContext(1L)
+
+
+#X<-X[1:200,1:100]
+#X.star<-X.star[1:300,1:100]
+#Y<-Y[1:200]
+
+
 
 
 #Teste
-X<-matrix(rnorm(50),ncol=5)
-lambdaVec<-rep(1,5)
-sigma2f<-0.5
-kernel1 <- sigma2f*exp(IBS_kernel_C_parallel( X, matrix(lambdaVec,ncol=1)))
-kernel2 <- KernelMatrix(X,lambdaVec,sigma2f)
-kernel3 <- sigma2f*exp(-0.5*parDist(X, method = "euclidean")^2)
+#Rcpp::sourceCpp("Analysis/Kernel.cpp")
+#X<-matrix(rnorm(50),ncol=5)
+#lambdaVec<-seq(1,5)
+#sigma2f<-0.5
+#kernel1 <- sigma2f*exp(IBS_kernel_C_parallel( X, matrix(lambdaVec,ncol=1)))
+#kernel2 <- KernelMatrix(X,lambdaVec,sigma2f)
 
+#X.gpu <- gpuMatrix(X)
+#lambdaVec <- gpuMatrix(diag(1/lambdaVec))
+#X.gpu <- X.gpu %*% lambdaVec
+#kernel3 <- gpuR::distance(X.gpu,X.gpu, method="sqEuclidean")
+#kernel3 <- sigma2f*exp(-0.5*kernel3)
+#kernel3 <- as.matrix(kernel3)
 
-k.xx <- parDist(X, method = "euclidean")
-k.xx <- k.xx^2
-k.xx <- k.xx)
+#all(kernel1==kernel3)
 
-#all(kernel1==kernel2)
-
+#Y.gpu <- vclVector(Y, type = "float")
 n.par<-ncol(X)+2
-theta<-rep(1,n.par)
+theta<-rep(50,n.par)
 #Marginal Log-Likelihood (Type-II Likelihood)
 marginal.ll<-function(theta){
   #Parameters
@@ -84,9 +100,15 @@ marginal.ll<-function(theta){
   lambda  <- theta[3:length(theta)]
   n <- nrow(X)
   
-  k.xx <- parDist(X, method = "euclidean")
-  k.xx <- k.xx^2
+  #GPU
+  ### start_time <- Sys.time()
+  lambdaMat <- vclMatrix(diag(1/lambda),type='float')
+  X.gpu <- vclMatrix(X, type='float')
+  X.gpu <- X.gpu %*% lambdaMat
+  k.xx <- suppressWarnings(gpuR::distance(X.gpu,X.gpu, method="sqEuclidean"))
   k.xx <- sigma2f*exp(-0.5*k.xx)
+  #k.xx <- as.matrix(k.xx)
+
   
   #Kernel
   #start_time <- Sys.time()
@@ -100,13 +122,15 @@ marginal.ll<-function(theta){
   #end_time - start_time
   
   k.xx <- k.xx + sigma.n^2*diag(1, n)
-  #k.xx <- as.matrix(Matrix::nearPD(k.xx)$mat)
   L <- chol(k.xx)
-  logdet <- 2*sum(log(diag(L)))
+  logdet <- 2*sum(log(as.matrix(diag(L))))
   #Information
-  inf <- as.numeric((-0.5)*(t(Y)%*%k.xx%*%Y))
+  inf <- as.numeric((-0.5)*(t(Y)%*%as.matrix(k.xx)%*%Y))
   #Regularization
   det <- det(k.xx)
+  
+  ### end_time <- Sys.time()
+  ### end_time - start_time
   if(is.infinite(logdet)){
     return(+1e+10)
   }
@@ -118,68 +142,28 @@ marginal.ll<-function(theta){
   #Return (Maximize)
   return(-(inf+reg+nor))
 }
-#n.par<-374
-#initialPop<-eval(seq(0.001,100,length.out = 2))
-#final <- vector("list", n.par) 
-#for(p in 1:n.par){
-#  final[[p]]<-initialPop
-#}
-#2^374 colunas
-#initialPop<-do.call(expand.grid, final)
+
 
 # Calculate the number of cores
-no_cores <- detectCores() - 1
+no_cores <- detectCores() 
 
 # Initiate cluster
 cl <- makeCluster(no_cores)
 
 start_time <- Sys.time()
-DEctrl <- DEoptim.control(NP = 10,strategy = 1, itermax = 100,
+DEctrl <- DEoptim.control(NP = 10*n.par,strategy = 1, itermax = 100,
                           CR = 0.5, F = 0.8, p=0.8, trace = TRUE,
-                          parallelType = 1,packages=c("parallelDist"),parVar=c("X"))
+                          parallelType = 1,packages=c("gpuR"),parVar=c("X"))
 res <- DEoptim(marginal.ll,lower=rep(0.001,n.par), 
-                       upper=rep(100,n.par),   DEctrl)
+               upper=rep(100,n.par), DEctrl)
 end_time <- Sys.time()
 end_time - start_time
 
 stopCluster(cl)
 
-
-start_time <- Sys.time()
-res <- RcppDE::DEoptim(marginal.ll,lower=rep(0.001,n.par), 
-                       upper=rep(100,n.par), 
-                       DEoptim.control(NP = 10,strategy = 1, itermax = 100,
-                                       CR = 0.5, F = 0.8, p=0.8, trace = TRUE,
-                                       parallelType = 1))
-end_time <- Sys.time()
-end_time - start_time
-
 save.image("Solution.RData")
 
-
-
-
-
-
-
-
-
-start_time <- Sys.time()
-
-res <- ga(type = "real-valued", 
-                fitness =  marginal.ll,
-                lower = rep(0.001,n.par), upper= rep(100,n.par),
-                popSize = 10, maxiter = 5, pmutation = 0.5,
-                optim = FALSE)
-end_time <- Sys.time()
-end_time - start_time
-#Time difference of 43.66486 mins
-
-save.image("Data\\AnalysisObjects.RData")
-
-plot(res@fitness,type="l")
-
-theta<-res@solution
+theta<-res$par
 
 #Parameters            
 sigma2f <- theta[1]
@@ -214,10 +198,10 @@ res.sum <- res.X  %>%
   group_by(COD_OCUPACAO) %>% 
   summarise(Sum=sum(Sum),
             n=n())
-res.X<-res.X[,-ncol(res.X)]
+res.X<-res.X %>% select(-Sum)
 res.sum$Prob<-(res.sum$Sum/(res.sum$n*n.sim))
 res.X <- full_join(res.sum,res.X,by="COD_OCUPACAO")
-res.X <- res.X[,c(-2,-3)]
+res.X <- res.X %>%  select(-n,-Sum)
 
 #Final data
 final.df<-full_join(res.X[,c(1,2)],df[,c(2,3)],by="COD_OCUPACAO")

@@ -55,24 +55,16 @@ X.star <-as.matrix(full.star)
 #Compile RcppEigen
 Rcpp::sourceCpp("Analysis/Kernel.cpp")
 
-library(parallelDist)
-dist.euclidean <- parDist(X, method = "euclidean")
-
 
 #Teste
-X<-matrix(rnorm(50),ncol=5)
-lambdaVec<-rep(1,5)
-sigma2f<-0.5
-kernel1 <- sigma2f*exp(IBS_kernel_C_parallel( X, matrix(lambdaVec,ncol=1)))
-kernel2 <- KernelMatrix(X,lambdaVec,sigma2f)
-kernel3 <- sigma2f*exp(-0.5*parDist(X, method = "euclidean")^2)
-
-
-k.xx <- parDist(X, method = "euclidean")
-k.xx <- k.xx^2
-k.xx <- k.xx)
-
-#all(kernel1==kernel2)
+#X<-matrix(rnorm(50),ncol=5)
+#lambdaVec<-rep(1,5)
+#sigma2f<-0.5
+#kernel1 <- sigma2f*exp(IBS_kernel_C_parallel( X, matrix(lambdaVec,ncol=1)))
+#kernel2 <- KernelMatrix(X,lambdaVec,sigma2f)
+#k<-as.matrix(parDist(X, method = "euclidean"))
+#kernel3 <- sigma2f*exp(-0.5*k^2)
+#all(kernel1==kernel3)
 
 n.par<-ncol(X)+2
 theta<-rep(1,n.par)
@@ -84,7 +76,7 @@ marginal.ll<-function(theta){
   lambda  <- theta[3:length(theta)]
   n <- nrow(X)
   
-  k.xx <- parDist(X, method = "euclidean")
+  k.xx <- as.matrix(parDist(X, method = "euclidean"))
   k.xx <- k.xx^2
   k.xx <- sigma2f*exp(-0.5*k.xx)
   
