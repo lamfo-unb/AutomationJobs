@@ -55,22 +55,19 @@ X.star <-as.matrix(full.star)
 #Compile RcppEigen
 Rcpp::sourceCpp("Analysis/Kernel.cpp")
 
-#Check if double is avaible - if FALSE must define type='float'
-deviceHasDouble()
-
 #List all context GPU
 listContexts()
 
 # set second context
-setContext(1L)
+setContext(3L)
+currentDevice()
 
+#Check if double is avaible - if FALSE must define type='float'
+deviceHasDouble()
 
 #X<-X[1:200,1:100]
 #X.star<-X.star[1:300,1:100]
 #Y<-Y[1:200]
-
-
-
 
 #Teste
 #Rcpp::sourceCpp("Analysis/Kernel.cpp")
@@ -153,9 +150,9 @@ no_cores <- detectCores()
 cl <- makeCluster(no_cores)
 
 start_time <- Sys.time()
-DEctrl <- DEoptim.control(NP = 10*n.par,strategy = 1, itermax = 100,
+DEctrl <- DEoptim.control(NP = 500,strategy = 1, itermax = 100,
                           CR = 0.5, F = 0.8, p=0.8, trace = TRUE,
-                          parallelType = 1,packages=c("gpuR"),parVar=c("X"))
+                          parallelType = 1,packages=c("gpuR"),parVar=c("X","Y"))
 res <- DEoptim(marginal.ll,lower=rep(0.001,n.par), 
                upper=rep(100,n.par), DEctrl)
 end_time <- Sys.time()
@@ -163,9 +160,10 @@ end_time - start_time
 
 stopCluster(cl)
 
+theta<-res$par
 save.image("Solution.RData")
 
-theta<-res$par
+
 
 #Parameters            
 sigma2f <- theta[1]

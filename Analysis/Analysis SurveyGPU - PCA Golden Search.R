@@ -161,7 +161,7 @@ golden.section.search = function(f, lower.bound, upper.bound, tolerance)
   
   iteration = 0
   
-  while (abs(upper.bound - lower.bound) > tolerance)
+  while (mean(abs(upper.bound - lower.bound)) > tolerance)
   {
     iteration = iteration + 1
     cat('', '\n')
@@ -221,11 +221,12 @@ golden.section.search = function(f, lower.bound, upper.bound, tolerance)
   #cat('Final Upper Bound =', upper.bound, '\n')
   estimated.minimizer = (lower.bound + upper.bound)/2
   #cat('Estimated Minimizer =', estimated.minimizer, '\n')
+  return(estimated.minimizer)
 }
 
 start_time <- Sys.time()
-golden.section.search(marginal.ll, lower.bound=rep(0.001,n.par),
-                      upper.bound=rep(100,n.par), tolerance = 1000)
+res<-golden.section.search(marginal.ll, lower.bound=rep(0.001,n.par),
+                      upper.bound=rep(100,n.par), tolerance = 0.1)
 end_time <- Sys.time()
 end_time - start_time
 
