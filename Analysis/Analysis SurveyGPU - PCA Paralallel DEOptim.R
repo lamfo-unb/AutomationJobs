@@ -102,8 +102,10 @@ marginal.ll<-function(theta){
   
   #GPU
   ### start_time <- Sys.time()
-  lambdaMat <- vclMatrix(diag(1/lambda),type='float')
-  X.gpu <- vclMatrix(X, type='float')
+  #lambdaMat <- vclMatrix(diag(1/lambda),type='float')
+  lambdaMat <- vclMatrix(diag(1/lambda))
+  #X.gpu <- vclMatrix(X, type='float')
+  X.gpu <- vclMatrix(X)
   X.gpu <- X.gpu %*% lambdaMat
   k.xx <- suppressWarnings(gpuR::distance(X.gpu,X.gpu, method="sqEuclidean"))
   k.xx <- sigma2f*exp(-0.5*k.xx)
