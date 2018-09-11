@@ -1,0 +1,131 @@
+/* Titulo LAMFO */
+.title {
+  text-align: center;
+  color: rgb(0,51,104);
+  font-weight: bold;
+  font-size: 30px;
+  padding-top: 5px;
+  margin:0;
+}
+
+/* Linhas Superiores e Inferiores do Titulo LAMFO */
+.title2 {
+    border-top: 6px solid rgb(0,125,44);
+    border-bottom: 6px solid rgb(0,125,44);
+    overflow: auto;
+}
+
+.alignright {
+  float: right;
+  padding:0; margin:0;
+}
+  
+/* Titulo do Artigo */
+.main{
+    padding-top: 140px;
+    padding-bottom: 25px;
+    font-size: 38px;
+    text-align: center;
+    font-weight: bold;
+}
+ 
+.center {
+    margin: auto;
+    padding-top: 150px;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 140%; /* 20px */
+    color: black;
+    text-align: justify;
+}
+
+
+/* Linhas Superiores e Inferiores do Titulo LAMFO */
+.abstract {
+  padding-top: 10px;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  overflow: auto;
+}
+
+  
+/* Create two equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 50%;
+    text-align: center;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+    padding-bottom: 30px;
+}
+
+/*============== Testando Leitura em Devices =========*/
+@media (min-width: 858px) {
+    html {
+        font-size: 12px;
+    }
+}
+
+@media (min-width: 780px) {
+    html {
+        font-size: 11px;
+    }
+}
+
+@media (min-width: 702px) {
+    html {
+        font-size: 10px;
+    }
+}
+
+@media (min-width: 724px) {
+    html {
+        font-size: 9px;
+    }
+}
+
+@media (max-width: 623px) {
+    html {
+        font-size: 8px;
+    }
+}
+/*====================================================*/
+
+/*======== Testando Perfil ===========================*/
+.container {
+  position: relative;
+  width: 50%;
+  max-width: 300px;
+}
+
+/* Make the image to responsive */
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* The overlay effect - lays on top of the container and over the image */
+.overlay {
+  position: absolute; 
+  bottom: 0; 
+  background: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0.5); /* Black see-through */
+  color: #f1f1f1; 
+  width: 100%;
+  transition: .5s ease;
+  opacity:0;
+  color: white;
+  font-size: 20px;
+  padding: 20px;
+  text-align: center;
+}
+
+/* When you mouse over the container, fade in the overlay title */
+.container:hover .overlay {
+  opacity: 1;
+}

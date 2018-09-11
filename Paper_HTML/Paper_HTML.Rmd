@@ -1,0 +1,421 @@
+---
+output:
+  html_document:
+    css: style.css
+bibliography: bibliography.bib
+csl: apa.csl
+lang: pt
+link-citations: true
+# nocite: "@*"
+---
+
+<div class="center">
+
+<img class=img1 src="Logo2.png" style="float: left; width: 30%;height: auto;" hspace="20px;">
+<div class="title2">
+  <p class="title">Laboratório de Aprendizado de Máquina em Finanças e Organizações</p>
+  <p class="alignright"> <a href="http://lamfo.unb.br/">http://lamfo.unb.br </a> </p>
+</div>
+
+
+<p class="main">
+Automação e eliminação de postos de trabalho na era da automação
+</p>
+
+
+<div class="row">
+<div class="column">
+<h2>Pedro Albuquerque</h2>
+<p>Universidade de Brasília</p>
+</div>
+<div class="column">
+<h2>Patrick Alves</h2>
+<p>Instituto de Pesquisa Econômica Aplicada</p>
+</div>
+<div class="column">
+<h2>Rafael Morais</h2>
+<p>Universidade de Brasília</p>
+</div>
+<div class="column">
+<h2>Cayan Portela</h2>
+<p>Universidade de Brasília</p>
+</div>
+</div>
+
+<div class="abstract">
+<p style="text-align: center;font-weight: bold;font-size: 25px;"> Resumo </p>
+<p style="width: 80%;position: relative;right: -10%;">
+The abstract of the article.The abstract of the article.The abstract of the article.The abstract of the article.The abstract of the article.The abstract of the article.The abstract of the article.The abstract of the article.The abstract of the article.The abstract of the article.The abstract of the article.The abstract of the article.The abstract of the article.The abstract of the article.The abstract of the article.The abstract of the article.The abstract of the article.The abstract of the article.The abstract of the article.The abstract of the article.
+</p>
+<i> Palavras-chave:</i> keywords, comma-separated, not capitalized, Java.
+</div>
+
+
+```{r setup, include=FALSE}
+library(knitr)
+# library(kableExtra)
+library(tidyverse)
+library(plotly)
+library(readxl)
+library(pdftools)
+
+opts_chunk$set(message=FALSE, warning=FALSE, comment=NA, echo=FALSE, out.width='100%', out.height='auto', fig.align='center', cache=T)
+
+opts_knit$set(root.dir = "C:/Users/rafal/Google Drive/LAMFO/AutomationJobs")
+
+# A function for captioning and referencing images
+fig <- local({
+    i <- 0
+    ref <- list()
+    list(
+        cap=function(refName, text) {
+            i <<- i + 1
+            ref[[refName]] <<- i
+            paste("Figura ", i, ": ", text, sep="")
+        },
+        ref=function(refName) {
+            ref[[refName]]
+        })
+})
+```
+
+
+<center style="padding-top:55px">
+## 1. Introdução 
+</center>
+
+O ambiente gerencial tem sofrido mudanças drásticas em sua estrutura funcional devido à inserção de novas tecnologias nas organizações. Algoritmos e automação por meio do Aprendizado de Máquina tornaram-se cada vez mais comuns, principalmente devido à competição entre as firmas por aumentar a produção e reduzir custos.
+
+Nesse sentido, os gestores precisam estar cientes dessas novas tecnologias e de como suas organizações podem se beneficiar da implementação desses sistemas. Consequentemente, uma mudança no paradigma de negócios e na maneira pela qual a contratação de funcionários, ou a substituição destes por máquinas, é o objeto de estudo deste trabalho.
+
+A automação tornou-se o maior receio das pessoas empregadas nos últimos anos, tanto nos países desenvolvidos quanto nos subdesenvolvidos. Há uma preocupação extensa hoje em dia de que as tecnologias oriundas do Aprendizado de Máquina criem desemprego em massa durante os próximos anos.
+
+Por exemplo, em março de 2018, os funcionários da Empresa Brasileira de Correios e Telégrafos declararam greve. Uma das demandas dos grevistas foi o retorno de um cargo eliminado pela gerência do órgão, o qual era responsável por selecionar e verificar manualmente cada pacote/carta e depois separar esses pacotes segundo o destino [@Cavallini2018]. Essa demanda foi motivada após os ocupantes desses cargos terem sido demitidos ou realocados em outras tarefas após a automatização no processo de produção dos Correios. A era da automação do Brasil se alinha com os achados de @david2015there, sobre a perfeita substituibilidade entre o desempenho humano em nível mediano e a tecnologia atualmente disponível.
+
+Outra situação semelhante que poderia ser evitada com a automação foi a greve dos caminhoneiros 2018 do Brasil. Essa paralisação nacional de estradas causou uma escassez de alimentos, medicamentos e petróleo em todo o Brasil, com longas filas de veículos para postos de gasolina [@bloomberg].
+
+Além disso, o grande e pesado governo brasileiro, com sua cultura de paternalismo e ineficiência do @worldbank2017, está se tornando uma grande oportunidade para a substituição de muitos trabalhos manuais rotineiros realizados no setor público @david2015there. Dessa forma, é natural o surgimento de resistência contra o uso de máquinas de sindicatos e associações.
+
+Para monitorar essa recente mudança de paradigma no mercado de trabalho dos EUA @dvorkin2016jobs apresentou a evolução de quatro tipos de trabalhos: manual rotineiro; manual não rotineiro; cognitivo rotineiro; cognitivo não rotineiro. Em seu artigo @dvorkin2016jobs mostra que o número de empregos rotineiros manuais e rotineiros cognitivos não está crescendo tão rápido quanto possível, e uma explicação para isso é o nível de automação que está aumentando nos últimos anos. Essa diferença entre os quatro tipos de empregos pode produzir, em um futuro próximo, mais desigualdade e desemprego no Brasil se nenhuma política pública for tomada.
+
+Uma questão que é continuamente investigada é se as novas tecnologias são realmente responsáveis por uma década de baixo crescimento de empregos no Brasil e no mundo. Segundo @rotman2013technology, muitos economistas alegam que os resultados produzidos nos últimos anos são inconclusivos, pois há várias outras explicações plausíveis, como crises financeiras, por exemplo.
+
+Por outro lado, @frey2017future, postulam que todas as ocupações, em vez de
+tarefas únicas, são automatizadas por avanços tecnológicos. Em seu artigo, eles descobriram que 47% de todos os empregos nos EUA podem estar em risco de serem automatizados em um futuro próximo. Seu ponto de vista foi mais pessimista do que outros autores, entretanto, é o artigo mais citado sobre o tema na atualidade.
+
+Os autores focaram nos avanços tecnológicos no que eles chamam de Aprendizado de Máquina - AM. Sua suposição é que essa era organizacional na qual vivemos é diferente de outras revoluções tecnológicas, isso porque agora as máquinas são capazes de realizar tarefas que até recentemente eram consideradas genuinamente humanas, como tarefas manuais rotineiras, bem como as não-rotineiras.
+
+@brynjolfsson2014second estão de acordo com @frey2017future. Eles sugerem que, devido à automação de algumas tarefas cognitivas rotineiras, as novas tecnologias podem cada vez mais, servir de substitutos e não apenas de complemento aos trabalhadores que realizam essas tarefas.
+
+No paradigma otimista @alexopoulos2016medium, por exemplo, afirmam que os choques tecnológicos historicamente positivos aumentaram as oportunidades de emprego. Dessa forma, a automação poderia, a longo prazo, ser boa para toda a economia.
+
+Além disso, os métodos de AM são tão bons quanto sua amostra de treinamento e devem considerar grandes conjuntos de dados com milhares de exemplos disponíveis para que a qualidade da máquina desenvolvida seja suficientemente boa. A qualidade dos dados na maioria das empresas dos países subdesenvolvidos é muito baixa, ou ainda, essas firmas não registram seus dados. Isto torna impossível automatizar as tarefas, visto que não há dados e quando há estes estão muito ruins.
+
+Baseado nesse cenário, este estudo contribui para a literatura internacional sobre automação e emprego, estudando a evolução do número de postos de trabalho no Brasil ao longo do tempo e espaço relacionados com o grau de automação, utilizando para isso as classes construídas pelo Departamento de Trabalho dos EUA [@onet].
+
+Nosso objetivo é responder algumas questões com relação à taxa de aumento (ou diminuição) de tipos de trabalhos classificados pelo grau de automação de cada posição. Especificamente, apresentamos qual zona de trabalho apresenta o maior aumento e menor decréscimo no número de posições no Brasil, também utilizando o Sistema de Informações Geográficas (SIG) estudamos essa evolução no espaço localizando aglomerados espaciais de aumento e diminuição dessas posições no Brasil. microrregiões.
+
+<!-- --- -->
+
+<center style="padding-top:55px">
+## 2. Referências 
+</center>
+
+The study about automation and digitalization and how these scenarios can affect the jobs around the world is continuously updated year by year. This statement is in line with what was said by @raj2018ai. @raj2018ai asserts that the current body of empirical literature surrounding robotics and Machine Learning adoption by organizations is growing and often trying to answer similar questions: Will be the automation the end of the traditional work ? Some discrepancies, however, have been found in several papers and these discrepancies highlight the need for further inquiry, replication studies and more complete and detailed data.
+
+Furthermore, these new technological advancements have led to both excitements about the capability of Machine Learning algorithms and automation to boost economic growth and also the concern about the fate of human workers in a world in which computer algorithms can perform many of the functions that a human can [@furman2016time]. In this sense, [@raj2018ai] reported that recent academic research, suggests that automation and robotics may have been responsible for about one-tenth of the increase in the US's gross domestic product (GDP) between 1993 and 2007 [@graetz2017modern] but also a decrease in the number of job positions [@frey2017future].  
+
+@ramaswamy2018technological define automation when a machine does work that might previously have been done by a person, and nowadays, most of the routine manual, nonroutine manual and some routine cognitive and nonroutine cognitive types of jobs cab me automatized. @autor2003skill presented how the fast adoption of computer technologies change the tasks performed by workers at their jobs.  Another definition is given by @chui2015four who assessed the "automatability" of those capabilities through the use of current, leading-edge technology, adjusting the level of capability required for occupations where work occurs in unpredictable settings. 
+
+The main article about this theme reported by the literature is the job of and @frey2013future and @frey2017future. @frey2017future estimated the susceptibility of employment to computerization. In their paper, the authors classify occupations in the US with respect to the risk of being susceptible to automation by asking experts about the technological potential for automation in the near future and applying a Gaussian Process Classifier for 702 occupations. This was accomplished through the previous classification, 
+for some occupations labeled by experts and the extrapolating the probability for all data. As a result, @frey2017future reported that 47% of all persons employed in the US are working in jobs that could be performed by computers within the next 10 to 20 years. 
+
+A similar idea as the proposed by @frey2017future was applied for other countries. @pajarinen2014computerization suggest that 35.7 percent of Finnish jobs are at high risk to automation, @diba2015roboter estimate the share of jobs at risk of automation to be as high as 59% in Germany, @bowles2014computerisation finds the share of jobs that are susceptible to automation in Europe to range between 45% to more than 60% and @arntz2016risk estimated the job automatability of jobs for 21 Organization for Economic Co-operation and Development (OECD) countries. 
+
+In our perspective the most embracing paper is given by @arntz2016risk. In their paper the authors take into account the heterogeneity of workers' tasks within occupations and found that, on average across the 21 OECD countries, 9% of jobs are automatable. However, the authors found heterogeneity across the OECD countries and highlighted that while the share of automatable jobs is 6% in Korea, the corresponding share is 12% in Austria, this difference according to the authors can be a reflex of general differences in workplace organizations or education of workers across countries. @arntz2016risk indeed did not study Brazil which is an OECD.   
+
+@arntz2016risk also found that despite the cross-country differences, the main feature of all OECD countries is that the automatability frequently decreases in the level of education and in the income of the workers. For all types of workers @arntz2016risk suggest that it is mostly low skilled and low-income individuals who face a high risk of being automatable which is concordant with @bakhshi2015creativity findings.
+
+@goos2014explaining and @david2013growth found that in the US and Europe has been the "polarization" of employment by skill level and the, therefore, the inequality in wage incomes between all types of occupations. 
+
+@acemoglu2017robots examine the impact of the increase in industrial automation in U.S. labor markets between 1990 and 2007. The authors found that automation in the United States is negatively correlated with employment and wages during 1990 and 2007. @acemoglu2017robots also estimated that each additional robot reduced employment by six workers and that one new robot per thousand workers reduced wages by 0.5 percent. This effect according to the authors is most pronounced in manufacturing, particularly in a routine manual and blue-collar occupations (routine cognitive), and for workers without a college degree. 
+
+In the same direction @bessen2018ai affirms that in manufacturing, technology has sharply reduced jobs in recent decades. The author presented a model of demand that predicted the rise and fall of employment in the textile, steel and automotive industries which were the most vulnerable sectors with respect to automatization.
+
+@furman2018should for instance, argues that instead, the concern is that the process of turnover, in which workers displaced by automatization find new employment as technology gives rise to new consumer demands and consequently new jobs, could lead to sustained periods of time with a large fraction of people not working which can be fatal for the countries' economy.
+
+@ramaswamy2018technological summarizes most of the findings of this theme:
+
+
+1. O aumento da automação e adoção de robôs não parece causar perda de emprego no conjunto de textos sobre o tema.
+
+2. Trabalhadores pouco qualificados em trabalhos de rotina são mais propensos a sofrer demissões devido a automação de suas tarefas. Em que, os trabalhadores pouco qualificados são aqueles que realizam tarefas orientadas por processos de entrada simples com pouco pensamento abstrato.
+
+3. Haverá demanda por novos tipos de trabalhadores qualificados ou novas especializações dentro de ocupações, e trabalhadores de alta habilidade que sejam capazes de realizar tarefas complicadas que requerem experiência, especialização, pensamento abstrato e autonomia.
+
+@ramaswamy2018technological argues that The risks of job automation in developing countries are found to vary across countries, for example, the author says that it is estimated to range from 55% in Uzbekistan to 85% in Ethiopia. In emerging economies, the risk of automation is estimated to be relatively high with 77% of jobs in China and 69% in India found to be at risk.
+
+While most of the studies used the occupations description and some expert opinion, @mann2017benign took a different approach to analyze the effects of automation on employment. In their study, the authors rely on information provided from granted patents. @mann2017benign applied a apply a machine learning classifier algorithm to all 5 million U.S. patents granted between 1976 and 2014 to identify patents related to automation based on a sample of 560 manually classified patents to sort patents into automation and non-automation innovations. @mann2017benign concluded that though automation causes manufacturing employment to fall, it increases employment in the service sector, and overall has a positive impact on employment. In the same direction @susskind2017model argue that the range of tasks which robots can substitute could be much larger.
+
+Another work that presents an optimistic overview of the theme is the @bessen2017automation's paper. The author found that new technologies should have a positive effect on employment if they improve productivity in markets where there is a large amount of unmet demand. He also suggests that new computer technology is associated with employment declines in manufacturing, where demand has generally been met but is correlated with employment growth in less saturated, non-manufacturing industries. 
+
+According to @furman2018should since automatability can reduce the number of job positions for the less-skilled jobs this can imply in a decline the demand for higher-skilled jobs as well. In the other hand, higher-skill jobs that use problem-solving capabilities, creativity, and intuition (nonroutine cognitive tasks), likewise as lower-skill jobs that require situational adaptability and in-person interactions (routine cognitive), were less likely to be automatized.
+
+With respect to the literature review, we can observe that both optimistic and pessimistic scenarios are possible. If we assume that machines can only be a substitute for routine jobs @acemoglu2011skills then the result is likely to be optimistic or less pessimistic. This is explained by @acemoglu2016race which argues that this is due to two reasons: first, because there always will remain, classes of occupations, not totally automatized automation and second, always is possible the introduction of new tasks in which labor has a comparative advantage as pointed by @acemoglu2016race and that can offset the loss of occupations due to automation.
+
+None of the cited papers studied Brazil and the impact of an economic crisis in the number of job positions classified by the level of complexity or probability of automatization. Hence, we proposed to estimate the probability of automation of the Brazil's Occupational classification System (<i>Classificação Brasileira de Ocupações</i> - CBO) associating this probability with the O\*NET job zones classification and also measuring the effect of the 2015-2018 Brazilian economic crisis in the number of job positions for the five job zoned defined by O*NET classification system.
+
+
+
+<center style="padding-top:55px">
+## 3. Metodologia 
+</center>
+
+The dataset used in this analysis was the Brazilian Annual Social Information Report (<i>Relação Anual de Informações Sociais</i> - RAIS). RAIS is an annual administrative record conceived to supply the necessities of control, and information for governmental entities aiming to subsidize public policies by tracking the formal labor market in Brazil.
+
+RAIS is a panel dataset that covers 97% of the Brazilian formal market for the years of 1986 to 2016 and it contains mostly of the formal employees with their income, level of education, age, CBO, firm identification, National Classification of Economic Activities (<i>Classificação Nacional de Atividades Econômicas</i> - CNAE) of the firms and many other variables such as municipality, legal nature and job tenure of employees.
+
+The first step of our analysis was to join the O\*NET Job Zone classification into the RAIS dataset for each CBO. The O*NET database presents 1,122 occupational groups and provides definitions and concepts for describing worker attributes such as skills, education and also a 5 level Job Zone that classify jobs according to their preparation level:
+
+1. Job Zone 1 - occupations that need little or no preparation.
+2. Job Zone 2 - occupations that need some preparation.
+3. Job Zone 3 - occupations that need medium preparation.
+4. Job Zone 4 - occupations that need considerable preparation.
+5. Job Zone 5 - occupations that need extensive preparation.
+
+
+The idea was use the Job Zone classification as a proxy of the probability of computerisation for each CBO across the years in the RAIS dataset. Indeed, there is a negative relationship between the Job Zone classification and the probability of computerisation presented in the O*NET database as pointed by Figura 1.
+
+
+```{r fig1, fig.cap=fig$cap("fig2", "Probabilidade de informatização por Job Zone")}
+pdf <- pdf_text("https://www.oxfordmartin.ox.ac.uk/downloads/academic/future-of-employment.pdf")
+pdf <- paste0(pdf, collapse = " ")
+pattern <- "Rank\\s+Probability(.)*Telemarketers"
+extract <- regmatches(pdf, regexpr(pattern, pdf))
+extract <- unlist(strsplit(extract, "\r\n"))
+FO <- read.fwf(con <- textConnection(extract), widths = c(7, 13, 6, 9, 80))
+close(con)
+
+FO <- FO %>% filter(grepl(".\\d", V2)) %>%
+  mutate(rank = as.numeric(gsub(" ", "", V1)),
+         prob = as.numeric(gsub(" ", "", V2)),
+         soc  = as.character(gsub(" ", "",V4)),
+         ocup = as.character(V5)) %>% select(-(V1:V5))
+
+Job_Zones <- readxl::read_excel("Data/All_Job_Zones.xlsx", 
+                                skip = 3, col_types = "text") %>% 
+  mutate(Code = substr(Code,1,7)) %>% 
+  rename(Job_Zone = `Job Zone`) %>% distinct(Job_Zone, Code) 
+
+che <- Job_Zones %>% group_by(Code) %>% summarise(freq = n())
+
+Job_Zones <- Job_Zones %>% filter(Code %in% filter(che, freq==1)$Code )
+
+Comp <- full_join(FO, Job_Zones, by = c("soc" = "Code"))
+Comp <- Comp %>% na.omit()
+
+a <- ggplot(aes(y = prob, x = Job_Zone), data = Comp) + geom_boxplot(fill = "gray") +
+  theme_bw() + labs(x = "Job Zone", y = "Probabilidade de informatização") +
+  theme(text = element_text(size=15))
+
+ggplotly(a)
+```
+
+The Figura 1 presents the probability of computerisation of occupations according to the Job Zones. The probabilities were obtained from @frey2017future and the correspondence was given by the 2010 Standard Occupational Classification - SOC. Based on the Figura 1 we can note that as more complex is an occupation in terms of level of preparation, less is the probability of computerisation of these occupations.
+
+Since there is no official table available to correspond the CBO to Job Zones provided by the O*NET we assigned the Job Zones to the Brazilian occupational code using the follow steps:  first we used the CBO version 2002 which is the most recent occupational code in Brazil [@MTE]. Then, these codes were linked to the International Standard Classification of Occupations - @ISCO, version 88 which has a straight matching given from @MTE. Once obtained the joined dataset we updated the ISCO-88 to ISCO-08 and then it was possible to crosswalk between the 2008 International Standard Classification of Occupations to the 2010 using @SOC conversion tables. Finally, @ONET_ provides the correspondence between Job Zones and SOC 2010.
+
+After this procedure we found Job Zones for 73% of CBOs, but while O*NET database presents 1,122 occupational groups the RAIS has 2,602 occupational groups and because of that some occupational codes presented more than one correspondence.
+
+For the 27% remained we filled 8% of the occupational codes using the translation between the occupational names from English to Portuguese and matching the codes by text merge based in a similarity measure. This measure is expressed in the range between $[0, 1]$ and is given by the ratio of twice the number of elements common to words and the total of elements of both texts. The remaining 19% were filled by manual inspection of the authors evaluating the level of preparation for each code based on the occupational code's description.
+
+Next, we calculate the expected number of employees for each Job Zone throughout the year. Mathematically, let $W_{i,t}$ be the number of workers in the $i$-th CBO and $t$-year and $\pi_{i,j,t}$ the percent of times for the $i$-th CBO time $t$ classified as Job Zone $j$ the expected number of employees for each Job Zone throughout the year was given by:
+
+
+$$E_{j,t} = W_{i,t} \pi_{i,j,t} $$
+
+
+\noindent for $j=1,\dots,5$. However, since the number of workers in each Job Zone is very different, we choose to work with the Cumulative Growth Rate (CGR) to be able to compare the magnitude of the increase (or decrease) over time, specifically the Cumulative Growth Rate was computed as:
+
+$$G_{j,t} = \displaystyle\sum_{t_{0}=1}^{t}\left[\frac{E_{j,t_{0}}}{E_{j,t_{0}-1}}-E_{j,t_{0}-1}\right]$$
+
+
+\noindent where $t_{0}=1$ represents the second year of our time series, the year of 1988.
+
+The Figura 2 presents the Cumulative Growth Rate for the expected number of employees for each Job Zone and also the Cumulative Growth Rate for the Brazilian Gross domestic product (GDP) starting the series from 1987.
+
+
+```{r fig2, fig.cap=fig$cap("fig1", "plotting example")}
+jobzone_painel <- read.csv2("./Data/jobzone_painel.csv")
+
+serie <- jobzone_painel %>% 
+  group_by(ano,Job_Zone) %>% 
+  summarise(empreg = sum(empregados)) %>%
+  na.omit()
+
+graph01.tbl2 <- serie %>%
+  group_by(Job_Zone) %>%
+  mutate(lag = lag(empreg)) %>%
+  mutate(pct.change = (empreg - lag) / lag) %>% 
+  na.omit()
+
+graph01.tbl <- graph01.tbl2 %>%
+  group_by(Job_Zone) %>%
+  mutate(cumulative= cumprod(1 + pct.change) - 1) %>% 
+  rename(year = ano)
+
+graph01.tbl <- graph01.tbl %>%
+  ungroup() %>% 
+  mutate(Job_Zone = as.character(Job_Zone))
+
+
+
+GDP_GROWTH <- read_excel("Data/GDP_GROWTH.xls", skip = 3)
+GDP_GROWTH <- GDP_GROWTH %>% filter(`Country Name` == "Brazil") %>% gather(year, growth) %>%
+  filter(year %in% 1986:2016) %>% mutate(growth     = as.numeric(growth),
+                                         cumulative = (cumprod(growth/100 + 1) - 1))
+
+GDP_GROWTH2<-GDP_GROWTH %>% 
+  mutate(Job_Zone="GDP",
+         year = as.numeric(year)) %>% 
+  select(-growth)
+
+
+final<-bind_rows(graph01.tbl,GDP_GROWTH2)
+final<-subset(final,year>1986)
+
+mycolors <- RColorBrewer::brewer.pal(5, "Pastel1")
+mycolors<-c(mycolors, "#000000")
+
+g <- final %>% mutate(cumulative = round(cumulative,2)) %>% 
+  select(year, Job_Zone, cumulative) %>% spread(Job_Zone, cumulative)
+
+p <- plot_ly(g, x=~year, y=~`1`, name = "Job Zone 1", marker=list(color=mycolors[1]), 
+             line=list(color=mycolors[1]),type = 'scatter', mode = 'lines+markers') %>% 
+  add_trace(y = ~`2`, name = "Job Zone 2", marker=list(color=mycolors[2]), line=list(color=mycolors[2])) %>% 
+  add_trace(y = ~`3`, name = "Job Zone 3", marker=list(color=mycolors[3]), line=list(color=mycolors[3])) %>% 
+  add_trace(y = ~`4`, name = "Job Zone 4", marker=list(color=mycolors[4]), line=list(color=mycolors[4]))%>% 
+  add_trace(y = ~`5`, name = "Job Zone 5", marker=list(color=mycolors[5]), line=list(color=mycolors[5]))%>% 
+  add_trace(y = ~GDP, name = "PIB Acumulado", marker=list(color =mycolors[6]), line = list(color =mycolors[6])) %>%
+  layout( legend = list(orientation = 'h'), xaxis = list(title = " "),
+          yaxis = list(title = "Taxa de Crescimento Acumulado"), hovermode = "compare")
+p
+  
+
+
+```
+
+If we believe that automation is eliminating job positions, especially for the first Job Zones class, we should expect that the Cumulative Growth Rate were larger for the Level 5, follow by Level 4, Level 3, Level 2 and then Level 1. But interestingly, this pattern did not occur. The highest growth class in recent years was the Level 1 which was associated with the occupations that need little or no preparation.
+
+The other Job Zones series followed the expected pattern: Level 5, followed by Level 4, Level 3, Level 2 in that order. The first question that arises is why the Level 1 had the highest increase over time ? One possible answer may be due to the fact that workers in the intermediate classes are migrating to Level 1, due to a lack of jobs in the areas that require more training, or due to the unemployment rate that has remained high in Brazil in last years. To confirm this hypothesis we tracked the workers through the years to measure the number of changes for each Job Zone class as presented by the Tabela 1:
+
+
+```{r tab1}
+tab1 <- readr::read_delim("Paper_HTML/Tables/table1.txt", delim = "&")
+tab1 <- tab1 %>% mutate_at(-1, as.numeric)
+
+kable(tab1, caption = "Percent of change between levels to level 1 over the years.", format.args = list(decimal.mark = ","),booktabs=TRUE)
+```
+
+Another question that arises is: Does the decrease of the GDP due to the Brazilian financial crisis reduce in the same manner the Cumulative Growth Rate for all the Job Zones class ?
+
+This question is motivated because of the recent Brazilian financial crisis that was coupled with a political crisis in Brazil that resulted in the impeachment of president Dilma Rousseff and in widespread dissatisfaction with the political system.
+
+After 2014 Brazil's gross domestic product (GDP) fell by 3.9% due to a drop in salaries, restrictions on credit and a rise in the basic interest rate. In 2016, Brazil's GDP fell by 3.6% with reductions across all sectors of the economy and the effect of these drops in the GDP can be clear noted by the Figura 2 where the Cumulative Growth Rate for the Job Zones also dropped with the follow magnitude:
+
+```{r tab2}
+tab2 <-  readr::read_delim(
+"Job Zone & Percentage
+Level 1  & 31,4475%
+Level 2  & 17,9420%
+Level 3  & 14,4177%
+Level 4  & 16,0446%
+Level 5  & 7,5201%", delim = "&")
+
+kable(tab2, caption = "Fall percentage from  2014 to 2016 in the CGR.")
+```
+
+The Tabela 2 shows that the percentage decrease in the number of job positions for the Level 1 was almost twice the decrease of the other Job Zones levels, also, the Level 5 which is related with the occupations that have less probability of computerisation had the lowest decrease in the number of job positions during the Brazilian financial crisis.
+
+
+### 3.1. Pesquisa sobre automação de empregos
+
+Using a similar idea as proposed by @frey2017future we collected from Lattes Platform[^1] the name of all researchers that worked in  projects related to machine-learning (and was found by a search using this exact phrase).
+
+
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+[^1]:The Lattes Platform is an information system maintained by the Brazilian Government to manage information on science, technology, and innovation related to individual researchers working in Brazil.
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+During this process we found 754 e-mails for the researchers reported by Lattes Platform. We then invited this professionals to evaluate some random CBO's with respect to their activity's description based on the researcher's experience.
+
+The final dataset was composed by 3966 answers from 69 researchers and 2046 CBO's in a population with 2601 total CBO's, also each respondent evaluated in average 57.48 randomly unique CBO's.
+
+The sample was stratified by the following fields:
+
+```{r tab3}
+tab3 <-  readr::read_delim(
+"Science           & Answers & Researchers
+Applied sciences  & 3489    & 58
+Interdisciplinary & 29      & 2 
+Business          & 228     & 2 
+Physical sciences & 220     & 7 ", delim = "&")
+
+
+kable(tab3, caption = "Fields and researchers' answers in the survey.")
+```
+
+
+To estimate the probability of computerisation by CBO we joined the survey dataset with a structured dataset with the absolute frequency of the unigrams and bigrams related to the activity's description of CBO's. 
+
+These unigrams and bigrams were obtained after remove from the activity's description of CBO's the stop-words, numbers and punctuation and keeping only the unigrams and bigrams with a coefficient of variation based on the frequency larger than 2.0,  totalizing 92 variables with the number of times that the unigrams or bigrams is presented in the activity's description of CBO's.
+
+The last step to estimate the probability of computerisation by CBO was to train and forecast a Gaussian Process with Automatic Relevance Determination (ARD), in other words, since we had 92 variables to describe 3801 probabilities we used the ARD to regularize the Gaussian Process and avoid the over-fitting.
+
+Let $\mathbf{x}_{i}$ and $\mathbf{x}_{j}$ two observations with $i,j=1,\dots, 3801$ and $\mathbf{x}_{i},\mathbf{x}_{j}\in \mathbb{R}^{P}$ with $P=92$, the ARD was fitted considering the following kernel function:
+
+$$K(\mathbf{x}_{i},\mathbf{x}_{j})_{\boldsymbol\theta}=\sigma_{f}^{2}\exp\left[-\frac{1}{2}\displaystyle\sum_{p=1}^{P}\left(\frac{x_{ip}-x_{jp}}{\lambda_{p}}\right)^{2}\right]$$
+
+
+\noindent where $\boldsymbol\theta=(\sigma_{f}^{2},\sigma_{\epsilon}^{2},\lambda_{1},\dots,\lambda_{P})$. It is important to note that when $\lambda_{p}\rightarrow \infty$ the predicted function varies less and less as a function of $x_{ip},x_{jp}$, that is, the $p$-th dimension becomes irrelevant to estimate the probability of computerisation, in the other hand, $\lambda_{p}\rightarrow 0$ will weight more the distance between $x_{ip}$ and $x_{jp}$ in the data generating process estimation.
+The hyperparameters $\boldsymbol\theta$ were found by maximizing the Marginal Likelihood [@schulz2018tutorial]:
+
+$$\log[p(\mathbf{y}|\mathbf{X},\boldsymbol\theta)]=-\frac{1}{2}\mathbf{y}^{\top}\mathbf{K}_{y}\mathbf{y}-\frac{1}{2}|\mathbf{K}_{y}|-\frac{n}{2}\log(2\pi)$$
+
+\noindent where $\mathbf{K}_{y}=K(\mathbf{X},\mathbf{X})+\sigma_{\epsilon}^{2}\mathbf{I}$, $(\mathbf{y}$ is the probability of computerisation obtained from the survey, $\mathbf{X}$ is the unigram and bigram frequency matrix and $n=3801$ is the sample size.
+
+Finally, using multivariate posterior density we obtained the  predictive equations for Gaussian Process Regression [@rasmussen2004gaussian]:
+
+$$\mathbf{f}_{*}|\mathbf{X},\mathbf{y},\mathbf{X}_{*}\sim N(\overline{\mathbf{f}}_{*},Cov(\mathbf{f}_{*}))$$
+\noindent where $\overline{\mathbf{f}}_{*}=K(\mathbf{X}_{*},\mathbf{X})[K(\mathbf{X},\mathbf{X})+\sigma_{\epsilon}^{2}\mathbf{I}]^{-1}\mathbf{y}$ and $Cov(\mathbf{f}_{*})=K(\mathbf{X}_{*},\mathbf{X}_{*})-K(\mathbf{X}_{*},\mathbf{X})[K(\mathbf{X},\mathbf{X})+\sigma_{\epsilon}^{2}\mathbf{I}]^{-1}K(\mathbf{X},\mathbf{X}_{*})$ with $\mathbf{X}_{*}$ being the unigram and bigram frequency matrix of all observations, including the CBO's without answer in the survey. 
+
+
+<center style="padding-top:55px">
+## 4. Resultados 
+</center>
+
+Simulating 5000 observations from Density \ref{eq:normal} we obtained the empirical estimated distribution of the probability of computerisation for each CBO.
+
+@arntz2016risk However, low qualified workers are likely to bear the brunt of the adjustment costs as the automatibility of their jobs is higher compared to highly qualified workers. Therefore, the likely challenge for the future lies in coping with rising inequality and ensuring sufficient (re-)training especially for low qualified workers. However, education plays a large role for many countries. In most countries, the within-education component is negative, which implies that people with the same education typically perform less automatable tasks compared to the US. However, in many countries the between-education component is positive, which implies that in those countries a larger share of workers has educational levels which are associated with more automatable tasks (i.e. low or medium qualified workers).
+
+Furthermore, even if sufficiently qualified personnel were available, firms decide on investing in new technologies depending on the relative factor prices of capital and labour in performing a certain task in the production process.
+
+@graetz2017modern discuss recession and automazation.
+
+<font color="red"> @bessen2018ai
+
+Of course, job losses in one industry might be offset by employment growth in other industries. (**Explicação para as Job Zones intermediárias serem jogadas na primeira**)
+
+</font>
+
+
+
+## Referências Bibliográficas
+<div id="refs"></div>
+
+
+
+## Afiliação
+
+</div>
+
