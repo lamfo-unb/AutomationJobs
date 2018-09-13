@@ -29,21 +29,19 @@ cbo <- auto %>%
 table(cbo$Freq) 
 mean(cbo$Freq)
 
-codifica <- function(x){
-  cod <- strsplit(x, split = " ")
-  cod <- paste0(sapply(cod, function(x) substr(x,1,2)), collapse = "")
-  return(cod)
-}
-
+names$Doutorado[names$Nome=="Francisco Quevedo Camargo"] <- "Doutorado em Biologia pela Universidade de Oxford"
 names$Nome <- ifelse(names$Nome == "Lucia Specia", "Lucia Specia A",names$Nome)
 
+
+names <- names %>%
+  mutate( Nome_Espaco = map( Nome , str_split , " "),
+          Login_Senha = unlist(map( Nome_Espaco , ~  paste( str_sub( .x[[1]] , 1 , 2 ) , collapse = "" ) ))) 
+
 names <- names %>% 
-  group_by(Nome) %>% 
-  mutate(cod = codifica(Nome)) %>% 
-  distinct()
+  mutate(Login_Senha = iconv(Login_Senha, from="UTF-8",to = "ASCII//TRANSLIT"))
 
-auto <- left_join(auto, names, by = c("Usuario" = "cod"))
 
+auto <- left_join(auto, names, by = c("Usuario" = "Login_Senha"))
 
 # Areas Aplicadas ---------------------------------------------------------
 area <- function(x){
@@ -52,26 +50,6 @@ area <- function(x){
   area = substr(x, attr(b, "match.length") + 1, e - 1)
   return(area)
 }
-
-# science <- fields
-# science[science %in% c("Ciência da Computação", "Computação Aplicada", "Desenho Industrial",
-#                        "Engenharia", "Informática", "Modelagem Computacional")] <- "Applied sciences"
-# science[science %in% c("Ciências Farmacêuticas", "Ciências Fisiológicas", "Ciências Médicas")] <-  "Healthcare"
-# science[science %in% c("Cognitive Science", "Photogrammetry and Remote Sensing")] <- "Interdisciplinary"
-# science[science %in% c("Química", "Tecnologia de Processos Químicos e Bioquímicos", "Tecnologia Nuclear")] <- "Chemistry"
-# science[science %in% c("Geologia")] <- "Earth science"
-
-science <- fields
-science[science %in% c("Ciência da Computação", "Computação Aplicada", "Desenho Industrial",
-                       "Engenharia", "Informática", "Modelagem Computacional", 
-                       "Ciências Farmacêuticas", "Ciências Fisiológicas", "Ciências Médicas")] <- "Applied sciences"
-science[science %in% c("Cognitive Science", "Photogrammetry and Remote Sensing")] <- "Interdisciplinary"
-science[science %in% c("Química", "Tecnologia de Processos Químicos e Bioquímicos", "Tecnologia Nuclear",
-                       "Geologia", "Física")] <- "Physical"
-
-
-science_tab <- data.frame(Science = science)
-science_tab <- science_tab %>% group_by(Science) %>% summarise(freq = n()) %>% print(n=50)
 
 
 auto <- auto %>% mutate(science = area(Doutorado)) 
@@ -82,7 +60,7 @@ auto %>% mutate(
     science %in% c(unique(grep("Computa|Engineering", science, value = T)),
                    "Desenho Industrial", "Doctorat En Informatique", "Frontier Informatics",
                    unique(grep("Engenharia|Engineering", science, value = T)), "Informática", 
-                   "Ciências Farmacêuticas", "Ciências Fisiológicas",
+                   "Ciências Farmacêuticas", "Ciências Fisiológicas", "Saúde Coletiva", "Biologia",
                    unique(grep("Médica", science, value = T))) ~ "Applied sciences",
     science %in% c("Cognitive Science", "Photogrammetry and Remote Sensing") ~ "Interdisciplinary",
     science %in% c(unique(grep("Química", science, value = T)), "Tecnologia Nuclear", "Geologia",
@@ -93,3 +71,5 @@ auto %>% mutate(
                                   Researchers = n_distinct(Usuario),
                                   Mean_Answer = n()/ n_distinct(Usuario))
 
+
+auto %>% filter(is.na(Doutorado)) %>% group_by(Usuario, Nome) %>% summarise(freq=n())
