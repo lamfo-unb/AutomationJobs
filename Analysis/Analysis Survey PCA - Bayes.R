@@ -73,6 +73,14 @@ for(i in 1:nrow(X.star)){
 }
 
 final <- final[order(final$COD_OCUPACAO),] 
+
+
+profile<-read.csv2("Data/Occupation Structure/CBO2002 - PerfilOcupacional.csv")
+profile<-data.frame("COD_OCUPACAO"=unique(profile[,5]))
+
+#Remove strange CBO
+final<-inner_join(final,profile, by="COD_OCUPACAO")
+
 write.csv(final,"ProbabilityBayes.csv")
 saveRDS(final, "ProbabilityBayes.rds")
 
