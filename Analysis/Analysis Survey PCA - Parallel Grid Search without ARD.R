@@ -119,18 +119,15 @@ for(p in 1:n.par){
 }
 #2^374 colunas
 initialPop<-do.call(expand.grid, final)
-initialPop<-as.matrix(initialPop)
+initialPop<-as.data.frame(initialPop)
 # Calculate the number of cores
 no_cores <- detectCores() 
 
 # Initiate cluster
 cl <- makeCluster(no_cores)
-
+clusterExport(cl=cl,varlist=c("X","Y")) 
 start_time <- Sys.time()
-res <- DEoptim(marginal.ll,lower=rep(0.001,n.par), 
-                       upper=rep(100,n.par),   DEoptim.control(strategy = 1, itermax = 200, initialpop=initialPop,
-                                                               CR = 0.5, F = 0.8, p=0.8, trace = TRUE,
-                                                               parallelType = 1,packages=c(),parVar=c("X","Y")))
+  res <- parApply(cl = cl, X=initialPop, MARGIN=1, FUN=marginal.ll) 
 end_time <- Sys.time()
 end_time - start_time
 
