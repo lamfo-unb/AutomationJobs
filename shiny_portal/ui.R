@@ -1,0 +1,5 @@
+
+shinyUI(
+  uiOutput("ui")
+)
+
