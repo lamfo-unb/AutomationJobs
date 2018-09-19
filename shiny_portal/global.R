@@ -6,6 +6,7 @@ library(shinyTree)
 library(shinyjs)
 library(highcharter)
 library(flexdashboard)
+library(shinycssloaders)
 #library(xts)
 library(XML)
 library(DT)
@@ -52,3 +53,4 @@ listagem <- function(x){
   x <- sapply(d, lista3)
   return(x)
 }
+

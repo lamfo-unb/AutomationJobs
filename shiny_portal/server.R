@@ -30,8 +30,8 @@ function(input, output, session) {
                    htmlTemplate(
                                 "www/index2b_certo.html",
                                 printar = tags$b(textOutput("selected_var")),
-                                tree = shinyTree("tree"),
-                                densidade = highchartOutput('grafico'),
+                                tree = shinyTree("tree") %>% withSpinner(),
+                                densidade = highchartOutput('grafico') %>% withSpinner(),
                                 tabela_summary = tableOutput('resumo'),
                                 serie_temporal = plotlyOutput('temporal'))
           ),
@@ -53,13 +53,14 @@ function(input, output, session) {
    })
    
    output$selected_var<-renderText({
-
+     req(input$selecionado)
      teste <- as.character(lista$TITULO)
      if(Sys.info()[1] == "Linux") { Encoding(teste) <- 'latin1' }
      return(teste[ which(enc2native(lista$TITULO) == input$selecionado) ])
    })
    
   output$tree <- renderTree({
+    req(input$selecionado )
     listagem( which(enc2native(lista$TITULO) == input$selecionado ) )
   })
   
@@ -92,17 +93,26 @@ function(input, output, session) {
   # })
   # 
     output$gauge1 <- flexdashboard::renderGauge({
+      
+      req(input$selecionado )
       prob <- cbo_filtrada()$Probability
+      #print(length(prob))
+      
+      # if(length( prob ) == 0) {
+      #   return(NULL)
+      # } else {
+      
       flexdashboard::gauge(round( prob , 2) * 100,
                            min = 0, max = 100, symbol = '%', 
                            label = "Probababilidade",
                            flexdashboard::gaugeSectors(
         success = c(0, 39), warning = c(40, 79), danger = c(80, 100)
       ))
+      #}
     })
     
     output$grafico <- renderHighchart({
-      
+      req(input$selecionado)
       prob <- cbo_filtrada()$Probability
       #par2 = 4
       #x <- rbeta(1000 , shape1 = par2*prob / (1 - prob) ,
@@ -126,7 +136,7 @@ function(input, output, session) {
              }") ) %>%
         hc_title( text = list('Distribuição da probabilidade de automação'),
                   legend = '') %>%
-        hc_subtitle(text = list(input$selecionado)) %>%
+      #  hc_subtitle(text = list( subtitulo )) %>%
         hc_add_theme(hc_theme_google()) 
       
     })
@@ -147,12 +157,12 @@ function(input, output, session) {
     # })
     
     output$temporal <- renderPlotly({
-      
+      req(input$selecionado)
       cbo1 <- tabela
       cbo1$serie <- as.character(cbo1$serie)
       cbo1 <- subset(cbo1 , cbo1$cbo2002 == cbo_filtrada()$COD_OCUPACAO[1] ) 
       
-      cbo1$serie <- ifelse(cbo1$serie == 'Previs\xe3o' , 'Previsao' , cbo1$serie)
+      cbo1$serie <- ifelse(cbo1$serie == 'Previs\xe3o' , 'Previsão' , cbo1$serie)
       cbo2 <- cbo1[ cbo1$serie == 'Previsao' , ]
       #cbo1 <- cbo1[ cbo1$serie %in% c('Original','Interpolado') , ]
       
@@ -162,8 +172,8 @@ function(input, output, session) {
                y_next = lead(empregados),
                empregados = round(empregados))
       
-      cores <- c("#FC4E07","#00AFBB","#E7B800")
-      names(cores) <- c('Original' , "Interpolado","Previsao")
+      cores <- c("#00AFBB","#FC4E07","#E7B800")
+      names(cores) <- c('Original' , "Interpolado","Previsão")
       
     level_serie <- names(table(cbo_t$serie))
       
@@ -171,8 +181,8 @@ function(input, output, session) {
                    aes(x = ano , y = empregados )) + 
         geom_segment(aes(xend = x_next , yend = y_next,
                          colour = serie), size=0.75) + 
-        labs(title = "Serie de numero de empregados por ano",
-             subtitle = "Profissao TAL",
+        labs(title = "Série de numero de empregados por ano",
+             #subtitle = "Profissao TAL",
              x = "" , y = "", colour = "") +
         geom_smooth(aes(x = ano  , ymax = ls , ymin = li ),
                     colour = cores[names(cores)=="Previsao"] ,
@@ -196,9 +206,11 @@ function(input, output, session) {
     output$resumo <- renderTable({
       #par2 = 4
       #x <- rbeta(1000 , shape1 = par2*dados$Prob[2] / (1 - dados$Prob[2]) , shape2 = par2)
+      req(input$selecionado)
       prob <- cbo_filtrada()$Probability
-      
-       tabela = data.frame( Medidas = names(summary(prob)) ,
+      medidas <- c("Mínimo","Primeiro Quartil",
+                   "Mediana","Média","Terceiro Quartil","Máximo")
+       tabela = data.frame( Medidas = medidas ,
                             Valores = unclass(summary(prob)))
        xtable::xtable(tabela)
     })

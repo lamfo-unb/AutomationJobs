@@ -15,7 +15,7 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-4 col-sm-8 col-xs-12 col-md-offset-4 col-sm-offset-2 login-image-main text-center">
+		<div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-2 col-sm-offset-2 login-image-main text-center">
 			<div class="row">
 			<!--	<div class="col-md-12 col-sm-12 col-xs-12 user-image-section"> -->
 					<img src="image/Logo2.png" height="150" width="300">
@@ -32,10 +32,10 @@
 			<!--		</div> -->
 					 <!-- <a href="#" class="btn btn-defualt">Login</a> -->
 					 <!-- <script> $('#select-country').selectize(options: [ choices ] ); </script> -->
-		<center>			 {{ selectizeInput('selecionado' , label = NULL ,
-                              choices = escolhas ,
+		<center>			 {{ selectizeInput('selecionado' , label = NULL , width = '680px',
+                              choices = sort(escolhas) ,
                               options = list(
-                                             placeholder = 'Selecione uma profissao',
+                                             placeholder = 'Selecione uma profiss\u00E3o   ',
                                              onInitialize = I('function() { this.setValue(""); }'))) }} </center>
 					 {{ actionButton("login_button", "Buscar") }} 					  
 				</div>
