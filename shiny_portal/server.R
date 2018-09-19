@@ -115,7 +115,7 @@ function(input, output, session) {
           list(showLastLabel = TRUE, opposite = TRUE , 
                title = list(text = '' , rotation = 270) )
         ) %>% 
-        hc_add_series( density(prob) ,
+        hc_add_series( density(prob , from = 0 , to = 1) ,
                        yAxis = 1 , name = 'Densidade' )  %>%
         hc_tooltip(valueDecimals = 2,
                    borderWidth = 3,
