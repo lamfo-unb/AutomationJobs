@@ -104,18 +104,18 @@ function(input, output, session) {
     output$grafico <- renderHighchart({
       
       prob <- cbo_filtrada()$Probability
-      par2 = 4
-      x <- rbeta(1000 , shape1 = par2*prob / (1 - prob) ,
-                 shape2 = par2)
+      #par2 = 4
+      #x <- rbeta(1000 , shape1 = par2*prob / (1 - prob) ,
+      #           shape2 = par2)
       
-      hchart(x , name = 'Histograma') %>%
+      hchart(prob , name = 'Histograma') %>%
         hc_yAxis_multiples(
           list(lineWidth = 3 ,
                title = list(text = 'Frequência')),
           list(showLastLabel = TRUE, opposite = TRUE , 
                title = list(text = '' , rotation = 270) )
         ) %>% 
-        hc_add_series( density(x) ,
+        hc_add_series( density(prob) ,
                        yAxis = 1 , name = 'Densidade' )  %>%
         hc_tooltip(valueDecimals = 2,
                    borderWidth = 3,
