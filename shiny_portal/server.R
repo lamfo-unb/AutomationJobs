@@ -36,7 +36,9 @@ function(input, output, session) {
                                 serie_temporal = plotlyOutput('temporal'))
           ),
           tabPanel("Painel 2 ",
-                   htmlOutput('inc')  ),
+                   htmlTemplate("www2/Paper_HTML_Simples.html",
+                                Box_Paper = (readRDS("Box_Paper.RDS")),
+                                Serie_Paper = readRDS("Serie_Paper.RDS")) ),
           tabPanel("Painel 3",  
                    DT::dataTableOutput('tabela_dados') )
         )
