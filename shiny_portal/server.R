@@ -39,9 +39,10 @@ function(input, output, session) {
                  , htmlTemplate("www2/Paper_HTML_Simples.html",
                                 Box_Paper = ggplotly(readRDS("Box_Paper.RDS")),
                                 Serie_Paper = serie_p)
-                 ),
+                 )
+        ,
         tabPanel("Painel 3",  
-                 DT::dataTableOutput('tabela_dados') )
+                 htmlTemplate("www/Painel3.html") )
       )
       
     }
