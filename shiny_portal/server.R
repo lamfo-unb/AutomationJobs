@@ -35,10 +35,10 @@ function(input, output, session) {
                    tabela_summary = tableOutput('resumo'),
                    serie_temporal = plotlyOutput('temporal'))
         ),
-        tabPanel("Painel 2"
-                 , htmlTemplate("www2/Paper_HTML_Simples.html",
-                                Box_Paper = ggplotly(readRDS("Box_Paper.RDS")),
-                                Serie_Paper = serie_p)
+        tabPanel("Painel 2",
+                  htmlTemplate("www2/Paper_HTML_Simples.html",
+                                 Box_Paper = ggplotly(readRDS("Box_Paper.RDS")),
+                                 Serie_Paper = serie_p)
                  ),
         tabPanel("Painel 3",  
                  DT::dataTableOutput('tabela_dados') )
@@ -77,7 +77,7 @@ function(input, output, session) {
   #   return(includeHTML('www2/Paper_HTML.html'))
   # }
   
-  output$inc <- renderUI({ withMathJax( shiny::includeHTML('www2/Paper_HTML.html') )   }) #getPage() })
+  #output$inc <- renderUI({ withMathJax( shiny::includeHTML('www2/Paper_HTML_Simples.html') )   }) #getPage() })
   
   output$tabela_dados <- DT::renderDataTable({
     
@@ -98,7 +98,7 @@ function(input, output, session) {
   output$gauge1 <- flexdashboard::renderGauge({
     
     req(input$selecionado )
-    prob <- cbo_filtrada()$Probability
+    prob <- median(cbo_filtrada()$Probability)
     #print(length(prob))
     
     # if(length( prob ) == 0) {
@@ -166,14 +166,14 @@ function(input, output, session) {
     cbo1 <- subset(cbo1 , cbo1$cbo2002 == cbo_filtrada()$COD_OCUPACAO[1] ) 
     
     cbo1$serie <- ifelse(cbo1$serie == 'Previs\xe3o' , 'Previsão' , cbo1$serie)
-    cbo2 <- cbo1[ cbo1$serie == 'Previsao' , ]
+    cbo2 <- cbo1[ cbo1$serie == 'Previsão' , ]
     #cbo1 <- cbo1[ cbo1$serie %in% c('Original','Interpolado') , ]
     
     cbo_t <- cbo1 %>% 
       arrange(ano) %>% 
       mutate(x_next = lead(ano) , 
              y_next = lead(empregados),
-             empregados = round(empregados))
+             empregados = round(empregados,2))
     
     cores <- c("#00AFBB","#FC4E07","#E7B800")
     names(cores) <- c('Original' , "Interpolado","Previsão")
@@ -184,12 +184,12 @@ function(input, output, session) {
                  aes(x = ano , y = empregados )) + 
       geom_segment(aes(xend = x_next , yend = y_next,
                        colour = serie), size=0.75) + 
-      labs(title = "Série de numero de empregados por ano",
+      labs(title = "Série de número de empregados por ano",
            #subtitle = "Profissao TAL",
            x = "" , y = "", colour = "") +
       geom_smooth(aes(x = ano  , ymax = ls , ymin = li ),
-                  colour = cores[names(cores)=="Previsao"] ,
-                  fill = cores[names(cores)=="Previsao"],
+                  colour = as.character(cores[3]),#cores[names(cores)=="Previsão"] ,
+                  fill = as.character(cores[3]),#cores[names(cores)=="Previsão"],
                   data = cbo2 , stat = 'identity' , alpha = 1/8) +
       scale_colour_manual( values = cores[ names(cores) %in% level_serie ],
                            labels = names(cores)[ names(cores) %in% level_serie ] ) +
@@ -203,7 +203,6 @@ function(input, output, session) {
                            x = 0.2 , y = -0.1),
              font = list(family = 'arial')) %>%
       config(displayModeBar = F)
-    
   })
   
   output$resumo <- renderTable({
@@ -212,9 +211,10 @@ function(input, output, session) {
     req(input$selecionado)
     prob <- cbo_filtrada()$Probability
     medidas <- c("Mínimo","Primeiro Quartil",
-                 "Mediana","Média","Terceiro Quartil","Máximo")
+                 "Mediana","Média","Terceiro Quartil","Máximo","Desvio Padrão")
+    valores <- c( unclass(summary(prob)) , sd(prob) )
     tabela = data.frame( Medidas = medidas ,
-                         Valores = unclass(summary(prob)))
+                         Valores = valores)
     xtable::xtable(tabela)
   })
   
