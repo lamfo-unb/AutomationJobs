@@ -32,11 +32,11 @@
 			<!--		</div> -->
 					 <!-- <a href="#" class="btn btn-defualt">Login</a> -->
 					 <!-- <script> $('#select-country').selectize(options: [ choices ] ); </script> -->
-		<center>			 {{ selectizeInput('selecionado' , label = NULL , width = '680px',
-                              choices = sort(escolhas) ,
-                              options = list(
-                                             placeholder = 'Selecione uma profiss\u00E3o   ',
-                                             onInitialize = I('function() { this.setValue(""); }'))) }} </center>
+					 <center>			 
+					 {{ selectizeInput("selecionado", choices = sort(escolhas), label = NULL, options = list( placeholder = "Selecione uma profiss\u00E3o    ", onInitialize = I('function() { this.setValue(""); }') ) ) }} 					  
+                     </center>
+
+
 					 {{ actionButton("login_button", "Buscar") }} 					  
 				</div>
 				<div class="col-md-12 col-sm-12 col-xs-12 last-part">

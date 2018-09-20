@@ -61,8 +61,8 @@ library(pdftools)
 
 opts_chunk$set(message=FALSE, warning=FALSE, comment=NA, echo=FALSE, out.width='100%', out.height='auto', fig.align='center', cache=T)
 
-# opts_knit$set(root.dir = "C:/Users/rafal/Google Drive/LAMFO/AutomationJobs")
-opts_knit$set(root.dir = "C:/Users/B2657804/Google Drive/LAMFO/AutomationJobs")
+opts_knit$set(root.dir = "C:/Users/rafal/Google Drive/LAMFO/AutomationJobs")
+# opts_knit$set(root.dir = "C:/Users/B2657804/Google Drive/LAMFO/AutomationJobs")
 
 # A function for captioning and referencing images
 fig <- local({
@@ -301,9 +301,6 @@ p <- plot_ly(g, x=~year, y=~`1`, name = "Job Zone 1", marker=list(color=mycolors
   layout( legend = list(orientation = 'h'), xaxis = list(title = " "),
           yaxis = list(title = "Taxa de Crescimento Acumulado"), hovermode = "compare")
 p
-  
-
-
 ```
 
 If we believe that automation is eliminating job positions, especially for the first Job Zones class, we should expect that the Cumulative Growth Rate were larger for the Level 5, follow by Level 4, Level 3, Level 2 and then Level 1. But interestingly, this pattern did not occur. The highest growth class in recent years was the Level 1 which was associated with the occupations that need little or no preparation.
@@ -429,7 +426,7 @@ Of course, job losses in one industry might be offset by employment growth in ot
 
 
 ```{r save}
-saveRDS(ggplotly(a), "Box_Paper.RDS")
-saveRDS(p, "Serie_Paper.RDS")
+saveRDS(a, "Box_Paper.RDS")
+saveRDS(g, "Serie_Paper.RDS")
 ```
 
