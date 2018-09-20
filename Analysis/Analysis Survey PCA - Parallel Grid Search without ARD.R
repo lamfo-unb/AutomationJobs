@@ -66,7 +66,7 @@ Rcpp::sourceCpp("Analysis/Kernel.cpp")
 #kernel3 <- sigma2f*exp(-0.5*k^2)
 #all(kernel1==kernel3)
 
-n.par<-3
+
 theta<-rep(1,n.par)
 #Marginal Log-Likelihood (Type-II Likelihood)
 marginal.ll<-function(theta){
@@ -111,13 +111,14 @@ marginal.ll<-function(theta){
   #Return (Maximize)
   return(-(inf+reg+nor))
 }
-#n.par<-3
-initialPop<-eval(seq(0.001,100,length.out = 100))
+gri<-50
+n.par<-3
+initialPop<-eval(seq(0.001,100,length.out = gri))
 final <- vector("list", n.par) 
 for(p in 1:n.par){
   final[[p]]<-initialPop
 }
-#2^374 colunas
+#hours <- (2.5*(gri^n.par))/1000
 initialPop<-do.call(expand.grid, final)
 initialPop<-as.data.frame(initialPop)
 # Calculate the number of cores
@@ -127,6 +128,8 @@ no_cores <- detectCores()
 cl <- makeCluster(no_cores)
 clusterExport(cl=cl,varlist=c("X","Y")) 
 start_time <- Sys.time()
+start_time
+#Inicio 13:00 13/9 - Expectativa 26/9
   res <- parApply(cl = cl, X=initialPop, MARGIN=1, FUN=marginal.ll) 
 end_time <- Sys.time()
 end_time - start_time
@@ -134,44 +137,7 @@ end_time - start_time
 stopCluster(cl)
 save.image("Solution.RData")
 
-
-
-
-start_time <- Sys.time()
-res <- RcppDE::DEoptim(marginal.ll,lower=rep(0.001,n.par), 
-                       upper=rep(100,n.par), 
-                       DEoptim.control(NP = 10,strategy = 1, itermax = 100,
-                                       CR = 0.5, F = 0.8, p=0.8, trace = TRUE,
-                                       parallelType = 1))
-end_time <- Sys.time()
-end_time - start_time
-
-save.image("Solution.RData")
-
-
-
-
-
-
-
-
-
-start_time <- Sys.time()
-
-res <- ga(type = "real-valued", 
-                fitness =  marginal.ll,
-                lower = rep(0.001,n.par), upper= rep(100,n.par),
-                popSize = 10, maxiter = 5, pmutation = 0.5,
-                optim = FALSE)
-end_time <- Sys.time()
-end_time - start_time
-#Time difference of 43.66486 mins
-
-save.image("Data\\AnalysisObjects.RData")
-
-plot(res@fitness,type="l")
-
-theta<-res@solution
+theta<-initialPop[which(min(res)==res),]
 
 #Parameters            
 sigma2f <- theta[1]
