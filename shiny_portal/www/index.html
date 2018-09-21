@@ -33,7 +33,9 @@
 					 <!-- <a href="#" class="btn btn-defualt">Login</a> -->
 					 <!-- <script> $('#select-country').selectize(options: [ choices ] ); </script> -->
 					 <center>			 
-					 {{ selectizeInput("selecionado", choices = sort(escolhas), label = NULL, options = list( placeholder = "Selecione uma profiss\u00E3o    ", onInitialize = I('function() { this.setValue(""); }') ) ) }} 					  
+					 {{ selectizeInput("selecionado", choices = sort(escolhas), label = NULL, width = '680px',
+					  options = list( placeholder = "Selecione uma profiss\u00E3o    ",
+					   onInitialize = I('function() { this.setValue(""); }') ) ) }} 					  
                      </center>
 
 
