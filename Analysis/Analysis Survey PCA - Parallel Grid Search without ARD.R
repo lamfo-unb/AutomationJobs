@@ -75,7 +75,7 @@ marginal.ll<-function(theta){
   sigma.n <- theta[2]
   lambda  <- theta[3]
   n <- nrow(X)
-
+  
   k.xx <- as.matrix(dist(X/lambda, method = "euclidean"))
   #k.xx <- as.matrix(parDist(X/lambda, method = "euclidean"))
   k.xx <- k.xx^2
@@ -96,11 +96,13 @@ marginal.ll<-function(theta){
   #k.xx <- as.matrix(Matrix::nearPD(k.xx)$mat)
   L <- chol(k.xx)
   logdet <- 2*sum(log(diag(L)))
-  #Information
-  inf <- as.numeric((-0.5)*(t(Y)%*%k.xx%*%Y))
   #Regularization
-  det <- det(k.xx)
-  if(is.infinite(logdet)){
+  invL <- backsolve(r = L, x = diag(ncol(L)))
+  invK <- t(invL)%*%invL
+  #Information
+  inf <- as.numeric((-0.5)*(t(Y)%*%invK%*%Y))
+
+  if(is.infinite(logdet) | is.na(logdet) | is.nan(logdet)){
     return(+1e+10)
   }
   else{
@@ -108,12 +110,13 @@ marginal.ll<-function(theta){
     #Normalization
     nor <- -(n/2)*log(2*pi)
   }
-  #Return (Maximize)
-  return(-(inf+reg+nor))
+  #Return Log-likelihood
+  return(inf+reg+nor)
 }
-gri<-50
+#gri<-50
 n.par<-3
-initialPop<-eval(seq(0.001,100,length.out = gri))
+#initialPop<-eval(seq(0.001,100,length.out = gri))
+initialPop<-2^seq(-15,15)
 final <- vector("list", n.par) 
 for(p in 1:n.par){
   final[[p]]<-initialPop
@@ -130,14 +133,17 @@ clusterExport(cl=cl,varlist=c("X","Y"))
 start_time <- Sys.time()
 start_time
 #Inicio 13:00 13/9 - Expectativa 26/9
-  res <- parApply(cl = cl, X=initialPop, MARGIN=1, FUN=marginal.ll) 
+res <- parApply(cl = cl, X=initialPop, MARGIN=1, FUN=marginal.ll) 
 end_time <- Sys.time()
 end_time - start_time
 
 stopCluster(cl)
+theta<-initialPop[which(max(res)==res),]
 save.image("Solution.RData")
 
-theta<-initialPop[which(min(res)==res),]
+
+
+
 
 #Parameters            
 sigma2f <- theta[1]
