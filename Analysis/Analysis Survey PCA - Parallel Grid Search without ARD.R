@@ -95,10 +95,10 @@ marginal.ll<-function(theta){
   k.xx <- k.xx + sigma.n^2*diag(1, n)
   #k.xx <- as.matrix(Matrix::nearPD(k.xx)$mat)
   L <- chol(k.xx)
-  logdet <- 2*sum(log(diag(L)))
+  logdet <- 2*sum(log(diag(L))) #https://makarandtapaswi.wordpress.com/2011/07/08/cholesky-decomposition-for-matrix-inversion/
   #Regularization
   invL <- backsolve(r = L, x = diag(ncol(L)))
-  invK <- t(invL)%*%invL
+  invK <- t(invL)%*%invL        #https://stackoverflow.com/questions/25662643/what-is-the-way-to-invert-a-triangular-matrix-in-r
   #Information
   inf <- as.numeric((-0.5)*(t(Y)%*%invK%*%Y))
 
