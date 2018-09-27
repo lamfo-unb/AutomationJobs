@@ -164,41 +164,46 @@ The abstract of the article.The abstract of the article.The abstract of the arti
 <center style="padding-top:55px">
 <h2 id="metodologia">3. Metodologia</h2>
 </center>
-<p>The dataset used in this analysis was the Brazilian Annual Social Information Report (<i>Relação Anual de Informações Sociais</i> - RAIS). RAIS is an annual administrative record conceived to supply the necessities of control, and information for governmental entities aiming to subsidize public policies by tracking the formal labor market in Brazil.</p>
-<p>RAIS is a panel dataset that covers 97% of the Brazilian formal market for the years of 1986 to 2016 and it contains mostly of the formal employees with their income, level of education, age, CBO, firm identification, National Classification of Economic Activities (<i>Classificação Nacional de Atividades Econômicas</i> - CNAE) of the firms and many other variables such as municipality, legal nature and job tenure of employees.</p>
-<p>The first step of our analysis was to join the O*NET Job Zone classification into the RAIS dataset for each CBO. The O*NET database presents 1,122 occupational groups and provides definitions and concepts for describing worker attributes such as skills, education and also a 5 level Job Zone that classify jobs according to their preparation level:</p>
+<p>A base de dados utilizada nesse estudo foi a <i>Relação Anual de Informações Sociais</i> - RAIS. A RAIS é uma base de dados administrativa de periodicidade anual que tem por objetivo fornecer informações para entidades governamentais com o intuito de subsidiar políticas públicas do mercado de trabalho no Brasil.</p>
+<p>A RAIS é um painel que cobre 97% dos trabalhadores formais no Brasil entre os anos de 1986 e 2016 e contêm outros dados como renda, nível educacional dos trabalhadores, idade, CBO, identificação da firma e <i>Classificação Nacional de Atividades Econômicas</i> - CNAE das firmas além de muitas outras variáveis regionais.</p>
+<p>Com base nesses dados, o primeiro passo do estudo foi unificar a classificação O*NET Job Zone com a RAIS para cada CBO. O O*NET é uma base de dados que apresenta 1122 grupos ocupacionais e fornece definições e conceitos para descrever os trabalhadores quanto as suas habilidades e competências além de nível educacional exigido, além de 5 níveis denominados <i>Job Zones</i> que classificam as ocupações quanto ao seu nível de preparo:</p>
 <ol style="list-style-type: decimal">
-<li>Job Zone 1 - occupations that need little or no preparation.</li>
-<li>Job Zone 2 - occupations that need some preparation.</li>
-<li>Job Zone 3 - occupations that need medium preparation.</li>
-<li>Job Zone 4 - occupations that need considerable preparation.</li>
-<li>Job Zone 5 - occupations that need extensive preparation.</li>
+<li>Job Zone 1 - ocupações que requerem pouca preparação.</li>
+<li>Job Zone 2 - ocupações que requerem alguma preparação.</li>
+<li>Job Zone 3 - ocupações que necessitam de um nível intermediário de preparo.</li>
+<li>Job Zone 4 - ocupações que necessitam de uma considerável preparação.</li>
+<li>Job Zone 5 - ocupações que exigem alto nível de preparo.</li>
 </ol>
-<p>The idea was use the Job Zone classification as a proxy of the probability of computerisation for each CBO across the years in the RAIS dataset. Indeed, there is a negative relationship between the Job Zone classification and the probability of computerisation presented in the O*NET database as pointed by Figura 1.</p>
+<p>A ideia foi então utilizar a classificação <i>Job Zones</i> como uma <i>proxy</i> do nível de automação das CBOs ao longo dos anos utilizando para isso a RAIS. De fato, existe uma relação negativa entre a classificação <i>Job Zones</i> e a probabilidade de automação apresentada na base O*NET como aponta a Figura 1.</p>
 <div class="figure" style="text-align: center">
 {{ Box_Paper }}
 <p class="caption">
 Figura 1: Probabilidade de informatização por Job Zone
 </p>
 </div>
-<p>The Figura 1 presents the probability of computerisation of occupations according to the Job Zones. The probabilities were obtained from <span class="citation">C. B. Frey &amp; Osborne (<a href="#ref-frey2017future">2017</a>)</span> and the correspondence was given by the 2010 Standard Occupational Classification - SOC. Based on the Figura 1 we can note that as more complex is an occupation in terms of level of preparation, less is the probability of computerisation of these occupations.</p>
-<p>Since there is no official table available to correspond the CBO to Job Zones provided by the O*NET we assigned the Job Zones to the Brazilian occupational code using the follow steps: first we used the CBO version 2002 which is the most recent occupational code in Brazil <span class="citation">(MTE, <a href="#ref-MTE">2018</a>)</span>. Then, these codes were linked to the International Standard Classification of Occupations - <span class="citation">ISCO (<a href="#ref-ISCO">2018</a>)</span>, version 88 which has a straight matching given from <span class="citation">MTE (<a href="#ref-MTE">2018</a>)</span>. Once obtained the joined dataset we updated the ISCO-88 to ISCO-08 and then it was possible to crosswalk between the 2008 International Standard Classification of Occupations to the 2010 using <span class="citation">SOC (<a href="#ref-SOC">2018</a>)</span> conversion tables. Finally, <span class="citation">O*NET (<a href="#ref-ONET_">2018</a>)</span> provides the correspondence between Job Zones and SOC 2010.</p>
-<p>After this procedure we found Job Zones for 73% of CBOs, but while O*NET database presents 1,122 occupational groups the RAIS has 2,602 occupational groups and because of that some occupational codes presented more than one correspondence.</p>
-<p>For the 27% remained we filled 8% of the occupational codes using the translation between the occupational names from English to Portuguese and matching the codes by text merge based in a similarity measure. This measure is expressed in the range between <span class="math inline">\([0, 1]\)</span> and is given by the ratio of twice the number of elements common to words and the total of elements of both texts. The remaining 19% were filled by manual inspection of the authors evaluating the level of preparation for each code based on the occupational code’s description.</p>
-<p>Next, we calculate the expected number of employees for each Job Zone throughout the year. Mathematically, let <span class="math inline">\(W_{i,t}\)</span> be the number of workers in the <span class="math inline">\(i\)</span>-th CBO and <span class="math inline">\(t\)</span>-year and <span class="math inline">\(\pi_{i,j,t}\)</span> the percent of times for the <span class="math inline">\(i\)</span>-th CBO time <span class="math inline">\(t\)</span> classified as Job Zone <span class="math inline">\(j\)</span> the expected number of employees for each Job Zone throughout the year was given by:</p>
+<p>A Figura 1 apresenta a probabilidade de automação das ocupações segundo <i>Job Zones</i>. As probabilidades foram obtidas por meio do texto seminal <span class="citation">C. B. Frey &amp; Osborne (<a href="#ref-frey2017future">2017</a>)</span> que inspirou esse trabalho, e a correspondência foi dada por meio da classificação padrão de 2010 americana (<i> 2010 Standard Occupational Classification</i>), denominada SOC. Baseado na Figura 1 podemos notar que quanto mais complexo é uma ocupação em termos de nível de preparo, menor é a probabilidade de automação dessas ocupações.</p>
+<p>Isso parece aderente com a hipótese de que as ocupações que necessitam de um nível elevado de preparo são mais difíceis de serem automatizadas pois há muitos detalhes na execução das tarefas correspondentes a essas ocupações o que restringe, pelo menos no curto prazo, a chance dessas ocupações serem automatizadas.</p>
+<p>Uma vez que não há nenhuma tabela de conversão correspondente entre as CBOs nacionais e a <i>Job Zones</i> fornecida pelo O*NET nós atribuímos as <i>Job Zones</i> nas ocupações brasileiras por meio dos seguintes passos: usando a versão mais recente das CBOs datada de 2002 cuja fonte é <span class="citation">MTE (<a href="#ref-MTE">2018</a>)</span>, cruzamos esse dado com a <i>International Standard Classification of Occupations - <span class="citation">ISCO (<a href="#ref-ISCO">2018</a>)</span>, version 88</i>. Esse cruzamento permitiu ligar os dados diretamente aos obtidos de <span class="citation">MTE (<a href="#ref-MTE">2018</a>)</span>.</p>
+<p>Uma vez unificados esses dados nós atualizamos a ISCO-88 para a ISCO-08 e então foi possível relacionar a <i>2008 International Standard Classification of Occupations</i> com a <span class="citation">SOC (<a href="#ref-SOC">2018</a>)</span> de 2010. Finalmente, <span class="citation">O*NET (<a href="#ref-ONET_">2018</a>)</span> fornece a correspondência entre as Job Zones e a SOC 2010.</p>
+<p>Após esse processo encontramos as <i>Job Zones</i> para 73% das CBOs, mas enquanto a base O*NET fornece 1122 grupos ocupacionais a RAIS (utilizando CBO de 2002) fornece 2602 grupos ocupacionais, assim, a correspondência entre essas duas fontes resulta em um base de dados final para a qual algumas ocupações CBO apresentam mais de uma correspondência com a <i>Job Zones</i>.</p>
+<p>Para as CBOs restantes nós preenchemos 8% dos códigos ocupacionais usando a tradução direta do inglês para o português da descrição dessas ocupações e fizemos a unificação por meio da medida de similaridade entre esses dois textos. A medida de similaridade expressa entre <span class="math inline">\([0, 1]\)</span> e é dada por duas vezes a razão entre o número de elementos comuns entre os dois textos sobre o número total de palavras dos dois textos. Finalmente, os 19% restantes foram preenchidos por meio de inspeção manual realizada pelos autores desse trabalho, avaliando qual o nível de preparação é exigido para cada código ocupacional baseado na sua descrição de atividades.</p>
+<p>Em seguida nós calculamos o número de trabalhadores esperado em cada <i>Job Zones</i> por ano. Matematicamente, seja <span class="math inline">\(W_{i,t}\)</span> o número de trabalhadores na <span class="math inline">\(i\)</span>-ésima CBO, <span class="math inline">\(t\)</span> representa o índice de ano e <span class="math inline">\(\pi_{i,j,t}\)</span> o percentual de vezes que a <span class="math inline">\(i\)</span>-ésima no período de tempo <span class="math inline">\(t\)</span> foi classificada como sendo oriunda de uma <i>Job Zones</i> <span class="math inline">\(j\)</span>, assim o número esperado de trabalhadores por <i>Job Zones</i> e ano é dado por:</p>
 <p><span class="math display">\[E_{j,t} = W_{i,t} \pi_{i,j,t} \]</span></p>
-<p>for <span class="math inline">\(j=1,\dots,5\)</span>. However, since the number of workers in each Job Zone is very different, we choose to work with the Cumulative Growth Rate (CGR) to be able to compare the magnitude of the increase (or decrease) over time, specifically the Cumulative Growth Rate was computed as:</p>
+<p>para <span class="math inline">\(j=1,\dots,5\)</span>. Entretanto, uma vez que o número de empregados por <i>Job Zones</i> é muito diferente em termos absolutos (pois há muito mais trabalhadores cujas ocupações necessitam de pouco preparo do que ocupações que necessitam de um alto nível de preparo), nós escolhemos trabalhar com a Taxa Acumulada de Crescimento (<i>Cumulative Growth Rate</i> - CGR) para que possa ser possível comparar as magnitudes de crescimento (ou decréscimo) dessas ocupações ao longo do tempo, especificamente a Taxa Acumulada de Crescimento foi calculada da seguinte forma:</p>
 <p><span class="math display">\[G_{j,t} = \displaystyle\sum_{t_{0}=1}^{t}\left[\frac{E_{j,t_{0}}}{E_{j,t_{0}-1}}-E_{j,t_{0}-1}\right]\]</span></p>
-<p>where <span class="math inline">\(t_{0}=1\)</span> represents the second year of our time series, the year of 1988.</p>
-<p>The Figura 2 presents the Cumulative Growth Rate for the expected number of employees for each Job Zone and also the Cumulative Growth Rate for the Brazilian Gross domestic product (GDP) starting the series from 1987.</p>
+<p>onde <span class="math inline">\(t_{0}=1\)</span> o segundo ano da nossa série temporal, qual seja o ano de 1988 é o ano base de comparação.</p>
+<p>A Figura 2 apresenta a Taxa Acumulada de Crescimento do número de empregados para cada <i>Job Zones</i>, bem como a Taxa Acumulada de Crescimento do Produto Interno Bruto (PIB) brasileiro.</p>
 <div class="figure" style="text-align: center">
 {{ Serie_Paper }}
 <p class="caption">
-Figura 2: plotting example
+Figura 2: Taxa esperada de crescimento cumulativo para cada Job Zone e Produto Interno Bruto brasileiro
 </p>
 </div>
-<p>If we believe that automation is eliminating job positions, especially for the first Job Zones class, we should expect that the Cumulative Growth Rate were larger for the Level 5, follow by Level 4, Level 3, Level 2 and then Level 1. But interestingly, this pattern did not occur. The highest growth class in recent years was the Level 1 which was associated with the occupations that need little or no preparation.</p>
-<p>The other Job Zones series followed the expected pattern: Level 5, followed by Level 4, Level 3, Level 2 in that order. The first question that arises is why the Level 1 had the highest increase over time ? One possible answer may be due to the fact that workers in the intermediate classes are migrating to Level 1, due to a lack of jobs in the areas that require more training, or due to the unemployment rate that has remained high in Brazil in last years. To confirm this hypothesis we tracked the workers through the years to measure the number of changes for each Job Zone class as presented by the Tabela 1:</p>
+<p>Se nós acreditarmos que a automação de fato está eliminando postos de trabalho ao longo dos anos, especialmente para as primeiras <i>Job Zones</i>, deveríamos observar que a curva da Taxa Acumulada de Crescimento Acumulada da quinta <i>Job Zone</i> deveria superar a curva da <i>Job Zones</i> 4, seguida pela <i>Job Zones</i> 3, <i>Job Zones</i> 2 e finalmente <i>Job Zones</i> 1. Mas de maneira interessante esse padrão não é representado na Figura 2.</p>
+<p>Na verdade o que observa-se é que os postos de trabalho formais da primeira <i>Job Zone</i> superou as <i>Job Zones</i> 5,4,3 e 2 nessa ordem. A primeira questão que surge é por quê a taxa de trabalhadores da <i>Job Zone</i> 1 cresceu mais nos últimos anos do que a taxa de trabalhadores nas demais <i>Job Zones</i>, se esta é a que necessita de menor nível de preparo do que as demais. Algumas possibilidades podem ser apresentadas: a primeira assume-se que a automação das ocupações não esteja acontecendo no Brasil, isso explicaria o porquê das curvas na Figura 2 não seguirem a ordem 5,4,3,2 e 1 em suas taxas de crescimento acumulado, mas não explica o motivo das <i>Job Zones</i> 5,4,3 e 2 se comportarem como previsto.</p>
+<p>A segunda alternativa e mais plausível é a possibilidade dos trabalhadores das <i>Job Zones</i> 2, 3, 4 e até mesmo 5 terem perdido seus empregos nos últimos anos devido a automação e questões macroeconômicas e então foram realocados no mercado de trabalho em <i>Job Zones</i> inferiores a sua <i>Job Zone</i> original.</p>
+<p>Caso essa alternativa seja a correta algo preocupante deve ser analisado mais profundamente: o que acontecerá com esses trabalhadores de <i>Job Zones</i> inferiores caso suas ocupações sejam automatizadas? E de fato, quanto menor o nível da <i>Job Zone</i>, menos preparo o profissional precisa ter e maior a chance de suas tarefas serem automatizadas. Isso alinhado com o baixo custo de automação, o fato de os robôs não necessitarem de direitos trabalhistas e poderem operar 24 horas por dia deixa muito competitiva a alternativa de automação <i>versus</i>o trabalho humano manual, podendo assim eliminar potencialmente muitas vagas de trabalho em um futuro próximo.</p>
+<p>Para confirmar essa hipótese nós acompanhamos os trabalhadores ao longo do tempo e medimos o número de vezes em que eles mudaram de <i>Job Zone</i> ao longo dos anos, valores esses representados pela Tabela 1:</p>
 <table>
 <thead>
 <tr class="header">
@@ -269,16 +274,17 @@ Figura 2: plotting example
 </tbody>
 </table>
 <center style="padding-bottom:20px;">
-Tabela 1: Percent of change between levels to level 1 over the years.
+Tabela 1: Percentual de mudanças para a <i>Job Zone</i> 1 ao longo dos anos.
 </center>
-<p>Another question that arises is: Does the decrease of the GDP due to the Brazilian financial crisis reduce in the same manner the Cumulative Growth Rate for all the Job Zones class ?</p>
-<p>This question is motivated because of the recent Brazilian financial crisis that was coupled with a political crisis in Brazil that resulted in the impeachment of president Dilma Rousseff and in widespread dissatisfaction with the political system.</p>
-<p>After 2014 Brazil’s gross domestic product (GDP) fell by 3.9% due to a drop in salaries, restrictions on credit and a rise in the basic interest rate. In 2016, Brazil’s GDP fell by 3.6% with reductions across all sectors of the economy and the effect of these drops in the GDP can be clear noted by the Figura 2 where the Cumulative Growth Rate for the Job Zones also dropped with the follow magnitude:</p>
+<p>Por meio da Tabela 2 podemos observar que o percentual de mudança para a <i>Job Zone</i> 1 é maior entre os trabalhadores da <i>Job Zone</i> 2, seguido pela <i>Job Zone</i> 3, <i>Job Zone</i> 4 e com menor frequência os trabalhadores da <i>Job Zone</i> 5. Esses dados corroboram para a hipótese de migração para <i>Job Zones</i> inferiores como uma alternativa que os trabalhadores têm quando perdem seus empregos. Segundo essa hipótese é preferível receber menos em uma ocupação de baixo nível preparatório (mesmo que o trabalhador originalmente possua elevado nível de preparação) do que não estar atuando no mercado de trabalho.</p>
+<p>Outra questão que surge é: o decréscimo na taxa no PIB devido a crise financeira brasileira afeta de maneira igual a redução dos postos de trabalho para todas as <i>Job Zones</i> ?</p>
+<p>Essa questão é motivada pela recente crise financeira brasileira que foi seguida de uma crise política resultando no impeachment da presidente Dilma Rousseff aliada com a insatisfação popular com o sistema político nacional.</p>
+<p>Após 2014 o PIB brasileiro caiu em 3.9% devido a perdas salariais, restrições de crédito, aumento da taxa de juros básica e o elevado desemprego em todos os setores da economia. Essa diminuição pode ser observada na Figura 2 onde a Taxa de Crescimento Acumulada dos empregados nas <i>Job Zones</i> também caiu a partir de 2014:</p>
 <table>
 <thead>
 <tr class="header">
 <th align="left">Job Zone</th>
-<th align="center">Percentage</th>
+<th align="center">Percentual</th>
 </tr>
 </thead>
 <tbody>
@@ -305,63 +311,88 @@ Tabela 1: Percent of change between levels to level 1 over the years.
 </tbody>
 </table>
 <center style="padding-bottom:20px;">
-Tabela 2: Fall percentage from 2014 to 2016 in the CGR.
+Tabela 2: Percentual de redução entre 2014 to 2016 na Taxa de Cresimento Acumulada.
 </center>
-<p>The Tabela 2 shows that the percentage decrease in the number of job positions for the Level 1 was almost twice the decrease of the other Job Zones levels, also, the Level 5 which is related with the occupations that have less probability of computerisation had the lowest decrease in the number of job positions during the Brazilian financial crisis.</p>
+<p>A Tabela 2 mostra que o percentual decresce em uma magnitude muito maior para os trabalhadores da <i>Job Zone</i>, face a uma redução do PIB do que as demais <i>Job Zones</i>. De igual modo, quanto maior o nível de preparo menor é essa redução nos postos de trabalho quando da existência de uma crise financeira.</p>
 <h3 id="pesquisa-sobre-automacao-de-empregos">3.1. Pesquisa sobre automação de empregos</h3>
-<p>Using a similar idea as proposed by <span class="citation">C. B. Frey &amp; Osborne (<a href="#ref-frey2017future">2017</a>)</span> we collected from Lattes Platform<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> the name of all researchers that worked in projects related to machine-learning (and was found by a search using this exact phrase).</p>
-<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
-<p>During this process we found 754 e-mails for the researchers reported by Lattes Platform. We then invited this professionals to evaluate some random CBO’s with respect to their activity’s description based on the researcher’s experience.</p>
-<p>The final dataset was composed by 3966 answers from 69 researchers and 2046 CBO’s in a population with 2601 total CBO’s, also each respondent evaluated in average 57.48 randomly unique CBO’s.</p>
-<p>The sample was stratified by the following fields:</p>
+<p>Usando uma ideia similar a proposta por <span class="citation">C. B. Frey &amp; Osborne (<a href="#ref-frey2017future">2017</a>)</span> nós coletamos na plataforma Lattes do Conselho Nacional de Desenvolvimento Científico e Tecnológico (CNPq) o nome de todos os pesquisadores cadastrados na plataforma e que tenham atuado em projetos de automação relacionados ao Aprendizado de Máquina.</p>
+<p>Durante esse processo encontramos 754 e-mails de profissionais que reportaram na Plataforma Lattes do CNPq sua atuação em projetos de automação. É de se esperar que esses profissionais por sua atuação acadêmica em projetos de automação possuam capacidade de classificar as ocupações brasileiras segunda a sua probabilidade de automação.</p>
+<p>Convidamos então todos esses pesquisadores para avaliar, de maneira aleatória, CBOs quanto a sua probabilidade de automação. Era fornecido, portanto para os pesquisadores o nome da CBO, a descrição das atividades realizadas por essa ocupação e o respondente atribuía uma probabilidade entre 0 e 1 do nível de automação dessas ocupações.</p>
+<p>A base de dados final com todas as respostas registrou 3966 respostas de 69 pesquisadores e 2046 CBOs em uma população de 2602 CBOs existentes. Observamos ainda que cada respondente avaliou em média 57,48 CBOs aleatórias durante o processo de coleta dos dados.</p>
+<p>A distribuição das respostas por campos de pesquisa é apresentada pela Tabela 3:</p>
 <table>
 <thead>
 <tr class="header">
-<th align="left">Science</th>
-<th align="center">Answers</th>
-<th align="center">Researchers</th>
+<th align="left">Campo</th>
+<th align="center">Resposta</th>
+<th align="center">Pesquisadores</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">Applied sciences</td>
+<td align="left">Ciências Aplicadas</td>
 <td align="center">3489</td>
 <td align="center">58</td>
 </tr>
 <tr class="even">
-<td align="left">Interdisciplinary</td>
+<td align="left">Interdisciplinar</td>
 <td align="center">29</td>
 <td align="center">2</td>
 </tr>
 <tr class="odd">
-<td align="left">Business</td>
+<td align="left">Negócio</td>
 <td align="center">228</td>
 <td align="center">2</td>
 </tr>
 <tr class="even">
-<td align="left">Physical sciences</td>
+<td align="left">Ciências Naturais</td>
 <td align="center">220</td>
 <td align="center">7</td>
 </tr>
 </tbody>
 </table>
 <center style="padding-bottom:20px;">
-Tabela 3: Fields and researchers’ answers in the survey.
+Tabela 3: Campos de atuação dos respondentes da pesquisa.
 </center>
-<p>To estimate the probability of computerisation by CBO we joined the survey dataset with a structured dataset with the absolute frequency of the unigrams and bigrams related to the activity’s description of CBO’s.</p>
-<p>These unigrams and bigrams were obtained after remove from the activity’s description of CBO’s the stop-words, numbers and punctuation and keeping only the unigrams and bigrams with a coefficient of variation based on the frequency larger than 2.0, totalizing 92 variables with the number of times that the unigrams or bigrams is presented in the activity’s description of CBO’s.</p>
-<p>The last step to estimate the probability of computerisation by CBO was to train and forecast a Gaussian Process with Automatic Relevance Determination (ARD), in other words, since we had 92 variables to describe 3801 probabilities we used the ARD to regularize the Gaussian Process and avoid the over-fitting.</p>
-<p>Let <span class="math inline">\(\mathbf{x}_{i}\)</span> and <span class="math inline">\(\mathbf{x}_{j}\)</span> two observations with <span class="math inline">\(i,j=1,\dots, 3801\)</span> and <span class="math inline">\(\mathbf{x}_{i},\mathbf{x}_{j}\in \mathbb{R}^{P}\)</span> with <span class="math inline">\(P=92\)</span>, the ARD was fitted considering the following kernel function:</p>
+<p>Em seguida, para se estimar a probabilidade final de automação das CBOs usando a amostra coletada, geramos a frequência de palavras (unigramas e bigramas) que descreviam cada CBO observada na amostra utilizando para isso as descrições de atividades dessas ocupações.</p>
+<p>Esses unigramas e bigramas foram obtidos após a remoção de <i>stop-words</i>, números, abreviações e pontuação totalizando mais de 19 mil variáveis. Por se tratar de uma quantidade extensa de características que descreveriam as ocupações procedeu-se com uma Análise de Componentes Principais como forma de redução das características observadas. Mantendo-se pelo menos 70% de variabilidade explicada selecionamos os primeiros 372 componentes principais.</p>
+<p>O último passo foi o cômputo da probabilidade de automação para todas as CBOs, para isso usamos a amostra coletada e as características sumarizadas pelos componentes principais para terinar e avaliar um modelo de Processo Gaussiano com <i>Automatic Relevance Determination (ARD)</i> com o intuito de regularizar o modelo e apresentar estimativas mais robustas para o nível de automação.</p>
+<p>Seja <span class="math inline">\(\mathbf{x}_{i}\)</span> e <span class="math inline">\(\mathbf{x}_{j}\)</span>duas observações <span class="math inline">\(i,j=1,\dots, 3801\)</span> e <span class="math inline">\(\mathbf{x}_{i},\mathbf{x}_{j}\in \mathbb{R}^{P}\)</span> with <span class="math inline">\(P=372\)</span>, o ARD foi ajustado considerando-se a seguinte função <i>kernel</i>:</p>
 <p><span class="math display">\[K(\mathbf{x}_{i},\mathbf{x}_{j})_{\boldsymbol\theta}=\sigma_{f}^{2}\exp\left[-\frac{1}{2}\displaystyle\sum_{p=1}^{P}\left(\frac{x_{ip}-x_{jp}}{\lambda_{p}}\right)^{2}\right]\]</span></p>
-<p>where <span class="math inline">\(\boldsymbol\theta=(\sigma_{f}^{2},\sigma_{\epsilon}^{2},\lambda_{1},\dots,\lambda_{P})\)</span>. It is important to note that when <span class="math inline">\(\lambda_{p}\rightarrow \infty\)</span> the predicted function varies less and less as a function of <span class="math inline">\(x_{ip},x_{jp}\)</span>, that is, the <span class="math inline">\(p\)</span>-th dimension becomes irrelevant to estimate the probability of computerisation, in the other hand, <span class="math inline">\(\lambda_{p}\rightarrow 0\)</span> will weight more the distance between <span class="math inline">\(x_{ip}\)</span> and <span class="math inline">\(x_{jp}\)</span> in the data generating process estimation. The hyperparameters <span class="math inline">\(\boldsymbol\theta\)</span> were found by maximizing the Marginal Likelihood <span class="citation">(Schulz, Speekenbrink, &amp; Krause, <a href="#ref-schulz2018tutorial">2018</a>)</span>:</p>
-<p><span class="math display">\[\log[p(\mathbf{y}|\mathbf{X},\boldsymbol\theta)]=-\frac{1}{2}\mathbf{y}^{\top}\mathbf{K}_{y}\mathbf{y}-\frac{1}{2}|\mathbf{K}_{y}|-\frac{n}{2}\log(2\pi)\]</span></p>
-<p>where <span class="math inline">\(\mathbf{K}_{y}=K(\mathbf{X},\mathbf{X})+\sigma_{\epsilon}^{2}\mathbf{I}\)</span>, <span class="math inline">\((\mathbf{y}\)</span> is the probability of computerisation obtained from the survey, <span class="math inline">\(\mathbf{X}\)</span> is the unigram and bigram frequency matrix and <span class="math inline">\(n=3801\)</span> is the sample size.</p>
-<p>Finally, using multivariate posterior density we obtained the predictive equations for Gaussian Process Regression <span class="citation">(Rasmussen, <a href="#ref-rasmussen2004gaussian">2004</a>)</span>:</p>
-<p><span class="math display">\[\mathbf{f}_{*}|\mathbf{X},\mathbf{y},\mathbf{X}_{*}\sim N(\overline{\mathbf{f}}_{*},Cov(\mathbf{f}_{*}))\]</span> where <span class="math inline">\(\overline{\mathbf{f}}_{*}=K(\mathbf{X}_{*},\mathbf{X})[K(\mathbf{X},\mathbf{X})+\sigma_{\epsilon}^{2}\mathbf{I}]^{-1}\mathbf{y}\)</span> and <span class="math inline">\(Cov(\mathbf{f}_{*})=K(\mathbf{X}_{*},\mathbf{X}_{*})-K(\mathbf{X}_{*},\mathbf{X})[K(\mathbf{X},\mathbf{X})+\sigma_{\epsilon}^{2}\mathbf{I}]^{-1}K(\mathbf{X},\mathbf{X}_{*})\)</span> with <span class="math inline">\(\mathbf{X}_{*}\)</span> being the unigram and bigram frequency matrix of all observations, including the CBO’s without answer in the survey.</p>
+<p>onde <span class="math inline">\(\boldsymbol\theta=(\sigma_{f}^{2},\sigma_{\epsilon}^{2},\lambda_{1},\dots,\lambda_{P})\)</span>. É importante notar que quando <span class="math inline">\(\lambda_{p}\rightarrow \infty\)</span> a função predita varia menos e menos em função de <span class="math inline">\(x_{ip},x_{jp}\)</span>, isto é, a <span class="math inline">\(p\)</span>-ésima dimensão se torna irrelevante para descrever e estimar a probabilidade de automação, de igual modo quando <span class="math inline">\(\lambda_{p}\rightarrow 0\)</span> a distância entre <span class="math inline">\(x_{ip}\)</span> e <span class="math inline">\(x_{jp}\)</span> é mais fortemente ponderada no processo gerador dos dados, representando assim que aquela característica possui elevada importância na estimação da probabilidade de automação.</p>
+<p>Os hiperparâmetros <span class="math inline">\(\boldsymbol\theta\)</span> foram obtidos maximizando-se a verossimilhança marginal <span class="citation">(Schulz, Speekenbrink, &amp; Krause, <a href="#ref-schulz2018tutorial">2018</a>)</span>:</p>
+<p><span class="math display">\[\log[p(\mathbf{y}|\mathbf{X},\boldsymbol\theta)]=-\frac{1}{2}\mathbf{y}^{\top}\mathbf{K}_{y}^{-1}\mathbf{y}-\frac{1}{2}\log|\mathbf{K}_{y}|-\frac{n}{2}\log(2\pi)\]</span></p>
+<p>onde <span class="math inline">\(\mathbf{K}_{y}=K(\mathbf{X},\mathbf{X})+\sigma_{\epsilon}^{2}\mathbf{I}\)</span>, <span class="math inline">\((\mathbf{y}\)</span> é a probabilidade de automação registrada pelos respondentes na pesquisa, <span class="math inline">\(\mathbf{X}\)</span> é a matriz de características contendo os componentes principais obtidos dos unigramas e bigramas e <span class="math inline">\(n=3801\)</span> é o tamanho amostral.</p>
+<p>Finalmente, usando a densidade <i>a posteriori</i> multivariada nós obtivemos as equações de predição para o processo gaussiano de regressão <span class="citation">(Rasmussen, <a href="#ref-rasmussen2004gaussian">2004</a>)</span>:</p>
+<p><span class="math display">\[\mathbf{f}_{*}|\mathbf{X},\mathbf{y},\mathbf{X}_{*}\sim N(\overline{\mathbf{f}}_{*},Cov(\mathbf{f}_{*}))\]</span> onde <span class="math inline">\(\overline{\mathbf{f}}_{*}=K(\mathbf{X}_{*},\mathbf{X})[K(\mathbf{X},\mathbf{X})+\sigma_{\epsilon}^{2}\mathbf{I}]^{-1}\mathbf{y}\)</span> e <span class="math inline">\(Cov(\mathbf{f}_{*})=K(\mathbf{X}_{*},\mathbf{X}_{*})-K(\mathbf{X}_{*},\mathbf{X})[K(\mathbf{X},\mathbf{X})+\sigma_{\epsilon}^{2}\mathbf{I}]^{-1}K(\mathbf{X},\mathbf{X}_{*})\)</span> com <span class="math inline">\(\mathbf{X}_{*}\)</span> sendo a matriz com todos os componentes principais de todas as CBOs, incluindo as CBOs não observadas na amostra.</p>
 <center style="padding-top:55px">
 <h2 id="resultados">4. Resultados</h2>
 </center>
-<p>Simulating 5000 observations from Density  we obtained the empirical estimated distribution of the probability of computerisation for each CBO.</p>
+<p>Simulando 5000 observações da Densidade  nós obtivemos a estimativa empírica da distribuição de probabilidade de automação para cada CBO. É interessante notar nesse caso que a abordagem Bayesiana fornece uma interpretação útil para os resultados obtidos, uma vez que devido ao alto grau de incertezas seria melhor amostrar observações da distribuição <i>a posteriori</i> do parâmetro relativo a probabilidade de automação do que simplesmente fornecer uma única estimativa pontual.</p>
+<p>Ademais, quanto maior a variabilidade desse parâmetro (calculado usando-se as amostras geradas da distribuição <i>a posteriori</i> da probabilidade de automação), maior seria a heterogeneidade entre os trabalhadores da referida CBO, em outras palavras, uma alta variabilidade representaria que há diversidade de atividades na ocupação alvo que podem ser facilmente automatizadas e outras dificilmente seriam automatizadas. Já uma baixa variabilidade nas amostras geradas pela distribuição <i>a posteriori</i> da probabilidade de automação representaria que esse grupo CBO é muito homogêneo internamente o possivelmente todos (ou a maioria) dos profissionais alocados nessa CBO podem ter suas atividades automatizadas (quando a mediana da probabilidade de automação for alta), ou que suas atividades não poderiam ser facilmente automatizadas (no caso da mediana da probabilidade de automação for baixa).</p>
+<p>Nesse sentido nós definimos 5 níveis de automação com base nas medianas da distribuição <i>a posteriori</i> da probabilidade de automação gerada por meio do Processo Gaussiano, quais sejam:</p>
+<ol style="list-style-type: decimal">
+<li>Automação Muito Baixa - Mediana da probabilidade entre 0 e 0,2.</li>
+<li>Automação Baixa - Mediana da probabilidade entre 0,2 e 0,4.</li>
+<li>Automação Média - Mediana da probabilidade entre 0,4 e 0,6.</li>
+<li>Automação Alta - Mediana da probabilidade entre 0,6 e 0,8.</li>
+<li>Automação Muito Alta - Mediana da probabilidade entre 0,8 e 1,0.</li>
+</ol>
+<p>Para estimar o total de empregos em risco nos próximos 30 anos procedeu-se com a estimação de um modelo <i>Autoregressive integrated moving average</i> - ARIMA para as séries temporais de cada CBO entre 1986 e 2016, interpolando linearmente qualquer ponto faltante nesses anos. As estimativas foram obtidas por meio da proposta de .</p>
+<p>A Figura 3 apresenta o número total de empregados observados e preditos pelo modelo ARIMA entre 1986 e 2046:</p>
+
+<div class="figure" style="text-align: center">
+{{ Serie_Paper2 }}
+<p class="caption">
+Figura 3: Série temporal da ocupação por nível de automação.
+</p>
+</div>
+
+<p>Após 2016 os dados apresentados na Figura 3 são estimativas de previsão baseadas nas tendências observadas das séries temporais do número total de empregados para cada CBO. Podemos notar que o número de empregados para as CBOs caracterizadas como possuindo alto nível de automação aumenta ao longo dos anos, assumindo para isso que as tendências observadas no passado se mantenham.</p>
+<p>Assim, dois cenários surgem: o primeiro é que as firmas no Brasil mantêm o seu mesmo padrão de contratação independentemente do nível de automação, isto é, as empresas em sua maioria prefeririam manter trabalhadores humanos a automação de tarefas, e devido a essa demanda de empregados a previsão para o número total de pessoas empregadas nesses grupos aumentaria.</p>
+<p>Já o segundo cenário é mais preocupante. Caso as empresas decidam por automatizar essas profissões com alta chance de automação então aproximadamente 30 milhões de empregos estariam em risco até 2026. Esse cenário é o mais fidedigno, uma vez que a automação de tarefas para as firmas produziria um aumento na eficiência de seus processos, redução de custos além da possibilidade de certas atividades serem executadas 24 horas 7 dias por semana.</p>
+<p>O desafio enfrentado pelo governo Brasileiro em um futuro próximo está em lidar com esse cenário garantindo treinamento suficiente para os trabalhadores (em especial os trabalhadores pouco qualificados) para atuar em outros ramos de atividades cujo o nível de automação seja menor.</p>
+<p>Além do mais, mesmo que uma quantidade suficiente de trabalhadores qualificados esteja disponíveis, as firmas decidem em investir em novas tecnologias dependendo do fator relativo dos preços do capital e do trabalho na realização de uma determinada tarefa no processo de produção.</p>
 <p><span class="citation">Arntz et al. (<a href="#ref-arntz2016risk">2016</a>)</span> However, low qualified workers are likely to bear the brunt of the adjustment costs as the automatibility of their jobs is higher compared to highly qualified workers. Therefore, the likely challenge for the future lies in coping with rising inequality and ensuring sufficient (re-)training especially for low qualified workers. However, education plays a large role for many countries. In most countries, the within-education component is negative, which implies that people with the same education typically perform less automatable tasks compared to the US. However, in many countries the between-education component is positive, which implies that in those countries a larger share of workers has educational levels which are associated with more automatable tasks (i.e. low or medium qualified workers).</p>
 <p>Furthermore, even if sufficiently qualified personnel were available, firms decide on investing in new technologies depending on the relative factor prices of capital and labour in performing a certain task in the production process.</p>
 <p><span class="citation">Graetz &amp; Michaels (<a href="#ref-graetz2017modern">2017</a>)</span> discuss recession and automazation.</p>
@@ -487,13 +518,6 @@ Tabela 3: Fields and researchers’ answers in the survey.
 </div>
 <h2 id="afiliacao">Afiliação</h2>
 </div>
-<div class="footnotes">
-<hr />
-<ol>
-<li id="fn1"><p>The Lattes Platform is an information system maintained by the Brazilian Government to manage information on science, technology, and innovation related to individual researchers working in Brazil. <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++ --><a href="#fnref1">↩</a></p></li>
-</ol>
-</div>
-
 
 
 
@@ -513,14 +537,15 @@ $(document).ready(function () {
 </script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
+<!-- <script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
     script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
-</script>
+</script> -->
+
 
 </body>
 </html>

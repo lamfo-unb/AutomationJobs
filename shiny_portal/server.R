@@ -3,7 +3,7 @@ function(input, output, session) {
   
   botao <- reactiveValues( go = FALSE )
   
-  output$ui <- renderUI({
+  output$ui <- renderUI(withMathJax({
     
     if ( sum(botao$go) == 0 ) {
       
@@ -37,8 +37,9 @@ function(input, output, session) {
         ),
         tabPanel("Painel 2"
                  , htmlTemplate("www2/Paper_HTML_Simples.html",
-                                Box_Paper = ggplotly(readRDS("Box_Paper.RDS")),
-                                Serie_Paper = serie_p)
+                                Box_Paper = ggplotly(readRDS("Box_Paper.RDS")%>%config(displayModeBar = F)),
+                                Serie_Paper = serie_p,
+                                Serie_Paper2 = serie_p2)
                  )
         ,
         tabPanel("Painel 3",  
@@ -46,7 +47,7 @@ function(input, output, session) {
       )
       
     }
-  })
+  }))
   
   observeEvent(input$login_button,{ q
     botao$go <- TRUE 
