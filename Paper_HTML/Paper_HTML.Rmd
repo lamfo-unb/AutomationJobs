@@ -410,7 +410,81 @@ $$\mathbf{f}_{*}|\mathbf{X},\mathbf{y},\mathbf{X}_{*}\sim N(\overline{\mathbf{f}
 ## 4. Resultados 
 </center>
 
-Simulando 5000 observações da Densidade \ref{eq:normal} nós obtivemos a estimativa empírica da distribuição de probabilidade de automação para cada CBO.
+Simulando 5000 observações da Densidade \ref{eq:normal} nós obtivemos a estimativa empírica da distribuição de probabilidade de automação para cada CBO. É interessante notar nesse caso que a abordagem Bayesiana fornece uma interpretação útil para os resultados obtidos, uma vez que devido ao alto grau de incertezas seria melhor amostrar observações da distribuição <i>a posteriori</i> do parâmetro relativo a probabilidade de automação do que simplesmente fornecer uma única estimativa pontual.
+
+Ademais, quanto maior a variabilidade desse parâmetro (calculado usando-se as amostras geradas da distribuição <i>a posteriori</i> da probabilidade de automação), maior seria a heterogeneidade entre os trabalhadores da referida CBO, em outras palavras, uma alta variabilidade representaria que há diversidade de atividades na ocupação alvo que podem ser facilmente automatizadas e outras dificilmente seriam automatizadas. Já uma baixa variabilidade nas amostras geradas pela distribuição <i>a posteriori</i> da probabilidade de automação representaria que esse grupo CBO é muito homogêneo internamente o possivelmente todos (ou a maioria) dos profissionais alocados nessa CBO podem ter suas atividades automatizadas (quando a mediana da probabilidade de automação for alta), ou que suas atividades não poderiam ser facilmente automatizadas (no caso da mediana da probabilidade de automação for baixa).
+
+Nesse sentido nós definimos 5 níveis de automação com base nas medianas da distribuição <i>a posteriori</i> da probabilidade de automação gerada por meio do Processo Gaussiano, quais sejam:
+
+1. Automação Muito Baixa - Mediana da probabilidade entre 0 e 0,2.
+2. Automação Baixa - Mediana da probabilidade entre 0,2 e 0,4.
+3. Automação Média - Mediana da probabilidade entre 0,4 e 0,6.
+4. Automação Alta - Mediana da probabilidade entre 0,6 e 0,8.
+5. Automação Muito Alta - Mediana da probabilidade entre 0,8 e 1,0.
+
+Para estimar o total de empregos em risco nos próximos 30 anos procedeu-se com a estimação de um modelo <i>Autoregressive integrated moving average</i> - ARIMA para as séries temporais de cada CBO entre 1986 e 2016, interpolando linearmente qualquer ponto faltante nesses anos. As estimativas foram obtidas por meio da proposta de \cite{Hyndman}.
+
+A Figura 3 apresenta o número total de empregados observados e preditos pelo modelo ARIMA entre 1986 e 2046:
+
+```{r fig3, fig.cap=fig$cap("fig3", "Série temporal da ocupação por nível de automação."), message=FALSE, warning=FALSE}
+library(tidyverse)
+library(scales)
+profile<-read.csv2("Data/Occupation Structure/CBO2002 - PerfilOcupacional.csv")
+profile<-data.frame("cbo2002"=unique(profile[,5]))
+#Read the results
+results<-readRDS("ProbabilityBayes.rds")
+forecast<-read.csv("Download\\Previsao.csv")
+
+
+#Remove strange CBO
+serie<-inner_join(forecast,profile, by="cbo2002")
+
+#Calculate the total
+total.cbo <- forecast %>% 
+              group_by(cbo2002, ano) %>% 
+              summarise(Total=sum(empregados))
+
+#Calculate the median
+median.cbo <- results %>% 
+              group_by(COD_OCUPACAO) %>% 
+              summarise(Probability=median(Probability))
+colnames(median.cbo)<-c("cbo2002","Probability")
+
+#Merge data
+final <- inner_join(total.cbo, median.cbo, by = "cbo2002" )
+
+#Create the classes
+final$Class<-cut(final$Probability,breaks = c(0,0.2,0.4,0.6,0.8,1) ,labels = c("Muito Baixo","Baixo","Médio","Alto", "Muito Alto"))
+final <- final %>% 
+  group_by(Class, ano) %>% 
+  summarise(Total=sum(Total))
+
+#Colors
+mycolors <- RColorBrewer::brewer.pal(5, "Pastel1")
+mycolors<-c(mycolors,"#000000")
+
+ggplot(final, aes(x=ano, y=Total, colour=as.factor(Class), group=as.factor(Class))) + 
+  geom_line(aes(),lwd=1) + theme_bw() + geom_point() +
+  scale_x_continuous(breaks = sort(unique(final$ano))[seq(1, length(unique(final$ano)), by = 10)]) +
+  xlab("Ano")+ ylab("Número de empregados")+
+  scale_colour_manual(name="Nível de automação",
+                      values = mycolors)+
+  theme(legend.position="bottom", legend.direction = "horizontal", legend.box = "vertical")+
+  scale_y_continuous(labels = comma)+guides(fill=guide_legend(nrow=2,byrow=TRUE))
+```
+
+Após 2016 os dados apresentados na Figura 3 são estimativas de previsão baseadas nas tendências observadas das séries temporais do número total de empregados para cada CBO. Podemos notar que o número de empregados para as CBOs caracterizadas como possuindo alto nível de automação aumenta ao longo dos anos, assumindo para isso que as tendências observadas no passado se mantenham.
+
+Assim, dois cenários surgem: o primeiro é que as firmas no Brasil mantêm o seu mesmo padrão de contratação independentemente do nível de automação, isto é, as empresas em sua maioria prefeririam manter trabalhadores humanos a automação de tarefas, e devido a essa demanda de empregados a previsão para o número total de pessoas empregadas nesses grupos aumentaria.
+
+Já o segundo cenário é mais preocupante. Caso as empresas decidam por automatizar essas profissões com alta chance de automação então aproximadamente 30 milhões de empregos estariam em risco até 2026. Esse cenário é o mais fidedigno, uma vez que a automação de tarefas para as firmas produziria um aumento na eficiência de seus processos, redução de custos além da possibilidade de certas atividades serem executadas 24 horas 7 dias por semana.
+
+O desafio enfrentado pelo governo Brasileiro em um futuro próximo está em lidar com esse cenário garantindo treinamento suficiente para os trabalhadores (em especial os trabalhadores pouco qualificados) para atuar em outros ramos de atividades cujo o nível de automação seja menor.
+
+Além do mais, mesmo que uma quantidade suficiente de trabalhadores qualificados esteja disponíveis, as firmas decidem em investir em novas tecnologias dependendo do fator relativo dos preços do capital e do trabalho na realização de uma determinada tarefa no processo de produção. 
+
+
+
 
 @arntz2016risk However, low qualified workers are likely to bear the brunt of the adjustment costs as the automatibility of their jobs is higher compared to highly qualified workers. Therefore, the likely challenge for the future lies in coping with rising inequality and ensuring sufficient (re-)training especially for low qualified workers. However, education plays a large role for many countries. In most countries, the within-education component is negative, which implies that people with the same education typically perform less automatable tasks compared to the US. However, in many countries the between-education component is positive, which implies that in those countries a larger share of workers has educational levels which are associated with more automatable tasks (i.e. low or medium qualified workers).
 
