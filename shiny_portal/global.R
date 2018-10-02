@@ -18,6 +18,7 @@ bayes  <- readRDS('ProbabilityBayes.rds')
 lista  <- readRDS("CBO.RDS")
 serie_paper <- readRDS("Serie_Paper.RDS")
 serie_paper2 <- readRDS("Serie_Paper2.RDS") 
+Rank <- readRDS("Rank_Ocup")
 escolhas <- lista$TITULO
 names(escolhas) <- `Encoding<-`(escolhas , 'latin1')
 
