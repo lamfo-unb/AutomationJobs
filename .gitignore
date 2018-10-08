@@ -6,5 +6,3 @@ logs
 derby.log
 Paper_HTML/Paper_HTML_cache
 Paper_HTML/Ranking with decision tree.pdf
-shiny_portal/ProbabilityBayes.rds
-shiny_portal/Box_Paper.RDS
