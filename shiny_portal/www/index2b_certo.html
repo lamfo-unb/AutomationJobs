@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
 	<title>Automation Jobs</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,13 +35,24 @@
         <div class="container navigation">
 		
             <div class="navbar-header page-scroll">
+            	<div class="row">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
                     <i class="fa fa-bars"></i> 
                 </button> 
                 <a class="navbar-brand" href="http://lamfo.unb.br/index.php?lang=pt-br">
                     <img href="http://lamfo.unb.br/index.php?lang=pt-br" src="img/logo.png" alt="" width="180" height="80" />
                 </a>
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                	     <ul class="nav navbar-nav">
+							<li><div id="cart"></div></li> 
+							<li><a href="http://lamfo.unb.br/index.php?lang=pt-br">Site</a></li>
+							<li><a href="https://lamfo-unb.github.io/">Blog</a> </li>
+			  			</ul>
+			  	</div>
             </div>
+      
              <div class="navbar-nav navbar-collapse"> 
             	 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             	 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
@@ -54,14 +66,20 @@
             	 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             	  {{ gaugeOutput("gauge1" , height = "100px") %>% withSpinner() }}
             	 </div> 
+                        	<!-- AddToAny BEGIN -->
+
+
+<!-- AddToAny END -->	 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
-			  <ul class="nav navbar-nav">
-				<li><div id="cart"></div></li>
-				<li><a href="http://lamfo.unb.br/index.php?lang=pt-br">Site</a></li>
-				<li><a href="https://lamfo-unb.github.io/">Blog</a> </li>
-
-			  </ul>
+            	<div class="row">
+            			<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+            					<h3>Compartilhar</h3>
+								<a class="a2a_button_facebook"></a>
+								<a class="a2a_button_twitter"></a>
+								<a class="a2a_button_linkedin"></a>
+						</div>
+			  	</div>
             </div>
             <!-- /.navbar-collapse -->
 
@@ -342,7 +360,7 @@
     <script src="js/htmlwidgets/lib/raphael/raphael-2.1.4.min.js"></script>  
 	<script src="js/htmlwidgets/lib/justgage/justgage.js"></script> 
 	<script src="js/htmlwidgets/gauge.js"></script> 
-	
+	<script async src="https://static.addtoany.com/menu/page.js"></script>
 
 </body>
 

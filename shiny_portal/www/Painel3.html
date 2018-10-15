@@ -2,9 +2,14 @@
 <html lang="en">
 
 <head>
-	<style type="text/css">*{
-    color: black;
-}</style>
+	<style type="text/css">
+	*{
+		color: black;
+	}
+	#DataTables_Table_0 thead tr th{
+		text-align: center;
+	}
+</style>
 
 	<title>Automation Jobs</title>
     <meta charset="utf-8">
@@ -59,7 +64,7 @@
             <!-- /.navbar-collapse -->
 
 
-            <p style="text-align: center; color: rgb(0,51,104); font-weight: bold; font-size: 30px; padding-top: 50px; margin:0;"> Material Complementar </p>
+            <p style="text-align: center; color: rgb(0,51,104); font-weight: bold; font-size: 30px; padding-top: 50px; margin:0;"> Ranque de Probabilidades de Automação </p>
 
         </div>
         <!-- /.container -->
@@ -69,203 +74,13 @@
     <section id="intro" class="intro">
 		<div class="intro-content">
 			<div class="container">
-				
-				<div class="row">
-					<div class="col-sm-6 col-md-6 col-lg-6">
-					<div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.1s">
-
-						<p> 
-							<h4 style="margin-bottom: 0; text-align: center;"><strong> Tabelas de Conversão</strong></h4>
-			  			</p>
+				<br>
+				<div class="figure" style="text-align: center">
+					{{ Rank }}
+				</div>
 
 
-			  			  <div class="panel-group" id="accordion" >
-			  			  	<!-- PAINEL 1 -->
-			  			  	<div class="panel panel-default" >
-			  			  		 <div class="panel-heading">  <!--AQUI VAI A COR DA CAIXA-->
-			  			  			<h4 class="panel-title">
-			  			  				<a data-toggle="collapse" data-parent="#accordion" href="#collapse1"><strong>CBO 1994 para CBO 2002</strong></a>
-			  			  				<a href="https://www.dropbox.com/s/8zh5e3lwrg9twyk/CBO94%20-%20CBO2002.csv?dl=1">
-			  			  					<button ><i class="fa fa-download"></i> Download</button>
-			  			  				</a>
-			  			  			</h4>
-			  			  		</div>
-			  			  		<div id="collapse1" class="panel-collapse collapse in">
-			  			  			<div class="panel-body"> Tabela usada para a conversão entre os códigos CBO1994 e CBO2002.
-			  			  				<p style="margin-bottom: 0"><strong>Fonte: </strong><a href="http://www.mtecbo.gov.br/cbosite/pages/downloads.jsf" style="color: #0000FF">Ministério do Trabalho (MTE)</a></p>
-			  			  			</div>
-			  			  		</div>
-			  			  	</div>
 
-			  			  	<!-- PAINEL 2 -->
-			  			  	<div class="panel panel-default" >
-			  			  		 <div class="panel-heading">  <!--AQUI VAI A COR DA CAIXA-->
-			  			  			<h4 class="panel-title">
-			  			  				<a data-toggle="collapse" data-parent="#accordion" href="#collapse2"><strong>CBO 2002 para ISCO 1988</strong></a>
-			  			  				<a href="https://www.dropbox.com/s/8zh5e3lwrg9twyk/CBO94%20-%20CBO2002.csv?dl=1">
-			  			  					<button><i class="fa fa-download"></i> Download</button>
-			  			  				</a>
-			  			  			</h4>
-			  			  		</div>
-			  			  		<div id="collapse2" class="panel-collapse collapse in">
-			  			  			<div class="panel-body"> Tabela usada para a conversão entre os códigos CBO2002 e ISCO88.
-			  			  				<p style="margin-bottom: 0"><strong>Fonte: </strong><a href="http://www.mtecbo.gov.br/cbosite/pages/tabua/ConsultasConversao.jsf" style="color: #0000FF">Ministério do Trabalho (MTE)</a></p>
-			  			  			</div>
-			  			  		</div>
-			  			  	</div>
-
-			  			  	<!-- PAINEL 3 -->
-			  			  	<div class="panel panel-default" >
-			  			  		 <div class="panel-heading">  <!--AQUI VAI A COR DA CAIXA-->
-			  			  			<h4 class="panel-title">
-			  			  				<a data-toggle="collapse" data-parent="#accordion" href="#collapse3"><strong>ISCO 1988 para ISCO 2008</strong></a>
-			  			  				<a href="https://www.dropbox.com/s/onlfswvb7958553/ISCO88_ISCO08.xlsx?dl=1">
-			  			  					<button><i class="fa fa-download"></i> Download</button>
-			  			  				</a>
-			  			  			</h4>
-			  			  		</div>
-			  			  		<div id="collapse3" class="panel-collapse collapse in">
-			  			  			<div class="panel-body"> Tabela usada para a conversão entre os códigos ISCO 1988 e ISCO 2008.
-			  			  				<p style="margin-bottom: 0"><strong>Fonte: </strong><a href="http://www.ilo.org/public/english/bureau/stat/isco/isco08/" style="color: #0000FF">International Standard Classification of Occupations (ISCO)</a></p>
-			  			  			</div>
-			  			  		</div>
-			  			  	</div>
-
-
-			  			  	<!-- PAINEL 4 -->
-			  			  	<div class="panel panel-default" >
-			  			  		 <div class="panel-heading">  <!--AQUI VAI A COR DA CAIXA-->
-			  			  			<h4 class="panel-title">
-			  			  				<a data-toggle="collapse" data-parent="#accordion" href="#collapse4"><strong>ISCO 2008 para SOC 2010</strong></a>
-			  			  				<a href="https://www.dropbox.com/s/onlfswvb7958553/ISCO88_ISCO08.xlsx?dl=1">
-			  			  					<button><i class="fa fa-download"></i> Download</button>
-			  			  				</a>
-			  			  			</h4>
-			  			  		</div>
-			  			  		<div id="collapse4" class="panel-collapse collapse in">
-			  			  			<div class="panel-body"> Tabela usada para a conversão entre os códigos ISCO 2008 e SOC 2010.
-			  			  				<p style="margin-bottom: 0"><strong>Fonte: </strong><a href="https://www.bls.gov/soc/soccrosswalks.htm" style="color: #0000FF">U.S. Bureau of Labor Statistics</a></p>
-			  			  			</div>
-			  			  		</div>
-			  			  	</div>
-
-			  			  	<!-- PAINEL 5 -->
-			  			  	<div class="panel panel-default" >
-			  			  		 <div class="panel-heading">  <!--AQUI VAI A COR DA CAIXA-->
-			  			  			<h4 class="panel-title">
-			  			  				<a data-toggle="collapse" data-parent="#accordion" href="#collapse5"><strong>SOC 2010 para Job Zones</strong></a>
-			  			  				<a href="https://www.dropbox.com/s/onlfswvb7958553/ISCO88_ISCO08.xlsx?dl=1">
-			  			  					<button><i class="fa fa-download"></i> Download</button>
-			  			  				</a>
-			  			  			</h4>
-			  			  		</div>
-			  			  		<div id="collapse5" class="panel-collapse collapse in">
-			  			  			<div class="panel-body"> Tabela usada para a conversão entre os códigos SOC 2010 e Job Zones.
-			  			  				<p style="margin-bottom: 0"><strong>Fonte: </strong><a href="https://www.onetonline.org/find/zone?z=0&g=Go" style="color: #0000FF">O*NET Online</a></p>
-			  			  			</div>
-			  			  		</div>
-			  			  	</div>
-
-			  			  	<!-- PAINEL 6 -->
-			  			  	<div class="panel panel-default" >
-			  			  		 <div class="panel-heading">  <!--AQUI VAI A COR DA CAIXA-->
-			  			  			<h4 class="panel-title">
-			  			  				<a data-toggle="collapse" data-parent="#accordion" href="#collapse6"><strong>Perfil Ocupacional CBO 2002</strong></a>
-			  			  				<a href="https://www.dropbox.com/s/s3vch0ws47dbweq/CBO2002%20-%20PerfilOcupacional.csv?dl=1">
-			  			  					<button><i class="fa fa-download"></i> Download</button>
-			  			  				</a>
-			  			  			</h4>
-			  			  		</div>
-			  			  		<div id="collapse6" class="panel-collapse collapse in">
-			  			  			<div class="panel-body"> Tabela usada para a construção dos Unigramas e Bigramas utilizados para a estimação de probabilidades no modelo.
-			  			  				<p style="margin-bottom: 0"><strong>Fonte: </strong><a href="http://www.mtecbo.gov.br/cbosite/pages/tabua/ConsultasConversao.jsf" style="color: #0000FF">Ministério do Trabalho (MTE)</a></p>
-			  			  			</div>
-			  			  		</div>
-			  			  	</div>
-			  			  </div>
-			  			</div>
-			  		</div>
-
-			  		<div class="col-sm-6 col-md-6 col-lg-6 slogan">
-			  			<div class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.2s">
-			  				<p> 
-			  			  	<h4 style="margin-bottom: 0; text-align: center;"><strong>Dados do Artigo</strong></h4>
-			  			    </p>
-
-
-			  			  <div class="panel-group" id="_accordion" >
-			  			  	<!-- PAINEL 1 -->
-			  			  	<div class="panel panel-default" >
-			  			  		 <div class="panel-heading">  <!--AQUI VAI A COR DA CAIXA-->
-			  			  			<h4 class="panel-title">
-			  			  				<a data-toggle="collapse" data-parent="#_accordion" href="#_collapse1"><strong>Série de Empregos Formais</strong></a>
-			  			  				<a href="https://www.dropbox.com/s/uem1pdrg7j2w2xd/Serie%20Original.csv?dl=1">
-			  			  					<button ><i class="fa fa-download"></i> Download</button>
-			  			  				</a>
-			  			  			</h4>
-			  			  		</div>
-			  			  		<div id="_collapse1" class="panel-collapse collapse in">
-			  			  			<div class="panel-body"> Série do número de empregados na RAIS por código CBO2002 para os anos de 1986 a 2016.</div>
-			  			  		</div>
-			  			  	</div>
-
-			  			  	<!-- PAINEL 2 -->
-			  			  	<div class="panel panel-default" >
-			  			  		 <div class="panel-heading">  <!--AQUI VAI A COR DA CAIXA-->
-			  			  			<h4 class="panel-title">
-			  			  				<a data-toggle="collapse" data-parent="#_accordion" href="#_collapse2"><strong>Previsão de Empregos</strong></a>
-			  			  				<a href="https://www.dropbox.com/s/w2h8kg23ycul0qw/Previsao%20Empregos.csv?dl=1">
-			  			  					<button><i class="fa fa-download"></i> Download</button>
-			  			  				</a>
-			  			  			</h4>
-			  			  		</div>
-			  			  		<div id="_collapse2" class="panel-collapse collapse in">
-			  			  			<div class="panel-body"> Previsão do número de empregados por CBO2002.
-			  			  			</div>
-			  			  		</div>
-			  			  	</div>
-
-			  			  	<!-- PAINEL 3 -->
-			  			  	<div class="panel panel-default" >
-			  			  		 <div class="panel-heading">  <!--AQUI VAI A COR DA CAIXA-->
-			  			  			<h4 class="panel-title">
-			  			  				<a data-toggle="collapse" data-parent="#_accordion" href="#_collapse3"><strong>Respostas dos Pesquisadores</strong></a>
-			  			  				<a href="https://www.dropbox.com/s/ih5beikcnxgoyih/Survey.csv?dl=1">
-			  			  					<button><i class="fa fa-download"></i> Download</button>
-			  			  				</a>
-			  			  			</h4>
-			  			  		</div>
-			  			  		<div id="_collapse3" class="panel-collapse collapse in">
-			  			  			<div class="panel-body">Probabilidades de automação atribuida por pesquisadores às ocupações brasileiras.
-			  			  			</div>
-			  			  		</div>
-			  			  	</div>
-
-
-			  			  	<!-- PAINEL 4 -->
-			  			  	<div class="panel panel-default" >
-			  			  		 <div class="panel-heading">  <!--AQUI VAI A COR DA CAIXA-->
-			  			  			<h4 class="panel-title">
-			  			  				<a data-toggle="collapse" data-parent="#_accordion" href="#_collapse4"><strong>Probabilidade de Automação</strong></a>
-			  			  				<a href="https://www.dropbox.com/s/jevd6jixwyh2ytw/ProbabilityBayes.csv?dl=1">
-			  			  					<button><i class="fa fa-download"></i> Download</button>
-			  			  				</a>
-			  			  			</h4>
-			  			  		</div>
-			  			  		<div id="_collapse4" class="panel-collapse collapse in">
-			  			  			<div class="panel-body">Distribuição de probabilidade de automação estimada para cada CBO2002.
-			  			  			</div>
-			  			  		</div>
-			  			  	</div>
-
-			  			  </div>
-
-
-			  			</div>
-			  		</div>
-
-
-			  	</div>
 			  </div>
 			</div>
 </section>

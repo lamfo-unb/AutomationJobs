@@ -61,8 +61,8 @@ library(pdftools)
 
 opts_chunk$set(message=FALSE, warning=FALSE, comment=NA, echo=FALSE, out.width='100%', out.height='auto', fig.align='center', cache=T)
 
-opts_knit$set(root.dir = "C:\\Users\\Pedro Albuquerque\\Desktop\\AutomationJobs")
-# opts_knit$set(root.dir = "C:/Users/B2657804/Google Drive/LAMFO/AutomationJobs")
+# opts_knit$set(root.dir = "C:\\Users\\Pedro Albuquerque\\Desktop\\AutomationJobs")
+opts_knit$set(root.dir = "C:/Users/rafal/Google Drive/LAMFO/AutomationJobs")
 
 # A function for captioning and referencing images
 fig <- local({
@@ -220,7 +220,8 @@ a <- ggplot(aes(y = prob, x = Job_Zone), data = Comp) + geom_boxplot(fill = "gra
   theme_bw() + labs(x = "Job Zone", y = "Probabilidade de automação") +
   theme(text = element_text(size=15))
 
-ggplotly(a)
+ggplotly(a)%>% config(displayModeBar = F)
+
 ```
 
 A Figura 1 apresenta a probabilidade de automação das ocupações segundo <i>Job Zones</i>. As probabilidades foram obtidas por meio do texto seminal @frey2017future que inspirou esse trabalho, e a correspondência foi dada por meio da classificação padrão de 2010 americana (<i> 2010 Standard Occupational Classification</i>), denominada SOC. Baseado na Figura 1 podemos notar que quanto mais complexo é uma ocupação em termos de nível de preparo, menor é a probabilidade de automação dessas ocupações.
@@ -303,8 +304,10 @@ p <- plot_ly(g, x=~year, y=~`1`, name = "Job Zone 1", marker=list(color=mycolors
   add_trace(y = ~`4`, name = "Job Zone 4", marker=list(color=mycolors[4]), line=list(color=mycolors[4]))%>% 
   add_trace(y = ~`5`, name = "Job Zone 5", marker=list(color=mycolors[5]), line=list(color=mycolors[5]))%>% 
   add_trace(y = ~GDP, name = "PIB Acumulado", marker=list(color =mycolors[6]), line = list(color =mycolors[6])) %>%
-  layout( legend = list(orientation = 'h'), xaxis = list(title = " "),
-          yaxis = list(title = "Taxa de Crescimento Acumulado"), hovermode = "compare")
+  layout( legend = list(orientation = 'h',xanchor = "center", x = 0.5), xaxis = list(title = " "),
+          yaxis = list(title = "Taxa de Crescimento Acumulado"), hovermode = "compare")%>%
+  config(displayModeBar = F)
+
 p
 ```
 
@@ -432,8 +435,8 @@ library(scales)
 profile<-read.csv2("Data/Occupation Structure/CBO2002 - PerfilOcupacional.csv")
 profile<-data.frame("cbo2002"=unique(profile[,5]))
 #Read the results
-results<-readRDS("ProbabilityBayes.rds")
-forecast<-read.csv("Download\\Previsao.csv")
+results<-readRDS("shiny_portal/ProbabilityBayes.rds")
+forecast<-read.csv("shiny_portal/Previsao.csv")
 
 
 #Remove strange CBO
@@ -459,18 +462,24 @@ final <- final %>%
   group_by(Class, ano) %>% 
   summarise(Total=sum(Total))
 
+g2 <- final %>% mutate(Total = round(Total,2)) %>% 
+  select(ano, Class, Total) %>% spread(Class, Total)
+
+
 #Colors
 mycolors <- RColorBrewer::brewer.pal(5, "Pastel1")
 mycolors<-c(mycolors,"#000000")
 
-ggplot(final, aes(x=ano, y=Total, colour=as.factor(Class), group=as.factor(Class))) + 
-  geom_line(aes(),lwd=1) + theme_bw() + geom_point() +
-  scale_x_continuous(breaks = sort(unique(final$ano))[seq(1, length(unique(final$ano)), by = 10)]) +
-  xlab("Ano")+ ylab("Número de empregados")+
-  scale_colour_manual(name="Nível de automação",
-                      values = mycolors)+
-  theme(legend.position="bottom", legend.direction = "horizontal", legend.box = "vertical")+
-  scale_y_continuous(labels = comma)+guides(fill=guide_legend(nrow=2,byrow=TRUE))
+p1 <- plot_ly(g2, x=~ano, y=~`Muito Baixo`, name = "Muito Baixo", marker=list(color=mycolors[1]), 
+             line=list(color=mycolors[1]),type = 'scatter', mode = 'lines+markers') %>% 
+  add_trace(y = ~Baixo, name = "Baixo", marker=list(color=mycolors[2]), line=list(color=mycolors[2])) %>%
+  add_trace(y = ~`Médio`, name = "Médio", marker=list(color=mycolors[3]), line=list(color=mycolors[3])) %>%
+  add_trace(y = ~Alto, name = "Alto", marker=list(color=mycolors[4]), line=list(color=mycolors[4]))%>%
+  add_trace(y = ~`Muito Alto`, name = "Muito Alto", marker=list(color=mycolors[5]), line=list(color=mycolors[5]))%>%
+  layout( legend = list(orientation = 'h', xanchor = "center", x = 0.5), xaxis = list(title = " "),
+          yaxis = list(title = "Número de Empregados"), hovermode = "compare") %>%
+  config(displayModeBar = F)
+p1
 ```
 
 Após 2016 os dados apresentados na Figura 3 são estimativas de previsão baseadas nas tendências observadas das séries temporais do número total de empregados para cada CBO. Podemos notar que o número de empregados para as CBOs caracterizadas como possuindo alto nível de automação aumenta ao longo dos anos, assumindo para isso que as tendências observadas no passado se mantenham.
@@ -513,5 +522,6 @@ Of course, job losses in one industry might be offset by employment growth in ot
 ```{r save}
 saveRDS(a, "Box_Paper.RDS")
 saveRDS(g, "Serie_Paper.RDS")
+saveRDS(g2, "Serie_Paper2.RDS")
 ```
 
