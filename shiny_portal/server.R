@@ -37,8 +37,7 @@ function(input, output, session) {
         ),
         tabPanel("Painel 2"
                  , htmlTemplate("www/Paper_HTML_Simples.html",
-                                Box_Paper = ggplotly(readRDS("Box_Paper.RDS")) %>% 
-                                                       config(displayModeBar = F),
+                                Box_Paper = box_p,
                                 Serie_Paper = serie_p,
                                 Serie_Paper2 = serie_p2)
                  )

@@ -520,7 +520,7 @@ Of course, job losses in one industry might be offset by employment growth in ot
 
 
 ```{r save}
-saveRDS(a, "Box_Paper.RDS")
+saveRDS(Comp, "Box_Paper.RDS")
 saveRDS(g, "Serie_Paper.RDS")
 saveRDS(g2, "Serie_Paper2.RDS")
 ```
