@@ -8,7 +8,7 @@ last.rais<-2016
 profile<-read.csv2("Data/Occupation Structure/CBO2002 - PerfilOcupacional.csv")
 profile<-data.frame("cbo2002"=unique(profile[,5]))
 
-serie<-read.csv("Download\\cbo1986_2016.csv")
+serie<-read.csv("Download\\RAIS_CBO_1986-2016.csv")
 #Remove strange CBO
 serie<-inner_join(serie,profile, by="cbo2002")
 cbo<-unique(serie$cbo2002)
