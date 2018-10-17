@@ -1,14 +1,10 @@
 library(tidyverse)
-library(kergp)
-library(earth)
-library(RcppEigen)
-library(RcppParallel)
 library(MASS)
-library(tidyverse)
-library(GA)
-library(DEoptim)
-library(parallel)
 library(parallelDist)
+library(doParallel)
+library(foreach)
+library(gpuR)
+library(pbapply)
 set.seed(3938)
 #Read the survey
 df.raw <- read.csv("Data\\Automation_sheet.csv")
@@ -28,9 +24,6 @@ df<-df.full[which(!is.na(df.full$Prob)),]
 df.star<-df.full
 #Remove columns with zero
 df<-na.omit(df)
-#ind<-which(colSums(df[,-1])==0)+1
-#df<-df[,-ind]
-#df.star<-df.star[,-ind]
 
 #Data transformation
 df$Prob<-df$Prob/100
@@ -49,22 +42,6 @@ nc <-ncol(full)
 X <- as.matrix(full[,-nc])
 Y<- full[,nc]
 X.star <-as.matrix(full.star)
-#X<-X[1:200,1:100]
-#X.star<-X.star[1:300,1:100]
-#Y<-Y[1:200]
-#Compile RcppEigen
-Rcpp::sourceCpp("Analysis/Kernel.cpp")
-
-
-#Teste
-#X<-matrix(rnorm(50),ncol=5)
-#lambdaVec<-rep(1,5)
-#sigma2f<-0.5
-#kernel1 <- sigma2f*exp(IBS_kernel_C_parallel( X, matrix(lambdaVec,ncol=1)))
-#kernel2 <- KernelMatrix(X,lambdaVec,sigma2f)
-#k<-as.matrix(parDist(X, method = "euclidean"))
-#kernel3 <- sigma2f*exp(-0.5*k^2)
-#all(kernel1==kernel3)
 
 n.par<-3
 theta<-rep(1,n.par)
@@ -76,36 +53,28 @@ marginal.ll<-function(theta){
     sigma.n <- theta[2]
     lambda  <- theta[3]
     n <- nrow(X)
-    
-    k.xx <- as.matrix(dist(X/lambda, method = "euclidean"))
-    #k.xx <- as.matrix(parDist(X/lambda, method = "euclidean"))
-    k.xx <- k.xx^2
+    Y.gpu <- vclVector(Y)  
+
+    #X.gpu <- vclMatrix(X, type='float')
+    X.g <- X/lambda
+    X.gpu <- vclMatrix(X.g)
+    k.xx <- suppressWarnings(gpuR::dist(X.gpu,method="sqEuclidean"))
     k.xx <- sigma2f*exp(-0.5*k.xx)
-    
-    #Kernel
-    #start_time <- Sys.time()
-    #k.xx <- sigma2f*exp(IBS_kernel_C_parallel( X, matrix(lambda,ncol=1)))
-    #end_time <- Sys.time()
-    #end_time - start_time
-    
-    #start_time <- Sys.time()
-    #k.xx <- KernelMatrix(X,lambda,sigma2f)
-    #end_time <- Sys.time()
-    #end_time - start_time
-    
     k.xx <- k.xx + sigma.n^2*diag(1, n)
-    #k.xx <- as.matrix(Matrix::nearPD(k.xx)$mat)
-    k.xx <- Matrix::nearPD(k.xx)
-    L <- chol(k.xx)
-    logdet <- 2*sum(log(diag(L))) #https://makarandtapaswi.wordpress.com/2011/07/08/cholesky-decomposition-for-matrix-inversion/
+    L <-  chol(k.xx)
+    logdet <- 2*sum(log(as.matrix(diag(L))))
     #Regularization
-    invL <- backsolve(r = L, x = diag(ncol(L)))
-    invK <- t(invL)%*%invL        #https://stackoverflow.com/questions/25662643/what-is-the-way-to-invert-a-triangular-matrix-in-r
+    invL <- solve(L)
+    invK <- t(invL)%*%invL        
     #Information
-    inf <- as.numeric((-0.5)*(t(Y)%*%invK%*%Y))
     
+    
+    k1<-k.xx%*%Y.gpu
+    k1<-as.numeric(as.matrix(k1%*%Y.gpu))
+    #Information
+    inf <- as.numeric((-0.5)*(k1))
     if(is.infinite(logdet) | is.na(logdet) | is.nan(logdet)){
-      return(-Inf)
+      return(NA)
     }
     else{
       reg <- as.numeric((-0.5)*logdet)
@@ -116,13 +85,13 @@ marginal.ll<-function(theta){
     return(inf+reg+nor)
   },
   error=function(e) {
-    NULL
+    NA
   })
 }
 #gri<-50
 n.par<-3
 #initialPop<-eval(seq(0.001,100,length.out = gri))
-initialPop<-2^seq(-15,15)
+initialPop<-2^seq(-10,10)
 final <- vector("list", n.par) 
 for(p in 1:n.par){
   final[[p]]<-initialPop
@@ -130,28 +99,50 @@ for(p in 1:n.par){
 #hours <- (2.5*(gri^n.par))/1000
 initialPop<-do.call(expand.grid, final)
 initialPop<-as.data.frame(initialPop)
-# Calculate the number of cores
-no_cores <- detectCores() 
 
-# Initiate cluster
-cl <- makeCluster(no_cores)
-clusterExport(cl=cl,varlist=c("X","Y")) 
+#Check if double is avaible - if FALSE must define type='float'
+deviceHasDouble()
+
+#List all context GPU
+listContexts()
+currentContext()
+currentDevice() 
+
+# set second context
+setContext(1L)
+
+# Calculate the number of cores
+
+#clusterExport(cl=cl,varlist=c("X","Y"))
+
+#Registra os clusters a serem utilizados
+registerDoParallel(cl)
+
+
 start_time <- Sys.time()
 start_time
 #Inicio 9:40 28/9 - Expectativa 12/11
-res <- parApply(cl = cl, X=initialPop, MARGIN=1, FUN=marginal.ll) 
+
+
+op <- pboptions(type = "timer") # default
+pboptions(type = "txt", style = 1, char = "=")
+res <- pbapply(initialPop, 1, marginal.ll)
+
+
 end_time <- Sys.time()
 end_time - start_time
 
-stopCluster(cl)
-theta<-initialPop[which(max(res)==res),]
+ind<-which(res>=2.294e+04)
+theta<-initialPop[ind,]
 save.image("Solution.RData")
 
 
 #Parameters            
-sigma2f <- theta[1]
-sigma.n <- theta[2]
-lambda  <- rep(theta[3],ncol=ncol(X))
+sigma2f <- as.numeric(theta[1])
+sigma.n <- as.numeric(theta[2])
+lambda  <- rep(as.numeric(theta[3]),ncol(X))
+
+Rcpp::sourceCpp("Analysis/Kernel.cpp")
 
 #Kernel Computation
 k.xx <- KernelMatrix(X,lambda,sigma2f)
@@ -167,9 +158,10 @@ inv <- solve(k.xx + sigma.n^2*diag(1, ncol(k.xx)))
 # Recalculate the mean and covariance functions
 f.bar.star <- k.xsx%*%inv%*%Y
 cov.f.star <- k.xsxs - k.xsx%*%inv%*%k.xxs
+cov.f.star <- as.matrix(Matrix::nearPD(cov.f.star)$mat)
 
 #Simulate values
-n.sim<-100
+n.sim<-5000
 sim.X <- t(mvrnorm(n.sim, f.bar.star, cov.f.star))
 res.X <-data.frame("COD_OCUPACAO"=df.star$COD_OCUPACAO,sim.X)
 
@@ -193,15 +185,20 @@ plot(final.df$Prob.x,final.df$Prob.y)
 #Export dataset
 temp <-res.X
 temp$Count<-1
-export <- temp %>% select(-Prob) %>% group_by(COD_OCUPACAO) %>%  mutate(cum = cumsum(Count))
+library(dplyr)
+temp2<-temp[,-2]
+export <- temp2 %>% group_by(COD_OCUPACAO) %>%  mutate(cum = cumsum(Count))
 export$ID<-paste0(export$COD_OCUPACAO,"_",export$cum)
-export<- export %>% 
-  ungroup() %>% 
-  select(-COD_OCUPACAO, -Count, -cum) %>% 
-  group_by(ID) %>% 
-  gather(ID)
-export$COD_OCUPACAO<-sapply(strsplit(export$ID,"_"), `[`, 1)
-export<-export[,c(-1,-2)]
-export<-export[,c(2,1)]
-colnames(export)[2]<-"Probability"
+
+export2<-export[,c(-1,-5003,-5002)]
+
+export3 <- reshape2::melt(export2, id.vars ="ID")
+export3$COD_OCUPACAO<-sapply(strsplit(export3$ID,"_"), `[`, 1)
+export3<-export3[,c(-1,-2)]
+export3<-export3[,c(2,1)]
+colnames(export3)[2]<-"Probability"
+export3 <- export3[order(export3$COD_OCUPACAO),] 
+export3$Probability<-round(export3$Probability,5)
+saveRDS(export3,"ProbabilityBayes.rds")
+write.csv(export3,"ProbabilityBayes.csv")
 save.image("Data\\AnalysisObjects.RData")
