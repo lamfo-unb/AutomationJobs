@@ -1,122 +1,80 @@
-/*-----------------------------------------------------------------------------------------*/
-/*---- 			Criação de Base de dados de CBOS de empregados vindo da RAIS		   ----*/
-/*----	    Nível: Ano, UF, RM, Município, CBO2002/Job_Zone -- Renda, Nº Empregados	   ----*/
-/*-----------------------------------------------------------------------------------------*/
-
-/*==== 						UTILIZANDO EMPREGADOS EM DEZEMBRO DO ANO CORRENTE  		   ====*/
-
+/*-----------------------------------------------------------------------------*/
+/*---- 			Creation of CBOS database of employees from RAIS		   ----*/
+/*-----------------------------------------------------------------------------*/
 
 libname rais "\\Storage6\Bases\DADOS\RESTRITO\RAIS\SAS";
-libname local "C:\Users\b2657804\Documents\temp\temp";
-libname auto "C:\Users\b2657804\Documents\Meu Drive\LAMFO\Adicionar a automation\Data";
+libname auto "C:\Users\B2657804\Desktop\AutomationJobs\data";
 
-%macro munic;
+/*========   Part I: Create the panel data   ========*/
+%macro create_data;
 %do ano = 1986 %to 2016;
-  %if &ano. < 2003 %then %do;
-	%if &ano. < 1999 %then %do;
-		 proc sql ;*inobs=1000;
-		 	create table local.auto_all&ano.(compress=YES) as
-		 	select UF, codemun, regiao_metro, &ano. as ano, cbo1994, grau_instr, count(*) as empregados, 
-				    sum(rem_med_sm) as renda_t_sm
-		 	from rais.brasil&ano.(where=(mes_deslig='00'))
-		 	group by UF, codemun, regiao_metro, ano, cbo1994, grau_instr;
+  %if &ano. < 2003 %then %let cbo = cbo1994;
+  %else %let cbo = cbo2002;
 
-		 	create table local.auto&ano.(compress=YES) as 
-		 	select UF, codemun, regiao_metro, ano, cbo1994, sum(empregados) as empregados, 
-				   sum(renda_t_sm) as renda_t_sm 
-		 	from local.auto_all&ano.
-		 	group by UF, codemun, regiao_metro, ano, cbo1994;
-		 quit;
-	%end;
-  %else %do;
-	 proc sql ;*inobs=1000;
-		 	create table local.auto_all&ano.(compress=YES) as
-		 	select UF, codemun, regiao_metro, &ano. as ano, cbo1994, grau_instr, count(*) as empregados, 
-				    sum(rem_med_r) as renda_t 
-		 	from rais.brasil&ano.(where=(mes_deslig='00'))
-		 	group by UF, codemun, regiao_metro, ano, cbo1994, grau_instr;
+  %if 2002 < &ano. and &ano. < 2007 %then %let renda = rem_media;
+  %else %let renda = rem_med_sm;
 
-		 	create table local.auto&ano.(compress=YES) as 
-		 	select UF, codemun, regiao_metro, ano, cbo1994, sum(empregados) as empregados, 
-				   sum(renda_t) as renda_t 
-		 	from local.auto_all&ano.
-		 	group by UF, codemun, regiao_metro, ano, cbo1994;
-		 quit;
-  %end;
-  %end;
-
-    %if &ano. > 2002 %then %do;
-		 proc sql ;*inobs=1000;
-		 	create table local.auto_all&ano.(compress=YES) as
-		 	select UF, codemun, regiao_metro, &ano. as ano, cbo2002, grau_instr, count(*) as empregados, 
-				  sum(rem_med_r) as renda_t 
-		 	from rais.brasil&ano.(where=(mes_deslig='00'))
-		 	group by UF, codemun, regiao_metro, ano, cbo2002, grau_instr;
-
-		 	create table local.auto&ano.(compress=YES) as 
-		 	select UF, codemun, regiao_metro, ano, cbo2002, sum(empregados) as empregados, 
-				    sum(renda_t) as renda_t 
-		 	from local.auto_all&ano.
-		 	group by UF, codemun, regiao_metro, ano, cbo2002;
-		 quit;
-	%end;
+  proc sql ;*inobs=1000;
+ 	create table auto&ano. as
+     	select &ano. as ano, &cbo., count(*) as empregados
+	from rais.brasil&ano.(where=(mes_deslig='00' and &cbo. ne ''))
+	group by ano, &cbo.;
+  quit;
 %end;
-    data auto_painel2(compress=YES); set local.auto1986-local.auto2016; run;
-	data local.auto_all_painel2; set local.auto_all1986-local.auto_all2016; run;
-%mend munic;
-%munic;
+    data auto_painel; set auto1986-auto2016; run;
+%mend create_data;
+%create_data;
 
-/*--- Conversao CBO94 para CBO2002 ---*/
+/*--- Convertion CBO1994 to CBO2002 ---*/
 data cbo_trad;
-  infile "C:\Users\b2657804\Documents\Meu Drive\LAMFO\AutomationJobs\Data\CBO94 - CBO2002 - Conversao com 90.csv" 
+  infile "C:\Users\rafal\Google Drive\LAMFO\AutomationJobs\Data\CBO94 - CBO2002 - Conversao com 90.csv"
   FIRSTOBS=2 dsd truncover delimiter = ";";
-  length CBO1994 $5 CBO_2002 $6 ;
-  input CBO1994 CBO_2002;
+  length CBO1994 $5 CBO2002 $6 ;
+  input CBO1994 CBO2002;
 run;
 
-PROC SORT DATA=auto_painel2 OUT=auto; BY CBO1994; RUN;
-PROC SORT DATA=cbo_trad 				; BY CBO1994; RUN;
-DATA AUTO_PAINEL; MERGE auto(IN=A) cbo_trad; 
-    BY CBO1994;
-	IF A;
-	IF CBO2002 = '' THEN CBO2002 = CBO_2002;
-	drop CBO1994 CBO_2002;
+PROC SORT DATA=auto_painel(where=(ano=2003)) out=cbos; BY CBO2002; RUN;
+PROC SORT DATA=cbo_trad ; BY CBO2002; RUN;
+DATA convert; MERGE cbos cbo_trad;    
+    BY CBO2002;
 RUN;
 
-/*--- Conversao da renda em Salrarios Minimos ---*/
-data SM;
-  infile "C:\Users\b2657804\Documents\Meu Drive\LAMFO\Adicionar a automation\ipeadata[27-02-2018-05-27].csv"
-  FIRSTOBS=2 dsd truncover delimiter = ",";
-  length DATA $7 ;
-  input DATA SM;
+proc sql;    * Create a weighted convertion table: CBO1994 to CBO2002;
+create table weight as
+  select a.cbo1994, cbo2002 as cbo_2002, emp / tot as prop
+from convert a, (select cbo1994, sum(emp) as tot from convert group by cbo1994) as b
+where a.cbo1994 = b.cbo1994 and a.cbo1994 ne ''
+order by a.cbo1994;
+quit;
+
+data weight; set weight; if prop = . then prop = 0; run;
+
+proc sql;  * Merge the weight to auto_painel ;
+create table auto_painel2 as
+  select a.*, b.*
+from auto_painel as a full outer join weight b
+on a.cbo1994 = b.cbo1994;
+quit;
+
+data auto_painel2; set auto_painel2;   * Make conversion ;
+  if prop = . then prop = 1;
+  if cbo2002 = '' then cbo2002 = cbo_2002;
+  if empregados = . then delete;
 run;
 
-PROC SQL; * Tornando a série de Salário Mínimo anual;
-	CREATE TABLE SM AS 
-	SELECT input(SUBSTR(Data, 1, 4), best12.) AS ANO FORMAT BEST12., AVG(SM) AS SM
-	FROM SM
-	GROUP BY ANO;
-QUIT;
+proc sql;  * Calculate the proportional number of employees for each CBO 2002 ;
+create table auto_painel2 as
+  select ano, cbo2002, sum(empregados*prop) as empregados
+from auto_painel2
+group by ano, cbo2002;
+quit;
 
-PROC SORT DATA = AUTO_PAINEL OUT = auto; BY ANO; RUN;
-DATA AUTO_PAINEL; MERGE auto(IN=A) SM;
-    BY ANO;
-	IF renda_m = . THEN renda_t = renda_t_sm*sm;
- 	IF A;
+/*---- Export the data ----*/
+proc export outfile='C:\Users\B2657804\Desktop\AutomationJobs\Data\RAIS_CBO_1986-2016.csv'
+  data = auto_painel2 DBMS = CSV REPLACE;
+run;
 
-	renda_sm = renda_t/sm; * Renda em SM ;
-
-	drop renda_m_sm renda_t_sm sm renda_m;
-
-	if cbo2002 = '' or codemun = '' then delete;
-
-	rename renda_t = renda;
-RUN;
-
-/*---- Salvando ----*/
-data auto.auto_painel2(compress=YES); set AUTO_PAINEL; run;
-
-/*--- Acrescentando Job Zones ---*/
+/*========   Part II: Assing the Job Zones   ========*/
 proc import datafile = "C:\Users\b2657804\Documents\Meu Drive\LAMFO\AutomationJobs\Conversions\CBO_OK.csv" 
     out = CBO_JOB DBMS = CSV REPLACE; delimiter = ';'; 
 run;

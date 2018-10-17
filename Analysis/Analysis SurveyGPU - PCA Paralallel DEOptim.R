@@ -59,7 +59,7 @@ Rcpp::sourceCpp("Analysis/Kernel.cpp")
 listContexts()
 
 # set second context
-setContext(3L)
+setContext(1L)
 currentDevice()
 
 #Check if double is avaible - if FALSE must define type='float'
@@ -96,41 +96,35 @@ marginal.ll<-function(theta){
   sigma.n <- theta[2]
   lambda  <- theta[3:length(theta)]
   n <- nrow(X)
-  
+  Y.gpu <- vclVector(Y, type = "float")  
   #GPU
   ### start_time <- Sys.time()
-  #lambdaMat <- vclMatrix(diag(1/lambda),type='float')
   lambdaMat <- vclMatrix(diag(1/lambda))
-  #X.gpu <- vclMatrix(X, type='float')
   X.gpu <- vclMatrix(X)
   X.gpu <- X.gpu %*% lambdaMat
-  k.xx <- suppressWarnings(gpuR::distance(X.gpu,X.gpu, method="sqEuclidean"))
+  
+  #Kernel computation
+  k.xx <- suppressWarnings(gpuR::dist(X.gpu,method="sqEuclidean"))
   k.xx <- sigma2f*exp(-0.5*k.xx)
-  #k.xx <- as.matrix(k.xx)
-
-  
-  #Kernel
-  #start_time <- Sys.time()
-  #k.xx <- sigma2f*exp(IBS_kernel_C_parallel( X, matrix(lambda,ncol=1)))
-  #end_time <- Sys.time()
-  #end_time - start_time
-  
-  #start_time <- Sys.time()
-  #k.xx <- KernelMatrix(X,lambda,sigma2f)
-  #end_time <- Sys.time()
-  #end_time - start_time
-  
   k.xx <- k.xx + sigma.n^2*diag(1, n)
-  L <- chol(k.xx)
+  L <-  chol(k.xx)
   logdet <- 2*sum(log(as.matrix(diag(L))))
-  #Information
-  inf <- as.numeric((-0.5)*(t(Y)%*%as.matrix(k.xx)%*%Y))
-  #Regularization
-  det <- det(k.xx)
   
+  #Regularization
+  invL <- gpuR::solve(L)
+  invK <- t(invL)%*%invL       
+  
+  #Information
+  k1<-invK%*%Y.gpu
+  k1<-as.numeric(as.matrix(k1%*%Y.gpu))
+  
+  #Information
+  inf <- as.numeric((-0.5)*k1)
+
+ 
   ### end_time <- Sys.time()
   ### end_time - start_time
-  if(is.infinite(logdet)){
+  if(is.infinite(logdet) | is.na(logdet) | is.nan(logdet)){
     return(+1e+10)
   }
   else{
