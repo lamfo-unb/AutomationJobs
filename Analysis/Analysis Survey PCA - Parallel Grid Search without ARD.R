@@ -66,52 +66,58 @@ Rcpp::sourceCpp("Analysis/Kernel.cpp")
 #kernel3 <- sigma2f*exp(-0.5*k^2)
 #all(kernel1==kernel3)
 
-
+n.par<-3
 theta<-rep(1,n.par)
 #Marginal Log-Likelihood (Type-II Likelihood)
 marginal.ll<-function(theta){
-  #Parameters
-  sigma2f <- theta[1]
-  sigma.n <- theta[2]
-  lambda  <- theta[3]
-  n <- nrow(X)
-  
-  k.xx <- as.matrix(dist(X/lambda, method = "euclidean"))
-  #k.xx <- as.matrix(parDist(X/lambda, method = "euclidean"))
-  k.xx <- k.xx^2
-  k.xx <- sigma2f*exp(-0.5*k.xx)
-  
-  #Kernel
-  #start_time <- Sys.time()
-  #k.xx <- sigma2f*exp(IBS_kernel_C_parallel( X, matrix(lambda,ncol=1)))
-  #end_time <- Sys.time()
-  #end_time - start_time
-  
-  #start_time <- Sys.time()
-  #k.xx <- KernelMatrix(X,lambda,sigma2f)
-  #end_time <- Sys.time()
-  #end_time - start_time
-  
-  k.xx <- k.xx + sigma.n^2*diag(1, n)
-  #k.xx <- as.matrix(Matrix::nearPD(k.xx)$mat)
-  L <- chol(k.xx)
-  logdet <- 2*sum(log(diag(L))) #https://makarandtapaswi.wordpress.com/2011/07/08/cholesky-decomposition-for-matrix-inversion/
-  #Regularization
-  invL <- backsolve(r = L, x = diag(ncol(L)))
-  invK <- t(invL)%*%invL        #https://stackoverflow.com/questions/25662643/what-is-the-way-to-invert-a-triangular-matrix-in-r
-  #Information
-  inf <- as.numeric((-0.5)*(t(Y)%*%invK%*%Y))
-
-  if(is.infinite(logdet) | is.na(logdet) | is.nan(logdet)){
-    return(+1e+10)
-  }
-  else{
-    reg <- as.numeric((-0.5)*logdet)
-    #Normalization
-    nor <- -(n/2)*log(2*pi)
-  }
-  #Return Log-likelihood
-  return(inf+reg+nor)
+  tryCatch({
+    #Parameters
+    sigma2f <- theta[1]
+    sigma.n <- theta[2]
+    lambda  <- theta[3]
+    n <- nrow(X)
+    
+    k.xx <- as.matrix(dist(X/lambda, method = "euclidean"))
+    #k.xx <- as.matrix(parDist(X/lambda, method = "euclidean"))
+    k.xx <- k.xx^2
+    k.xx <- sigma2f*exp(-0.5*k.xx)
+    
+    #Kernel
+    #start_time <- Sys.time()
+    #k.xx <- sigma2f*exp(IBS_kernel_C_parallel( X, matrix(lambda,ncol=1)))
+    #end_time <- Sys.time()
+    #end_time - start_time
+    
+    #start_time <- Sys.time()
+    #k.xx <- KernelMatrix(X,lambda,sigma2f)
+    #end_time <- Sys.time()
+    #end_time - start_time
+    
+    k.xx <- k.xx + sigma.n^2*diag(1, n)
+    #k.xx <- as.matrix(Matrix::nearPD(k.xx)$mat)
+    k.xx <- Matrix::nearPD(k.xx)
+    L <- chol(k.xx)
+    logdet <- 2*sum(log(diag(L))) #https://makarandtapaswi.wordpress.com/2011/07/08/cholesky-decomposition-for-matrix-inversion/
+    #Regularization
+    invL <- backsolve(r = L, x = diag(ncol(L)))
+    invK <- t(invL)%*%invL        #https://stackoverflow.com/questions/25662643/what-is-the-way-to-invert-a-triangular-matrix-in-r
+    #Information
+    inf <- as.numeric((-0.5)*(t(Y)%*%invK%*%Y))
+    
+    if(is.infinite(logdet) | is.na(logdet) | is.nan(logdet)){
+      return(-Inf)
+    }
+    else{
+      reg <- as.numeric((-0.5)*logdet)
+      #Normalization
+      nor <- -(n/2)*log(2*pi)
+    }
+    #Return Log-likelihood
+    return(inf+reg+nor)
+  },
+  error=function(e) {
+    NULL
+  })
 }
 #gri<-50
 n.par<-3
@@ -132,7 +138,7 @@ cl <- makeCluster(no_cores)
 clusterExport(cl=cl,varlist=c("X","Y")) 
 start_time <- Sys.time()
 start_time
-#Inicio 13:00 13/9 - Expectativa 26/9
+#Inicio 9:40 28/9 - Expectativa 12/11
 res <- parApply(cl = cl, X=initialPop, MARGIN=1, FUN=marginal.ll) 
 end_time <- Sys.time()
 end_time - start_time
@@ -142,13 +148,10 @@ theta<-initialPop[which(max(res)==res),]
 save.image("Solution.RData")
 
 
-
-
-
 #Parameters            
 sigma2f <- theta[1]
 sigma.n <- theta[2]
-lambda  <- theta[3:length(theta)]
+lambda  <- rep(theta[3],ncol=ncol(X))
 
 #Kernel Computation
 k.xx <- KernelMatrix(X,lambda,sigma2f)
