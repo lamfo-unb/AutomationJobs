@@ -8,3 +8,12 @@ median<-prob %>%
 
 join <- median %>% 
         inner_join(serie,by=c("COD_OCUPACAO"="cbo2002"))
+
+quantile<-quantile(median$Probability)
+
+join$quantile<-cut(join$Probability,breaks=quantile,labels=c("Q1","Q2","Q3","Q4"))
+
+sumJobs<- join %>% 
+          group_by(quantile,ano) %>% 
+          summarise(emp=sum(empregados)) %>% 
+          filter(ano %in% c(2014,2015,2016))
