@@ -9,6 +9,15 @@ median<-prob %>%
 join <- median %>% 
         inner_join(serie,by=c("COD_OCUPACAO"="cbo2002"))
 
+
+join$dummy<-ifelse(join$Probability>0.7537,1,0)
+total<-join %>% group_by(ano) %>% summarise(total=sum(dummy*empregados))
+tail(total)
+
+total<-join %>% group_by(ano) %>% summarise(total=sum(empregados))
+tail(total)
+
+
 quantile<-quantile(median$Probability)
 
 join$quantile<-cut(join$Probability,breaks=quantile,labels=c("Q1","Q2","Q3","Q4"))
