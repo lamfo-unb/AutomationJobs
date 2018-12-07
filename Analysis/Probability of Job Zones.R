@@ -34,10 +34,16 @@ Comp %>% filter(is.na(Comp$Job_Zone)) %>% distinct(soc) %>% nrow()
 
 Comp <- Comp %>% na.omit()
 
-ggplot(aes(y = prob, x = Job_Zone), data = Comp) + geom_boxplot(fill = "gray") +
+#Colors
+mycolors <- RColorBrewer::brewer.pal(5, "Pastel1")[5:1]
+
+ggplot(aes(y=prob, x = Job_Zone), data = Comp) + 
+  geom_boxplot(fill = mycolors) +
+  scale_colour_manual(name="Level of Automation", values = mycolors)+
   theme_bw() + labs(x = "Job Zone", y = "Probability of Computerisation") +
-  theme(text = element_text(size=15))
+  theme(text = element_text(size=15)) 
 ggsave('boxplot.pdf', units="in", width=5, height=5)
+
 tapply(Comp$prob, Comp$Job_Zone, summary)
 
 

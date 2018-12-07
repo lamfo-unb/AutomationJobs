@@ -145,17 +145,17 @@ Eigen::MatrixXd KernelMatrix2(Eigen::MatrixXd datMat1,
                               Eigen::MatrixXd datMat2, 
                               double sigma2f,
                               double sigma2n,
-                              Eigen::RowVectorXd theta){
+                              double theta){
   //Get the number of rows
   unsigned int rows1=datMat1.rows();
   unsigned int rows2=datMat2.rows();
-  unsigned int nelements = theta.size();
+  unsigned int nelements = datMat1.cols();
   //Initialize Identity matrix
   Eigen::MatrixXd identity = Eigen::MatrixXd::Identity(rows1,rows2);
   //Initialize the matrix
   Eigen::MatrixXd matKernel = Eigen::MatrixXd::Zero(rows1,rows2);
   for(unsigned int c1=0;c1<rows1;c1++){
-    for(unsigned int c2=0;c2<=c1;c2++){
+    for(unsigned int c2=0;c2<rows2;c2++){
       double val = 0.0;
       //First column with variables
       Eigen::RowVectorXd vec1 = datMat1.row(c1);
@@ -163,10 +163,10 @@ Eigen::MatrixXd KernelMatrix2(Eigen::MatrixXd datMat1,
       Eigen::RowVectorXd vec2 = datMat2.row(c2);
       for(unsigned int p=0;p<nelements;p++){
         //Calculate the kernel value
-        val = val + (-0.5*std::pow((vec1(p)-vec2(p))*theta(p),2.0));
+        val = val + (-0.5*std::pow((vec1(p)-vec2(p))*theta,2.0));
       }
       //Store the kernel value
-      matKernel(c2,c1) = matKernel(c1,c2) = sigma2f*std::exp(val);
+      matKernel(c1,c2)=sigma2f*std::exp(val);
     }
   }
   matKernel = matKernel + identity*sigma2n;

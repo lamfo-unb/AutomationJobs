@@ -2,7 +2,7 @@ library(pbapply)
 library(dplyr)
 
 #Read the survey
-df.raw <- read.csv("Automation_sheet.csv")
+df.raw <- read.csv("Data/Automation_sheet.csv")
 df.raw <- df.raw %>% mutate(COD_OCUPACAO = as.numeric(CBO_5D))
 
 #Data transformation
@@ -19,7 +19,7 @@ df.raw <- df.raw %>%
   summarise(Score = mean(Score))
 
 #Read the data
-dataWords<-readRDS("CBOPCAwords.rds")
+dataWords<-readRDS("Data/CBOPCAwords.rds")
 
 #70% of variance explained
 dataWords<-dataWords[,1:373]    #373
@@ -38,7 +38,7 @@ X <- as.matrix(full[,-ncol(df)])
 Y <- full[,ncol(df)]
 
 # Gaussian Process --------------------------------------------------------
-Rcpp::sourceCpp("kernel.cpp")
+Rcpp::sourceCpp("Analysis/Kernel.cpp")
 
 system.time(
   a <- KernelMatrix2(X,X,2.5,1.2,as.matrix(rep(1,ncol(X))))
@@ -135,6 +135,7 @@ cbind(initialPop[which.max(res2),], "logll" = res2[which.max(res2)])
 
 # Prediction Data ---------------------------------------------------------
 theta <- as.numeric(initialPop[which.max(res2),])
+# theta <- c(10.5, 2, 5.5)
 
 # prediction
 pred.gp <- function(x.star, theta){
@@ -161,7 +162,7 @@ mean((pred$pred-Y)^2)
 
 
 # Predict all data --------------------------------------------------------
-df.raw <- read.csv("Automation_sheet.csv")
+df.raw <- read.csv("Data/Automation_sheet.csv")
 df.raw <- df.raw %>% mutate(COD_OCUPACAO = as.numeric(CBO_5D))
 #Data transformation
 df.raw <- df.raw %>% 
@@ -178,7 +179,7 @@ df.raw <- df.raw %>%
             Score = mean(Score)) %>% 
   mutate(var = ifelse(is.na(var), 0, var))
 #Read the data
-dataWords<-readRDS("CBOPCAwords.rds")
+dataWords<-readRDS("Data/CBOPCAwords.rds")
 #70% of variance explained
 dataWords<-dataWords[,1:373]    #373
 #Full join

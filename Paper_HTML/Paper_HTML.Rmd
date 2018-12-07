@@ -62,7 +62,7 @@ library(pdftools)
 opts_chunk$set(message=FALSE, warning=FALSE, comment=NA, echo=FALSE, out.width='100%', out.height='auto', fig.align='center', cache=T)
 
 # opts_knit$set(root.dir = "C:\\Users\\Pedro Albuquerque\\Desktop\\AutomationJobs")
-opts_knit$set(root.dir = "C:/Users/rafal/Google Drive/LAMFO/AutomationJobs")
+opts_knit$set(root.dir = "C:/Users/B2657804/Google Drive/LAMFO/AutomationJobs")
 
 # A function for captioning and referencing images
 fig <- local({
@@ -435,7 +435,7 @@ library(scales)
 profile<-read.csv2("Data/Occupation Structure/CBO2002 - PerfilOcupacional.csv")
 profile<-data.frame("cbo2002"=unique(profile[,5]))
 #Read the results
-results<-readRDS("shiny_portal/ProbabilityBayes.rds")
+results<-readRDS("Analysis/ProbabilityGP_round.rds")
 forecast<-read.csv("shiny_portal/Previsao.csv")
 
 
@@ -444,8 +444,9 @@ serie<-inner_join(forecast,profile, by="cbo2002")
 
 #Calculate the total
 total.cbo <- forecast %>% 
-              group_by(cbo2002, ano) %>% 
-              summarise(Total=sum(empregados))
+  mutate(cbo2002 = factor(cbo2002)) %>% 
+  group_by(cbo2002, ano) %>% 
+  summarise(Total=sum(empregados)) 
 
 #Calculate the median
 median.cbo <- results %>% 
