@@ -1,19 +1,7 @@
-library(haven)
 library(ggplot2)
 library(tidyverse)
 
-# jobzone_painel <- read_sas("C:/Users/b2657804/Documents/Meu Drive/LAMFO/Adicionar a automation/Data/jobzone_painel2.sas7bdat")
-# jobzone_painel <- read_sas("C:/Users/rafal/Google Drive/LAMFO/Adicionar a automation/Data/jobzone_painel2.sas7bdat")
-# write.csv2(jobzone_painel, 'Data/jobzone_painel.csv')
-jobzone_painel <- read.csv2('Data/jobzone_painel.csv')
-
-serie <- jobzone_painel %>% group_by(Job_Zone, ano) %>% 
-  summarise(empr        = sum(empregados),
-            rend        = sum(renda),
-            rend_sm     = sum(renda_sm),
-            rend_med    = sum(renda)/sum(empregados),
-            rend_med_sm = sum(renda_sm)/sum(empregados)) %>% na.omit()
-
+serie <- read.csv2('Data/jobzone_painel.csv')
 
 # Séries Temporais --------------------------------------------------------
 
@@ -43,49 +31,19 @@ graph01.tbl <- graph01.tbl2 %>%
 #Raw time series
 ggplot(graph01.tbl, aes(x=ano, y=cumulative, colour=as.factor(Job_Zone), group=as.factor(Job_Zone))) + 
   geom_line(lwd=1) + theme_bw() + geom_point() +
-  scale_x_continuous(breaks = sort(unique(graph02.tbl$ano))[seq(1, 31, by = 3)]) +
+  scale_x_continuous(breaks = sort(unique(graph01.tbl$ano))[seq(1, 31, by = 3)]) +
   scale_colour_discrete(name="Automation",
                         breaks=c("1","2", "3", "4", "5"),
                         labels=c("Level 1", "Level 2", "Level 3", "Level 4", "Level 5")) +  xlab("Year")+ ylab("Cumulative Growth Rate")+
   theme(legend.position="bottom") 
-
-#Smoothed time series
-ggplot(graph01.tbl, aes(x=ano, y=cumulative, colour=as.factor(Job_Zone), group=as.factor(Job_Zone))) + 
-  theme_bw() +
-  scale_x_continuous(breaks = sort(unique(graph02.tbl$ano))[seq(1, 31, by = 3)]) +
-  geom_smooth(method = 'loess', span = .3, se = FALSE) + 
-  scale_colour_discrete(name="Automation",
-                        breaks=c("1","2", "3", "4", "5"),
-                        labels=c("Level 1", "Level 2", "Level 3", "Level 4", "Level 5")) +  xlab("Year")+ ylab("Cumulative Growth Rate")+
-  theme(legend.position="bottom") 
-
-# Renda media
-ggplot(serie, aes(ano, rend_med, group = Job_Zone, colour = factor(Job_Zone))) + 
-  geom_line(lwd=1) + theme_bw() + geom_point() +
-  scale_x_continuous(breaks = sort(unique(serie$ano))[seq(1, 31, by = 3)]) +
-  labs(x = "Ano", y = "Renda Média em Reais", color = "  Job\n Zone") +
-  theme(legend.position="bottom") 
-
-# Renda media em salarios minimos
-ggplot(serie, aes(ano, rend_med_sm, group = Job_Zone, colour = factor(Job_Zone))) + 
-  geom_line(lwd=1) + theme_bw() + geom_point() +
-  scale_x_continuous(breaks = sort(unique(serie$ano))[seq(1, 31, by = 3)]) +
-  labs(x = "Ano", y = "Renda Média em Salários Mínimos", color = "  Job\n Zone") +
-  theme(legend.position="bottom") 
-
-# Renda Total
-ggplot(serie, aes(ano, rend, group = Job_Zone, colour = factor(Job_Zone))) + 
-  geom_line(lwd=1) + theme_bw() + geom_point() +
-  scale_x_continuous(breaks = sort(unique(serie$ano))[seq(1, 31, by = 3)]) +
-  labs(x = "Ano", y = "Renda Total", color = "  Job\n Zone") +
-  theme(legend.position="bottom") 
-
 
 library(readxl)
 GDP_GROWTH <- read_excel("Data/GDP_GROWTH.xls", skip = 3)
-GDP_GROWTH <- GDP_GROWTH %>% filter(`Country Name` == "Brazil") %>% gather(year, growth) %>%
-  filter(year %in% 1986:2016) %>% mutate(growth     = as.numeric(growth),
-                                         cumulative = (cumprod(growth/100 + 1) - 1))
+GDP_GROWTH <- GDP_GROWTH %>% 
+  gather(year, growth) %>%
+  filter(year %in% 1986:2017) %>% 
+  mutate(growth     = as.numeric(growth),
+         cumulative = (cumprod(growth/100 + 1) - 1))
 
 ggplot(GDP_GROWTH, aes(year, growth, group = 1)) + 
   geom_line(lwd=1) + theme_bw() + geom_point() +
@@ -107,8 +65,8 @@ ggplot(GDP_GROWTH, aes(year, cumulative, group = 1)) +
 
 #Add GDP and Growth rate
 graph03.tbl<-graph01.tbl %>% 
-             select(ano,Job_Zone, cumulative) %>% 
-             rename(year = ano)
+  select(ano,Job_Zone, cumulative) %>% 
+  rename(year = ano)
 GDP_GROWTH2<-GDP_GROWTH %>% 
   mutate(Job_Zone="GDP") %>% 
   select(-growth)
@@ -133,7 +91,7 @@ ggplot(final, aes(x=year, y=cumulative, colour=as.factor(Job_Zone), group=as.fac
                 ymin = -Inf, ymax = Inf), alpha = 0.01) + 
   geom_line(aes(linetype=Type),lwd=1) + theme_bw() + geom_point() +
   scale_x_continuous(breaks = sort(unique(final$year))[seq(1, 31, by = 3)]) +
-                        xlab("Year")+ ylab("Cumulative Growth Rate")+
+  xlab("Year")+ ylab("Cumulative Growth Rate")+
   scale_colour_manual(name="Automation",
                       breaks=c("1","2", "3", "4", "5","GDP"),
                       labels=c("Level 1", "Level 2", "Level 3", "Level 4", "Level 5","GDP"),
@@ -164,3 +122,4 @@ ggsave('serie1.pdf', units="in", width=5, height=5)
 fall2014<-subset(final, year==2014)
 fall2016<-subset(final, year==2016)
 round((fall2014$cumulative-fall2016$cumulative)*100,4)
+

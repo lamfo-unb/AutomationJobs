@@ -35,7 +35,7 @@ Comp %>% filter(is.na(Comp$Job_Zone)) %>% distinct(soc) %>% nrow()
 Comp <- Comp %>% na.omit()
 
 #Colors
-mycolors <- RColorBrewer::brewer.pal(5, "Pastel1")[5:1]
+mycolors <- RColorBrewer::brewer.pal(5, "Pastel1")
 
 ggplot(aes(y=prob, x = Job_Zone), data = Comp) + 
   geom_boxplot(fill = mycolors) +
@@ -44,16 +44,8 @@ ggplot(aes(y=prob, x = Job_Zone), data = Comp) +
   theme(text = element_text(size=15)) 
 ggsave('boxplot.pdf', units="in", width=5, height=5)
 
+
 tapply(Comp$prob, Comp$Job_Zone, summary)
 
 
-# FO and Job Zones --------------------------------------------------------
-Job_Zones <- readxl::read_excel("Data/All_Job_Zones.xls", 
-                                skip = 3, col_types = "text") %>% 
-  mutate(Code = substr(Code,1,7)) %>% 
-  rename(Job_Zone = `Job Zone`) %>% distinct(Job_Zone, Code) 
 
-all <- full_join(FO, Job_Zones, by = c("soc" = "Code"))
-
-write.csv2(all, row.names = FALSE, file = )
-write.csv2(cbo2002_soc, row.names = F, file = "Conversions/CBO_OK_r.csv")
