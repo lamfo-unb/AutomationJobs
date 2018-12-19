@@ -104,6 +104,48 @@ run;
 
 
 
+/*=========================================*/
+/*=======    Descriptive    ===============*/
+/*=========================================*/
+%macro descr;
+%do ano = 1986 %to 2017;
+%if &ano. < 1999 %then %let renda = rem_med_sm;
+%else %let renda = rem_med_r;
+  proc sql; *inobs=1000;
+    create table descr&ano. as
+	  select &ano. as ano, count(*) as empregados, sum(&renda.) as &renda.
+	  from rais.brasil&ano.(where=(mes_deslig='00'))
+	  group by ano;
+  quit;
+%end;
+data descr_panel; set descr1986-descr2017; run;
+%mend descr;
+%descr;
+
+/*--- Conversion of Income ---*/
+proc import datafile="\\sbsb2\dpti\Usuarios\Rafael Morais\Auto\MTE12_SALMIN12.xls"
+out=SM replace dbms=xls; 
+run;
+
+PROC SQL; * Tornando a série de Salário Mínimo anual;
+	CREATE TABLE SM AS 
+	SELECT ANO, AVG(valvalor) AS SM
+	FROM SM
+	GROUP BY ANO;
+QUIT;
 
 
+PROC SORT DATA = descr_panel; BY ANO; RUN;
+DATA AUTO_PAINEL; MERGE descr_panel(IN=A) SM;
+    BY ANO;
+	msal = rem_med_r;
+	IF msal = . THEN msal = rem_med_sm*sm;
+ 	IF A;
+	drop rem_med_r rem_med_sm sm;
+RUN;
+
+proc export data = AUTO_PAINEL
+   outfile = '\\sbsb2\dpti\Usuarios\Rafael Morais\Descr_RAIS.xlsx'
+   dbms = XLSX; 
+run;
 

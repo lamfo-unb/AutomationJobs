@@ -118,8 +118,8 @@ ggplot(final, aes(x=year, y=cumulative, colour=as.factor(Job_Zone), group=as.fac
   theme(legend.position="bottom", legend.direction = "horizontal", legend.box = "vertical")
 ggsave('serie1.pdf', units="in", width=5, height=5)
 
-#Fall percentage from \\ 2014 to 2016 in the CGR 
+#Fall percentage from \\ 2014 to 2017 in the CGR 
 fall2014<-subset(final, year==2014)
-fall2016<-subset(final, year==2016)
-round((fall2014$cumulative-fall2016$cumulative)*100,4)
+fall2017<-subset(final, year==2017)
+round((fall2014$cumulative-fall2017$cumulative)*100,4)
 

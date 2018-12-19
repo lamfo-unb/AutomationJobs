@@ -37,8 +37,6 @@ final <- final %>%
   group_by(Class, ano) %>% 
   summarise(Total=sum(Total))
 
-table(final$Class)
-
 #Colors
 mycolors <- RColorBrewer::brewer.pal(4, "Pastel1")
 
@@ -51,3 +49,6 @@ ggplot(final, aes(x=ano, y=Total, colour=as.factor(Class), group=as.factor(Class
   scale_y_continuous(labels = comma)+guides(fill=guide_legend(nrow=2,byrow=TRUE))
 ggsave('serie2.pdf', units="in", width=7, height=5)
 
+filter(final, ano==2017) %>% 
+  mutate(Pct = Total/sum(.$Total)*100,
+         totall = sum(.$Total)) %>% View()
