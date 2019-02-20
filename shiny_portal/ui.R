@@ -1,5 +1,7 @@
 
-shinyUI(
+#shinyUI(
+function(req) {
   uiOutput("ui")
-)
+}
+#)
 

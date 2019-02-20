@@ -70,28 +70,12 @@ Laboratório de Aprendizado de Máquina em Finanças e Organizações
 </p>
 </div>
 <p class="main">
-Automação e eliminação de postos de trabalho na era da automação
+Probabilidade de automação nas ocupações brasileiras<!--Automação e eliminação de postos de trabalho na era da automação-->
 </p>
 <div class="row">
 <div class="column">
 <h2>
 Pedro Albuquerque
-</h2>
-<p>
-Universidade de Brasília
-</p>
-</div>
-<div class="column">
-<h2>
-Patrick Alves
-</h2>
-<p>
-Instituto de Pesquisa Econômica Aplicada
-</p>
-</div>
-<div class="column">
-<h2>
-Rafael Morais
 </h2>
 <p>
 Universidade de Brasília
@@ -105,15 +89,33 @@ Cayan Portela
 Universidade de Brasília
 </p>
 </div>
+<div class="column">
+<h2>
+Rafael Morais
+</h2>
+<p>
+Universidade de Brasília
+</p>
+</div>
+<div class="column">
+<h2>
+Peng Yaohao
+</h2>
+<p>
+Universidade de Brasília
+</p>
+</div>
 </div>
 <div class="abstract">
 <p style="text-align: center;font-weight: bold;font-size: 25px;">
 Resumo
 </p>
 <p style="width: 80%;position: relative;right: -10%;">
-The abstract of the article.The abstract of the article.The abstract of the article.The abstract of the article.The abstract of the article.The abstract of the article.The abstract of the article.The abstract of the article.The abstract of the article.The abstract of the article.The abstract of the article.The abstract of the article.The abstract of the article.The abstract of the article.The abstract of the article.The abstract of the article.The abstract of the article.The abstract of the article.The abstract of the article.The abstract of the article.
+Este trabalho teve por objetivo reproduzir a metodologia de as Frey e Osborne (2017) para estimação das probabilidades de automação das ocupações no Brasil.
+Essas estimativas são de suma importância para os formadores de políticas públicas e profissionais por ser passível de nortear a carreira bem como definir cursos prioritários que as instituições de ensino deveriam oferecer visando maximizar as oportunidades de emprego no País.
+Os achados apontam que boa parte das ocupações podem ser automatizadas, ademais percebe-se que essas profissões com maior risco de automação apresentam uma tendência de crescimento ao longo do tempo o que poderá resultar em um elevado nível de desemprego nos próximos anos caso os profissionais e o Estado não se preparem para esse cenário.
 </p>
-<p><i> Palavras-chave:</i> keywords, comma-separated, not capitalized, Java.</p>
+<p><i> Palavras-chave:</i> Automação, ocupação, risco.</p>
 </div>
 <center style="padding-top:55px">
 <h2 id="introducao">1. Introdução</h2>
@@ -184,9 +186,9 @@ Figura 1: Probabilidade de informatização por Job Zone
 <p>A Figura 1 apresenta a probabilidade de automação das ocupações segundo <i>Job Zones</i>. As probabilidades foram obtidas por meio do texto seminal <span class="citation">C. B. Frey &amp; Osborne (<a href="#ref-frey2017future">2017</a>)</span> que inspirou esse trabalho, e a correspondência foi dada por meio da classificação padrão de 2010 americana (<i> 2010 Standard Occupational Classification</i>), denominada SOC. Baseado na Figura 1 podemos notar que quanto mais complexo é uma ocupação em termos de nível de preparo, menor é a probabilidade de automação dessas ocupações.</p>
 <p>Isso parece aderente com a hipótese de que as ocupações que necessitam de um nível elevado de preparo são mais difíceis de serem automatizadas pois há muitos detalhes na execução das tarefas correspondentes a essas ocupações o que restringe, pelo menos no curto prazo, a chance dessas ocupações serem automatizadas.</p>
 
-<strong>
+
 Dessa forma, nosso objetivo foi obter a relação das <i>Job Zones</i> para os CBOs nacionais. Primeiramente, é necessário padronizar os códigos brasileiros para a versão mais recente pois nos dados são declaradas duas padronizações de CBO: a primeira intitulada CBO94 que compreende desde o início da série até o ano de 2002 e a segunda CBO2002 a qual vale de 2003 até o momento. Da primeira para a segunda versão vemos que na mais recente, há um detalhamento de ocupações que anteriormente eram classificadas sob o mesmo código. Isto é, observamos casos em que a correspondência de uma CBO94 se dá para muitas CBO2002. Para a atribuição de CBO2002 para os empregados antes de 2003, considerou-se uma alocação proporcional ao número de empregados da ocupação em 2003 sobre o total de empregados desse ano os quais possuem o mesmo correspondente em comum na versão de 94.
-</strong>
+
 
 <p>Uma vez que não há nenhuma tabela de conversão correspondente entre os CBOs nacionais e a <i>Job Zones</i> fornecida pelo O*NET nós atribuímos as <i>Job Zones</i> nas ocupações brasileiras por meio dos seguintes passos: usando a versão mais recente das CBOs datada de 2002 cuja fonte é <span class="citation">MTE (<a href="#ref-MTE">2018</a>)</span>, cruzamos esse dado com a <i>International Standard Classification of Occupations - <span class="citation">ISCO (<a href="#ref-ISCO">2018</a>)</span>, version 88</i>. Esse cruzamento permitiu ligar os dados diretamente aos obtidos de <span class="citation">MTE (<a href="#ref-MTE">2018</a>)</span>.</p>
 <p>Uma vez unificados esses dados nós atualizamos a ISCO-88 para a ISCO-08 e então foi possível relacionar a <i>2008 International Standard Classification of Occupations</i> com a <span class="citation">SOC (<a href="#ref-SOC">2018</a>)</span> de 2010. Finalmente, <span class="citation">O*NET (<a href="#ref-ONET_">2018</a>)</span> fornece a correspondência entre as Job Zones e a SOC 2010.</p>
@@ -361,10 +363,13 @@ Tabela 3: Campos de atuação dos respondentes da pesquisa.
 </center>
 <p>Em seguida, para se estimar a probabilidade final de automação das CBOs usando a amostra coletada, geramos a frequência de palavras (unigramas e bigramas) que descreviam cada CBO observada na amostra utilizando para isso as descrições de atividades dessas ocupações.</p>
 <p>Esses unigramas e bigramas foram obtidos após a remoção de <i>stop-words</i>, números, abreviações e pontuação totalizando mais de 19 mil variáveis. Por se tratar de uma quantidade extensa de características que descreveriam as ocupações procedeu-se com uma Análise de Componentes Principais como forma de redução das características observadas. Mantendo-se pelo menos 70% de variabilidade explicada selecionamos os primeiros 372 componentes principais.</p>
-<p>O último passo foi o cômputo da probabilidade de automação para todas as CBOs, para isso usamos a amostra coletada e as características sumarizadas pelos componentes principais para terinar e avaliar um modelo de Processo Gaussiano com <i>Automatic Relevance Determination (ARD)</i> com o intuito de regularizar o modelo e apresentar estimativas mais robustas para o nível de automação.</p>
-<p>Seja <span class="math inline">\(\mathbf{x}_{i}\)</span> e <span class="math inline">\(\mathbf{x}_{j}\)</span>duas observações <span class="math inline">\(i,j=1,\dots, 3801\)</span> e <span class="math inline">\(\mathbf{x}_{i},\mathbf{x}_{j}\in \mathbb{R}^{P}\)</span> with <span class="math inline">\(P=372\)</span>, o ARD foi ajustado considerando-se a seguinte função <i>kernel</i>:</p>
-<p><span class="math display">\[K(\mathbf{x}_{i},\mathbf{x}_{j})_{\boldsymbol\theta}=\sigma_{f}^{2}\exp\left[-\frac{1}{2}\displaystyle\sum_{p=1}^{P}\left(\frac{x_{ip}-x_{jp}}{\lambda_{p}}\right)^{2}\right]\]</span></p>
-<p>onde <span class="math inline">\(\boldsymbol\theta=(\sigma_{f}^{2},\sigma_{\epsilon}^{2},\lambda_{1},\dots,\lambda_{P})\)</span>. É importante notar que quando <span class="math inline">\(\lambda_{p}\rightarrow \infty\)</span> a função predita varia menos e menos em função de <span class="math inline">\(x_{ip},x_{jp}\)</span>, isto é, a <span class="math inline">\(p\)</span>-ésima dimensão se torna irrelevante para descrever e estimar a probabilidade de automação, de igual modo quando <span class="math inline">\(\lambda_{p}\rightarrow 0\)</span> a distância entre <span class="math inline">\(x_{ip}\)</span> e <span class="math inline">\(x_{jp}\)</span> é mais fortemente ponderada no processo gerador dos dados, representando assim que aquela característica possui elevada importância na estimação da probabilidade de automação.</p>
+<p>O último passo foi o cômputo da probabilidade de automação para todas as CBOs, para isso usamos a amostra coletada e as características sumarizadas pelos componentes principais para treinar e avaliar um modelo de Processo Gaussiano para obter as estimativas dos níveis de automação.</p>
+<p>Seja <span class="math inline">\(\mathbf{x}_{i}\)</span> e <span class="math inline">\(\mathbf{x}_{j}\)</span>duas observações <span class="math inline">\(i,j=1,\dots, 3801\)</span> e <span class="math inline">\(\mathbf{x}_{i},\mathbf{x}_{j}\in \mathbb{R}^{P}\)</span> with <span class="math inline">\(P=372\)</span>, o modelo foi ajustado considerando-se a seguinte função <i>kernel</i>:</p>
+<p><span class="math display">\[K(\mathbf{x}_{i},\mathbf{x}_{j})_{\boldsymbol\theta}=\sigma_{f}^{2}\exp\left[-\frac{1}{2}\displaystyle\sum_{p=1}^{P}\left(\frac{x_{ip}-x_{jp}}{\lambda}\right)^{2}\right]\]</span></p>
+<p>onde <span class="math inline">\(\boldsymbol\theta=(\sigma_{f}^{2},\sigma_{\epsilon}^{2},\lambda)\)</span>.
+
+<!-- É importante notar que quando <span class="math inline">\(\lambda_{p}\rightarrow \infty\)</span> a função predita varia menos e menos em função de <span class="math inline">\(x_{ip},x_{jp}\)</span>, isto é, a <span class="math inline">\(p\)</span>-ésima dimensão se torna irrelevante para descrever e estimar a probabilidade de automação, de igual modo quando <span class="math inline">\(\lambda_{p}\rightarrow 0\)</span> a distância entre <span class="math inline">\(x_{ip}\)</span> e <span class="math inline">\(x_{jp}\)</span> é mais fortemente ponderada no processo gerador dos dados, representando assim que aquela característica possui elevada importância na estimação da probabilidade de automação.</p> -->
+
 <p>Os hiperparâmetros <span class="math inline">\(\boldsymbol\theta\)</span> foram obtidos maximizando-se a verossimilhança marginal <span class="citation">(Schulz, Speekenbrink, &amp; Krause, <a href="#ref-schulz2018tutorial">2018</a>)</span>:</p>
 <p><span class="math display">\[\log[p(\mathbf{y}|\mathbf{X},\boldsymbol\theta)]=-\frac{1}{2}\mathbf{y}^{\top}\mathbf{K}_{y}^{-1}\mathbf{y}-\frac{1}{2}\log|\mathbf{K}_{y}|-\frac{n}{2}\log(2\pi)\]</span></p>
 <p>onde <span class="math inline">\(\mathbf{K}_{y}=K(\mathbf{X},\mathbf{X})+\sigma_{\epsilon}^{2}\mathbf{I}\)</span>, <span class="math inline">\((\mathbf{y}\)</span> é a probabilidade de automação registrada pelos respondentes na pesquisa, <span class="math inline">\(\mathbf{X}\)</span> é a matriz de características contendo os componentes principais obtidos dos unigramas e bigramas e <span class="math inline">\(n=3801\)</span> é o tamanho amostral.</p>
@@ -375,34 +380,78 @@ Tabela 3: Campos de atuação dos respondentes da pesquisa.
 </center>
 <p>Simulando 5000 observações da Densidade  nós obtivemos a estimativa empírica da distribuição de probabilidade de automação para cada CBO. É interessante notar nesse caso que a abordagem Bayesiana fornece uma interpretação útil para os resultados obtidos, uma vez que devido ao alto grau de incertezas seria melhor amostrar observações da distribuição <i>a posteriori</i> do parâmetro relativo a probabilidade de automação do que simplesmente fornecer uma única estimativa pontual.</p>
 <p>Ademais, quanto maior a variabilidade desse parâmetro (calculado usando-se as amostras geradas da distribuição <i>a posteriori</i> da probabilidade de automação), maior seria a heterogeneidade entre os trabalhadores da referida CBO, em outras palavras, uma alta variabilidade representaria que há diversidade de atividades na ocupação alvo que podem ser facilmente automatizadas e outras dificilmente seriam automatizadas. Já uma baixa variabilidade nas amostras geradas pela distribuição <i>a posteriori</i> da probabilidade de automação representaria que esse grupo CBO é muito homogêneo internamente o possivelmente todos (ou a maioria) dos profissionais alocados nessa CBO podem ter suas atividades automatizadas (quando a mediana da probabilidade de automação for alta), ou que suas atividades não poderiam ser facilmente automatizadas (no caso da mediana da probabilidade de automação for baixa).</p>
-<p>Nesse sentido nós definimos 5 níveis de automação com base nas medianas da distribuição <i>a posteriori</i> da probabilidade de automação gerada por meio do Processo Gaussiano, quais sejam:</p>
+
+<p> Nesse sentido, com base nas medianas da distribuição a posteriori da probabilidade de automação estimada por meio do Processo Gaussiano, as ocupações listadas na CBO foram distribuídas entre 4 classes de acordo com os seus respectivos riscos de automação, quais sejam:</p>
 <ol style="list-style-type: decimal">
-<li>Automação Muito Baixa - Mediana da probabilidade entre 0 e 0,2.</li>
-<li>Automação Baixa - Mediana da probabilidade entre 0,2 e 0,4.</li>
-<li>Automação Média - Mediana da probabilidade entre 0,4 e 0,6.</li>
-<li>Automação Alta - Mediana da probabilidade entre 0,6 e 0,8.</li>
-<li>Automação Muito Alta - Mediana da probabilidade entre 0,8 e 1,0.</li>
+<li>Automação Muito Baixa – 1º quartil da mediana da probabilidade;</li>
+<li>Automação Baixa – 2º quartil da mediana da probabilidade;</li>
+<li>Automação Alta – 3º quartil da mediana da probabilidade;</li>
+<li>Automação Muito Alta – 4º quartil da mediana da probabilidade.</li>
 </ol>
+
+<p> Dentre os 46.281.590 trabalhadores formalmente empregados em 31/12/2017, 61.672 estão com suas respectivas CBOs registradas como valores faltantes (NAs) na RAIS de 2017. Em função disso, esses trabalhadores não entraram no cômputo do percentual reportado, devido à impossibilidade do pareamento na integração das bases de dados analisadas, resultando em 46.219.918 empregados. Desse número remanescente, outros 360.769 trabalhadores estão nas CBOs que não possuem Perfil Ocupacional (por exemplo, ocupações de militares), para as quais não foram atribuídas probabilidades de automação. Sendo assim, o total de empregados considerados para o cálculo do percentual foi de 45.859.149.</p>
+
+<p> Agregando os níveis de probabilidade de automação “alta” e “muito alta”, o número de funcionários pertencem a essas categorias em 2017 foi igual a 24.970.587, o que representou 54,45% em uma população de 45.859.149 empregados formais em CBOs com perfil ocupacional no referido ano. </p>
+
+<!-- <p> Agregando os níveis de probabilidade de automação “alta” e “muito alta”, o número de funcionários pertencem a essas categorias em 2017 foi igual a 24.776.816, o que representou 54,3% em uma população de 45.608.424 empregados formais no referido ano.</p> -->
+<!-- [ RODAPE:: Dentre os 46281590 trabalhadores formalmente empregados em 31/12/2017, alguns tiveram suas respectivas CBOs registradas como valores faltantes (NAs) na RAIS de 2017). Em função disso, esses trabalhadores não entraram no cômputo do percentual reportado, devido à impossibilidade do pareamento na integração das bases de dados analisadas.]. -->
+
+<div class="figure" style="text-align: center">
+{{ world }}
+<p class="caption">
+Figura 3: Probabilidade média de automação de empregos ao redor do mundo.
+</p>
+</div>
+
+
+<p> Apesar do percentual aparentemente alarmante de profissões em risco no futuro próximo, há diversos cenários de transformação a se considerar na dinâmica do mercado de trabalho brasileiro: por um lado, atividades tipicamente rotineiras e não-cognitivas, como ascensoristas, devem de fato serem automatizadas. No entanto, outras profissões que integram ambas subtarefas facilmente automatizáveis e subtarefas de difícil execução por robôs devem sofrer transformações em função do desenvolvimento da tecnologia e da inteligência artificial – a tendência é que essas ocupações fiquem cada vez mais centradas em tarefas intensivas em criatividade e análise crítica e gradualmente se afastar de atividades corriqueiras e repetitivas: profissões como secretárias e contadores se encaixam nessa categoria.</p>
+
+<p> Em relação aos limites da automação de empregos, ocupações associadas a valores humanos como empatia (assistentes sociais), cuidado (babás) e interpretação subjetiva (crítico de artes) devem ser mantidas no curto/médio prazo, mesmo com a ascensão de tecnologias de ponta. Conforme se constatou nas análises do presente trabalho, ocupações que possuem em suas descrições termos associados a essas virtudes resultaram, em geral, em baixos valores para a probabilidade estimada de automação. Por fim. o desenvolvimento de novas tecnologias, por si só, representa o advento de novas necessidades e, consequentemente, na criação de novas profissões associadas a supervisionar, manter, e incrementar as tecnologias recém-introduzidas.</p>
+
+<div class="figure" style="text-align: center">
+{{ dispersao }}
+<p class="caption">
+Figura 4: Quadrantes por probabilidade de automação e taxa de crescimento.
+</p>
+</div>
+
+<!-- <p>Agregando os níveis de probabilidade de automação “alta” e “muito alta”, o número de funcionários pertencem a essas categorias em 2017 foi igual a 24.804.557, o que representou 54,37% em uma população de 45.616.838 empregados formais no referido ano.
+O resultado encontrado corrobora os achados encontrados em trabalhos correlatos encontrados na literatura especializada. A figura 3 a seguir apresenta uma comparação da probabilidade média de automação das ocupações brasileiras com os valores encontrados em outros países em estudos similares:</p> -->
+
 <p>Para estimar o total de empregos em risco nos próximos 30 anos procedeu-se com a estimação de um modelo <i>Autoregressive integrated moving average</i> - ARIMA para as séries temporais de cada CBO entre 1986 e 2016, interpolando linearmente qualquer ponto faltante nesses anos. As estimativas foram obtidas por meio da proposta de .</p>
 <p>A Figura 3 apresenta o número total de empregados observados e preditos pelo modelo ARIMA entre 1986 e 2046:</p>
 
 <div class="figure" style="text-align: center">
 {{ Serie_Paper2 }}
 <p class="caption">
-Figura 3: Série temporal da ocupação por nível de automação.
+Figura 5: Série temporal da ocupação por nível de automação.
 </p>
 </div>
 
-<p>Após 2016 os dados apresentados na Figura 3 são estimativas de previsão baseadas nas tendências observadas das séries temporais do número total de empregados para cada CBO. Podemos notar que o número de empregados para as CBOs caracterizadas como possuindo alto nível de automação aumenta ao longo dos anos, assumindo para isso que as tendências observadas no passado se mantenham.</p>
+<p>Após 2016 os dados apresentados na Figura 5 são estimativas de previsão baseadas nas tendências observadas das séries temporais do número total de empregados para cada CBO. Podemos notar que o número de empregados para as CBOs caracterizadas como possuindo alto nível de automação aumenta ao longo dos anos, assumindo para isso que as tendências observadas no passado se mantenham.</p>
 <p>Assim, dois cenários surgem: o primeiro é que as firmas no Brasil mantêm o seu mesmo padrão de contratação independentemente do nível de automação, isto é, as empresas em sua maioria prefeririam manter trabalhadores humanos a automação de tarefas, e devido a essa demanda de empregados a previsão para o número total de pessoas empregadas nesses grupos aumentaria.</p>
 <p>Já o segundo cenário é mais preocupante. Caso as empresas decidam por automatizar essas profissões com alta chance de automação então aproximadamente 30 milhões de empregos estariam em risco até 2026. Esse cenário é o mais fidedigno, uma vez que a automação de tarefas para as firmas produziria um aumento na eficiência de seus processos, redução de custos além da possibilidade de certas atividades serem executadas 24 horas 7 dias por semana.</p>
 <p>O desafio enfrentado pelo governo Brasileiro em um futuro próximo está em lidar com esse cenário garantindo treinamento suficiente para os trabalhadores (em especial os trabalhadores pouco qualificados) para atuar em outros ramos de atividades cujo o nível de automação seja menor.</p>
 <p>Além do mais, mesmo que uma quantidade suficiente de trabalhadores qualificados esteja disponíveis, as firmas decidem em investir em novas tecnologias dependendo do fator relativo dos preços do capital e do trabalho na realização de uma determinada tarefa no processo de produção.</p>
-<p><span class="citation">Arntz et al. (<a href="#ref-arntz2016risk">2016</a>)</span> However, low qualified workers are likely to bear the brunt of the adjustment costs as the automatibility of their jobs is higher compared to highly qualified workers. Therefore, the likely challenge for the future lies in coping with rising inequality and ensuring sufficient (re-)training especially for low qualified workers. However, education plays a large role for many countries. In most countries, the within-education component is negative, which implies that people with the same education typically perform less automatable tasks compared to the US. However, in many countries the between-education component is positive, which implies that in those countries a larger share of workers has educational levels which are associated with more automatable tasks (i.e. low or medium qualified workers).</p>
-<p>Furthermore, even if sufficiently qualified personnel were available, firms decide on investing in new technologies depending on the relative factor prices of capital and labour in performing a certain task in the production process.</p>
-<p><span class="citation">Graetz &amp; Michaels (<a href="#ref-graetz2017modern">2017</a>)</span> discuss recession and automazation.</p>
-<p><font color="red"> <span class="citation">J. Bessen (<a href="#ref-bessen2018ai">2018</a>)</span></p>
-<p>Of course, job losses in one industry might be offset by employment growth in other industries. (<strong>Explicação para as Job Zones intermediárias serem jogadas na primeira</strong>)</p>
+
+<h2 id="conclusao"> 5. Conclusão </h2>
+
+<p> O presente estudo analisou a dinâmica das taxas de emprego por zonas de emprego nos últimos anos e tendências futuras de automação de empregos, replicando a metodologia de Frey e Osborne (2017) usando dados brasileiros. Os resultados desta pesquisa são consistentes com os encontrados na literatura especializada recente, e podem fornecer subsídios para gestores corporativos e formuladores de políticas públicas orientadas para antecipar potenciais elevações na taxa de desemprego para profissões com alto risco de automação, bem como identificar ocupações que possuem baixo risco de automação e dimensionar de forma mais precisa os prospectos de transformação da configuração futura do mercado de trabalho. Pela ótica de uma firma, esses insights podem remodelar a seleção de candidatos, eventualmente reajustando as competências requeridas a um aspirante ao emprego ofertado; pela ótica da esfera federal, os resultados podem auxiliar no planejamento de políticas econômicas e sociais, tais como o direcionamento do enfoque de cursos de capacitação técnica para atividades com menor propensão de automatização, potencialmente evitando um investimento em concluintes que acabem substituídos por máquinas em última instância. Ademais, a identificação de ocupações e tarefas com menor chance de automação, como programação computacional e design criativo, podem fomentar discussões adicionais no âmbito da inclusão digital, democratização do conhecimento e reformulação da estrutura curricular do ensino superior, médio ou mesmo básico. </p>
+<p> A respeito das tendências futuras de ocupações específicas conforme estimadas pelo método proposto, o estudo identificou dois fatores relevantes: a probabilidade de automação do referido emprego e a projeção futura de crescimento da demanda por trabalhadores da respectiva ocupação para os próximos anos: uma ocupação pode apresentar baixa ou alta probabilidade de automação, assim como uma tendência futura de aumento ou diminuição de número de empregados a nível nacional. Dessa forma, o estudo mapeou quatro cenários que podem indicar futuros cursos de ação para a construção de políticas públicas direcionadas aos respectivos setores. A título de ilustração, listamos abaixo um exemplo de ocupação para cada cenário:</p>
+
+<ol style="list-style-type: decimal">
+<li>Operador de telemarketing ativo: alta propensão à automação e tendência de expansão da demanda;</li>
+<li>Diretor de pesquisa e desenvolvimento: baixa propensão à automação e tendência de expansão da demanda;</li>
+<li>Gerente administrativo: baixa propensão à automação e tendência de retração da demanda;</li>
+<li>Cobrador de transporte coletivo: alta propensão à automação e tendência de retração da demanda.
+</li>
+</ol>
+
+<p> Como recomendação de política pública, uma prioridade de investimento poderiam ser as atividades da segunda categoria que representam profissões com demanda em potencial que necessitam ser preenchidos por trabalhadores com habilidades de difícil automação, ao passo que atividades com tendência de expansão e alta probabilidade de substituição de um trabalhador humano por máquinas ou robôs podem ser potenciais nichos de desemprego para os próximos anos, constatação que pode potencializar a eficácia de ações governamentais de intervenção ativa.</p>
+<p> Ademais, o presente estudo identificou a existência de subtarefas que podem influenciar no valor estimado para a probabilidade de automação de uma determinada ocupação. Tomando como exemplo a profissão “contador”, cuja probabilidade de automação estimada foi de 48,74%: analisando a descrição dessa ocupação na CBO, é possível identificar habilidades potencialmente fáceis de se automatizar, tais como “Preencher formulários específicos inerentes a atividade da empresa” e “Calcular índices econômicos e financeiros”; não obstante, ao mesmo tempo a profissão envolve tarefas de difícil automação, como “Assessorar a gestão empresarial”, “Intermediar acordos com os sindicatos” e “Demonstrar flexibilidade”. Dessa forma, constatou-se que a probabilidade de automação dessa ocupação não é de fato um valor “mediano”; em vez disso, esse valor se credita a existência de habilidades mais ou menos complexas intrínsecas à mesma classe de trabalho. Padrões semelhantes foram identificados na profissão “consultor jurídico”, que apresentou uma probabilidade de automação estimada de 54,09%: analogamente, as competências associadas a essa profissão englobam tarefas mais facilmente automatizadas, como “Reunir documentação básica” e “Agir com prontidão”, assim como tarefas dificilmente substituíveis por uma máquina, tais como “Interpretar a norma jurídica”, “Demonstrar criatividade” e “Evidenciar eloquência verbal”. </p>
+<p> A constatação de subtarefas mais ou menos automatizáveis e sua importância relativa no exercício da ocupação em questão pode auxiliar na identificação dos limites da automação de tarefas, assim como na compreensão do papel do homem perante o desenvolvimento da “inteligência artificial”. De fato, trabalhos científicos como Arntz, Gregory e Zierahn (2017) argumentam que os níveis previstos de automação geral de trabalho podem estar na verdade superestimando a parcela de empregos automatizáveis, ao negligenciar a heterogeneidade potencialmente substancial de subtarefas dentro de uma única ocupação, bem como a adaptabilidade dos empregos à transformação digital e aos desenvolvimentos tecnológicos e sua massificação. </p>
+<p> Como desenvolvimentos futuros, sugere-se uma investigação mais profunda acerca dos resultados dispostos na Figura 2, relativo à taxa de crescimento acentuada da Job Zone 1, a qual exige níveis menores de qualificação. Uma análise mais detalhada à luz da economia do trabalho, bem como de eventos econômicos, políticos e sociais que poderiam ter influenciado na dinâmica do mercado de trabalho brasileiro durante o período analisado, são de potencial valia para o aprofundamento da discussão apresentada neste texto. Outra limitação consistiu em ter limitado o rol de profissionais e acadêmicos consultados para especialistas em machine learning; em aplicações futuras, profissionais atuantes em outras áreas – tais como administradores, psicólogos, gestores de pessoas, engenheiros, cientistas da computação, etc – constituiriam um grupo mais representativo que poderia refinar as estimações realizadas. Outras sugestões de pesquisas futuras incluem a utilização de técnicas alternativas de machine learning ao processo Gaussiano empregado, teste de outras funções Kernel, uso de n-gramas em vez de unigramas e bigramas, e a elevação do ponto de corte de 70% na análise de componentes principais a fim de capturar outros termos-chave que possam indicar maiores ou menores propensões à automação. A despeito da alta exigência computacional demandada nessas extensões propostas, estas podem revelar padrões e tendências não evidenciadas nas configurações escolhidas para a execução deste estudo.</p>
+
 <p></font></p>
 <h2 id="referencias-bibliograficas">Referências Bibliográficas</h2>
 <div id="refs">
@@ -521,7 +570,6 @@ Figura 3: Série temporal da ocupação por nível de automação.
 <p>Susskind, D., &amp; others. (2017). A model of technological unemployment. <em>University of Oxford, Department of Economics Discussion Paper. https://www. economics. ox. ac. uk/materials/papers/15126/819-susskind-a-model-of-technological-unemploymentjuly-2017. pd f</em>.</p>
 </div>
 </div>
-<h2 id="afiliacao">Afiliação</h2>
 </div>
 
 
@@ -551,6 +599,7 @@ $(document).ready(function () {
   })();
 </script> -->
 
+   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script> -->
 
 </body>
 </html>

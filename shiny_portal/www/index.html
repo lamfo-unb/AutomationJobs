@@ -1,8 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:fb="http://ogp.me/ns/fb#">
 <head>
 	<title>Automation Jobs</title>
 	<meta charset="utf-8"/>
+	    <meta property="og:title" content="Automation Jobs"/>
+<meta property="og:type" content="site"/>
+<meta property="og:url" content="http://www.lamfo.shinyapps.io/automacao/"/>
+<meta property="og:image" content="https://raw.githubusercontent.com/Cayan-Portela/cayan-portela.github.io/master/advogado.png"/>
+<meta property="og:image:width" content="450"/>
+<meta property="og:image:height" content="298"/>
+<meta property="og:title" content="Automation Jobs"/>
+<meta property="og:image:secure_url" content="https://raw.githubusercontent.com/Cayan-Portela/cayan-portela.github.io/master/advogado.png" />
+<meta property="og:site_name" content="Automation"/>
+<meta property="fb:admins" content="USER_ID"/>
+<meta property="og:description"
+      content="A group of U.S. Marines, under command of
+               a renegade general, take over Alcatraz and
+               threaten San Francisco Bay with biological
+               weapons."/>
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="custom.css">
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -32,11 +48,12 @@
 			<!--		</div> -->
 					 <!-- <a href="#" class="btn btn-defualt">Login</a> -->
 					 <!-- <script> $('#select-country').selectize(options: [ choices ] ); </script> -->
-					 <center>			 
-					 {{ selectizeInput("selecionado", choices = sort(escolhas), label = NULL, width = '680px', options = list( placeholder = "Selecione uma profiss\u00E3o ", onInitialize = I('function() { this.setValue(""); }') ) ) }}
-                     </center>
-
-
+		<center>			 {{ selectizeInput('selecionado' , label = NULL , width = '680px',
+                              choices = sort(escolhas) ,
+                              options = list(
+                                             placeholder = 'Selecione uma profiss\u00E3o   ',
+                                             maxOptions = 3000,
+                                             onInitialize = I('function() { this.setValue(""); }'))) }} </center>
 					 {{ actionButton("login_button", "Buscar") }} 					  
 				</div>
 				<div class="col-md-12 col-sm-12 col-xs-12 last-part">
@@ -46,5 +63,17 @@
 		</div>
 	</div>
 </div>
+
+ 
+
+	  <script src="js/bootstrap.min.js"></script>
+	  <script src="js/jquery.easing.min.js"></script>
+	  <script src="js/htmlwidgets/htmlwidgets.js"></script> 
+      <script src="js/htmlwidgets/lib/raphael/raphael-2.1.4.min.js"></script>  
+	  <script src="js/htmlwidgets/lib/justgage/justgage.js"></script> 
+	  <script src="js/jstree.js"></script> 
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/json2/20160511/json2.min.js"></script>
+	  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
 </body>
 </html>

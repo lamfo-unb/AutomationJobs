@@ -65,16 +65,15 @@ Rcpp::NumericMatrix IBS_kernel_C_parallel(Rcpp::NumericMatrix X,
                                           Rcpp::NumericMatrix sigma2n,
                                           Rcpp::NumericMatrix lambdaVec) {
   
-  // Rcpp::NumericMatrix outFull(X.nrow(), X.nrow());
   // allocate the output matrix
+  Rcpp::NumericMatrix outFull(X.nrow(), X.nrow());
   Rcpp::NumericMatrix out(X.nrow(), X.nrow());
   
+  IBSKernel ibskernel(X, out, lambdaVec);
   // IBSKernel functor (pass input and output matrixes)
-  IBSKernel ibskernel(X, out, sigma2f, sigma2n, lambdaVec);
   
   // call parallelFor to do the work
   parallelFor(0, X.nrow(), ibskernel);
-  
   // return the output matrix
   return out;
 }
@@ -251,15 +250,15 @@ Eigen::RowVectorXd KernelVectorXx(Eigen::MatrixXd datMat, Eigen::RowVectorXd dat
   //Initialize the matriz
   Eigen::RowVectorXd vecKernel = Eigen::RowVectorXd::Zero(rows);
   for(unsigned int c1=0;c1<rows;c1++){
-      double val = 0.0;
-      for(unsigned int p=0;p<nelements;p++){
-        //First column with variables
-        Eigen::RowVectorXd vec1 = datMat.row(c1);
-        //Calculate the kernel value
-        val = val + (-0.5*std::pow((vec1(p)-datVec(p))/lambda(p),2.0));
-      }
-      //Store the kernel value
-      vecKernel(c1)=sigma2f*std::exp(val);
+    double val = 0.0;
+    for(unsigned int p=0;p<nelements;p++){
+      //First column with variables
+      Eigen::RowVectorXd vec1 = datMat.row(c1);
+      //Calculate the kernel value
+      val = val + (-0.5*std::pow((vec1(p)-datVec(p))/lambda(p),2.0));
+    }
+    //Store the kernel value
+    vecKernel(c1)=sigma2f*std::exp(val);
   }
   return(vecKernel);
 }

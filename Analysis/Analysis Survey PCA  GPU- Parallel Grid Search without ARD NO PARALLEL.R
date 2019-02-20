@@ -69,7 +69,7 @@ marginal.ll<-function(theta){
     #Information
     
     
-    k1<-k.xx%*%Y.gpu
+    k1<- invK%*%Y.gpu#k.xx%*%Y.gpu
     k1<-as.numeric(as.matrix(k1%*%Y.gpu))
     #Information
     inf <- as.numeric((-0.5)*(k1))

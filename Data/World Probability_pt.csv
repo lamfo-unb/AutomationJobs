@@ -1,20 +1,5 @@
-Autor;País;Probabilidade
-Bosch, Pagés e Ripani (2018);Guatemala;0,75
-Bosch, Pagés e Ripani (2018);El Salvador;0,75
-Bosch, Pagés e Ripani (2018);Equador;0,69
-Bosch, Pagés e Ripani (2018);Costa Rica;0,68
-Bosch, Pagés e Ripani (2018);Bolívia;0,67
-Bosch, Pagés e Ripani (2018);Panamá;0,65
-Bosch, Pagés e Ripani (2018);Nicarágua;0,65
-Bosch, Pagés e Ripani (2018);Argentina;0,65
-Bosch, Pagés e Ripani (2018);Paraguai;0,64
-Bosch, Pagés e Ripani (2018);Uruguai;0,63
-Bosch, Pagés e Ripani (2018);República Dominicana;0,62
-Frey e Osborne (2013) ;Estados Unidos;0,47
-Pajarinen et al. (2014) ;Finlândia;0,36
-DiBa (2015) ;Europa;0,59
-Bowles (2014) ;Europa (inferior);0,45
-Bowles (2014) ;Europa (superior);0,6
+Bosch, Pagï¿½s e Ripani (2018);Argentina;0,65
+Bosch, Pagï¿½s e Ripani (2018);Bolï¿½via;0,67
 Arntz, Gregory, e Zierahn (2016);Austria;12,19512177
 Arntz, Gregory, e Zierahn (2016);Germany;12,15668583
 Arntz, Gregory, e Zierahn (2016);Spain;11,70662975
@@ -37,4 +22,8 @@ Arntz, Gregory, e Zierahn (2016);Belgium;7,060669422
 Arntz, Gregory, e Zierahn (2016);Finle;6,559356213
 Arntz, Gregory, e Zierahn (2016);Estonia;6,333180428
 Arntz, Gregory, e Zierahn (2016);Korea;5,86991024
+<<<<<<<
 Albuquerque et al. (2019);Brasil;0,5437
+=======
+Albuquerque et al. (2019);Brazil;0,5437
+>>>>>>>

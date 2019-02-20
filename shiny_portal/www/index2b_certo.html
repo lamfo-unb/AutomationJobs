@@ -2,12 +2,28 @@
 <html lang="en">
 
 <head>
-
 	<title>Automation Jobs</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta property="og:title" content="Automation Jobs"/>
+<meta property="og:type" content="site"/>
+<meta property="og:url" content="http://www.lamfo.shinyapps.io/automacao/"/>
+<meta property="og:image:secure_url" content="https://raw.githubusercontent.com/Cayan-Portela/cayan-portela.github.io/master/advogado.png" />
+<meta property="og:image" content="https://raw.githubusercontent.com/Cayan-Portela/cayan-portela.github.io/master/advogado.png"/>
+<meta property="og:title" content="Automation Jobs"/>
+<meta property="og:image:width" content="450"/>
+<meta property="og:image:height" content="298"/>
+<meta property="og:site_name" content="Automation"/>
+<meta property="fb:admins" content="USER_ID"/>
+<meta property="og:description"
+      content="A group of U.S. Marines, under command of
+               a renegade general, take over Alcatraz and
+               threaten San Francisco Bay with biological
+               weapons."/>
+    
+
 
     <title>Automation Jobs</title>
 	
@@ -64,7 +80,7 @@
             	 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             	 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             	 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            	  {{ gaugeOutput("gauge1" , height = "100px") %>% withSpinner() }}
+            	  {{ gauge_1 }}
             	 </div> 
                         	<!-- AddToAny BEGIN -->
 
@@ -74,7 +90,8 @@
             <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
             	<div class="row">
             			<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
-            					<h3>Compartilhar</h3>
+            					<!--<h3>Compartilhar</h3>-->
+            					<br>
 								<a class="a2a_button_facebook"></a>
 								<a class="a2a_button_twitter"></a>
 								<a class="a2a_button_linkedin"></a>
@@ -95,7 +112,7 @@
 				<div class="row">
 					<div class="col-sm-5 col-md-5 col-lg-5">
 					<div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.1s">
-			  {{ actionButton("voltar", label = "Voltar") }}
+			  {{ botao_voltar }}
 			  <p> 
 			  	<h3> {{ printar }} </h3>
 					  <strong style="font-size:12px"> {{ tree }}     </strong> 
@@ -322,7 +339,7 @@
 				
 					<div class="wow fadeInLeft" data-wow-delay="0.1s">
 					<div class="text-left">
-					<p>&copy;Copyright 2018 - LAMFO - Laboratório de Aprendizado de Máquina em Finanças e Organizações.</p>
+					<p>&copy;Copyright 2018 - LAMFO - Machine Learning Laboratory in Finance and Organizations.</p>
 					</div>
 					</div>
 				</div>
@@ -347,20 +364,23 @@
 <a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
 
 	<!-- Core JavaScript Files -->
-    <!-- <script src="js/jquery.min.js"></script> -->  
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.easing.min.js"></script> 
-  	<script src="js/wow.min.js"></script> 
+   <!-- <script src="js/jquery.min.js"></script> -->
+   <!-- <script src="js/bootstrap.min.js"></script> -->
+   <!-- <script src="js/jquery.easing.min.js"></script> -->
+    <script src="js/wow.min.js"></script> 
   <!--	<script src="js/jquery.scrollTo.js"></script> --> 
   	<script src="js/nivo-lightbox.min.js"></script> 
-    <script src="js/custom.js"></script> 
-    <script src="js/jstree.js"></script> 
+    <script src="js/custom.js"></script>
+    <!-- <script src="js/jstree.js"></script> -->
      
-    <script src="js/htmlwidgets/htmlwidgets.js"></script> 
-    <script src="js/htmlwidgets/lib/raphael/raphael-2.1.4.min.js"></script>  
-	<script src="js/htmlwidgets/lib/justgage/justgage.js"></script> 
-	<script src="js/htmlwidgets/gauge.js"></script> 
-	<script async src="https://static.addtoany.com/menu/page.js"></script>
+   <!-- <script src="js/htmlwidgets/htmlwidgets.js"></script> 
+        <script src="js/htmlwidgets/lib/raphael/raphael-2.1.4.min.js"></script>  
+	    <script src="js/htmlwidgets/lib/justgage/justgage.js"></script> -->
+	<!-- <script src="js/htmlwidgets/gauge.js"></script> -->	
+	 <script async src="https://static.addtoany.com/menu/page.js"></script>
+
+	<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script> -->
+	
 
 </body>
 
